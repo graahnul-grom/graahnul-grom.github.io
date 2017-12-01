@@ -1,0 +1,3160 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8" />
+<title>lepton-schematic-and-system-gschemrc</title>
+<style>
+table { border-style: solid; border-width: 1px; border-spacing: 0; }
+th    { background-color: lightgray; border-style: solid; border-width: 1px; border-color: gray; padding: 5px; }
+tr,td { border-style: solid; border-width: 1px; border-color: gray; padding: 5px; }
+code  { background-color: lightgray; }
+</style>
+</head><body>
+<h2>lepton-schematic: old-style configuration settings in <code>system-gschemrc</code></h2>
+<p>This document lists current settings for <code>lepton-schematic</code>
+defined in <code>system-gschemrc</code> file, along with some implementation details.
+It's intended to assist us in migration to new configuration system.</p>
+<h4>Files involved:</h4>
+<ul>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/lib/system-gschemrc.scm">system-gschemrc</a></li>
+<li>lepton-schematic:
+<ul>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/src/g_register.c">schematic/src/g_register.c</a></li>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/src/g_rc.c">schematic/src/g_rc.c</a></li>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/src/i_vars.c">schematic/src/i_vars.c</a></li>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/src/globals.c">schematic/src/globals.c</a></li>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/include/gschem_defines.h">schematic/include/gschem_defines.h</a></li>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/include/gschem_options.h">schematic/include/gschem_options.h</a></li>
+</ul>
+</li>
+<li>liblepton:
+<ul>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/liblepton/include/liblepton/defines.h">liblepton/include/liblepton/defines.h</a></li>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/liblepton/include/liblepton/geda_text_object.h">liblepton/include/liblepton/geda_text_object.h</a></li>
+</ul>
+</li>
+<li>liblepton (<code>bus-ripper-symname</code> option):
+<ul>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/liblepton/src/g_register.c">liblepton/src/g_register.c</a></li>
+<li><a href="https://github.com/lepton-eda/lepton-eda/blob/master/liblepton/src/g_rc.c">liblepton/src/g_rc.c</a></li>
+</ul>
+</li>
+</ul>
+<h4>Tags:</h4>
+<ul>
+<li><em><code>ivar</code></em>: global variable name in <a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/src/i_vars.c">schematic/src/i_vars.c</a></li>
+<li><em><code>topl</code></em>: member of <code>struct st_gschem_toplevel</code> (typedef: <code>GschemToplevel</code>) - <a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/include/gschem_toplevel.h">schematic/include/gschem_toplevel.h</a></li>
+<li><em><code>opt</code></em>:  member of <code>struct _GschemOptions</code> (typedef: <code>GschemOptions</code>) - <a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/include/gschem_options.h">schematic/include/gschem_options.h</a></li>
+<li><em><code>glob</code></em>: global variable defined in <a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/src/globals.c">schematic/src/globals.c</a><br /></li>
+<li><em><code>val</code></em>:  values: [C value] - [Guile value] or [type] or one of possible values</li>
+<li><em><code>dflt</code></em>: default value assigned in <a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/src/i_vars.c">schematic/src/i_vars.c</a></li>
+<li><em><code>fbck</code></em>: fallback value</li>
+<li><em><code>[gschem_defines]</code></em>:   values are defined in <a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/include/gschem_defines.h">schematic/include/gschem_defines.h</a></li>
+<li><em><code>[defines]</code></em>:          values are defined in <a href="https://github.com/lepton-eda/lepton-eda/blob/master/liblepton/include/liblepton/defines.h">liblepton/include/liblepton/defines.h</a></li>
+<li><em><code>[geda_text_object]</code></em>: values are defined in <a href="https://github.com/lepton-eda/lepton-eda/blob/master/liblepton/include/liblepton/geda_text_object.h">liblepton/include/liblepton/geda_text_object.h</a></li>
+<li><em><code>[gschem_options]</code></em>:   values are defined in <a href="https://github.com/lepton-eda/lepton-eda/blob/master/schematic/include/gschem_options.h">schematic/include/gschem_options.h</a></li>
+<li><u>underlined</u>:      default values set in <code>i_vars.c</code> and <code>system-gschemrc</code> are different</li>
+</ul>
+<h4>Notes:</h4>
+<ul>
+<li><code>[H]</code>: values are hardcoded (e.g. numbers are used instead of <code>#define</code>'d constants)</li>
+<li><code>[N]</code>: not implemented</li>
+</ul>
+<br />
+<br />
+<h4>A: The only option from <code>system-gschemrc</code> implemented in <code>liblepton</code>:</h4>
+<table>
+<thead>
+<tr>
+<th><code>#</code></th>
+<th>notes</th>
+<th>liblepton/src/{g_register,g_rc}.c</th>
+<th>system-gschemrc expr</th>
+<th>TODO</th>
+<th>TODO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#d1">1</a></td>
+<td></td>
+<td><strong>bus-ripper-symname</strong></td>
+<td>( bus-ripper-symname &quot;busripper-1.sym&quot; )</td>
+<td></td>
+<td></td>
+</tr></tbody></table>
+<br />
+<br />
+<h4>B: Global variables defined in <code>schematic/src/globals.c</code>:</h4>
+<table>
+<thead>
+<tr>
+<th><code>#</code></th>
+<th>notes</th>
+<th>g_register.c, g_rc.c</th>
+<th>system-gschemrc expr</th>
+<th>new cfg: group name</th>
+<th>new cfg: key name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#d2">2</a></td>
+<td></td>
+<td><strong>logging-destination</strong></td>
+<td>( logging-destination &quot;log_window&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_logging_dest</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>glob</em>: logging_dest</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  LOG_WINDOW         - &quot;log_window&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  STDOUT_TTY         - &quot;tty&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  BOTH_LOGWIN_STDOUT - &quot;both&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: LOG_WINDOW</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr></tbody></table>
+<br />
+<br />
+<h4>C: Global variables defined in <code>schematic/src/i_vars.c</code>:</h4>
+<table>
+<thead>
+<tr>
+<th><code>#</code></th>
+<th>notes</th>
+<th>g_register.c, g_rc.c</th>
+<th>system-gschemrc expr</th>
+<th>new cfg: group name</th>
+<th>new cfg: key name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#d3">3</a></td>
+<td><code>[H]</code></td>
+<td><strong>window-size</strong></td>
+<td>( window-size <u>900</u> <u>650</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar_1</em>: default_width</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar_2</em>: default_height</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val_1</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val_2</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt_1</em>: <u>800</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt_2</em>: <u>600</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d4">4</a></td>
+<td><code>[H]</code></td>
+<td><strong>mousepan-gain</strong></td>
+<td>( mousepan-gain <u>1</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_mousepan_gain</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: mousepan_gain</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>5</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d5">5</a></td>
+<td><code>[H]</code></td>
+<td><strong>keyboardpan-gain</strong></td>
+<td>( keyboardpan-gain 20 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_keyboardpan_gain</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: keyboardpan_gain</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d6">6</a></td>
+<td><code>[H]</code></td>
+<td><strong>select-slack-pixels</strong></td>
+<td>( select-slack-pixels <u>10</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_select_slack_pixels</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: select_slack_pixels</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>4</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d7">7</a></td>
+<td><code>[H]</code></td>
+<td><strong>zoom-gain</strong></td>
+<td>( zoom-gain 20 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_zoom_gain</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: zoom_gain</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d8">8</a></td>
+<td><code>[H]</code></td>
+<td><strong>scrollpan-steps</strong></td>
+<td>( scrollpan-steps 8 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_scrollpan_steps</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: scrollpan_steps</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d9">9</a></td>
+<td><code>[H]</code></td>
+<td><strong>auto-save-interval</strong></td>
+<td>( auto-save-interval 120 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_auto_save_interval</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: auto_save_interval</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 120</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 120</td>
+<td></td>
+<td></td>
+<td></td>
+</tr></tbody></table>
+<br />
+<br />
+<h4>D: Members of <code>struct _GschemOptions</code> (<code>schematic/include/gschem_options.h</code>):</h4>
+<table>
+<thead>
+<tr>
+<th><code>#</code></th>
+<th>notes</th>
+<th>g_register.c, g_rc.c</th>
+<th>system-gschemrc expr</th>
+<th>new cfg: group name</th>
+<th>new cfg: key name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#d10">10</a></td>
+<td></td>
+<td><strong>snap-size</strong></td>
+<td>( snap-size 100 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_snap_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>opt</em>:  snap_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  MINIMUM_SNAP_SIZE = 1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  MAXIMUM_SNAP_SIZE = 102400</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>[H]</code></td>
+<td><em>fbck</em>: 100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: DEFAULT_SNAP_SIZE = 100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_options]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d11">11</a></td>
+<td></td>
+<td><strong>netconn-rubberband</strong></td>
+<td>( netconn-rubberband <u>&quot;enabled&quot;</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_netconn_rubberband</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>opt</em>:  net_rubber_band_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>DEFAULT_NET_RUBBER_BAND_MODE = FALSE</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_options]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d12">12</a></td>
+<td></td>
+<td><strong>magnetic-net-mode</strong></td>
+<td>( magnetic-net-mode &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_magnetic_net_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>opt</em>:  magnetic_net_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: DEFAULT_MAGNETIC_NET_MODE = TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_options]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d13">13</a></td>
+<td></td>
+<td><strong>grid-mode</strong></td>
+<td>( grid-mode &quot;mesh&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_grid_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>opt</em>:  grid_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  GRID_MODE_NONE - &quot;none&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  GRID_MODE_DOTS - &quot;dots&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  GRID_MODE_MESH - &quot;mesh&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: DEFAULT_GRID_MODE = GRID_MODE_MESH</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_options]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr></tbody></table>
+<br />
+<br />
+<h4>E: Members of  <code>struct st_gschem_toplevel</code> (<code>schematic/include/gschem_toplevel.h</code>):</h4>
+<table>
+<thead>
+<tr>
+<th><code>#</code></th>
+<th>notes</th>
+<th>g_register.c, g_rc.c</th>
+<th>system-gschemrc expr</th>
+<th>new cfg: group name</th>
+<th>new cfg: key name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#d14">14</a></td>
+<td></td>
+<td><strong>net-direction-mode</strong></td>
+<td>( net-direction-mode &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_net_direction_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: net_direction_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d15">15</a></td>
+<td></td>
+<td><strong>net-selection-mode</strong></td>
+<td>( net-selection-mode <u>&quot;enabled_net&quot;</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_net_selection_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>[H]</code></td>
+<td><em>topl</em>: net_selection_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  0 - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  2 - &quot;enabled_net&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  3 - &quot;enabled_all&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>0</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d16">16</a></td>
+<td></td>
+<td><strong>zoom-with-pan</strong></td>
+<td>( zoom-with-pan &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_zoom_with_pan</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: zoom_with_pan</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d17">17</a></td>
+<td></td>
+<td><strong>action-feedback-mode</strong></td>
+<td>( action-feedback-mode &quot;outline&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_actionfeedback_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: actionfeedback_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  OUTLINE     - &quot;outline&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  BOUNDINGBOX - &quot;boundingbox&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: OUTLINE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d18">18</a></td>
+<td></td>
+<td><strong>scrollbars</strong></td>
+<td>( scrollbars &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_scrollbars_flag</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: scrollbars_flag</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d19">19</a></td>
+<td></td>
+<td><strong>embed-components</strong></td>
+<td>( embed-components &quot;disabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_embed_complex</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: embed_complex</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: FALSE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d20">20</a></td>
+<td></td>
+<td><strong>logging</strong></td>
+<td>( logging &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_do_logging</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: do_logging</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d21">21</a></td>
+<td></td>
+<td><strong>text-size</strong></td>
+<td>( text-size 10 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_text_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: text_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  MINIMUM_TEXT_SIZE = 1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: DEFAULT_TEXT_SIZE = 10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[geda_text_object]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d22">22</a></td>
+<td></td>
+<td><strong>text-caps-style</strong></td>
+<td>( text-caps-style <u>&quot;both&quot;</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_text_caps</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: text_caps</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  LOWER - &quot;lower&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  UPPER - &quot;upper&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  BOTH  - &quot;both&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>LOWER</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d23">23</a></td>
+<td></td>
+<td><strong>image-color</strong></td>
+<td>( image-color <u>&quot;enabled&quot;</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_image_color</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: image_color</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>FALSE</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d24">24</a></td>
+<td></td>
+<td><strong>log-window</strong></td>
+<td>( log-window &quot;startup&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_log_window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: log_window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  MAP_ON_STARTUP - &quot;startup&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  MAP_LATER      - &quot;later&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: MAP_ON_STARTUP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d25">25</a></td>
+<td></td>
+<td><strong>log-window-type</strong></td>
+<td>( log-window-type &quot;decorated&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_log_window_type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: log_window_type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRANSIENT - &quot;transient&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  DECORATED - &quot;decorated&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: DECORATED</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d26">26</a></td>
+<td></td>
+<td><strong>third-button</strong></td>
+<td>( third-button &quot;popup&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_third_button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: third_button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  POPUP_ENABLED    - &quot;popup&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  MOUSEPAN_ENABLED - &quot;mousepan&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: POPUP_ENABLED</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d27">27</a></td>
+<td></td>
+<td><strong>third-button-cancel</strong></td>
+<td>( third-button-cancel &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_third_button_cancel</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: third_button_cancel</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d28">28</a></td>
+<td></td>
+<td><strong>middle-button</strong></td>
+<td>( middle-button <u>&quot;mousepan&quot;</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_middle_button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: middle_button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  STROKE - &quot;stroke&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  REPEAT - &quot;repeat&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  ACTION - &quot;action&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  MID_MOUSEPAN_ENABLED - &quot;mousepan&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>HAVE_LIBSTROKE ? STROKE : REPEAT</u></td>
+<td>u                     u</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d29">29</a></td>
+<td></td>
+<td><strong>scroll-wheel</strong></td>
+<td>( scroll-wheel &quot;classic&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_scroll_wheel</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: scroll_wheel</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  SCROLL_WHEEL_CLASSIC - &quot;classic&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  SCROLL_WHEEL_GTK     - &quot;gtk&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: SCROLL_WHEEL_CLASSIC</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d30">30</a></td>
+<td></td>
+<td><strong>net-consolidate</strong></td>
+<td>( net-consolidate &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_net_consolidate</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: net_consolidate</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d31">31</a></td>
+<td></td>
+<td><strong>file-preview</strong></td>
+<td>( file-preview <u>&quot;enabled&quot;</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_file_preview</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: file_preview</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>FALSE</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d32">32</a></td>
+<td></td>
+<td><strong>enforce-hierarchy</strong></td>
+<td>( enforce-hierarchy &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_enforce_hierarchy</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: enforce_hierarchy</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d33">33</a></td>
+<td></td>
+<td><strong>fast-mousepan</strong></td>
+<td>( fast-mousepan &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_fast_mousepan</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: fast_mousepan</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d34">34</a></td>
+<td></td>
+<td><strong>raise-dialog-boxes-on-expose</strong></td>
+<td>( raise-dialog-boxes-on-expose &quot;disabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_raise_dialog_boxes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: raise_dialog_boxes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: FALSE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d35">35</a></td>
+<td></td>
+<td><strong>continue-component-place</strong></td>
+<td>( continue-component-place &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_continue_component_place</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: continue_component_place</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d36">36</a></td>
+<td><code>[H]</code></td>
+<td><strong>undo-levels</strong></td>
+<td>( undo-levels <u>10</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_undo_levels</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: undo_levels</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>20</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d37">37</a></td>
+<td></td>
+<td><strong>undo-control</strong></td>
+<td>( undo-control &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_undo_control</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: undo_control</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d38">38</a></td>
+<td></td>
+<td><strong>undo-type</strong></td>
+<td>( undo-type &quot;disk&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_undo_control</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: undo_control</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  UNDO_DISK   - &quot;disk&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  UNDO_MEMORY - &quot;memory&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: UNDO_DISK</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d39">39</a></td>
+<td></td>
+<td><strong>undo-panzoom</strong></td>
+<td>( undo-panzoom <u>&quot;enabled&quot;</u> )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_undo_panzoom</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: undo_panzoom</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: <u>FALSE</u></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d40">40</a></td>
+<td></td>
+<td><strong>draw-grips</strong></td>
+<td>( draw-grips &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_draw_grips</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: draw_grips</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d41">41</a></td>
+<td></td>
+<td><strong>warp-cursor</strong></td>
+<td>( warp-cursor &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_warp_cursor</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: warp_cursor</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d42">42</a></td>
+<td></td>
+<td><strong>toolbars</strong></td>
+<td>( toolbars &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_toolbars</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: toolbars</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d43">43</a></td>
+<td></td>
+<td><strong>handleboxes</strong></td>
+<td>( handleboxes &quot;enabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_handleboxes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: handleboxes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: TRUE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d44">44</a></td>
+<td><code>[H]</code></td>
+<td><strong>bus-ripper-size</strong></td>
+<td>( bus-ripper-size 200 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_bus_ripper_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: bus_ripper_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 200</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 200</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d45">45</a></td>
+<td></td>
+<td><strong>bus-ripper-type</strong></td>
+<td>( bus-ripper-type &quot;component&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_bus_ripper_type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: bus_ripper_type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  COMP_BUS_RIPPER - &quot;component&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  NET_BUS_RIPPER  - &quot;net&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: COMP_BUS_RIPPER</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d46">46</a></td>
+<td></td>
+<td><strong>bus-ripper-rotation</strong></td>
+<td>( bus-ripper-rotation &quot;non-symmetric&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_bus_ripper_rotation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: bus_ripper_rotation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  SYMMETRIC     - &quot;symmetric&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  NON_SYMMETRIC - &quot;non-symmetric&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: NON_SYMMETRIC</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d47">47</a></td>
+<td></td>
+<td><strong>force-boundingbox</strong></td>
+<td>( force-boundingbox &quot;disabled&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_force_boundingbox</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: force_boundingbox</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  TRUE  - &quot;enabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  FALSE - &quot;disabled&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: FALSE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d48">48</a></td>
+<td><code>[H]</code></td>
+<td><strong>dots-grid-dot-size</strong></td>
+<td>( dots-grid-dot-size 1 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_dots_grid_dot_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: dots_grid_dot_size</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d49">49</a></td>
+<td></td>
+<td><strong>dots-grid-mode</strong></td>
+<td>( dots-grid-mode &quot;variable&quot; )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_dots_grid_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: dots_grid_mode</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  DOTS_GRID_VARIABLE_MODE - &quot;variable&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  DOTS_GRID_FIXED_MODE    - &quot;fixed&quot;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: DOTS_GRID_VARIABLE_MODE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>[gschem_defines]</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d50">50</a></td>
+<td><code>[H]</code></td>
+<td><strong>dots-grid-fixed-threshold</strong></td>
+<td>( dots-grid-fixed-threshold 10 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_dots_grid_fixed_threshold</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: dots_grid_fixed_threshold</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d51">51</a></td>
+<td><code>[H]</code></td>
+<td><strong>mesh-grid-display-threshold</strong></td>
+<td>( mesh-grid-display-threshold 3 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_mesh_grid_display_threshold</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: mesh_grid_display_threshold</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#d52">52</a></td>
+<td><code>[H]</code> <code>[N]</code></td>
+<td><strong>add-attribute-offset</strong></td>
+<td>( add-attribute-offset 50 )</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>ivar</em>: default_add_attribute_offset</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>topl</em>: add_attribute_offset</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>val</em>:  [int]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>fbck</em>: 50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><em>dflt</em>: 50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr></tbody></table>
+<br />
+<br />
+<h4>Description (copy/paste from <code>system-gschemrc</code>):</h4>
+<ul>
+<li>
+<p><a id="d1"></a>1: <strong>bus-ripper-symname</strong>: Bus ripper controls<br />
+If above [45: bus-ripper-type - dmn] is set to component, specify the symbol name.<br />
+The symbol must exist in a component library<br /></p>
+</li>
+<li>
+<p><a id="d2"></a>2: <strong>logging-destination</strong>: string<br />
+Specifies where log message go during run time.<br />
+Possible options are:<br /></p>
+<ul>
+<li>log_window:      The log window (if it's visible)</li>
+<li>tty:             The stdout of the terminal where gschem was run from</li>
+<li>both:            Both of the above locations
+<br />Message are always written to the log file (unless logging is disabled)<br />
+by the above keyword<br /></li>
+</ul>
+</li>
+<li>
+<p><a id="d3"></a>3: <strong>window-size</strong>: width height<br />
+Specifies the size of the drawing area window.  The width and height<br />
+are specified in pixels and do not include the three menu bars and<br />
+scrollbars (so the window will be larger than the specified<br />
+measurements). Try to keep an aspect ratio of 1.333333 if at all possible.<br />
+These numbers are NOT the true size of the window, but of the drawing area.<br /></p>
+</li>
+<li>
+<p><a id="d4"></a>4: <strong>mousepan-gain</strong>: integer<br />
+Controls how much the display pans when using mousepan.  A larger value<br />
+provides greater pan distance when moving the mouse, while a smaller value<br />
+provides a smoother, but smaller pan distance when moving the mouse.<br /></p>
+</li>
+<li>
+<p><a id="d5"></a>5: <strong>keyboardpan-gain</strong>: integer<br />
+Controls how much the display pans when using the keyboard cursor keys.<br />
+A larger value provides greater pan distance when pressing the cursor<br />
+keys, while a smaller value provides a smoother, but smaller pan<br />
+distance when moving the cursor keys.<br /></p>
+</li>
+<li>
+<p><a id="d6"></a>6: <strong>select-slack-pixels</strong>: integer<br />
+Controls how many pixels around an object can still be clicked as part of that object.<br />
+A larger value gives greater ease in selecting small, or narrow objects.<br /></p>
+</li>
+<li>
+<p><a id="d7"></a>7: <strong>zoom-gain</strong>: integer<br />
+Controls the percentage size increase when zooming into the page.<br />
+Un-zooming uses the inverse factor such that a zoom in / zoom out<br />
+pair will return the schematic to the same size.<br />
+E.g:<br />
+20% increment =&gt; x 1.2 original size when zooming in<br />
+=&gt; x 1 / 1.2 x original size when zooming out<br /></p>
+</li>
+<li>
+<p><a id="d8"></a>8: <strong>scrollpan-steps</strong>: integer<br />
+Controls the number of scroll pan events required to traverse the viewed<br />
+schematic area. Larger numbers mean more scroll steps are required to<br />
+pan across the viewed area and giving finer control over positioning.<br /></p>
+</li>
+<li>
+<p><a id="d9"></a>9: <strong>auto-save-interval</strong><br />
+Controls if a backup copy is made every &quot;interval&quot; seconds.<br />
+Note that the backup copy is made when you make some change to the schematic,<br />
+and there were more than &quot;interval&quot; seconds from the last autosave.<br />
+Autosaving will not be allowed if setting it to zero.<br /></p>
+</li>
+<li>
+<p><a id="d10"></a>10: <strong>snap-size</strong>: number<br />
+Sets the default grid spacing at start-up of gschem.<br /></p>
+</li>
+<li>
+<p><a id="d11"></a>11: <strong>netconn-rubberband</strong>: string<br />
+Controls if net connections are maintained when you move a connecting component or net.<br /></p>
+</li>
+<li>
+<p><a id="d12"></a>12: <strong>magnetic-net-mode</strong>: string<br />
+Controls the initial setting of the magnetic net mode. The magnetic<br />
+net mode marks a possible connection that is close to the current cursor position<br /></p>
+</li>
+<li>
+<p><a id="d13"></a>13: <strong>grid-mode</strong><br />
+The grid-mode keyword controls which mode of grid is used by default in gschem.<br /></p>
+</li>
+<li>
+<p><a id="d14"></a>14: <strong>net-direction-mode</strong>: string<br />
+Controlls if the net direction mode is used. This mode tries to guess<br />
+the best continuation direction of a L-shape net when adding a net.<br /></p>
+</li>
+<li>
+<p><a id="d15"></a>15: <strong>net-selection-mode</strong>: string<br />
+Controls how many net segments are selected when you click at a net<br />
+If one of the enabled items is used, the selection state will toggle<br />
+through all selection states. The mode defines the maximum search depth<br />
+for the net selection mode<br /></p>
+</li>
+<li>
+<p><a id="d16"></a>16: <strong>zoom-with-pan</strong>: string<br />
+Sets the zoom in and zoom out functions to pan the display and then zoom.<br />
+Basically zoom in / out where the mouse pointer sits on the display.<br />
+Comment out if you want the default mode.<br /></p>
+</li>
+<li>
+<p><a id="d17"></a>17: <strong>action-feedback-mode</strong>: string<br />
+Set the default action feedback mode (for copy/move/component place).<br />
+Set to outline to get an outline of the selection.<br />
+Set to boundingbox to get a bounding box of the selection.<br />
+For a fast machines with fast video use outline (it looks good).<br />
+For a slow machine use boundingbox; it is much faster.<br />
+Comment out if you want the default mode.<br /></p>
+</li>
+<li>
+<p><a id="d18"></a>18: <strong>scrollbars</strong>: string<br />
+Controls if the scrollbars are displayed (enabled) or not (disabled)<br />
+If you disable the scrollbars, you will not be able to use the scroll<br />
+wheel on your mouse.  This is an unfortunate side effect of how the<br />
+code is implemented.<br /></p>
+</li>
+<li>
+<p><a id="d19"></a>19: <strong>embed-components</strong>: string<br />
+Determines if the newly placed components are embedded in the schematic<br />
+or if only the filename is specified and the component is searched for<br />
+instead.  If it is enabled, then all new components will be embedded<br />
+otherwise they are not embedded.  This can be controlled on the fly during<br />
+runtime with the &quot;Embed Component&quot; checkbox on the select component dialog box<br /></p>
+</li>
+<li>
+<p><a id="d20"></a>20: <strong>logging</strong>: string<br />
+Determines if the logging mechanism is enabled or disabled.<br />
+Possible options: enabled or disabled. Default is enabled.<br />
+See below for the logging-destination keyword for control over<br />
+where the messages go.<br /></p>
+</li>
+<li>
+<p><a id="d21"></a>21: <strong>text-size</strong>: number<br />
+Sets the default text size.<br /></p>
+</li>
+<li>
+<p><a id="d22"></a>22: <strong>text-caps-style</strong>: string<br />
+Sets the default caps style used for the input of text</p>
+<ul>
+<li>lower specifies that all inputed text is in lowercase</li>
+<li>upper specifies that all inputed text is in uppercase</li>
+<li>both specifies that all inputed text is used as is (no case conversion).<br /></li>
+</ul>
+</li>
+<li>
+<p><a id="d23"></a>23: <strong>image-color</strong>: string<br />
+Controls if image (png) is color (enabled) or black/white (disabled)<br /></p>
+</li>
+<li>
+<p><a id="d24"></a>24: <strong>log-window</strong>: string<br />
+Controls if the log message window is mapped when gschem is started up<br />
+Possible options:</p>
+<ul>
+<li>startup - opened up when gschem starts</li>
+<li>later   - NOT opened up when gschem starts (can be opened by Options/Show Log Window)</li>
+</ul>
+</li>
+<li>
+<p><a id="d25"></a>25: <strong>log-window-type</strong>: string<br />
+Controls if the log message window is mapped when gschem is started up<br />
+Controls if the log message window is a transient or if it is decorated<br />
+as a normal window (this is dependant on the window manager doing decoration right)<br />
+Possible options:</p>
+<ul>
+<li>decorated       - log window is a normal decorated window</li>
+<li>transient       - log window is a transient dialog box, typically not decorated by the window manager</li>
+</ul>
+</li>
+<li>
+<p><a id="d26"></a>26: <strong>third-button</strong>: string<br />
+Controls if the third mouse button performs the popup (&quot;popup&quot;) or<br />
+if it does the mouse panning (&quot;mousepan&quot;)<br /></p>
+</li>
+<li>
+<p><a id="d27"></a>27: <strong>third-button-cancel</strong>: string<br />
+Controls if the third mouse in mousepan mode cancels draw actions such as<br />
+placing of a component or drawing of a primitive<br /></p>
+</li>
+<li>
+<p><a id="d28"></a>28: <strong>middle-button</strong>: string<br />
+Controls if the middle mouse button draws strokes, repeats the last<br />
+command, does an action (move and copy (holding down the ALT key)<br />
+are supported) on a single objects, or if it does the mouse panning.<br /></p>
+</li>
+<li>
+<p><a id="d29"></a>29: <strong>scroll-wheel</strong>: string<br />
+Controls the binding of the mouse scroll wheel.<br />
+&quot;classic&quot; style is the gschem default, where scrolling with no modifier<br />
+key is mapped to zoom, + CTRL -&gt; x-axis pan, + SHIFT -&gt; y-axis pan.<br />
+&quot;gtk&quot; style changes the behaviour to be more like other GTK applications,<br />
+no modifier -&gt; y-axis pan, + CTRL -&gt; zoom, + SHIFT -&gt; x-axis pan.<br /></p>
+</li>
+<li>
+<p><a id="d30"></a>30: <strong>net-consolidate</strong>: string<br />
+Controls if the net consolidation code is used when schematics are read<br />
+in, written to disk, and when nets are being drawn (does not consolidate<br />
+when things are being copied or moved yet).  Net consolidation is the<br />
+connection of nets which can be combined into one.<br />
+Comment out if you want the default mode<br /></p>
+</li>
+<li>
+<p><a id="d31"></a>31: <strong>file-preview</strong>: string<br />
+Controls if the preview area in the File Open/Save As and Component<br />
+dialog boxes is enabled by default or not<br /></p>
+</li>
+<li>
+<p><a id="d32"></a>32: <strong>enforce-hierarchy</strong>: string<br />
+Controls if the movement between hierarchy levels (of the same underlying<br />
+schematics) is allowed or not.<br />
+If this is enabled, then the user cannot (without using the page manager)<br />
+move between hierarchy levels otherwise, if enabled, the user sees all<br />
+the hierarchy levels as being flat.<br /></p>
+</li>
+<li>
+<p><a id="d33"></a>33: <strong>fast-mousepan</strong>: string<br />
+Controls if text is drawn properly or if a simplified version (a line which<br />
+represents the text string) is drawn during mouse pan.  Drawing a simple<br />
+line speeds up mousepan a lot for big schematics<br /></p>
+</li>
+<li>
+<p><a id="d34"></a>34: <strong>raise-dialog-boxes-on-expose</strong>: string<br />
+Controls if dialog boxes are raised whenever an expose event happens<br />
+Default is disabled since gtk2 supposedly handles the raising of these<br />
+dialogs correctly now.<br /></p>
+</li>
+<li>
+<p><a id="d35"></a>35: <strong>continue-component-place</strong>: string<br />
+If this enabled then multiple instances of the same component can be placed<br />
+immediately without having to click on the name or Apply in the Component<br />
+Place... dialog box.  If this is disabled then only one component can be<br />
+placed (the user must then press Apply in the dialog box to place multiple<br />
+instances of the same component)<br /></p>
+</li>
+<li>
+<p><a id="d36"></a>36: <strong>undo-levels</strong>: number<br />
+Determines the number of levels of undo.  Basically this number decides<br />
+how many backup schematics are saved on disk.<br /></p>
+</li>
+<li>
+<p><a id="d37"></a>37: <strong>undo-levels</strong>: string<br />
+Controls if the undo is enabled or not<br /></p>
+</li>
+<li>
+<p><a id="d38"></a>38: <strong>undo-type</strong>: string<br />
+Controls which kind of undo is used.  The default is to use the disk as<br />
+the storing medium (ie after every action the undo information is stored<br />
+to disk).  The other mechanism uses only memory.  The disk mechanism is<br />
+nice because you get undo-level number of backups of the schematic written<br />
+to disk as backups so you should never lose a schematic due to a crash.<br /></p>
+</li>
+<li>
+<p><a id="d39"></a>39: <strong>undo-panzoom</strong>: string<br />
+Controls if pan or zoom commands are saved in the undo list.  If this<br />
+is enabled then a pan or zoom command will be considered a command and<br />
+can be undone.  If this is false, then panning and zooming is not saved<br />
+in the undo list and cannot be undone.  Note, the current viewport<br />
+information is saved for every command, so the display will change to the<br />
+viewport before a command is executed.<br /></p>
+</li>
+<li>
+<p><a id="d40"></a>40: <strong>draw-grips</strong>: string<br />
+Controls if the editing grips are drawn when selecting objects<br /></p>
+</li>
+<li>
+<p><a id="d41"></a>41: <strong>warp-cursor</strong>: string<br />
+Controls if the cursor is warped (or moved) when you zoom in and out.<br />
+Some people find this forced cursor movement annoying.<br /></p>
+</li>
+<li>
+<p><a id="d42"></a>42: <strong>toolbars</strong>: string<br />
+Controls if the toolbars are visible or not.<br /></p>
+</li>
+<li>
+<p><a id="d43"></a>43: <strong>handleboxes</strong>: string<br />
+Controls if the handleboxes (which contain the menu and toolbar) are visible or not.<br /></p>
+</li>
+<li>
+<p><a id="d44"></a>44: <strong>bus-ripper-size</strong>: Bus ripper controls<br />
+Sets the size of the auto bus rippers.<br /></p>
+</li>
+<li>
+<p><a id="d45"></a>45: <strong>bus-ripper-type</strong>: Bus ripper controls<br />
+Sets the bus ripper type either a &quot;component&quot; or plain &quot;net&quot;<br /></p>
+</li>
+<li>
+<p><a id="d46"></a>46: <strong>bus-ripper-rotation</strong>: Bus ripper controls<br />
+Either &quot;symmetric&quot; or &quot;non-symmetric&quot;.  This deals<br />
+with how the bus ripper symbol is rotated when it<br />
+is auto added to a schematic.<br /></p>
+</li>
+<li>
+<p><a id="d47"></a>47: <strong>force-boundingbox</strong>: string<br />
+Controls if the entire bounding box of a symbol is used when figuring out<br />
+whichend of the pin is considered the active port.  Enable this when<br />
+gschem is guessing incorrectly.<br /></p>
+</li>
+<li>
+<p><a id="d48"></a>48: <strong>dots-grid-dot-size</strong>: Dots grid dot size<br />
+The dots-grid-dot-size keyword controls the size of the grid dots in the<br />
+dots grid display. The units are in pixels. The default (min) value of 1<br />
+is the best performing as the grid dot size is rendered as a single pixel.<br />
+Values of 2 and 3 are good values to try if the default grid dot size is<br />
+too small for your tastes. Anything larger than 3 is probably too large.<br /></p>
+</li>
+<li>
+<p><a id="d49"></a>49: <strong>dots-grid-mode</strong>: Dots grid mode<br />
+The dots-grid-mode keyword controls the mode of the dotted grid, either<br />
+variable or fixed. In the variable mode, the grid spacing changes<br />
+depending on the zoom factor. In the fixed mode, the grid always<br />
+represents the same number of units as the snap-spacing. You can<br />
+control the density of the grid using the dots-grid-fixed-threshold.<br /></p>
+</li>
+<li>
+<p><a id="d50"></a>50: <strong>dots-grid-fixed-threshold</strong>: Dots grid fixed threshold<br />
+The dots-grid-fixed-threshold specifies the minimum number of pixels<br />
+grid-spacing for the grid to be displayed. Using this parameter you can<br />
+control thedensity of the displayed grid (smaller numbers will cause the<br />
+grid to be drawn denser). This mode is only used when grid-mode is fixed.<br /></p>
+</li>
+<li>
+<p><a id="d51"></a>51: <strong>mesh-grid-display-threshold</strong>: Mesh grid display threshold<br />
+The mesh-grid-display-threshold specifies the minimum line pitch for a the<br />
+grid to be displayed. Using this parameter you can control maximum density<br />
+of the displayed before the minor, then major grid-lines are switched off.<br /></p>
+</li>
+<li>
+<p><a id="d52"></a>52: <strong>add-attribute-offset</strong>: integer<br />
+This has not been implemented/debugged yet.<br />
+Controls a offset which is added to the location of text items that are<br />
+added to an object as an attribute.  This offset is added when the following<br />
+conditions occur:</p>
+<ol>
+<li>Add/Attribute... has been invoked via the hotkey</li>
+<li>It is the &quot;netname&quot; attribute being added</li>
+<li>It is being attached to a horizontal or vertical net segment</li>
+<li>The initial mouse position is at or near the actual net (with one grid unit).
+If these four conditions are not met, then this offset is not added.<br /></li>
+</ol>
+</li>
+</ul>
+<br />
+<br />
+<!-- TODO:
+1    |         | **gschem-version**                           | -
+2    |         | **display-color-map**                        | -
+3    |         | **display-outline-color-map**                | -
+15   |         | **attribute-name**                           | -
+17   |         | **image-size**                               | -
+37   |         | **add-menu**                                 | -
+-->
+<h4>TODO:</h4>
+<!--
+- `_GschemOptions::snap_mode` (`SNAP_STATE` enum)
+-->
+<br />
+<br />
+
+</body></html>
