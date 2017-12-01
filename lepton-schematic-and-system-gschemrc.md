@@ -3,6 +3,8 @@
 This document lists current settings for `lepton-schematic`
 defined in `system-gschemrc` file, along with some implementation details.
 It's intended to assist us in migration to new configuration system.
+<br />
+
 
 #### Files involved:
 - [system-gschemrc](https://github.com/lepton-eda/lepton-eda/blob/master/schematic/lib/system-gschemrc.scm)
@@ -51,7 +53,7 @@ It's intended to assist us in migration to new configuration system.
 
 
 #### B: Global variables defined in `schematic/src/globals.c`:
-`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group name | new cfg: key name
+`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group      | new cfg: key:type
 ------------|-----------------|----------------------------------------------|---------------------------------------------|---------------------|------------------
 [2](#d2)    |                 | **logging-destination**                      | ( logging-destination "log_window" )        |                     |
 |           |                 | *ivar*: default_logging_dest                 |                                             |                     |
@@ -66,7 +68,7 @@ It's intended to assist us in migration to new configuration system.
 
 
 #### C: Global variables defined in `schematic/src/i_vars.c`:
-`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group name | new cfg: key name
+`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group      | new cfg: key:type
 ------------|-----------------|----------------------------------------------|---------------------------------------------|---------------------|------------------
 [3](#d3)    |`[H]`            | **window-size**                              | ( window-size <u>900</u> <u>650</u> )       |                     |
 |           |                 | *ivar_1*: default_width                      |                                             |                     |
@@ -116,7 +118,7 @@ It's intended to assist us in migration to new configuration system.
 
 
 #### D: Members of `struct _GschemOptions` (`schematic/include/gschem_options.h`):
-`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group name | new cfg: key name
+`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group      | new cfg: key:type
 ------------|-----------------|----------------------------------------------|---------------------------------------------|---------------------|------------------
 [10](#d10)  |                 | **snap-size**                                | ( snap-size 100 )                           |                     |
 |           |                 | *ivar*: default_snap_size                    |                                             |                     |
@@ -154,7 +156,7 @@ It's intended to assist us in migration to new configuration system.
 
 
 #### E: Members of  `struct st_gschem_toplevel` (`schematic/include/gschem_toplevel.h`):
-`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group name | new cfg: key name
+`#`         |  notes          | g_register.c, g_rc.c                         | system-gschemrc expr                        | new cfg: group      | new cfg: key:type
 ------------|-----------------|----------------------------------------------|---------------------------------------------|---------------------|------------------
 [14](#d14)  |                 | **net-direction-mode**                       | ( net-direction-mode "enabled" )            |                     |
 |           |                 | *ivar*: default_net_direction_mode           |                                             |                     |
