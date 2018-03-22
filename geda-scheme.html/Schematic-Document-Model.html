@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for gEDA/gaf, version 1.9.3.
+
+Copyright (C) 2011-2013 Peter TB Brett
+Copyright (C) 2011-2016 gEDA developers
+
+The text of and illustrations in this document are licensed under a
+Creative Commons Attribution–Share Alike 3.0 Unported license
+("CC-BY-SA"). An explanation of CC-BY-SA is available at
+http://creativecommons.org/licenses/by-sa/3.0/. The original
+authors of this document designate the gEDA Project as the
+"Attribution Party" for purposes of CC-BY-SA. In accordance with
+CC-BY-SA, if you distribute this document or an adaptation of it, you
+must provide the URL for the original version. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Schematic Document Model (gEDA Scheme Reference Manual 1.9.3)</title>
+
+<meta name="description" content="Schematic Document Model (gEDA Scheme Reference Manual 1.9.3)">
+<meta name="keywords" content="Schematic Document Model (gEDA Scheme Reference Manual 1.9.3)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Concept-Index.html#Concept-Index" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Pages.html#Pages" rel="next" title="Pages">
+<link href="Introduction.html#Introduction" rel="prev" title="Introduction">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Schematic-Document-Model"></a>
+<div class="header">
+<p>
+Next: <a href="Core-API-Reference.html#Core-API-Reference" accesskey="n" rel="next">Core API Reference</a>, Previous: <a href="Introduction.html#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-Schematic-Document-Model"></a>
+<h2 class="chapter">1 The Schematic Document Model</h2>
+
+<p>When using Lepton EDA to design an electronic circuit, users use the
+schematic editor, lepton-schematic, to choose and place
+<em>schematic symbols</em> on a <em>schematic page</em>, and connect the
+<em>pins</em> of the symbols together by drawing <em>nets</em>.  The user
+may add various <em>attributes</em> to symbols, nets or pins to modify
+how the circuit diagrams should be interpreted.  The resulting
+schematics are then processed with the gnetlist tool to generate a
+<em>netlist</em>.
+</p>
+<p>This chapter describes the different data types used by the Scheme API
+to represent gEDA documents (both schematics and symbols), and how
+they relate to each other.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Pages.html#Pages" accesskey="1">Pages</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Objects.html#Objects" accesskey="2">Objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Component-objects.html#Component-objects" accesskey="3">Component objects</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Attributes.html#Attributes" accesskey="4">Attributes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Coordinate-system.html#Coordinate-system" accesskey="5">Coordinate system</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+
+
+</body>
+</html>

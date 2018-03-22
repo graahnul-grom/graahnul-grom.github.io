@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for gEDA/gaf, version 1.9.3.
+
+Copyright (C) 2011-2013 Peter TB Brett
+Copyright (C) 2011-2016 gEDA developers
+
+The text of and illustrations in this document are licensed under a
+Creative Commons Attribution–Share Alike 3.0 Unported license
+("CC-BY-SA"). An explanation of CC-BY-SA is available at
+http://creativecommons.org/licenses/by-sa/3.0/. The original
+authors of this document designate the gEDA Project as the
+"Attribution Party" for purposes of CC-BY-SA. In accordance with
+CC-BY-SA, if you distribute this document or an adaptation of it, you
+must provide the URL for the original version. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Introduction (gEDA Scheme Reference Manual 1.9.3)</title>
+
+<meta name="description" content="Introduction (gEDA Scheme Reference Manual 1.9.3)">
+<meta name="keywords" content="Introduction (gEDA Scheme Reference Manual 1.9.3)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Concept-Index.html#Concept-Index" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Schematic-Document-Model.html#Schematic-Document-Model" rel="next" title="Schematic Document Model">
+<link href="index.html#Top" rel="prev" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Introduction"></a>
+<div class="header">
+<p>
+Next: <a href="Schematic-Document-Model.html#Schematic-Document-Model" accesskey="n" rel="next">Schematic Document Model</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Introduction-1"></a>
+<h2 class="unnumbered">Introduction</h2>
+
+<a name="About-gEDA"></a>
+<h3 class="section">About gEDA</h3>
+
+<p><em>gEDA</em>, or <em>GPL Electronic Design Automation</em>, is a suite of
+free software tools for designing electronics.  The gEDA project has
+produced and continues working on a full GPL&rsquo;d suite and toolkit of
+Electronic Design Automation (EDA) tools. These tools are used for
+electrical circuit design, schematic capture, simulation, prototyping,
+and production. Currently, the gEDA project offers a mature suite of
+free software applications for electronics design, including schematic
+capture, attribute management, bill of materials (BOM) generation,
+netlisting into over 20 netlist formats, analog and digital
+simulation, and printed circuit board (PCB) layout.
+</p>
+<p>The gEDA project was started because of the lack of free EDA tools for
+POSIX systems with the primary purpose of advancing the state of free
+hardware or open source hardware. The suite is mainly being developed
+on the GNU/Linux platform with some development effort going into
+making sure the tools run on other platforms as well.
+</p>
+<a name="About-the-gEDA-Scheme-API"></a>
+<h3 class="section">About the gEDA Scheme API</h3>
+
+<p>The <em>gEDA Scheme API</em>, documented in this manual, is a set of
+Scheme functions which can be used to enhance gEDA applications by
+adding new functionality or modify existing behaviour.
+</p>
+<p>Lepton EDA (formerly gEDA) has always used a Scheme interpreter for
+interpreting configuration files, managing keybindings in
+lepton-schemactic (formerly gschem), and implementing netlist exporter
+backends in gnetlist.  However, for a long time the utility of
+embedding a Scheme interpreter was diminished by the lack of a
+low-level API for inspecting and modifying schematic documents.  The
+Scheme types and functions documented here were added to gEDA to
+address that need.
+</p>
+<p>gEDA uses the <em>Guile</em> Scheme implementation (otherwise known as
+the <em>GNU Ubiquitous Intelligent Language for Extensions</em>) as its
+embedded Scheme.  For more information about Guile, please visit
+<a href="http://www.gnu.org/s/guile/">http://www.gnu.org/s/guile/</a>.
+</p>
+<a name="Getting-Additional-Help"></a>
+<h3 class="section">Getting Additional Help</h3>
+<a name="index-Reporting-bugs"></a>
+
+<p>If you think you have found a bug, please file a bug report:
+<a href="https://github.com/lepton-eda/lepton-eda/issues">https://github.com/lepton-eda/lepton-eda/issues</a>. Please add the tag
+&lsquo;<samp>scheme-api</samp>&rsquo;.  It will help us to fix your bug quickly if you can
+describe in detail how to reproduce the bug.
+</p>
+<p>If you have a question about using gEDA, or about extending gEDA using
+Scheme, you may wish to send a message to one of the gEDA mailing
+lists.  You may also find additional information in the gEDA
+wiki.
+</p>
+<p>Both the mailing lists and wiki can be accessed from the main gEDA
+website: <a href="http://www.geda-project.org/">http://www.geda-project.org/</a>.
+</p>
+<a name="We-Need-Feedback_0021"></a>
+<h3 class="section">We Need Feedback!</h3>
+
+<p>If you find a typographical error in this manual, or if you have
+thought of a way to make this manual better, we would love to hear
+from you! Please submit a bug report:
+<a href="https://github.com/lepton-eda/lepton-eda/issues">https://github.com/lepton-eda/lepton-eda/issues</a>, with the tag &lsquo;<samp>scheme-api</samp>&rsquo;.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Schematic-Document-Model.html#Schematic-Document-Model" accesskey="n" rel="next">Schematic Document Model</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
