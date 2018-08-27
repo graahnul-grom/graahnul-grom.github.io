@@ -1,0 +1,193 @@
+<!-- Creator     : groff version 1.19.2 -->
+<!-- CreationDate: Mon Aug 27 12:31:33 2018 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p     { margin-top: 0; margin-bottom: 0; }
+       pre   { margin-top: 0; margin-bottom: 0; }
+       table { margin-top: 0; margin-bottom: 0; }
+</style>
+<title>lepton-archive</title>
+
+</head>
+<body>
+
+<h1 align=center>lepton-archive</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#COPYRIGHT">COPYRIGHT</a><br>
+
+<hr>
+
+
+<a name="NAME"></a>
+<h2>NAME</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">lepton-archive
+&minus; create and extract Lepton EDA design archives</p>
+
+<a name="SYNOPSIS"></a>
+<h2>SYNOPSIS</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lepton-archive</b>
+[<i>options</i>] [<b>&minus;o</b> <i>output_file</i>]
+<i>file</i> ...</p>
+
+<a name="DESCRIPTION"></a>
+<h2>DESCRIPTION</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lepton-archive</b>
+creates and extracts Lepton EDA designs from an archive. The
+two modes of operation are &quot;archive mode&quot; (archive
+creation) and &quot;extract mode&quot;. In archive mode it
+creates a project archive from a bunch of project files, and
+in extract mode it extracts the files from the archive and
+places them in the local dir.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Archive mode is
+the default.</p>
+
+<a name="OPTIONS"></a>
+<h2>OPTIONS</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>&minus;f&nbsp;</b><i>filename</i></p>
+
+<p style="margin-left:22%;">Optional. Used in archive mode.
+Read files to archive from &lt;filename&gt; instead of
+garchiverc.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;v</b></p> </td>
+<td width="8%"></td>
+<td width="76%">
+
+
+<p style="margin-top: 1em" valign="top">Verbose mode.</p></td>
+<td width="2%">
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;e</b></p> </td>
+<td width="8%"></td>
+<td width="76%">
+
+
+<p style="margin-top: 1em" valign="top">Extract the archive
+specified on the command line.</p></td>
+<td width="2%">
+</td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;a</b></p> </td>
+<td width="8%"></td>
+<td width="76%">
+
+
+<p style="margin-top: 1em" valign="top">Create an archive.
+This is the default.</p></td>
+<td width="2%">
+</td>
+</table>
+
+
+<p style="margin-left:11%;"><b>&minus;o&nbsp;</b><i>outfile</i></p>
+
+<p style="margin-left:22%;">Optional. Used in archive mode.
+Specifies the name of the output archive file. The output
+file extension should be &quot;.tar.gz&quot;. If this flag
+is not specified, the output file name is
+&quot;ProjectArchive.tar.gz&quot;.</p>
+
+<p style="margin-left:11%;"><b>&minus;h</b>,
+<b>&minus;&minus;help</b></p>
+
+<p style="margin-left:22%;">Print usage information.</p>
+
+<a name="EXAMPLES"></a>
+<h2>EXAMPLES</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">To create an
+archive named MyArchive.tar.gz (the files to store listed in
+garchiverc):</p>
+
+<p style="margin-left:22%; margin-top: 1em">lepton-archive
+&minus;o MyArchive.tar.gz</p>
+
+<p style="margin-left:11%; margin-top: 1em">Verbosely
+create an archive (archives files listed on cmd line as well
+as those listed in garchiverc):</p>
+
+<p style="margin-left:22%; margin-top: 1em">lepton-archive
+&minus;v &minus;o MyArchive.tar.gz README Schematic1.sch
+Schematic2.sch Schematic3.sch</p>
+
+<p style="margin-left:11%; margin-top: 1em">Extract an
+archive:</p>
+
+<p style="margin-left:22%; margin-top: 1em">lepton-archive
+&minus;e ProjectArchive.tar.gz</p>
+
+<a name="AUTHOR"></a>
+<h2>AUTHOR</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Stuart Brorson
+&lt;sdb@cloud9.net&gt;</p>
+
+<a name="SEE ALSO"></a>
+<h2>SEE ALSO</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lepton-schematic(1)</b></p>
+
+<a name="COPYRIGHT"></a>
+<h2>COPYRIGHT</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Copyright
+&copy; 2012-2017 gEDA Contributors. <br>
+License GPLv2+: GNU GPL version 2 or later. Please see the
+&lsquo;COPYING&rsquo; <br>
+file included with this program for full details.</p>
+
+<p style="margin-left:11%; margin-top: 1em">This is free
+software: you are free to change and redistribute it. <br>
+There is NO WARRANTY, to the extent permitted by law.</p>
+<hr>
+</body>
+</html>
