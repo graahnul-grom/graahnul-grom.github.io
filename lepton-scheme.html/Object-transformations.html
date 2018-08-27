@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for Lepton EDA, version 1.9.5.
+
+Copyright (C) 2011-2013 Peter TB Brett
+Copyright (C) 2011-2017 gEDA developers
+Copyright (C) 2017-2018 Lepton developers
+
+The text of and illustrations in this document are licensed under a
+Creative Commons Attribution–Share Alike 3.0 Unported license
+("CC-BY-SA"). An explanation of CC-BY-SA is available at
+http://creativecommons.org/licenses/by-sa/3.0/. The original
+authors of this document designate the gEDA Project as the
+"Attribution Party" for purposes of CC-BY-SA. In accordance with
+CC-BY-SA, if you distribute this document or an adaptation of it, you
+must provide the URL for the original version. -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Object transformations (Lepton EDA Scheme Reference Manual 1.9.5)</title>
+
+<meta name="description" content="Object transformations (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="keywords" content="Object transformations (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Concept-Index.html#Concept-Index" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="General-object-functions.html#General-object-functions" rel="up" title="General object functions">
+<link href="Object-bounds.html#Object-bounds" rel="next" title="Object bounds">
+<link href="Object-sub_002dtypes.html#Object-sub_002dtypes" rel="prev" title="Object sub-types">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Object-transformations"></a>
+<div class="header">
+<p>
+Next: <a href="Object-bounds.html#Object-bounds" accesskey="n" rel="next">Object bounds</a>, Previous: <a href="Object-sub_002dtypes.html#Object-sub_002dtypes" accesskey="p" rel="prev">Object sub-types</a>, Up: <a href="General-object-functions.html#General-object-functions" accesskey="u" rel="up">General object functions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Object-transformations-1"></a>
+<h4 class="subsubsection">2.2.1.2 Object transformations</h4>
+
+<p>Objects can be translated, rotated, or mirrored about a point.
+</p>
+<dl>
+<dt><a name="index-translate_002dobjects_0021"></a>Function: <strong>translate-objects!</strong> <em>vector [objects...]</em></dt>
+<dd><p>Translate <var>objects</var> by <var>vector</var>, a world coordinate distance
+in the form &lsquo;<samp>(x . y)</samp>&rsquo;.  Returns a list of the modified
+<var>objects</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-rotate_002dobjects_0021"></a>Function: <strong>rotate-objects!</strong> <em>center angle [objects...]</em></dt>
+<dd><p>Translate <var>objects</var> anti-clockwise by <var>angle</var> about
+<var>center</var>, a world coordinate position in the form &lsquo;<samp>(x . y)</samp>&rsquo;.
+<var>angle</var> must be an integer multiple of 90 degrees.  Returns a list
+of the modified <var>objects</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mirror_002dobjects_0021"></a>Function: <strong>mirror-objects!</strong> <em>x-offset [objects...]</em></dt>
+<dd><p>Mirror <var>objects</var> in the line &lsquo;<samp>x = <var>x-offset</var></samp>&rsquo;.  Returns a
+list of the modified <var>objects</var>.
+</p></dd></dl>
+
+
+
+
+</body>
+</html>
