@@ -1,0 +1,12 @@
+--- gnet-PCB.scm	2018-08-31 21:56:41.482008000 +0300
++++ gnet-PCB-dmn-0.scm	2018-09-05 20:37:46.445500000 +0300
+@@ -25,7 +25,8 @@
+ (define (connection->string connection)
+   (define refdes car)
+   (define pin-number cdr)
+-  (string-append (refdes connection) "-" (pin-number connection)))
++  (if (member (refdes connection) (schematic-packages toplevel-schematic))
++  (string-append (refdes connection) "-" (pin-number connection)) ""))
+ 
+ (define (net->string netname)
+   (let ((connections (get-all-connections netname)))
