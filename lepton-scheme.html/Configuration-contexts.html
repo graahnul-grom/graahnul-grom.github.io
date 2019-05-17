@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Lepton EDA, version 1.9.5.
+<!-- This manual is for Lepton EDA, version 1.9.7.
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
@@ -14,13 +14,13 @@ authors of this document designate the gEDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
-<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Configuration contexts (Lepton EDA Scheme Reference Manual 1.9.5)</title>
+<title>Configuration contexts (Lepton EDA Scheme Reference Manual 1.9.7)</title>
 
-<meta name="description" content="Configuration contexts (Lepton EDA Scheme Reference Manual 1.9.5)">
-<meta name="keywords" content="Configuration contexts (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="description" content="Configuration contexts (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="keywords" content="Configuration contexts (Lepton EDA Scheme Reference Manual 1.9.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -34,43 +34,33 @@ must provide the URL for the original version. -->
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
+<link rel="stylesheet" type="text/css" href="lepton-scheme.css">
 
 
 </head>
 
 <body lang="en">
-<a name="Configuration-contexts"></a>
-<div class="header">
+<span id="Configuration-contexts"></span><div class="header">
 <p>
 Next: <a href="Configuration-parameters.html#Configuration-parameters" accesskey="n" rel="next">Configuration parameters</a>, Up: <a href="Configuration-functions.html#Configuration-functions" accesskey="u" rel="up">Configuration functions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Configuration-contexts-1"></a>
-<h4 class="subsection">2.5.1 Configuration contexts</h4>
-<a name="index-Configuration-context"></a>
+<span id="Configuration-contexts-1"></span><h4 class="subsection">2.5.1 Configuration contexts</h4>
+<span id="index-Configuration-context"></span>
 
 <p>A configuration parameter is always evaluated within a
 <em>configuration context</em>.  Each context is associated with a
@@ -86,14 +76,13 @@ the parent context is checked, and so on.
 context</em>.  The user context is the default parent context for all
 other configuration contexts, including newly-created ones.
 </p>
-<a name="Obtaining-a-context"></a>
-<h4 class="subsubsection">2.5.1.1 Obtaining a context</h4>
-<a name="index-System-configuration-context"></a>
-<a name="index-User-configuration-context"></a>
-<a name="index-Default-configuration-contex"></a>
+<span id="Obtaining-a-context"></span><h4 class="subsubsection">2.5.1.1 Obtaining a context</h4>
+<span id="index-System-configuration-context"></span>
+<span id="index-User-configuration-context"></span>
+<span id="index-Default-configuration-contex"></span>
 
 <dl>
-<dt><a name="index-path_002dconfig_002dcontext"></a>Function: <strong>path-config-context</strong> <em>path</em></dt>
+<dt id="index-path_002dconfig_002dcontext">Function: <strong>path-config-context</strong> <em>path</em></dt>
 <dd><p>Normally, you shouldn&rsquo;t create a configuration context directly; you
 should obtain the configuration context associated with a <var>path</var>.
 </p>
@@ -112,7 +101,7 @@ the directory specified by <var>path</var>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-default_005fconfig_005fcontext"></a>Function: <strong>default_config_context</strong></dt>
+<dt id="index-default_002dconfig_002dcontext">Function: <strong>default-config-context</strong></dt>
 <dd><p>The default context is not associated with any physical path or
 on-disk configuration file, and has no parent context.  It contains
 the default configuration used when no configuration file can be
@@ -129,7 +118,7 @@ be safely read without having to use <code>config-has-group?</code> and
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-system_002dconfig_002dcontext"></a>Function: <strong>system-config-context</strong></dt>
+<dt id="index-system_002dconfig_002dcontext">Function: <strong>system-config-context</strong></dt>
 <dd><p>The system context is used for system-wide configuration.  Its parent
 context is the default context.  It is located by searching
 <code>sys-config-dirs</code> for a <samp>gEDA/geda-system.conf</samp> file.
@@ -138,7 +127,7 @@ context is the default context.  It is located by searching
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-user_002dconfig_002dcontext"></a>Function: <strong>user-config-context</strong></dt>
+<dt id="index-user_002dconfig_002dcontext">Function: <strong>user-config-context</strong></dt>
 <dd><p>The user context is used for user-specific configuration, and is
 loaded from <samp>geda-user.conf</samp> in <code>user-config-dir</code>.
 Its parent context is the system context.
@@ -146,15 +135,14 @@ Its parent context is the system context.
 <p>Since 1.10.
 </p></dd></dl>
 
-<a name="Loading-and-saving-configuration-files"></a>
-<h4 class="subsubsection">2.5.1.2 Loading and saving configuration files</h4>
-<a name="index-Loading-configuration"></a>
-<a name="index-Saving-configuration"></a>
+<span id="Loading-and-saving-configuration-files"></span><h4 class="subsubsection">2.5.1.2 Loading and saving configuration files</h4>
+<span id="index-Loading-configuration"></span>
+<span id="index-Saving-configuration"></span>
 <p>Other than the default context, all configuration contexts are
 associated with an on-disk configuration file.
 </p>
 <dl>
-<dt><a name="index-config_002dfilename"></a>Function: <strong>config-filename</strong> <em>cfg</em></dt>
+<dt id="index-config_002dfilename">Function: <strong>config-filename</strong> <em>cfg</em></dt>
 <dd><p>Return the filename of the configuration file associated with the
 context <var>cfg</var>.  For some contexts (including the default context),
 this will return &lsquo;<samp>#f</samp>&rsquo;.
@@ -163,13 +151,13 @@ this will return &lsquo;<samp>#f</samp>&rsquo;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dload_0021"></a>Function: <strong>config-load!</strong> <em>cfg</em></dt>
+<dt id="index-config_002dload_0021">Function: <strong>config-load!</strong> <em>cfg</em></dt>
 <dd><p>Attempt to load configuration parameters for the context <var>cfg</var>
 from its associated file.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dloaded_003f"></a>Function: <strong>config-loaded?</strong> <em>cfg</em></dt>
+<dt id="index-config_002dloaded_003f">Function: <strong>config-loaded?</strong> <em>cfg</em></dt>
 <dd><p>Determine whether the context <var>cfg</var> has been successfully loaded
 from file.
 </p>
@@ -177,7 +165,7 @@ from file.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dsave_0021"></a>Function: <strong>config-save!</strong> <em>cfg</em></dt>
+<dt id="index-config_002dsave_0021">Function: <strong>config-save!</strong> <em>cfg</em></dt>
 <dd><p>Attempt to save configuration parameters for the context <var>cfg</var> to
 its associated file.
 </p>
@@ -185,17 +173,16 @@ its associated file.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dchanged_003f"></a>Function: <strong>config-changed?</strong> <em>cfg</em></dt>
+<dt id="index-config_002dchanged_003f">Function: <strong>config-changed?</strong> <em>cfg</em></dt>
 <dd><p>Determine whether the context <var>cfg</var> has been altered since it was
 last synchronised with the on-disk version by loading or saving it.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
-<a name="Context-parents"></a>
-<h4 class="subsubsection">2.5.1.3 Context parents</h4>
-<a name="index-Context-parent"></a>
-<a name="index-Parent-configuration-context"></a>
+<span id="Context-parents"></span><h4 class="subsubsection">2.5.1.3 Context parents</h4>
+<span id="index-Context-parent"></span>
+<span id="index-Parent-configuration-context"></span>
 <p>A configuration context may have a <em>parent context</em>, from which it
 inherits configuration values.  Configuration inheritance loops are
 not permitted.
@@ -203,14 +190,15 @@ not permitted.
 <p>See <a href="Configuration-parameters.html#Configuration-parameters">Configuration inheritance</a>.
 </p>
 <dl>
-<dt><a name="index-context_002dparent"></a>Function: <strong>context-parent</strong> <em>cfg</em></dt>
+<dt id="index-config_002dparent">Function: <strong>config-parent</strong> <em>cfg</em></dt>
 <dd><p>Return the parent context of the context <var>cfg</var>, if it has one.
+Otherwise, return &lsquo;<samp>#f</samp>&rsquo;.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-set_002dconfig_002dparent_0021"></a>Function: <strong>set-config-parent!</strong> <em>cfg parent</em></dt>
+<dt id="index-set_002dconfig_002dparent_0021">Function: <strong>set-config-parent!</strong> <em>cfg parent</em></dt>
 <dd><p>Sets <var>parent</var> as the parent context of <var>cfg</var>.  If <var>parent</var>
 is &lsquo;<samp>#f</samp>&rsquo;, sets <var>cfg</var> as having no parent context.
 </p>
@@ -222,11 +210,10 @@ applications.
 <p>Since 1.10.
 </p></dd></dl>
 
-<a name="Context-trust"></a>
-<h4 class="subsubsection">2.5.1.4 Context trust</h4>
-<a name="index-Context-trust"></a>
-<a name="index-Trusted-configuration-context"></a>
-<a name="index-Configuration-trust"></a>
+<span id="Context-trust"></span><h4 class="subsubsection">2.5.1.4 Context trust</h4>
+<span id="index-Context-trust"></span>
+<span id="index-Trusted-configuration-context"></span>
+<span id="index-Configuration-trust"></span>
 
 <p>Some configuration parameters are dangerous; in particular, parameters
 that may lead to arbitrary code execution need to be handled
@@ -246,14 +233,14 @@ determine whether the value has been obtained from a safe source.
 trusted, and all other contexts untrusted.
 </p>
 <dl>
-<dt><a name="index-config_002dtrusted_003f"></a>Function: <strong>config-trusted?</strong> <em>cfg</em></dt>
+<dt id="index-config_002dtrusted_003f">Function: <strong>config-trusted?</strong> <em>cfg</em></dt>
 <dd><p>Test whether <var>cfg</var> is a trusted configuration context.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-set_002dconfig_002dtrusted_0021"></a>Function: <strong>set-config-trusted!</strong> <em>cfg trusted?</em></dt>
+<dt id="index-set_002dconfig_002dtrusted_0021">Function: <strong>set-config-trusted!</strong> <em>cfg trusted?</em></dt>
 <dd><p>Set whether the configuration context <var>cfg</var> should be trusted as a
 source for dangerous configuration parameters.
 </p>
@@ -265,7 +252,7 @@ trusted unless you are certain that it originated from a safe source
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dtrusted_002dcontext"></a>Function: <strong>config-trusted-context</strong> <em>cfg</em></dt>
+<dt id="index-config_002dtrusted_002dcontext">Function: <strong>config-trusted-context</strong> <em>cfg</em></dt>
 <dd><p>If <var>cfg</var> is trusted, returns <var>cfg</var>; otherwise, returns the
 first parent context of <var>cfg</var> that is a trusted context.  If no
 trusted context can be found, returns &lsquo;<samp>#f</samp>&rsquo;.

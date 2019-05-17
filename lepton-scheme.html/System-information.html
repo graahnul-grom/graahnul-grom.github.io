@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Lepton EDA, version 1.9.5.
+<!-- This manual is for Lepton EDA, version 1.9.7.
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
@@ -14,13 +14,13 @@ authors of this document designate the gEDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
-<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>System information (Lepton EDA Scheme Reference Manual 1.9.5)</title>
+<title>System information (Lepton EDA Scheme Reference Manual 1.9.7)</title>
 
-<meta name="description" content="System information (Lepton EDA Scheme Reference Manual 1.9.5)">
-<meta name="keywords" content="System information (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="description" content="System information (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="keywords" content="System information (Lepton EDA Scheme Reference Manual 1.9.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -34,42 +34,32 @@ must provide the URL for the original version. -->
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
+<link rel="stylesheet" type="text/css" href="lepton-scheme.css">
 
 
 </head>
 
 <body lang="en">
-<a name="System-information"></a>
-<div class="header">
+<span id="System-information"></span><div class="header">
 <p>
 Previous: <a href="Logging-functions.html#Logging-functions" accesskey="p" rel="prev">Logging functions</a>, Up: <a href="Core-API-Reference.html#Core-API-Reference" accesskey="u" rel="up">Core API Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="System-information-1"></a>
-<h3 class="section">2.7 System information</h3>
+<span id="System-information-1"></span><h3 class="section">2.7 System information</h3>
 
 <p>To use the functions described in this section, you will need to load
 the <code>(geda os)</code> module.
@@ -79,7 +69,7 @@ for Scheme code that needs to behave differently depending on which
 operating system gEDA is running on.
 </p>
 <dl>
-<dt><a name="index-separator_002dchar"></a>Variable: <strong>separator-char</strong></dt>
+<dt id="index-separator_002dchar">Variable: <strong>separator-char</strong></dt>
 <dd><p>The directory separator character that should be used on the host
 platform.
 </p>
@@ -89,7 +79,7 @@ There is no replacement for it.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-separator"></a>Variable: <strong>separator</strong></dt>
+<dt id="index-separator">Variable: <strong>separator</strong></dt>
 <dd><p>A string containing <code>separator-char</code>.
 </p>
 <p>The <code>separator</code> function is deprecated and must not be used in
@@ -98,18 +88,18 @@ Use the guile function <code>file-name-separator-string</code> instead.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-path_002dseparator_002dchar"></a>Variable: <strong>path-separator-char</strong></dt>
+<dt id="index-path_002dseparator_002dchar">Variable: <strong>path-separator-char</strong></dt>
 <dd><p>The character used for separating the elements in &lsquo;<samp>PATH</samp>&rsquo;-like
 environment variables on the host platform.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-path_002dseparator"></a>Variable: <strong>path-separator</strong></dt>
+<dt id="index-path_002dseparator">Variable: <strong>path-separator</strong></dt>
 <dd><p>A string containing <code>path-separator-char</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-platform"></a>Function: <strong>platform</strong></dt>
+<dt id="index-platform">Function: <strong>platform</strong></dt>
 <dd><p>Returns a list of symbols describing the host platform.  The returned
 symbols may include:
 </p>
@@ -123,37 +113,37 @@ symbols may include:
 </dd></dl>
 
 <dl>
-<dt><a name="index-platform_003f"></a>Function: <strong>platform?</strong> <em>type</em></dt>
+<dt id="index-platform_003f">Function: <strong>platform?</strong> <em>type</em></dt>
 <dd><p>Returns &lsquo;<samp>#t</samp>&rsquo; if the platform description list returned by
 <code>platform</code> contains the symbol <var>type</var>, and &lsquo;<samp>#f</samp>&rsquo;
 otherwise.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-sys_002ddata_002ddirs"></a>Function: <strong>sys-data-dirs</strong></dt>
+<dt id="index-sys_002ddata_002ddirs">Function: <strong>sys-data-dirs</strong></dt>
 <dd><p>Returns an ordered list of directories in which to access system-wide
 gEDA data.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-sys_002dconfig_002ddirs"></a>Function: <strong>sys-config-dirs</strong></dt>
+<dt id="index-sys_002dconfig_002ddirs">Function: <strong>sys-config-dirs</strong></dt>
 <dd><p>Returns an ordered list of directories in which to access system-wide
 gEDA configuration information.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-user_002ddata_002ddir"></a>Function: <strong>user-data-dir</strong></dt>
+<dt id="index-user_002ddata_002ddir">Function: <strong>user-data-dir</strong></dt>
 <dd><p>Returns the directory in which to store user-specific gEDA data.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-user_002dconfig_002ddir"></a>Function: <strong>user-config-dir</strong></dt>
+<dt id="index-user_002dconfig_002ddir">Function: <strong>user-config-dir</strong></dt>
 <dd><p>Returns the directory in which to store user-specific gEDA
 configuration information.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-expand_002denv_002dvariables"></a>Function: <strong>expand-env-variables</strong> <em>str</em></dt>
+<dt id="index-expand_002denv_002dvariables">Function: <strong>expand-env-variables</strong> <em>str</em></dt>
 <dd><p>Recursively expands <var>str</var> until no more environment variables can be
 expanded, and return the expanded string. Environment variables are in
 the form &lsquo;<samp>${VAR}</samp>&rsquo;.

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Lepton EDA, version 1.9.5.
+<!-- This manual is for Lepton EDA, version 1.9.7.
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
@@ -14,13 +14,13 @@ authors of this document designate the gEDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
-<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Lines (Lepton EDA Scheme Reference Manual 1.9.5)</title>
+<title>Lines (Lepton EDA Scheme Reference Manual 1.9.7)</title>
 
-<meta name="description" content="Lines (Lepton EDA Scheme Reference Manual 1.9.5)">
-<meta name="keywords" content="Lines (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="description" content="Lines (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="keywords" content="Lines (Lepton EDA Scheme Reference Manual 1.9.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -34,42 +34,32 @@ must provide the URL for the original version. -->
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
+<link rel="stylesheet" type="text/css" href="lepton-scheme.css">
 
 
 </head>
 
 <body lang="en">
-<a name="Lines"></a>
-<div class="header">
+<span id="Lines"></span><div class="header">
 <p>
 Next: <a href="Nets-and-buses.html#Nets-and-buses" accesskey="n" rel="next">Nets and buses</a>, Previous: <a href="General-object-functions.html#General-object-functions" accesskey="p" rel="prev">General object functions</a>, Up: <a href="Core-object-functions.html#Core-object-functions" accesskey="u" rel="up">Core object functions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Lines-1"></a>
-<h4 class="subsection">2.2.2 Lines</h4>
+<span id="Lines-1"></span><h4 class="subsection">2.2.2 Lines</h4>
 <p>Line <code>object</code>s are straight graphical line segments with no
 electrical meaning.  A line&rsquo;s geometrical parameters are a start point
 and end point, and it supports different colors and stroke styles.
@@ -78,12 +68,12 @@ and end point, and it supports different colors and stroke styles.
 manipulate line-like objects such as nets, buses or pins.
 </p>
 <dl>
-<dt><a name="index-line_003f"></a>Function: <strong>line?</strong> <em>object</em></dt>
+<dt id="index-line_003f">Function: <strong>line?</strong> <em>object</em></dt>
 <dd><p>Returns &lsquo;<samp>#t</samp>&rsquo; if and only if <var>object</var> is a line <code>object</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-make_002dline"></a>Function: <strong>make-line</strong> <em>start end [color]</em></dt>
+<dt id="index-make_002dline">Function: <strong>make-line</strong> <em>start end [color]</em></dt>
 <dd><p>Creates and returns a new line <code>object</code>.  <var>start</var> is the
 position of the start of the new line in the form <code>(x . y)</code> and
 <var>end</var> is the position of end of the line.  If <var>color</var> is
@@ -93,14 +83,14 @@ line color is used.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-set_002dline_0021"></a>Function: <strong>set-line!</strong> <em>line start end [color]</em></dt>
+<dt id="index-set_002dline_0021">Function: <strong>set-line!</strong> <em>line start end [color]</em></dt>
 <dd><p>Sets the parameters of <var>line</var> (which may be a line, net, bus or
 pin <code>object</code>).  The arguments are the same as to
 <code>make-line</code>.  Returns <var>line</var>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-line_002dinfo"></a>Function: <strong>line-info</strong> <em>line</em></dt>
+<dt id="index-line_002dinfo">Function: <strong>line-info</strong> <em>line</em></dt>
 <dd><p>Returns the parameters of <var>line</var> (which may be a line, net, bus or
 pin <code>object</code>).  The return value is a list in the form:
 </p>
@@ -113,7 +103,7 @@ connectable point on the pin.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-line_002dstart"></a>Function: <strong>line-start</strong> <em>line</em></dt>
+<dt id="index-line_002dstart">Function: <strong>line-start</strong> <em>line</em></dt>
 <dd><p>Returns the position &lsquo;<samp>(x . y)</samp>&rsquo; of the start of <var>line</var> (which
 may be a line, net, bus or pin <code>object</code>).  For pin
 <code>objects</code>, this is the position of the connectable point on the
@@ -121,7 +111,7 @@ pin.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-line_002dend"></a>Function: <strong>line-end</strong> <em>line</em></dt>
+<dt id="index-line_002dend">Function: <strong>line-end</strong> <em>line</em></dt>
 <dd><p>Returns the position &lsquo;<samp>(x . y)</samp>&rsquo; of the end of <var>line</var> (which
 may be a line, net, bus or pin <code>object</code>).
 </p></dd></dl>

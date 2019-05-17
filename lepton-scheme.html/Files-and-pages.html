@@ -17,19 +17,19 @@ must provide the URL for the original version. -->
 <!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Core source library functions (Lepton EDA Scheme Reference Manual 1.9.7)</title>
+<title>Files and pages (Lepton EDA Scheme Reference Manual 1.9.7)</title>
 
-<meta name="description" content="Core source library functions (Lepton EDA Scheme Reference Manual 1.9.7)">
-<meta name="keywords" content="Core source library functions (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="description" content="Files and pages (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="keywords" content="Files and pages (Lepton EDA Scheme Reference Manual 1.9.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Concept-Index.html#Concept-Index" rel="index" title="Concept Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Core-API-Reference.html#Core-API-Reference" rel="up" title="Core API Reference">
-<link href="Configuration-functions.html#Configuration-functions" rel="next" title="Configuration functions">
-<link href="Core-attribute-functions.html#Core-attribute-functions" rel="prev" title="Core attribute functions">
+<link href="lepton_002dnetlist-API-Reference.html#lepton_002dnetlist-API-Reference" rel="up" title="lepton-netlist API Reference">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="lepton_002dnetlist-API-Reference.html#lepton_002dnetlist-API-Reference" rel="prev" title="lepton-netlist API Reference">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -54,32 +54,24 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Core-source-library-functions"></span><div class="header">
+<span id="Files-and-pages"></span><div class="header">
 <p>
-Next: <a href="Configuration-functions.html#Configuration-functions" accesskey="n" rel="next">Configuration functions</a>, Previous: <a href="Core-attribute-functions.html#Core-attribute-functions" accesskey="p" rel="prev">Core attribute functions</a>, Up: <a href="Core-API-Reference.html#Core-API-Reference" accesskey="u" rel="up">Core API Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
+Up: <a href="lepton_002dnetlist-API-Reference.html#lepton_002dnetlist-API-Reference" accesskey="u" rel="up">lepton-netlist API Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Core-source-library-functions-1"></span><h3 class="section">2.4 Core source library functions</h3>
+<span id="Files-and-pages-1"></span><h3 class="section">4.1 Files and pages</h3>
 
 <p>To use the functions described in this section, you will need to load
-the <code>(lepton library)</code> module.
+the <code>(netlist page)</code> module.
 </p>
 <dl>
-<dt id="index-_0025default_002dsource_002dlibrary">Variable: <strong>%default-source-library</strong></dt>
-<dd><p>Default source library used in the tools.
+<dt id="index-filename_002d_003epage">Function: <strong>filename-&gt;page</strong> <em>filename [new-page?]</em></dt>
+<dd><p>Return a <code>page</code> for <var>filename</var> which must be a string. If
+such a page has been already opened, that page is returned, otherwise
+a new page is created.  If <var>new-page?</var> is not &lsquo;<samp>#f</samp>&rsquo;, new page
+creation is forced.  Returns the resulting <code>page</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-source_002dlibrary_002dcontents">Function: <strong>source-library-contents</strong> <em>library</em></dt>
-<dd><p>Returns the contents of source <var>library</var>.
-</p></dd></dl>
-
-<dl>
-<dt id="index-set_002dsource_002dlibrary_002dcontents_0021">Function: <strong>set-source-library-contents!</strong> <em>library contents</em></dt>
-<dd><p>Sets the contents of given source <var>library</var> into
-<var>contents</var>. The value of <var>contents</var> must be a list of paths
-where source files are stored or <code>'()</code>.
-</p></dd></dl>
 
 
 

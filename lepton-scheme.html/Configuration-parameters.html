@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Lepton EDA, version 1.9.5.
+<!-- This manual is for Lepton EDA, version 1.9.7.
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
@@ -14,13 +14,13 @@ authors of this document designate the gEDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
-<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Configuration parameters (Lepton EDA Scheme Reference Manual 1.9.5)</title>
+<title>Configuration parameters (Lepton EDA Scheme Reference Manual 1.9.7)</title>
 
-<meta name="description" content="Configuration parameters (Lepton EDA Scheme Reference Manual 1.9.5)">
-<meta name="keywords" content="Configuration parameters (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="description" content="Configuration parameters (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="keywords" content="Configuration parameters (Lepton EDA Scheme Reference Manual 1.9.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -34,46 +34,36 @@ must provide the URL for the original version. -->
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
+<link rel="stylesheet" type="text/css" href="lepton-scheme.css">
 
 
 </head>
 
 <body lang="en">
-<a name="Configuration-parameters"></a>
-<div class="header">
+<span id="Configuration-parameters"></span><div class="header">
 <p>
 Next: <a href="Configuration-events.html#Configuration-events" accesskey="n" rel="next">Configuration events</a>, Previous: <a href="Configuration-contexts.html#Configuration-contexts" accesskey="p" rel="prev">Configuration contexts</a>, Up: <a href="Configuration-functions.html#Configuration-functions" accesskey="u" rel="up">Configuration functions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Configuration-parameters-1"></a>
-<h4 class="subsection">2.5.2 Configuration parameters</h4>
-<a name="index-Configuration-parameter"></a>
-<a name="index-Configuration-key"></a>
-<a name="index-Configuration-group"></a>
-<a name="index-Configuration-value"></a>
+<span id="Configuration-parameters-1"></span><h4 class="subsection">2.5.2 Configuration parameters</h4>
+<span id="index-Configuration-parameter"></span>
+<span id="index-Configuration-key"></span>
+<span id="index-Configuration-group"></span>
+<span id="index-Configuration-value"></span>
 
 <p>A gEDA <em>configuration parameter</em> consists of three components:
 </p>
@@ -93,11 +83,10 @@ converted to a number of possible scalar and list types.
 
 <p>Groups, names and values are all case-sensitive.
 </p>
-<a name="Configuration-groups-and-keys"></a>
-<h4 class="subsubsection">2.5.2.1 Configuration groups and keys</h4>
+<span id="Configuration-groups-and-keys"></span><h4 class="subsubsection">2.5.2.1 Configuration groups and keys</h4>
 
 <dl>
-<dt><a name="index-config_002dgroups"></a>Function: <strong>config-groups</strong> <em>cfg</em></dt>
+<dt id="index-config_002dgroups">Function: <strong>config-groups</strong> <em>cfg</em></dt>
 <dd><p>Returns a list of all groups available in <var>cfg</var> and its parent
 contexts.
 </p>
@@ -105,7 +94,7 @@ contexts.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dhas_002dgroup_003f"></a>Function: <strong>config-has-group?</strong> <em>cfg group</em></dt>
+<dt id="index-config_002dhas_002dgroup_003f">Function: <strong>config-has-group?</strong> <em>cfg group</em></dt>
 <dd><p>Determines whether <var>cfg</var> or its parent contexts contain the
 specified <var>group</var>
 </p>
@@ -113,7 +102,7 @@ specified <var>group</var>
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dkeys"></a>Function: <strong>config-keys</strong> <em>cfg group</em></dt>
+<dt id="index-config_002dkeys">Function: <strong>config-keys</strong> <em>cfg group</em></dt>
 <dd><p>Returns a list of all keys available in the specified <var>group</var> in
 <var>cfg</var> and its parent contexts.
 </p>
@@ -121,15 +110,28 @@ specified <var>group</var>
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dhas_002dkey_003f"></a>Function: <strong>config-has-key?</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dhas_002dkey_003f">Function: <strong>config-has-key?</strong> <em>cfg group key</em></dt>
 <dd><p>Determines whether <var>cfg</var> or its parent contexts contains <var>key</var>
 in the specified <var>group</var>.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
-<a name="Configuration-inheritance"></a>
-<h4 class="subsubsection">2.5.2.2 Configuration inheritance</h4>
+<dl>
+<dt id="index-config_002dremove_002dkey_0021">Function: <strong>config-remove-key!</strong> <em>cfg group key</em></dt>
+<dd><p>Removes the configuration parameter identified by the given <var>group</var>
+and <var>key</var> in the configuration context <var>cfg</var>.
+</p>
+</dd></dl>
+
+<dl>
+<dt id="index-config_002dremove_002dgroup_0021">Function: <strong>config-remove-group!</strong> <em>cfg group</em></dt>
+<dd><p>Removes the configuration group identified by <var>group</var>
+and all its parameters in the configuration context <var>cfg</var>.
+</p>
+</dd></dl>
+
+<span id="Configuration-inheritance"></span><h4 class="subsubsection">2.5.2.2 Configuration inheritance</h4>
 
 <p>If a configuration context does not directly specify a value for a
 configuration parameter, it inherits the value from its parent
@@ -138,7 +140,7 @@ context.
 <p>See <a href="Configuration-contexts.html#Configuration-contexts">Context parents</a>.
 </p>
 <dl>
-<dt><a name="index-config_002dinherited_003f"></a>Function: <strong>config-inherited?</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dinherited_003f">Function: <strong>config-inherited?</strong> <em>cfg group key</em></dt>
 <dd><p>Returns &lsquo;<samp>#f</samp>&rsquo; if value of the configuration parameter with the
 given <var>group</var> and <var>key</var> is specified in the context <var>cfg</var>,
 and &lsquo;<samp>#t</samp>&rsquo; if it is inherited from a parent context of <var>cfg</var>.
@@ -147,7 +149,7 @@ and &lsquo;<samp>#t</samp>&rsquo; if it is inherited from a parent context of <v
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dsource"></a>Function: <strong>config-source</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dsource">Function: <strong>config-source</strong> <em>cfg group key</em></dt>
 <dd><p>Returns the configuration context (either <var>cfg</var> or one of its
 parent contexts) in which the configuration parameter with the given
 <var>group</var> and <var>key</var> has its value defined.
@@ -155,10 +157,9 @@ parent contexts) in which the configuration parameter with the given
 <p>Since 1.10.
 </p></dd></dl>
 
-<a name="Configuration-values"></a>
-<h4 class="subsubsection">2.5.2.3 Configuration values</h4>
-<a name="index-Getting-configuration-parameters"></a>
-<a name="index-Setting-configuration-parameters"></a>
+<span id="Configuration-values"></span><h4 class="subsubsection">2.5.2.3 Configuration values</h4>
+<span id="index-Getting-configuration-parameters"></span>
+<span id="index-Setting-configuration-parameters"></span>
 
 <p>Each value is stored as a UTF-8 string in the configuration file.
 However, this string can be parsed a several different types.  All of
@@ -174,62 +175,62 @@ the following types are supported:
 <p>In addition, lists of all the above are supported.
 </p>
 <dl>
-<dt><a name="index-config_002dstring"></a>Function: <strong>config-string</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dstring">Function: <strong>config-string</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as a string.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dboolean"></a>Function: <strong>config-boolean</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dboolean">Function: <strong>config-boolean</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as a boolean.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dint"></a>Function: <strong>config-int</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dint">Function: <strong>config-int</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as an exact integer.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dreal"></a>Function: <strong>config-real</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dreal">Function: <strong>config-real</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as an inexact real number.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dstring_002dlist"></a>Function: <strong>config-string-list</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dstring_002dlist">Function: <strong>config-string-list</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as a list of strings.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dboolean_002dlist"></a>Function: <strong>config-boolean-list</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dboolean_002dlist">Function: <strong>config-boolean-list</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as a list of booleans.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 <dl>
-<dt><a name="index-config_002dint_002dlist"></a>Function: <strong>config-int-list</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dint_002dlist">Function: <strong>config-int-list</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as a list of exact integers.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-config_002dreal_002dlist"></a>Function: <strong>config-real-list</strong> <em>cfg group key</em></dt>
+<dt id="index-config_002dreal_002dlist">Function: <strong>config-real-list</strong> <em>cfg group key</em></dt>
 <dd><p>Retrieve configuration value as a list of inexact real numbers.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-set_002dconfig_0021"></a>Function: <strong>set-config!</strong> <em>cfg group key value</em></dt>
+<dt id="index-set_002dconfig_0021">Function: <strong>set-config!</strong> <em>cfg group key value</em></dt>
 <dd><p>Set the configuration parameter identified by the given <var>group</var>
 and <var>key</var> in the configuration context <var>cfg</var>.  The type of
 value to set is inferred from <var>value</var>.

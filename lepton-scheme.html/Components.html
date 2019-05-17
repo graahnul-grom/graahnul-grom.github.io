@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Lepton EDA, version 1.9.5.
+<!-- This manual is for Lepton EDA, version 1.9.7.
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
@@ -14,13 +14,13 @@ authors of this document designate the gEDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
-<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Components (Lepton EDA Scheme Reference Manual 1.9.5)</title>
+<title>Components (Lepton EDA Scheme Reference Manual 1.9.7)</title>
 
-<meta name="description" content="Components (Lepton EDA Scheme Reference Manual 1.9.5)">
-<meta name="keywords" content="Components (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="description" content="Components (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="keywords" content="Components (Lepton EDA Scheme Reference Manual 1.9.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -34,42 +34,32 @@ must provide the URL for the original version. -->
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
+<link rel="stylesheet" type="text/css" href="lepton-scheme.css">
 
 
 </head>
 
 <body lang="en">
-<a name="Components"></a>
-<div class="header">
+<span id="Components"></span><div class="header">
 <p>
 Previous: <a href="Text.html#Text" accesskey="p" rel="prev">Text</a>, Up: <a href="Core-object-functions.html#Core-object-functions" accesskey="u" rel="up">Core object functions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Components-1"></a>
-<h4 class="subsection">2.2.11 Components</h4>
+<span id="Components-1"></span><h4 class="subsection">2.2.11 Components</h4>
 
 <p>Component <code>object</code>s represent instances of symbols.  They contain
 other <code>object</code>s copied from the original symbol when it is
@@ -108,12 +98,12 @@ alter them &ndash; that must be done separately (e.g. by reloading the
 symbol).
 </p>
 <dl>
-<dt><a name="index-component_003f"></a>Function: <strong>component?</strong> <em>object</em></dt>
+<dt id="index-component_003f">Function: <strong>component?</strong> <em>object</em></dt>
 <dd><p>Returns &lsquo;<samp>#t</samp>&rsquo; if and only if <var>object</var> is a component <code>object</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-make_002dcomponent"></a>Function: <strong>make-component</strong> <em>basename position angle mirror locked</em></dt>
+<dt id="index-make_002dcomponent">Function: <strong>make-component</strong> <em>basename position angle mirror locked</em></dt>
 <dd><p>Creates and returns a new, empty component <code>object</code> with the
 given <var>basename</var>.  <var>position</var>, <var>angle</var> and <var>mirror</var>
 specify the symbol transformation.  If <var>locked</var> is true, the
@@ -126,7 +116,7 @@ embedded.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-make_002dcomponent_002flibrary"></a>Function: <strong>make-component/library</strong> <em>basename position angle mirror locked</em></dt>
+<dt id="index-make_002dcomponent_002flibrary">Function: <strong>make-component/library</strong> <em>basename position angle mirror locked</em></dt>
 <dd><p>Searches the component libraries for a symbol matching <var>basename</var>,
 and if found, instantiates the symbol and returns the resulting
 component (which is not flagged as embedded).  Arguments are as for
@@ -136,7 +126,7 @@ component (which is not flagged as embedded).  Arguments are as for
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-set_002dcomponent_0021"></a>Function: <strong>set-component!</strong> <em>component position angle mirror locked</em></dt>
+<dt id="index-set_002dcomponent_0021">Function: <strong>set-component!</strong> <em>component position angle mirror locked</em></dt>
 <dd><p>Sets the parameters of <var>component</var>.  Arguments are the same as to
 <code>make-component</code>.  Returns <var>component</var>.
 </p>
@@ -145,7 +135,7 @@ of a component does not update the component&rsquo;s contents.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-set_002dcomponent_002dwith_002dtransform_0021"></a>Function: <strong>set-component-with-transform!</strong> <em>component position angle mirror locked</em></dt>
+<dt id="index-set_002dcomponent_002dwith_002dtransform_0021">Function: <strong>set-component-with-transform!</strong> <em>component position angle mirror locked</em></dt>
 <dd><p>Sets the parameters of <var>component</var>.  Arguments are the same as to
 <code>make-component</code>.  Returns <var>component</var>.
 </p>
@@ -153,7 +143,7 @@ of a component does not update the component&rsquo;s contents.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dinfo"></a>Function: <strong>component-info</strong> <em>component</em></dt>
+<dt id="index-component_002dinfo">Function: <strong>component-info</strong> <em>component</em></dt>
 <dd><p>Returns the parameters of <var>component</var> as a list of the form:
 </p>
 <div class="example">
@@ -162,40 +152,40 @@ of a component does not update the component&rsquo;s contents.
 </dd></dl>
 
 <dl>
-<dt><a name="index-component_002dbasename"></a>Function: <strong>component-basename</strong> <em>component</em></dt>
+<dt id="index-component_002dbasename">Function: <strong>component-basename</strong> <em>component</em></dt>
 <dd><p>Returns the basename of <var>component</var>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dposition"></a>Function: <strong>component-position</strong> <em>component</em></dt>
+<dt id="index-component_002dposition">Function: <strong>component-position</strong> <em>component</em></dt>
 <dd><p>Returns the position to which the original symbol was translated when
 creating <var>component</var>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dangle"></a>Function: <strong>component-angle</strong> <em>component</em></dt>
+<dt id="index-component_002dangle">Function: <strong>component-angle</strong> <em>component</em></dt>
 <dd><p>Returns the angle by which the original symbol was rotated when
 creating <var>component</var>, as an integer number of degrees.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dmirror_003f"></a>Function: <strong>component-mirror?</strong> <em>component</em></dt>
+<dt id="index-component_002dmirror_003f">Function: <strong>component-mirror?</strong> <em>component</em></dt>
 <dd><p>Returns true if the original symbol was mirrored when creating
 <var>component</var>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dlocked_003f"></a>Function: <strong>component-locked?</strong> <em>component</em></dt>
+<dt id="index-component_002dlocked_003f">Function: <strong>component-locked?</strong> <em>component</em></dt>
 <dd><p>Returns true if <var>component</var> is non-selectable.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dcontents"></a>Function: <strong>component-contents</strong> <em>component</em></dt>
+<dt id="index-component_002dcontents">Function: <strong>component-contents</strong> <em>component</em></dt>
 <dd><p>Returns the contents of <var>components</var> as a list of objects.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dappend_0021"></a>Function: <strong>component-append!</strong> <em>component objects...</em></dt>
+<dt id="index-component_002dappend_0021">Function: <strong>component-append!</strong> <em>component objects...</em></dt>
 <dd><p>Appends <var>objects</var> (which must not be component <code>object</code>s) to
 the contents of <var>component</var>.  Any <var>objects</var> which are already
 included in <var>component</var> are ignored.  If any <var>objects</var> are
@@ -204,7 +194,7 @@ an &lsquo;<samp>object-state</samp>&rsquo; error is raised. Returns <var>compone
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-component_002dremove_0021"></a>Function: <strong>component-remove!</strong> <em>component objects...</em></dt>
+<dt id="index-component_002dremove_0021">Function: <strong>component-remove!</strong> <em>component objects...</em></dt>
 <dd><p>Removes <var>objects</var> from the contents of <var>component</var>.  Any
 <var>objects</var> which are not part of a component or of a page are
 ignored. Returns <var>component</var>.

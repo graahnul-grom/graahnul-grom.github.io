@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Lepton EDA, version 1.9.5.
+<!-- This manual is for Lepton EDA, version 1.9.7.
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
@@ -14,13 +14,13 @@ authors of this document designate the gEDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
-<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>General object functions (Lepton EDA Scheme Reference Manual 1.9.5)</title>
+<title>General object functions (Lepton EDA Scheme Reference Manual 1.9.7)</title>
 
-<meta name="description" content="General object functions (Lepton EDA Scheme Reference Manual 1.9.5)">
-<meta name="keywords" content="General object functions (Lepton EDA Scheme Reference Manual 1.9.5)">
+<meta name="description" content="General object functions (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="keywords" content="General object functions (Lepton EDA Scheme Reference Manual 1.9.7)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -34,63 +34,53 @@ must provide the URL for the original version. -->
 <!--
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
-blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: inherit; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: inherit; font-size: smaller}
-pre.smalllisp {font-size: smaller}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
+<link rel="stylesheet" type="text/css" href="lepton-scheme.css">
 
 
 </head>
 
 <body lang="en">
-<a name="General-object-functions"></a>
-<div class="header">
+<span id="General-object-functions"></span><div class="header">
 <p>
 Next: <a href="Lines.html#Lines" accesskey="n" rel="next">Lines</a>, Up: <a href="Core-object-functions.html#Core-object-functions" accesskey="u" rel="up">Core object functions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="General-object-functions-1"></a>
-<h4 class="subsection">2.2.1 General object functions</h4>
+<span id="General-object-functions-1"></span><h4 class="subsection">2.2.1 General object functions</h4>
 
 <dl>
-<dt><a name="index-object_003f"></a>Function: <strong>object?</strong> <em>obj</em></dt>
+<dt id="index-object_003f">Function: <strong>object?</strong> <em>obj</em></dt>
 <dd><p>Returns &lsquo;<samp>#t</samp>&rsquo; if and only if <var>obj</var> is an <code>object</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-copy_002dobject"></a>Function: <strong>copy-object</strong> <em>object</em></dt>
+<dt id="index-copy_002dobject">Function: <strong>copy-object</strong> <em>object</em></dt>
 <dd><p>Returns a deep copy of <var>object</var>.  The new <code>object</code> returned
 has no attached attributes, and is not part of a <code>page</code> or part
 of a component <code>object</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-object_002dcomponent"></a>Function: <strong>object-component</strong> <em>object</em></dt>
+<dt id="index-object_002dcomponent">Function: <strong>object-component</strong> <em>object</em></dt>
 <dd><p>Returns the component <code>object</code> that contains <var>object</var>, or
 &lsquo;<samp>#f</samp>&rsquo; if <var>object</var> is not part of a component.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-object_002dconnections"></a>Function: <strong>object-connections</strong> <em>object</em></dt>
+<dt id="index-object_002dconnections">Function: <strong>object-connections</strong> <em>object</em></dt>
 <dd><p>Returns a list of other <code>object</code>s that are <em>directly</em>
 connected to <var>object</var>.  If <code>object</code> is not included in a
 <code>page</code>, raises an &lsquo;<samp>object-state</samp>&rsquo; error.  The connections
@@ -102,16 +92,28 @@ intersects the net, then <code>(object-connections &lt;net&gt;)</code> will retu
 a list containing the pin <code>object</code>, and <em>not</em> the component.
 </p></dd></dl>
 
+<dl>
+<dt id="index-object_002dselectable_003f">Function: <strong>object-selectable?</strong> <em>object</em></dt>
+<dd><p>Returns true (&lsquo;<samp>#t</samp>&rsquo;) if <var>object</var> is selectable (i.e. not locked).
+</p></dd></dl>
+
+<dl>
+<dt id="index-set_002dobject_002dselectable_0021">Function: <strong>set-object-selectable!</strong> <em>object state</em></dt>
+<dd><p>Sets the selectable flag for <var>object</var>.
+If <var>state</var> is &lsquo;<samp>#f</samp>&rsquo;, clears the selectable flag; if <var>state</var>
+is &lsquo;<samp>#t</samp>&rsquo;, sets it. Returns <var>object</var>.
+</p></dd></dl>
+
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Object-sub_002dtypes.html#Object-sub_002dtypes" accesskey="1">Object sub-types</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Object-sub_002dtypes.html#Object-sub_002dtypes" accesskey="1">Object sub-types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Object-transformations.html#Object-transformations" accesskey="2">Object transformations</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Object-transformations.html#Object-transformations" accesskey="2">Object transformations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Object-bounds.html#Object-bounds" accesskey="3">Object bounds</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Object-bounds.html#Object-bounds" accesskey="3">Object bounds</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Object-color.html#Object-color" accesskey="4">Object color</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Object-color.html#Object-color" accesskey="4">Object color</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Object-fill-and-stroke.html#Object-fill-and-stroke" accesskey="5">Object fill and stroke</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Object-fill-and-stroke.html#Object-fill-and-stroke" accesskey="5">Object fill and stroke</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
