@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for Lepton EDA, version 1.9.7.
+<!-- This manual is for Lepton EDA, version 1.9.9.
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
-Copyright (C) 2017-2018 Lepton developers
+Copyright (C) 2017-2019 Lepton developers
 
 The text of and illustrations in this document are licensed under a
 Creative Commons Attribution–Share Alike 3.0 Unported license
@@ -17,10 +17,10 @@ must provide the URL for the original version. -->
 <!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Arcs (Lepton EDA Scheme Reference Manual 1.9.7)</title>
+<title>Arcs (Lepton EDA Scheme Reference Manual 1.9.9)</title>
 
-<meta name="description" content="Arcs (Lepton EDA Scheme Reference Manual 1.9.7)">
-<meta name="keywords" content="Arcs (Lepton EDA Scheme Reference Manual 1.9.7)">
+<meta name="description" content="Arcs (Lepton EDA Scheme Reference Manual 1.9.9)">
+<meta name="keywords" content="Arcs (Lepton EDA Scheme Reference Manual 1.9.9)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -71,18 +71,18 @@ stroke settings.
 </p></dd></dl>
 
 <dl>
-<dt id="index-make_002darc">Function: <strong>make-arc</strong> <em>center radius start-angle end-angle [color]</em></dt>
+<dt id="index-make_002darc">Function: <strong>make-arc</strong> <em>center radius start-angle sweep-angle [color]</em></dt>
 <dd><p>Creates and returns a new arc <code>object</code>.  <var>center</var> is the
 position of the center of the new arc in the form <code>(x . y)</code>, and
 <var>radius</var> is the integer radius of the arc.  <var>start-angle</var> and
-<var>end-angle</var> are the angles at which to start and end the arc, in
+<var>sweep-angle</var> are the angles at which to start and end the arc, in
 degrees. If <var>color</var> is specified, it should be the integer color
 map index of the color with which to draw the arc.  If <var>color</var>
 is not specified, the default arc color is used.
 </p></dd></dl>
 
 <dl>
-<dt id="index-set_002darc_0021">Function: <strong>set-arc!</strong> <em>arc center radius start-angle end-angle [color]</em></dt>
+<dt id="index-set_002darc_0021">Function: <strong>set-arc!</strong> <em>arc center radius start-angle sweep-angle [color]</em></dt>
 <dd><p>Sets the parameters of <var>arc</var>. The arguments are the same as to
 <code>make-arc</code>. Returns <var>arc</var>.
 </p></dd></dl>
@@ -92,7 +92,7 @@ is not specified, the default arc color is used.
 <dd><p>Returns the parameters of <var>arc</var> as a list of the form:
 </p>
 <div class="example">
-<pre class="example">((center-x . center-y) radius start-angle end-angle color)
+<pre class="example">((center-x . center-y) radius start-angle sweep-angle color)
 </pre></div>
 </dd></dl>
 
@@ -113,7 +113,7 @@ is not specified, the default arc color is used.
 </p></dd></dl>
 
 <dl>
-<dt id="index-arc_002dend_002dangle">Function: <strong>arc-end-angle</strong> <em>arc</em></dt>
+<dt id="index-arc_002dsweep_002dangle">Function: <strong>arc-sweep-angle</strong> <em>arc</em></dt>
 <dd><p>Returns the end angle of <var>arc</var> as an integer number of degrees.
 </p></dd></dl>
 
