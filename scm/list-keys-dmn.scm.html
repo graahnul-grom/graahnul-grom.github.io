@@ -30,36 +30,8 @@ body { font-family: monospace; color: #839496; background-color: #002b36; }
 -->
 </style>
 
-<script type='text/javascript'>
-<!--
-
-/* function to open any folds containing a jumped-to line before jumping to it */
-function JumpToLine()
-{
-  var lineNum;
-  lineNum = window.location.hash;
-  lineNum = lineNum.substr(1); /* strip off '#' */
-
-  if (lineNum.indexOf('L') == -1) {
-    lineNum = 'L'+lineNum;
-  }
-  var lineElem = document.getElementById(lineNum);
-  /* Always jump to new location even if the line was hidden inside a fold, or
-   * we corrected the raw number to a line ID.
-   */
-  if (lineElem) {
-    lineElem.scrollIntoView(true);
-  }
-  return true;
-}
-if ('onhashchange' in window) {
-  window.onhashchange = JumpToLine;
-}
-
--->
-</script>
 </head>
-<body onload='JumpToLine();'>
+<body>
 <pre id='vimCodeElement'>
 <span id="L1" class="LineNr"> 1 </span><span class="Comment">; file: list-keys-dmn.scm</span>
 <span id="L2" class="LineNr"> 2 </span><span class="Comment">; copyright (c) 2019 </span><span class="Todo">dmn</span><span class="Comment"> &lt;graahnul.grom@gmail.com&gt;</span>
