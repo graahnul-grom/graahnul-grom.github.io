@@ -4,7 +4,8 @@
 ;
 ; this Guile Scheme script prints current lepton-schematic
 ;   key bindings to stdout
-; usage: ( primitive-load "/path/to/list-keys-dmn.scm" )
+; usage: in lepton-schematic ":" prompt or in File->REPL type:
+;   ( primitive-load "/path/to/list-keys-dmn.scm" )
 ;
 ; vim: ft=scheme tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 ;
@@ -42,7 +43,7 @@
     ( if ( action? action-obj )
       ( format #t " (~a)" ( action-property action-obj 'label ) )
     )
-    ( format #t "~%" action )
+    ( format #t "~%" )
   )
   )
 
