@@ -17,7 +17,7 @@
 
 ; function: print-keymap()
 ;
-( define ( print-keymap kmap indent )
+( define* ( print-keymap kmap #:optional (indent 0) )
 
   ; auxiliary local functions:
 
@@ -72,5 +72,5 @@
 
 ; top-level code:
 ;
-( print-keymap %global-keymap 0 )
+( print-keymap %global-keymap )
 

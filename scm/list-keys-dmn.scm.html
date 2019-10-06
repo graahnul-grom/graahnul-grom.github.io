@@ -25,6 +25,7 @@ body { font-family: monospace; color: #839496; background-color: #002b36; }
 .Special { color: #dc322f; }
 .Identifier { color: #268bd2; }
 .Statement { color: #859900; }
+.guileSpecial { color: #3aac23; }
 .guileSym { color: #37b88e; }
 -->
 </style>
@@ -79,7 +80,7 @@ if ('onhashchange' in window) {
 <span id="L17" class="LineNr">17 </span>
 <span id="L18" class="LineNr">18 </span><span class="Comment">; function: print-keymap()</span>
 <span id="L19" class="LineNr">19 </span><span class="Comment">;</span>
-<span id="L20" class="LineNr">20 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> print-keymap kmap indent <span class="Special">)</span>
+<span id="L20" class="LineNr">20 </span><span class="Special">(</span> <span class="Statement">define*</span> <span class="Special">(</span> print-keymap kmap <span class="guileSpecial">#:optional</span> <span class="Special">(</span>indent <span class="schemeNumber">0</span><span class="Special">)</span> <span class="Special">)</span>
 <span id="L21" class="LineNr">21 </span>
 <span id="L22" class="LineNr">22 </span>  <span class="Comment">; auxiliary local functions:</span>
 <span id="L23" class="LineNr">23 </span>
@@ -134,7 +135,7 @@ if ('onhashchange' in window) {
 <span id="L72" class="LineNr">72 </span>
 <span id="L73" class="LineNr">73 </span><span class="Comment">; top-level code:</span>
 <span id="L74" class="LineNr">74 </span><span class="Comment">;</span>
-<span id="L75" class="LineNr">75 </span><span class="Special">(</span> print-keymap <span class="gedaVar">%global-keymap</span> <span class="schemeNumber">0</span> <span class="Special">)</span>
+<span id="L75" class="LineNr">75 </span><span class="Special">(</span> print-keymap <span class="gedaVar">%global-keymap</span> <span class="Special">)</span>
 <span id="L76" class="LineNr">76 </span>
 </pre>
 </body>
