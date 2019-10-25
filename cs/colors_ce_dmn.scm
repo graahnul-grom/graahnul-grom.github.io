@@ -1,3 +1,13 @@
+; file: colors_ce_dmn.scm
+; copyright (c) 2019 dmn <graahnul.grom@gmail.com>
+; license: GPLv2+
+;
+; lepton-schematic color scheme
+;   created with [View->Color Scheme Editor...]
+; usage: add the following to gschemrc configuration file:
+;   ( primitive-load "/path/to/colors_ce_dmn.scm" )
+;
+
 (display-color-map '(
   (background           "#002b36ff")
   (pin                  "#c18f5fff")
