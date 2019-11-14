@@ -2,10 +2,10 @@
 ; copyright (c) 2016-2019 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; this Guile Scheme script shifts selection to pasted objects
-; was posted on the geda-user mailing list:
+; make lepton-schematic shift selection to pasted objects
+; posted on the geda-user mailing list:
 ; http://www.delorie.com/archives/browse.cgi?p=geda-user/2016/10/22/20:39:25
-; usage: add the following to gschemrc configuration file:
+; usage: add the following to your gschemrc configuration file:
 ;   ( primitive-load "/path/to/shift-sel-to-pasted.scm" )
 ;
 

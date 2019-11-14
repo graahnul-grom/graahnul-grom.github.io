@@ -2,9 +2,8 @@
 ; copyright (c) 2019 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; this Guile Scheme script prints current lepton-schematic
-;   key bindings to stdout
-; usage: in lepton-schematic ":" prompt or in File->REPL type:
+; print current lepton-schematic key bindings to stdout
+; usage: type the following in the ":" prompt (or File->REPL):
 ;   ( primitive-load "/path/to/list-keys-dmn.scm" )
 ;
 ; vim: ft=scheme tabstop=2 softtabstop=2 shiftwidth=2 expandtab
