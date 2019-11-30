@@ -1,0 +1,7 @@
+schematics schematic-main.sch
+
+elements-dir /home/dmn/pcb/bin.master/share/pcb/pcblib-newlib
+
+output-name brd
+skip-m4
+

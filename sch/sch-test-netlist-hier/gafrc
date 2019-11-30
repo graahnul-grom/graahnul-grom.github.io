@@ -1,0 +1,4 @@
+( reset-component-library )
+( component-library (getcwd) "hier-test" )
+( source-library (getcwd) )
+
