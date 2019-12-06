@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sch/test-netlist-hier/schematic-subcircuit.sch - Lepton EDA - graahnul-grom.github.io</title>
+<meta name="Generator" content="Vim/8.1">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="syntax" content="c">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="solarized">
+<style>
+<!--
+pre { font-family: monospace; color: #839496; background-color: #002b36; }
+body { font-family: monospace; color: #839496; background-color: #002b36; }
+* { font-size: 1em; }
+.LineNr { color: #586e75; background-color: #073642; padding-bottom: 1px; }
+.Number { color: #61c8f7; }
+-->
+</style>
+
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr"> 1 </span>v <span class="Number">20191003</span> <span class="Number">2</span>
+<span id="L2" class="LineNr"> 2 </span>C <span class="Number">18200</span> <span class="Number">24200</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> symbol-resistor.sym
+<span id="L3" class="LineNr"> 3 </span>{
+<span id="L4" class="LineNr"> 4 </span>T <span class="Number">18500</span> <span class="Number">24600</span> <span class="Number">5</span> <span class="Number">10</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L5" class="LineNr"> 5 </span>device=RESISTOR
+<span id="L6" class="LineNr"> 6 </span>T <span class="Number">18400</span> <span class="Number">24500</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L7" class="LineNr"> 7 </span>refdes=R1
+<span id="L8" class="LineNr"> 8 </span>T <span class="Number">18700</span> <span class="Number">24500</span> <span class="Number">5</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L9" class="LineNr"> 9 </span>value=1k
+<span id="L10" class="LineNr">10 </span>T <span class="Number">18200</span> <span class="Number">24000</span> <span class="Number">1</span> <span class="Number">6</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L11" class="LineNr">11 </span>footprint=ACY500.fp
+<span id="L12" class="LineNr">12 </span>}
+<span id="L13" class="LineNr">13 </span>C <span class="Number">16800</span> <span class="Number">24200</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> symbol-in.sym
+<span id="L14" class="LineNr">14 </span>{
+<span id="L15" class="LineNr">15 </span>T <span class="Number">16800</span> <span class="Number">24500</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L16" class="LineNr">16 </span>refdes=<span class="Number">1</span>
+<span id="L17" class="LineNr">17 </span>T <span class="Number">16800</span> <span class="Number">24700</span> <span class="Number">5</span> <span class="Number">6</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L18" class="LineNr">18 </span>device=DOES_NOT_MATTER
+<span id="L19" class="LineNr">19 </span>T <span class="Number">16900</span> <span class="Number">23800</span> <span class="Number">5</span> <span class="Number">4</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">5</span>
+<span id="L20" class="LineNr">20 </span>comment=refdes is set
+<span id="L21" class="LineNr">21 </span>to pinlabel of
+<span id="L22" class="LineNr">22 </span>subcircuit symbol
+<span id="L23" class="LineNr">23 </span>representing this
+<span id="L24" class="LineNr">24 </span>schematic
+<span id="L25" class="LineNr">25 </span>}
+<span id="L26" class="LineNr">26 </span>C <span class="Number">20500</span> <span class="Number">24200</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">1</span> symbol-in.sym
+<span id="L27" class="LineNr">27 </span>{
+<span id="L28" class="LineNr">28 </span>T <span class="Number">20500</span> <span class="Number">24700</span> <span class="Number">5</span> <span class="Number">6</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">6</span> <span class="Number">1</span>
+<span id="L29" class="LineNr">29 </span>device=DOESNOTMATTER
+<span id="L30" class="LineNr">30 </span>T <span class="Number">20500</span> <span class="Number">24500</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">6</span> <span class="Number">1</span>
+<span id="L31" class="LineNr">31 </span>refdes=<span class="Number">2</span>
+<span id="L32" class="LineNr">32 </span>}
+<span id="L33" class="LineNr">33 </span>N <span class="Number">17400</span> <span class="Number">24300</span> <span class="Number">18200</span> <span class="Number">24300</span> <span class="Number">4</span>
+<span id="L34" class="LineNr">34 </span>N <span class="Number">19900</span> <span class="Number">24300</span> <span class="Number">19100</span> <span class="Number">24300</span> <span class="Number">4</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
