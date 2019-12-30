@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Sat Oct  5 15:48:17 2019 -->
+<!-- CreationDate: Mon Dec 30 21:03:31 2019 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,8 +46,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lepton-symcheck</b>
-[<b>&minus;h</b>] [<b>&minus;v</b>] [<b>&minus;q</b>]
-<i>symbol1</i> [...<i>symbolN</i>]</p>
+[<i>OPTION</i> ...] <i>FILE</i> ...</p>
 
 <a name="DESCRIPTION"></a>
 <h2>DESCRIPTION</h2>
@@ -55,8 +54,11 @@
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lepton-symcheck</b>
-is a symbol checker for Lepton EDA. Here is a list of checks
-that <b>lepton-symcheck</b> performs:</p>
+is a symbol checker for Lepton EDA. It checks one or more
+symbol <i>FILE</i>s passed on the command line.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Here is a list
+of checks that <b>lepton-symcheck</b> performs:</p>
 
 <table width="100%" border=0 rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -183,13 +185,13 @@ accepts the following options: <b><br>
 &minus;q</b>, <b>&minus;&minus;quiet</b></p>
 
 <p style="margin-left:23%;">Quiet mode on. This mode turns
-off all warnings/notes/messages. (optional)</p>
+off all warnings/notes/messages.</p>
 
 <p style="margin-left:11%;"><b>&minus;v</b>,
 <b>&minus;&minus;verbose</b></p>
 
 <p style="margin-left:23%;">Verbose mode 1. This mode will
-show all error messages (optional)</p>
+show all error messages.</p>
 
 <table width="100%" border=0 rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -204,8 +206,7 @@ show all error messages (optional)</p>
 
 
 <p style="margin-top: 1em" valign="top">Verbose mode 2.
-This mode will show all error and warning messages
-(optional)</p> </td>
+This mode will show all error and warning messages.</p></td>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="6%">
@@ -216,24 +217,20 @@ This mode will show all error and warning messages
 <td width="77%">
 
 
-<p style="margin-top: 1em" valign="top">Verbose mode 2.
-This mode will show all error, warning, and info messages
-(optional)</p> </td>
+<p style="margin-top: 1em" valign="top">Verbose mode 3.
+This mode will show all error, warning, and info
+messages.</p> </td>
 </table>
+
+<p style="margin-left:11%;"><b>&minus;V</b>,
+<b>&minus;&minus;version</b></p>
+
+<p style="margin-left:23%;">Print version information.</p>
 
 <p style="margin-left:11%;"><b>-h</b>,
 <b>&minus;&minus;help</b></p>
 
-<p style="margin-left:23%;">Usage summary /
-<b>lepton-symcheck</b> help</p>
-
-<p style="margin-left:11%;"><i>symbol1</i>
-[...<i>symbolN</i>]</p>
-
-<p style="margin-left:23%;">At least one symbol file must
-be specified. If multiple symbols are specified then they
-are sequentially read in and checked. It is important that
-the schematic(s) follow all the options (i.e. last).</p>
+<p style="margin-left:23%;">Print a help message.</p>
 
 <a name="EXAMPLES"></a>
 <h2>EXAMPLES</h2>
@@ -243,10 +240,11 @@ the schematic(s) follow all the options (i.e. last).</p>
 examples on how to run <b>lepton-symcheck</b>:</p>
 
 <p style="margin-left:11%; margin-top: 1em">To get usage
-information just run:</p>
+information run:</p>
 
 
-<p style="margin-left:22%; margin-top: 1em">lepton-symcheck</p>
+<p style="margin-left:22%; margin-top: 1em">lepton-symcheck
+&minus;&minus;help</p>
 
 <p style="margin-left:11%; margin-top: 1em">To actually
 check a symbol with just error counts, run:</p>
