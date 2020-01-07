@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Fri Oct 25 04:38:06 2019 -->
+<!-- CreationDate: Tue Jan  7 15:41:12 2020 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -83,9 +83,10 @@ you want to extract from archive. <br>
 default mode. <br>
 &minus;o, &minus;&minus;output=FILE Specify the name of the
 output archive file <br>
-in archive mode. The output file extension should be
-&quot;.tar.gz&quot;. <br>
-Default name is &quot;project-archive.tar.gz&quot;.</p>
+in archive mode. If FILE has no &quot;.tar.gz&quot; suffix
+it will be <br>
+automatically appended. <br>
+Default file name is &quot;project-archive.tar.gz&quot;.</p>
 
 <a name="EXAMPLES"></a>
 <h2>EXAMPLES</h2>
@@ -97,6 +98,12 @@ listed in &quot;archive-list&quot;:</p>
 
 <p style="margin-left:22%; margin-top: 1em">lepton-archive
 &minus;f archive-list &minus;o MyArchive.tar.gz</p>
+
+<p style="margin-left:11%; margin-top: 1em">The same by
+using just file basename:</p>
+
+<p style="margin-left:22%; margin-top: 1em">lepton-archive
+&minus;f archive-list &minus;o MyArchive</p>
 
 <p style="margin-left:11%; margin-top: 1em">Verbosely
 create an archive from files listed on command line:</p>
