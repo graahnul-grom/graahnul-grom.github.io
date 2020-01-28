@@ -4,7 +4,7 @@
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
-Copyright (C) 2017-2019 Lepton developers
+Copyright (C) 2017-2020 Lepton developers
 
 The text of and illustrations in this document are licensed under a
 Creative Commons Attribution–Share Alike 3.0 Unported license
@@ -14,7 +14,7 @@ authors of this document designate the gEDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Core page functions (Lepton EDA Scheme Reference Manual 1.9.9)</title>
@@ -24,12 +24,12 @@ must provide the URL for the original version. -->
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Concept-Index.html#Concept-Index" rel="index" title="Concept Index">
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Core-API-Reference.html#Core-API-Reference" rel="up" title="Core API Reference">
-<link href="Core-object-functions.html#Core-object-functions" rel="next" title="Core object functions">
-<link href="Core-API-Reference.html#Core-API-Reference" rel="prev" title="Core API Reference">
+<link href="Core-API-Reference.html" rel="up" title="Core API Reference">
+<link href="Core-object-functions.html" rel="next" title="Core object functions">
+<link href="Core-API-Reference.html" rel="prev" title="Core API Reference">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -56,7 +56,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Core-page-functions"></span><div class="header">
 <p>
-Next: <a href="Core-object-functions.html#Core-object-functions" accesskey="n" rel="next">Core object functions</a>, Up: <a href="Core-API-Reference.html#Core-API-Reference" accesskey="u" rel="up">Core API Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Core-object-functions.html" accesskey="n" rel="next">Core object functions</a>, Up: <a href="Core-API-Reference.html" accesskey="u" rel="up">Core API Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Core-page-functions-1"></span><h3 class="section">2.1 Core page functions</h3>
@@ -64,7 +64,7 @@ Next: <a href="Core-object-functions.html#Core-object-functions" accesskey="n" r
 <p>To use the functions described in this section, you will need to load
 the <code>(lepton page)</code> module.
 </p>
-<p>See <a href="Pages.html#Pages">Pages</a>.
+<p>See <a href="Pages.html">Pages</a>.
 </p>
 <dl>
 <dt id="index-page_003f">Function: <strong>page?</strong> <em>obj</em></dt>
@@ -108,7 +108,19 @@ loading or saving, and without asking the user.
 <var>page</var>.
 </p></dd></dl>
 
-<span id="Page-serialisation"></span><h4 class="subsection">2.1.2 Page serialisation</h4>
+<span id="Conversion-between-files-and-pages"></span><h4 class="subsection">2.1.2 Conversion between files and pages</h4>
+<p>Pages can be converted to and from files in the gEDA schematic file
+format.
+</p>
+<dl>
+<dt id="index-file_002d_003epage">Function: <strong>file-&gt;page</strong> <em>filename [new-page?]</em></dt>
+<dd><p>Return a <code>page</code> for <var>filename</var> which must be a string. If
+such a page has been already opened, that page is returned, otherwise
+a new page is created.  If <var>new-page?</var> is not &lsquo;<samp>#f</samp>&rsquo;, new page
+creation is forced.  Returns the resulting <code>page</code>.
+</p></dd></dl>
+
+<span id="Page-serialisation"></span><h4 class="subsection">2.1.3 Page serialisation</h4>
 
 <p>Pages can be converted to and from strings in the gEDA schematic file
 format.
@@ -128,7 +140,7 @@ create a new <code>page</code>.  The initial filename for the new
 format.
 </p></dd></dl>
 
-<span id="Page-contents"></span><h4 class="subsection">2.1.3 Page contents</h4>
+<span id="Page-contents"></span><h4 class="subsection">2.1.4 Page contents</h4>
 
 <p>A schematic or symbol <code>page</code> is composed of a set of
 <code>object</code>s which determine both its graphical appearance and its
@@ -166,7 +178,7 @@ Returns <var>page</var>.
 <ul>
 <li> part of a <code>page</code> other than <var>page</var>;
 </li><li> part of component <code>object</code>;
-</li><li> has attached attributes (see <a href="Attributes.html#Attributes">Attributes</a>);
+</li><li> has attached attributes (see <a href="Attributes.html">Attributes</a>);
 </li><li> is attached as an attribute.
 </li></ul>
 </dd></dl>
@@ -182,7 +194,7 @@ part of a component <code>object</code> which is itself part of a
 <code>page</code>, that <code>page</code> will be returned.
 </p></dd></dl>
 
-<span id="Page-dirty-flags"></span><h4 class="subsection">2.1.4 Page dirty flags</h4>
+<span id="Page-dirty-flags"></span><h4 class="subsection">2.1.5 Page dirty flags</h4>
 
 <p>A <code>page</code> has a <em>dirty flag</em> that is used to indicate to
 applications that the <code>page</code> has been modified since it was last
@@ -204,7 +216,7 @@ the page as dirty.  Returns <var>page</var>.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Core-object-functions.html#Core-object-functions" accesskey="n" rel="next">Core object functions</a>, Up: <a href="Core-API-Reference.html#Core-API-Reference" accesskey="u" rel="up">Core API Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html#Concept-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Core-object-functions.html" accesskey="n" rel="next">Core object functions</a>, Up: <a href="Core-API-Reference.html" accesskey="u" rel="up">Core API Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 
