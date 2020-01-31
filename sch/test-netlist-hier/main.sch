@@ -1,6 +1,6 @@
 v 20191003 2
-C 36900 12100 1 0 0 symbol-gnd.sym
-C 36700 12500 1 0 0 symbol-vdc.sym
+C 36900 12100 1 0 0 sym-gnd.sym
+C 36700 12500 1 0 0 sym-vdc.sym
 {
 T 37400 13150 21 10 1 1 0 0 1
 refdes=V1
@@ -21,13 +21,13 @@ T 37550 13850 6 8 1 1 0 3 1
 netname=vcc
 }
 N 39100 13800 39800 13800 4
-C 40100 13700 1 90 0 symbol-gnd.sym
-C 38200 13700 1 0 0 symbol-subcircuit.sym
+C 40100 13700 1 90 0 sym-gnd.sym
+C 38200 13700 1 0 0 sym-subcircuit.sym
 {
 T 38500 14100 5 10 0 0 0 0 1
 device=SUB
 T 38400 13900 21 10 1 1 0 0 1
 refdes=U1
-T 38300 13300 5 6 1 0 0 0 1
+T 38300 13300 13 6 1 0 0 0 1
 source=subcircuit.sch
 }

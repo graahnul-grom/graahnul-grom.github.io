@@ -1,4 +1,4 @@
 ( reset-component-library )
-( component-library (getcwd) "test-netlist-hier" )
+( component-library "symbols" "test-netlist-hier" )
 ( source-library (getcwd) )
 
