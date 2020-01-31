@@ -1,4 +1,4 @@
-schematics schematic-main.sch
+schematics main.sch
 
 elements-dir /home/dmn/pcb/bin.master/share/pcb/pcblib-newlib
 
