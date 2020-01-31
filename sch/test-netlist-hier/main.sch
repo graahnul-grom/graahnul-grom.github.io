@@ -29,5 +29,5 @@ device=SUB
 T 38400 13900 21 10 1 1 0 0 1
 refdes=U1
 T 38300 13300 5 6 1 0 0 0 1
-source=schematic-subcircuit.sch
+source=subcircuit.sch
 }
