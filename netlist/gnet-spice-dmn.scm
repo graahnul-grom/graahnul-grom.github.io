@@ -1,5 +1,5 @@
 ; file: gnet-spice-dmn.scm
-; copyright (c) 2019 dmn <graahnul.grom@gmail.com>
+; copyright (c) 2019-2020 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
 ; simple SPICE lepton-netlist backend
@@ -45,7 +45,10 @@
 ) ; nets_in_pinseq_order()
 
 
-( define ( spice-dmn output-filename ) ; backend's entry point
+
+; backend's entry point:
+;
+( define ( spice-dmn output-filename )
 ( let
     (
     ( pkgs ( schematic-package-names (toplevel-schematic) ) ) ; list of refdes's
@@ -84,4 +87,14 @@
 
 ) ; let
 ) ; spice-dmn()
+
+
+
+; instruct the netlister to use the 'spice mode
+; (this function is called by lepton-netlist):
+;
+( define ( request-netlist-mode )
+    ; return:
+    'spice
+)
 
