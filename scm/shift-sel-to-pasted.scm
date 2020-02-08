@@ -1,5 +1,5 @@
 ; file: shift-sel-to-pasted.scm
-; copyright (c) 2016-2019 dmn <graahnul.grom@gmail.com>
+; copyright (c) 2016-2020 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
 ; make lepton-schematic shift selection to pasted objects
@@ -9,18 +9,15 @@
 ;   ( primitive-load "/path/to/shift-sel-to-pasted.scm" )
 ;
 
-
-( use-modules ( gschem selection ) )
-( use-modules ( gschem window    ) )
-( use-modules ( gschem hook      ) )
+( use-modules ( schematic selection ) )
+( use-modules ( schematic window ) )
+( use-modules ( schematic hook ) )
 
 
 ( define ( select-pasted objs )
-
   ( for-each deselect-object! (page-selection (active-page)) )
   ( for-each select-object! objs )
-
-) ; select-pasted()
+)
 
 
 ; top-level code:

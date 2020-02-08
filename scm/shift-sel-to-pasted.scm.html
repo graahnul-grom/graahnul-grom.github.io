@@ -1,23 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>scm/shift-sel-to-pasted.scm - Lepton EDA - graahnul-grom.github.io</title>
-<meta name="Generator" content="Vim/8.1">
-<meta name="plugin-version" content="vim8.1_v1">
+<meta name="Generator" content="Vim/8.2">
+<meta name="plugin-version" content="vim8.1_v2">
 <meta name="syntax" content="scheme">
-<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
 <meta name="colorscheme" content="solarized">
-<style type="text/css">
+<style>
 <!--
 pre { font-family: monospace; color: #839496; background-color: #002b36; }
 body { font-family: monospace; color: #839496; background-color: #002b36; }
 * { font-size: 1em; }
 .Identifier { color: #268bd2; }
 .Todo { color: #ff0000; background-color: #000000; padding-bottom: 1px; }
-.gedaFunc { color: #e6e3e0; }
 .LineNr { color: #586e75; background-color: #073642; padding-bottom: 1px; }
 .Statement { color: #859900; }
+.gedaFunc { color: #e6e3e0; }
 .gedaVar { color: #e6e3e0; font-style: italic; }
 .Comment { color: #586e75; }
 .Special { color: #dc322f; }
@@ -28,7 +28,7 @@ body { font-family: monospace; color: #839496; background-color: #002b36; }
 <body>
 <pre id='vimCodeElement'>
 <span id="L1" class="LineNr"> 1 </span><span class="Comment">; file: shift-sel-to-pasted.scm</span>
-<span id="L2" class="LineNr"> 2 </span><span class="Comment">; copyright (c) 2016-2019 </span><span class="Todo">dmn</span><span class="Comment"> &lt;graahnul.grom@gmail.com&gt;</span>
+<span id="L2" class="LineNr"> 2 </span><span class="Comment">; copyright (c) 2016-2020 </span><span class="Todo">dmn</span><span class="Comment"> &lt;graahnul.grom@gmail.com&gt;</span>
 <span id="L3" class="LineNr"> 3 </span><span class="Comment">; license: GPLv2+</span>
 <span id="L4" class="LineNr"> 4 </span><span class="Comment">;</span>
 <span id="L5" class="LineNr"> 5 </span><span class="Comment">; make lepton-schematic shift selection to pasted objects</span>
@@ -38,24 +38,21 @@ body { font-family: monospace; color: #839496; background-color: #002b36; }
 <span id="L9" class="LineNr"> 9 </span><span class="Comment">;   ( primitive-load &quot;/path/to/shift-sel-to-pasted.scm&quot; )</span>
 <span id="L10" class="LineNr">10 </span><span class="Comment">;</span>
 <span id="L11" class="LineNr">11 </span>
-<span id="L12" class="LineNr">12 </span>
-<span id="L13" class="LineNr">13 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> gschem selection <span class="Special">)</span> <span class="Special">)</span>
-<span id="L14" class="LineNr">14 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> gschem window    <span class="Special">)</span> <span class="Special">)</span>
-<span id="L15" class="LineNr">15 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> gschem hook      <span class="Special">)</span> <span class="Special">)</span>
+<span id="L12" class="LineNr">12 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> schematic selection <span class="Special">)</span> <span class="Special">)</span>
+<span id="L13" class="LineNr">13 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> schematic window <span class="Special">)</span> <span class="Special">)</span>
+<span id="L14" class="LineNr">14 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> schematic hook <span class="Special">)</span> <span class="Special">)</span>
+<span id="L15" class="LineNr">15 </span>
 <span id="L16" class="LineNr">16 </span>
-<span id="L17" class="LineNr">17 </span>
-<span id="L18" class="LineNr">18 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> select-pasted objs <span class="Special">)</span>
-<span id="L19" class="LineNr">19 </span>
-<span id="L20" class="LineNr">20 </span>  <span class="Special">(</span> <span class="Identifier">for-each</span> <span class="gedaFunc">deselect-object!</span> <span class="Special">(</span><span class="gedaFunc">page-selection</span> <span class="Special">(</span><span class="gedaFunc">active-page</span><span class="Special">))</span> <span class="Special">)</span>
-<span id="L21" class="LineNr">21 </span>  <span class="Special">(</span> <span class="Identifier">for-each</span> <span class="gedaFunc">select-object!</span> objs <span class="Special">)</span>
+<span id="L17" class="LineNr">17 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> select-pasted objs <span class="Special">)</span>
+<span id="L18" class="LineNr">18 </span>  <span class="Special">(</span> <span class="Identifier">for-each</span> <span class="gedaFunc">deselect-object!</span> <span class="Special">(</span><span class="gedaFunc">page-selection</span> <span class="Special">(</span><span class="gedaFunc">active-page</span><span class="Special">))</span> <span class="Special">)</span>
+<span id="L19" class="LineNr">19 </span>  <span class="Special">(</span> <span class="Identifier">for-each</span> <span class="gedaFunc">select-object!</span> objs <span class="Special">)</span>
+<span id="L20" class="LineNr">20 </span><span class="Special">)</span>
+<span id="L21" class="LineNr">21 </span>
 <span id="L22" class="LineNr">22 </span>
-<span id="L23" class="LineNr">23 </span><span class="Special">)</span> <span class="Comment">; select-pasted()</span>
-<span id="L24" class="LineNr">24 </span>
-<span id="L25" class="LineNr">25 </span>
-<span id="L26" class="LineNr">26 </span><span class="Comment">; top-level code:</span>
-<span id="L27" class="LineNr">27 </span><span class="Comment">;</span>
-<span id="L28" class="LineNr">28 </span><span class="Special">(</span> <span class="Identifier">add-hook!</span> <span class="gedaVar">paste-objects-hook</span> select-pasted <span class="Special">)</span>
-<span id="L29" class="LineNr">29 </span>
+<span id="L23" class="LineNr">23 </span><span class="Comment">; top-level code:</span>
+<span id="L24" class="LineNr">24 </span><span class="Comment">;</span>
+<span id="L25" class="LineNr">25 </span><span class="Special">(</span> <span class="Identifier">add-hook!</span> <span class="gedaVar">paste-objects-hook</span> select-pasted <span class="Special">)</span>
+<span id="L26" class="LineNr">26 </span>
 </pre>
 </body>
 </html>
