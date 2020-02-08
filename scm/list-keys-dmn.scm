@@ -1,17 +1,15 @@
 ; file: list-keys-dmn.scm
-; copyright (c) 2019 dmn <graahnul.grom@gmail.com>
+; copyright (c) 2019-2020 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
 ; print current lepton-schematic key bindings to stdout
 ; usage: type the following in the ":" prompt (or File->REPL):
 ;   ( primitive-load "/path/to/list-keys-dmn.scm" )
 ;
-; vim: ft=scheme tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-;
 
 ( use-modules ( schematic gui keymap ) )
-( use-modules ( gschem keymap ) )
-( use-modules ( gschem action ) )
+( use-modules ( schematic keymap ) )
+( use-modules ( schematic action ) )
 
 
 ; function: print-keymap()
@@ -35,7 +33,8 @@
   ( let*
     (
     ( action-str (format #f "~a" action) )
-    ( action-obj (eval-string action-str (current-module)) )
+    ( action-obj (eval-string action-str) )
+    ;             ^--- BLPP: do not pass #:module to eval-string()
     )
 
     ( format #t "~20t= ~a" action )
