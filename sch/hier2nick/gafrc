@@ -1,0 +1,7 @@
+( reset-component-library )
+( reset-source-library    )
+
+( component-library "sym" )
+( component-library "."   )
+( source-library    "."   )
+

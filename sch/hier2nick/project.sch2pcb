@@ -1,0 +1,7 @@
+schematics main.sch
+
+elements-dir fp
+
+output-name brd
+skip-m4
+

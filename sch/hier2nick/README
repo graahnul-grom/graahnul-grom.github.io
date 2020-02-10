@@ -1,0 +1,72 @@
+These are simple hierarchical schematics intended for testing
+of lepton-netlist tool from the Lepton EDA [1] suite and how
+it works with more than two levels of hierarchy.
+
+
+
+Files
+=====
+
+1. main.sch - main, top-level schematic
+2. cs.sch   - second-level schematic
+3. rr.sch   - third-level schematic
+
+Other files are listed at the end of the document
+in the 'Directory Structure' section.
+
+
+
+Test how netlist is generated
+=============================
+
+$ lepton-netlist -o - -g PCB main.sch
+
+Replace "PCB" with other backend you need to test.
+
+
+
+Test how printed circuit board files are produced
+=================================================
+
+$ lepton-sch2pcb project.sch2pcb
+
+This command should generate 3 output files:
+1) brd.cmd
+2) brd.net
+3) brd.pcb
+
+Open brd.pcb file in the pcb [2] layout editor and then
+click on the following main menu items:
+1. 'Select->Disperse all elements'
+2. 'File->Load netlist', select brd.net file and press OK
+
+Then press ":" and in the opened command prompt type:
+
+  ExecuteFile(brd.cmd)
+
+and press Enter.
+
+Click on the 'Connect->Optimize rats nest' main menu item
+and test if all the connections match the schematics.
+
+
+
+Directory Structure
+===================
+
+- board.done/: contains pcb files with complete, routed circuit board
+- fp/: contains pcb footprints used
+- img/: folder with exported schematic and pcb PNG images
+- sym/: symbols used in the schematic diagrams
+- overview.sch: the test circuit in one schematic file
+- cs.sym, rr.sym: symbols representing sub-schematics
+- gafrc, geda.conf: configuration files
+- project.sch2pcb: input file for lepton-sch2pcb
+
+
+
+Links
+=====
+[1] https://github.com/lepton-eda/lepton-eda
+[2] http://pcb.geda-project.org
+
