@@ -73,12 +73,6 @@ file in the component library.
 </p>
 <p>See <a href="Component-objects.html">Component objects</a>.
 </p>
-<p><strong>Note</strong>: In the gEDA C source code, these are normally called
-&ldquo;complex&rdquo; objects.  However, as Guile Scheme supports complex
-numbers, and the procedures related to working with complex numbers
-use the word &lsquo;<samp>complex</samp>&rsquo; to describe them, this API uses
-&lsquo;<samp>component</samp>&rsquo; to avoid ambiguity.
-</p>
 <p>The <var>position</var>, <var>angle</var> and <var>mirror</var> flag of a component
 indicates the transformation that was applied to the contents of the
 original symbol.  The transformation is applied in the following order:
@@ -154,6 +148,13 @@ of a component does not update the component&rsquo;s contents.
 <dl>
 <dt id="index-component_002dbasename">Function: <strong>component-basename</strong> <em>component</em></dt>
 <dd><p>Returns the basename of <var>component</var>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-component_002dfilename">Function: <strong>component-filename</strong> <em>component</em></dt>
+<dd><p>If a component object <var>component</var> has a symbol file
+associated with it, returns its full path, otherwise
+returns false (&lsquo;<samp>#f</samp>&rsquo;).
 </p></dd></dl>
 
 <dl>

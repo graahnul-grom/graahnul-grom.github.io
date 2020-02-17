@@ -151,9 +151,11 @@ this will return &lsquo;<samp>#f</samp>&rsquo;.
 </p></dd></dl>
 
 <dl>
-<dt id="index-config_002dload_0021">Function: <strong>config-load!</strong> <em>cfg</em></dt>
+<dt id="index-config_002dload_0021">Function: <strong>config-load!</strong> <em>cfg [force-load]</em></dt>
 <dd><p>Attempt to load configuration parameters for the context <var>cfg</var>
-from its associated file.
+from its associated file. If <var>force-load</var> keyword argument is true
+(&lsquo;<samp>#t</samp>&rsquo;), configuration will be reloaded even if it has already been
+loaded. By default, <var>force-load</var> is set to false (&lsquo;<samp>#f</samp>&rsquo;).
 </p></dd></dl>
 
 <dl>

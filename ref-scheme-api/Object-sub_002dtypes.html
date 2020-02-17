@@ -83,6 +83,14 @@ one of the following symbols:
 </li></ul>
 </dd></dl>
 
+<p><strong>Note</strong>: The word &lsquo;<samp>complex</samp>&rsquo; is only used in Scheme API to
+define component type for historical reasons, since before it was used
+in the gEDA C source code.  As Guile Scheme supports complex numbers,
+and the procedures related to working with complex numbers use the
+word &lsquo;<samp>complex</samp>&rsquo; to describe them, any other code of both Lepton C
+and Scheme API uses the word &lsquo;<samp>component</samp>&rsquo; instead to avoid
+ambiguity.
+</p>
 <dl>
 <dt id="index-object_002dtype_003f">Function: <strong>object-type?</strong> <em>object type</em></dt>
 <dd><p>Returns &lsquo;<samp>#t</samp>&rsquo; if and only if <var>object</var> is an <code>object</code> and
