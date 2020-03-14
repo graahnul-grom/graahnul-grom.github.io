@@ -10,7 +10,7 @@ The text of and illustrations in this document are licensed under a
 Creative Commons Attribution–Share Alike 3.0 Unported license
 ("CC-BY-SA"). An explanation of CC-BY-SA is available at
 http://creativecommons.org/licenses/by-sa/3.0/. The original
-authors of this document designate the gEDA Project as the
+authors of this document designate the Lepton EDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
@@ -87,12 +87,12 @@ other configuration contexts, including newly-created ones.
 should obtain the configuration context associated with a <var>path</var>.
 </p>
 <p><code>path-config-context</code> looks for a configuration file named
-<samp>geda.conf</samp>.  If <var>path</var> is not a directory, it is truncated,
-and then a file named <samp>geda.conf</samp> is looked for in that
+<samp>lepton.conf</samp>.  If <var>path</var> is not a directory, it is truncated,
+and then a file named <samp>lepton.conf</samp> is looked for in that
 directory.  If none is found, the parent directory is checked, and so
 on until a configuration file is found or the filesystem root is
 reached.  If no configuration file was found, the returned context
-will be associated with a <samp>geda.conf</samp> in the same directory as
+will be associated with a <samp>lepton.conf</samp> in the same directory as
 <var>path</var>.
 </p>
 <p><strong>Warning</strong>: Do not assume that the configuration file associated
@@ -121,7 +121,8 @@ be safely read without having to use <code>config-has-group?</code> and
 <dt id="index-system_002dconfig_002dcontext">Function: <strong>system-config-context</strong></dt>
 <dd><p>The system context is used for system-wide configuration.  Its parent
 context is the default context.  It is located by searching
-<code>sys-config-dirs</code> for a <samp>gEDA/geda-system.conf</samp> file.
+<code>sys-config-dirs</code> for a
+<samp>${prefix}/share/lepton-eda/lepton-system.conf</samp> file.
 </p>
 <p>Since 1.10.
 </p></dd></dl>
@@ -129,7 +130,7 @@ context is the default context.  It is located by searching
 <dl>
 <dt id="index-user_002dconfig_002dcontext">Function: <strong>user-config-context</strong></dt>
 <dd><p>The user context is used for user-specific configuration, and is
-loaded from <samp>geda-user.conf</samp> in <code>user-config-dir</code>.
+loaded from <samp>lepton-user.conf</samp> in <code>user-config-dir</code>.
 Its parent context is the system context.
 </p>
 <p>Since 1.10.

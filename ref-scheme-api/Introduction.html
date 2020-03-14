@@ -10,7 +10,7 @@ The text of and illustrations in this document are licensed under a
 Creative Commons Attribution–Share Alike 3.0 Unported license
 ("CC-BY-SA"). An explanation of CC-BY-SA is available at
 http://creativecommons.org/licenses/by-sa/3.0/. The original
-authors of this document designate the gEDA Project as the
+authors of this document designate the Lepton EDA Project as the
 "Attribution Party" for purposes of CC-BY-SA. In accordance with
 CC-BY-SA, if you distribute this document or an adaptation of it, you
 must provide the URL for the original version. -->
@@ -61,6 +61,13 @@ Next: <a href="Schematic-Document-Model.html" accesskey="n" rel="next">Schematic
 <hr>
 <span id="Introduction-1"></span><h2 class="unnumbered">Introduction</h2>
 
+<span id="About-Lepton-EDA"></span><h3 class="section">About Lepton EDA</h3>
+<p>Lepton EDA is a suite of free software tools for designing
+electronics. It provides schematic capture, netlisting into over 30
+netlist formats, and many other features. It was forked from the
+<a href="http://wiki.geda-project.org/geda:gaf">gEDA/gaf suite</a> (part of
+gEDA, please see below) by most of its main developers in late 2016.
+</p>
 <span id="About-gEDA"></span><h3 class="section">About gEDA</h3>
 
 <p><em>gEDA</em>, or <em>GPL Electronic Design Automation</em>, is a suite of
@@ -68,11 +75,7 @@ free software tools for designing electronics.  The gEDA project has
 produced and continues working on a full GPL&rsquo;d suite and toolkit of
 Electronic Design Automation (EDA) tools. These tools are used for
 electrical circuit design, schematic capture, simulation, prototyping,
-and production. Currently, the gEDA project offers a mature suite of
-free software applications for electronics design, including schematic
-capture, attribute management, bill of materials (BOM) generation,
-netlisting into over 20 netlist formats, analog and digital
-simulation, and printed circuit board (PCB) layout.
+and production.
 </p>
 <p>The gEDA project was started because of the lack of free EDA tools for
 POSIX systems with the primary purpose of advancing the state of free
@@ -80,10 +83,10 @@ hardware or open source hardware. The suite is mainly being developed
 on the GNU/Linux platform with some development effort going into
 making sure the tools run on other platforms as well.
 </p>
-<span id="About-the-gEDA-Scheme-API"></span><h3 class="section">About the gEDA Scheme API</h3>
+<span id="About-the-Lepton-EDA-Scheme-API"></span><h3 class="section">About the Lepton EDA Scheme API</h3>
 
-<p>The <em>gEDA Scheme API</em>, documented in this manual, is a set of
-Scheme functions which can be used to enhance gEDA applications by
+<p>The <em>Lepton EDA Scheme API</em>, documented in this manual, is a set of
+Scheme functions which can be used to enhance Lepton applications by
 adding new functionality or modify existing behaviour.
 </p>
 <p>Lepton EDA (formerly gEDA) has always used a Scheme interpreter for
@@ -92,10 +95,10 @@ lepton-schemactic (formerly gschem), and implementing netlist exporter
 backends in gnetlist.  However, for a long time the utility of
 embedding a Scheme interpreter was diminished by the lack of a
 low-level API for inspecting and modifying schematic documents.  The
-Scheme types and functions documented here were added to gEDA to
-address that need.
+Scheme types and functions documented here were added to gEDA and
+later to Lepton to address that need.
 </p>
-<p>gEDA uses the <em>Guile</em> Scheme implementation (otherwise known as
+<p>Lepton uses the <em>Guile</em> Scheme implementation (otherwise known as
 the <em>GNU Ubiquitous Intelligent Language for Extensions</em>) as its
 embedded Scheme.  For more information about Guile, please visit
 <a href="http://www.gnu.org/s/guile/">http://www.gnu.org/s/guile/</a>.
@@ -108,13 +111,13 @@ embedded Scheme.  For more information about Guile, please visit
 &lsquo;<samp>scheme-api</samp>&rsquo;.  It will help us to fix your bug quickly if you can
 describe in detail how to reproduce the bug.
 </p>
-<p>If you have a question about using gEDA, or about extending gEDA using
-Scheme, you may wish to send a message to one of the gEDA mailing
-lists.  You may also find additional information in the gEDA
-wiki.
-</p>
-<p>Both the mailing lists and wiki can be accessed from the main gEDA
-website: <a href="http://www.geda-project.org/">http://www.geda-project.org/</a>.
+<p>If you have a question about using Lepton EDA, or about extending
+Lepton using Scheme, you may wish to send a message to one of the gEDA
+mailing lists (&lsquo;<samp>geda-user</samp>&rsquo; or &lsquo;<samp>geda-help</samp>&rsquo;) which can be
+accessed from the main gEDA website:
+<a href="http://www.geda-project.org/">http://www.geda-project.org/</a>.  Currently, Lepton doesn&rsquo;t have
+an own mailing list. You may also find additional information in the
+<a href="https://github.com/lepton-eda/lepton-eda/wiki">Lepton EDA wiki</a>.
 </p>
 <span id="We-Need-Feedback_0021"></span><h3 class="section">We Need Feedback!</h3>
 
