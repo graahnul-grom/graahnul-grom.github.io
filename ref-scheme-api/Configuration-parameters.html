@@ -120,7 +120,8 @@ in the specified <var>group</var>.
 <dl>
 <dt id="index-config_002dremove_002dkey_0021">Function: <strong>config-remove-key!</strong> <em>cfg group key</em></dt>
 <dd><p>Removes the configuration parameter identified by the given <var>group</var>
-and <var>key</var> in the configuration context <var>cfg</var>.
+and <var>key</var> in the configuration context <var>cfg</var>. Returns &lsquo;<samp>#t</samp>&rsquo;
+on success, &lsquo;<samp>#f</samp>&rsquo; otherwise.
 </p>
 </dd></dl>
 
@@ -128,6 +129,7 @@ and <var>key</var> in the configuration context <var>cfg</var>.
 <dt id="index-config_002dremove_002dgroup_0021">Function: <strong>config-remove-group!</strong> <em>cfg group</em></dt>
 <dd><p>Removes the configuration group identified by <var>group</var>
 and all its parameters in the configuration context <var>cfg</var>.
+Returns &lsquo;<samp>#t</samp>&rsquo; on success, &lsquo;<samp>#f</samp>&rsquo; otherwise.
 </p>
 </dd></dl>
 
@@ -233,7 +235,7 @@ the following types are supported:
 <dt id="index-set_002dconfig_0021">Function: <strong>set-config!</strong> <em>cfg group key value</em></dt>
 <dd><p>Set the configuration parameter identified by the given <var>group</var>
 and <var>key</var> in the configuration context <var>cfg</var>.  The type of
-value to set is inferred from <var>value</var>.
+value to set is inferred from <var>value</var>. Returns <var>cfg</var>.
 </p>
 <p>Since 1.10.
 </p></dd></dl>

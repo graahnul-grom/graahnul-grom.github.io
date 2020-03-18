@@ -11,6 +11,7 @@
 
 
 require 'github/markup'
+require 'commonmarker'
 
 
 argc = ARGV.length
@@ -48,6 +49,12 @@ fd.printf( "%s\n", "code  { background-color: lightgray; }" )
 fd.printf( "%s\n", "</style>" )
 fd.printf( "%s\n", "</head><body>" )
 
+
+# fd.printf( "%s\n", CommonMarker.render_html( File.read(ifile),
+                                             # [:UNSAFE, :GITHUB_PRE_LANG, :TABLE_PREFER_STYLE_ATTRIBUTES] ) )
+                                             # [:DEFAULT] ) )
+
+# fd.printf( "%s\n", GitHub::Markup.render( ifile, File.read(ifile), options: [:UNSAFE, :GITHUB_PRE_LANG] ) )
 fd.printf( "%s\n", GitHub::Markup.render( ifile, File.read(ifile) ) )
 
 fd.printf( "%s\n", "</body></html>" )
