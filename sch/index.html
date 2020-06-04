@@ -87,5 +87,25 @@ schematic to test handling of symversion changes
 <br />
 <br />
 
+should raise this dialog box:
+<br />
+<br />
+<img src="symversion/symversion-dlg.png" />
+<br />
+<br />
+
+and produce the following log messages:
+<br />
+<br />
+<code>
+<nobr>WARNING: symversion_bad.sym (no refdes): could not parse symversion (XXX) in symbol file</nobr><br />
+<nobr>WARNING: symversion_none.sym (V2): could not parse attached symversion (XXX)</nobr><br />
+<nobr>WARNING: symversion_none.sym (V3): symversion attached, but absent inside symbol file</nobr><br />
+<nobr>WARNING: symversion_1.0.sym (V4): MAJOR symversion change (attached: 0.000 &lt; library: 1.000)</nobr><br />
+<nobr>WARNING: symversion_1.0.sym (V5): MAJOR symversion change (attached: 0.900 &lt; library: 1.000)</nobr><br />
+<nobr>WARNING: symversion_1.0.sym (V?): symbol is newer than symbol in library (1.100 &gt; 1.000)</nobr><br />
+<nobr>WARNING: symversion_1.1.sym (V7): minor symversion change (attached: 1.000 &lt; library: 1.100)</nobr><br />
+</code>
+
 </body>
 </html>
