@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>scm/select-locked.scm - Lepton EDA - graahnul-grom.github.io</title>
+<meta name="Generator" content="Vim/8.2">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="syntax" content="scheme">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="solarized">
+<style>
+<!--
+pre { font-family: monospace; color: #839496; background-color: #002b36; }
+body { font-family: monospace; color: #839496; background-color: #002b36; }
+* { font-size: 1em; }
+.Todo { color: #ff0000; background-color: #000000; padding-bottom: 1px; }
+.LineNr { color: #586e75; background-color: #073642; padding-bottom: 1px; }
+.schemeString { color: #d18ccb; }
+.schemeNumber { color: #61c8f7; }
+.guileSym { color: #37b88e; }
+.guileTrue { color: #32961e; background-color: #00252e; padding-bottom: 1px; }
+.guileFalse { color: #227abf; background-color: #002129; padding-bottom: 1px; }
+.gedaFunc { color: #e6e3e0; }
+.Comment { color: #586e75; }
+.Special { color: #dc322f; }
+.Identifier { color: #268bd2; }
+.Statement { color: #859900; }
+-->
+</style>
+
+<script>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+<body onload='JumpToLine();'>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr">  1 </span><span class="Comment">; file: select-locked.scm</span>
+<span id="L2" class="LineNr">  2 </span><span class="Comment">; type: lepton-schematic Guile script</span>
+<span id="L3" class="LineNr">  3 </span><span class="Comment">; version: 1.1</span>
+<span id="L4" class="LineNr">  4 </span><span class="Comment">; copyright (c) 2020 </span><span class="Todo">dmn</span><span class="Comment"> &lt;graahnul.grom@gmail.com&gt;</span>
+<span id="L5" class="LineNr">  5 </span><span class="Comment">; license: GPLv2+</span>
+<span id="L6" class="LineNr">  6 </span><span class="Comment">;</span>
+<span id="L7" class="LineNr">  7 </span><span class="Comment">; Select locked components with keyboard shortcuts:</span>
+<span id="L8" class="LineNr">  8 </span><span class="Comment">;   - select all locked components</span>
+<span id="L9" class="LineNr">  9 </span><span class="Comment">;   - select next locked component</span>
+<span id="L10" class="LineNr"> 10 </span><span class="Comment">;   - select locked component under mouse cursor</span>
+<span id="L11" class="LineNr"> 11 </span><span class="Comment">;</span>
+<span id="L12" class="LineNr"> 12 </span><span class="Comment">; Usage:</span>
+<span id="L13" class="LineNr"> 13 </span><span class="Comment">; 1) customize the shortcuts defined below if needed (for examples</span>
+<span id="L14" class="LineNr"> 14 </span><span class="Comment">;    see $PREFIX/share/lepton-eda/scheme/conf/schematic/keys.scm),</span>
+<span id="L15" class="LineNr"> 15 </span><span class="Comment">;    or comment out to disable</span>
+<span id="L16" class="LineNr"> 16 </span><span class="Comment">; 2) type in the &quot;:&quot; prompt or add it to your gschemrc file:</span>
+<span id="L17" class="LineNr"> 17 </span><span class="Comment">;    ( primitive-load &quot;/path/to/select-locked.scm&quot; )</span>
+<span id="L18" class="LineNr"> 18 </span><span class="Comment">;</span>
+<span id="L19" class="LineNr"> 19 </span><span class="Special">(</span> <span class="Statement">define</span> kbind-select-all          <span class="schemeString">&quot;&lt;Control&gt;&lt;Shift&gt;L&quot;</span> <span class="Special">)</span>
+<span id="L20" class="LineNr"> 20 </span><span class="Special">(</span> <span class="Statement">define</span> kbind-select-next         <span class="schemeString">&quot;&lt;Shift&gt;L&quot;</span> <span class="Special">)</span>
+<span id="L21" class="LineNr"> 21 </span><span class="Special">(</span> <span class="Statement">define</span> kbind-select-under-mouse  <span class="schemeString">&quot;&lt;Control&gt;L&quot;</span> <span class="Special">)</span>
+<span id="L22" class="LineNr"> 22 </span><span class="Special">(</span> <span class="Statement">define</span> verbose <span class="guileTrue">#t</span> <span class="Special">)</span> <span class="Comment">; replace &quot;#t&quot; with &quot;#f&quot; if needed</span>
+<span id="L23" class="LineNr"> 23 </span>
+<span id="L24" class="LineNr"> 24 </span>
+<span id="L25" class="LineNr"> 25 </span>
+<span id="L26" class="LineNr"> 26 </span><span class="Comment">; no user serviceable parts below:</span>
+<span id="L27" class="LineNr"> 27 </span><span class="Comment">;</span>
+<span id="L28" class="LineNr"> 28 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> srfi srfi-1 <span class="Special">)</span> <span class="Special">)</span> <span class="Comment">; find()</span>
+<span id="L29" class="LineNr"> 29 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton page <span class="Special">)</span> <span class="Special">)</span>
+<span id="L30" class="LineNr"> 30 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton object <span class="Special">)</span> <span class="Special">)</span>
+<span id="L31" class="LineNr"> 31 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton attrib <span class="Special">)</span> <span class="Special">)</span>
+<span id="L32" class="LineNr"> 32 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton <span class="Identifier">log</span> <span class="Special">)</span> <span class="Special">)</span>
+<span id="L33" class="LineNr"> 33 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> schematic window <span class="Special">)</span> <span class="Special">)</span>
+<span id="L34" class="LineNr"> 34 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> schematic selection <span class="Special">)</span> <span class="Special">)</span>
+<span id="L35" class="LineNr"> 35 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> schematic gui keymap <span class="Special">)</span> <span class="Special">)</span>
+<span id="L36" class="LineNr"> 36 </span>
+<span id="L37" class="LineNr"> 37 </span>
+<span id="L38" class="LineNr"> 38 </span>
+<span id="L39" class="LineNr"> 39 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> dbg-print-comps comps <span class="Special">)</span> <span class="Comment">; [</span><span class="Todo">DEBUG</span><span class="Comment">]</span>
+<span id="L40" class="LineNr"> 40 </span>  <span class="Special">(</span> <span class="Identifier">for-each</span>
+<span id="L41" class="LineNr"> 41 </span>  <span class="Special">(</span> <span class="Statement">lambda</span><span class="Special">(</span> comp <span class="Special">)</span>
+<span id="L42" class="LineNr"> 42 </span>    <span class="Special">(</span> <span class="Identifier">format</span> <span class="guileTrue">#t</span> <span class="schemeString">&quot;~a &quot;</span> <span class="Special">(</span><span class="gedaFunc">component-basename</span> comp<span class="Special">)</span> <span class="Special">)</span>
+<span id="L43" class="LineNr"> 43 </span>  <span class="Special">)</span>
+<span id="L44" class="LineNr"> 44 </span>    comps
+<span id="L45" class="LineNr"> 45 </span>  <span class="Special">)</span>
+<span id="L46" class="LineNr"> 46 </span>  <span class="Special">(</span> <span class="Identifier">format</span> <span class="guileTrue">#t</span> <span class="schemeString">&quot;~%&quot;</span> <span class="Special">)</span>
+<span id="L47" class="LineNr"> 47 </span><span class="Special">)</span>
+<span id="L48" class="LineNr"> 48 </span>
+<span id="L49" class="LineNr"> 49 </span>
+<span id="L50" class="LineNr"> 50 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> dbg-mk-box-around-comp comp <span class="Special">)</span> <span class="Comment">; [</span><span class="Todo">DEBUG</span><span class="Comment">]</span>
+<span id="L51" class="LineNr"> 51 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> non-txt-obj? o <span class="Special">)</span>
+<span id="L52" class="LineNr"> 52 </span>    <span class="Special">(</span> <span class="Identifier">not</span> <span class="Special">(</span><span class="gedaFunc">text?</span> o<span class="Special">)</span> <span class="Special">)</span>
+<span id="L53" class="LineNr"> 53 </span>  <span class="Special">)</span>
+<span id="L54" class="LineNr"> 54 </span><span class="Special">(</span> <span class="Statement">let*</span>
+<span id="L55" class="LineNr"> 55 </span>  <span class="Special">(</span>
+<span id="L56" class="LineNr"> 56 </span>  <span class="Special">(</span> cc <span class="Special">(</span> <span class="gedaFunc">component-contents</span> comp <span class="Special">)</span> <span class="Special">)</span>
+<span id="L57" class="LineNr"> 57 </span>  <span class="Special">(</span> oo <span class="Special">(</span> <span class="Identifier">filter</span> non-txt-obj? cc <span class="Special">)</span> <span class="Special">)</span>
+<span id="L58" class="LineNr"> 58 </span>  <span class="Special">(</span> bb <span class="Special">(</span> <span class="Identifier">map</span> <span class="gedaFunc">object-bounds</span> oo <span class="Special">)</span> <span class="Special">)</span>
+<span id="L59" class="LineNr"> 59 </span>  <span class="Special">(</span> bounds    <span class="Special">(</span> <span class="Identifier">apply</span> <span class="gedaFunc">fold-bounds</span> bb <span class="Special">)</span> <span class="Special">)</span>
+<span id="L60" class="LineNr"> 60 </span>  <span class="Special">(</span> top-left  <span class="Special">(</span> <span class="Identifier">car</span> bounds <span class="Special">)</span> <span class="Special">)</span>
+<span id="L61" class="LineNr"> 61 </span>  <span class="Special">(</span> bot-right <span class="Special">(</span> <span class="Identifier">cdr</span> bounds <span class="Special">)</span> <span class="Special">)</span>
+<span id="L62" class="LineNr"> 62 </span>  <span class="Special">(</span> box       <span class="Special">(</span> <span class="gedaFunc">make-box</span> top-left bot-right <span class="Special">)</span> <span class="Special">)</span>
+<span id="L63" class="LineNr"> 63 </span>  <span class="Special">)</span>
+<span id="L64" class="LineNr"> 64 </span>
+<span id="L65" class="LineNr"> 65 </span>  <span class="Comment">; 8: 'detached-attribute color:</span>
+<span id="L66" class="LineNr"> 66 </span>  <span class="Comment">;</span>
+<span id="L67" class="LineNr"> 67 </span>  <span class="Special">(</span> <span class="Identifier">false-if-exception</span> <span class="Special">(</span><span class="gedaFunc">set-object-color!</span> box <span class="schemeNumber">8</span><span class="Special">)</span> <span class="Special">)</span>
+<span id="L68" class="LineNr"> 68 </span>  <span class="Special">(</span> <span class="gedaFunc">page-append!</span> <span class="Special">(</span><span class="gedaFunc">active-page</span><span class="Special">)</span> box <span class="Special">)</span>
+<span id="L69" class="LineNr"> 69 </span>
+<span id="L70" class="LineNr"> 70 </span><span class="Special">)</span> <span class="Comment">; let</span>
+<span id="L71" class="LineNr"> 71 </span><span class="Special">)</span> <span class="Comment">; dbg-mk-box-around-comp()</span>
+<span id="L72" class="LineNr"> 72 </span>
+<span id="L73" class="LineNr"> 73 </span>
+<span id="L74" class="LineNr"> 74 </span>
+<span id="L75" class="LineNr"> 75 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> locked-obj? obj <span class="Special">)</span>
+<span id="L76" class="LineNr"> 76 </span>  <span class="Special">(</span> <span class="Identifier">not</span> <span class="Special">(</span><span class="gedaFunc">object-selectable?</span> obj<span class="Special">)</span> <span class="Special">)</span>
+<span id="L77" class="LineNr"> 77 </span><span class="Special">)</span>
+<span id="L78" class="LineNr"> 78 </span>
+<span id="L79" class="LineNr"> 79 </span>
+<span id="L80" class="LineNr"> 80 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> locked-comp? obj <span class="Special">)</span>
+<span id="L81" class="LineNr"> 81 </span>  <span class="Special">(</span> <span class="Statement">and</span> <span class="Special">(</span><span class="gedaFunc">component?</span> obj<span class="Special">)</span> <span class="Special">(</span>locked-obj? obj<span class="Special">)</span> <span class="Special">)</span>
+<span id="L82" class="LineNr"> 82 </span><span class="Special">)</span>
+<span id="L83" class="LineNr"> 83 </span>
+<span id="L84" class="LineNr"> 84 </span>
+<span id="L85" class="LineNr"> 85 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> locked-comps <span class="Special">)</span>
+<span id="L86" class="LineNr"> 86 </span>  <span class="Special">(</span> <span class="Identifier">filter</span> locked-comp? <span class="Special">(</span><span class="gedaFunc">page-contents</span> <span class="Special">(</span><span class="gedaFunc">active-page</span><span class="Special">))</span> <span class="Special">)</span>
+<span id="L87" class="LineNr"> 87 </span><span class="Special">)</span>
+<span id="L88" class="LineNr"> 88 </span>
+<span id="L89" class="LineNr"> 89 </span>
+<span id="L90" class="LineNr"> 90 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> deselect-all <span class="Special">)</span>
+<span id="L91" class="LineNr"> 91 </span>  <span class="Special">(</span> <span class="Identifier">for-each</span> <span class="gedaFunc">deselect-object!</span> <span class="Special">(</span><span class="gedaFunc">page-contents</span> <span class="Special">(</span><span class="gedaFunc">active-page</span><span class="Special">))</span> <span class="Special">)</span>
+<span id="L92" class="LineNr"> 92 </span><span class="Special">)</span>
+<span id="L93" class="LineNr"> 93 </span>
+<span id="L94" class="LineNr"> 94 </span>
+<span id="L95" class="LineNr"> 95 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> select-comp comp <span class="Special">)</span>
+<span id="L96" class="LineNr"> 96 </span>  <span class="Special">(</span> <span class="Statement">when</span> comp
+<span id="L97" class="LineNr"> 97 </span>    <span class="Special">(</span> <span class="gedaFunc">select-object!</span> comp <span class="Special">)</span>
+<span id="L98" class="LineNr"> 98 </span>    <span class="Special">(</span> <span class="Identifier">for-each</span>
+<span id="L99" class="LineNr"> 99 </span>      <span class="gedaFunc">select-object!</span>
+<span id="L100" class="LineNr">100 </span>      <span class="Special">(</span> <span class="gedaFunc">object-attribs</span> comp <span class="Special">)</span>
+<span id="L101" class="LineNr">101 </span>    <span class="Special">)</span>
+<span id="L102" class="LineNr">102 </span>  <span class="Special">)</span>
+<span id="L103" class="LineNr">103 </span><span class="Special">)</span>
+<span id="L104" class="LineNr">104 </span>
+<span id="L105" class="LineNr">105 </span>
+<span id="L106" class="LineNr">106 </span>
+<span id="L107" class="LineNr">107 </span>
+<span id="L108" class="LineNr">108 </span><span class="Comment">; public:</span>
+<span id="L109" class="LineNr">109 </span><span class="Comment">;</span>
+<span id="L110" class="LineNr">110 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> select-next-locked-comp <span class="Special">)</span>
+<span id="L111" class="LineNr">111 </span><span class="Special">(</span> <span class="Statement">let*</span>
+<span id="L112" class="LineNr">112 </span>  <span class="Special">(</span>
+<span id="L113" class="LineNr">113 </span>  <span class="Special">(</span> comps <span class="Special">(</span> locked-comps <span class="Special">)</span> <span class="Special">)</span>
+<span id="L114" class="LineNr">114 </span>  <span class="Special">(</span> len   <span class="Special">(</span> <span class="Identifier">length</span> comps <span class="Special">)</span> <span class="Special">)</span>
+<span id="L115" class="LineNr">115 </span>  <span class="Special">(</span> sel   <span class="Special">(</span> <span class="gedaFunc">page-selection</span> <span class="Special">(</span><span class="gedaFunc">active-page</span><span class="Special">)</span> <span class="Special">)</span> <span class="Special">)</span>
+<span id="L116" class="LineNr">116 </span>  <span class="Special">(</span> ndx   <span class="schemeNumber">0</span> <span class="Special">)</span>
+<span id="L117" class="LineNr">117 </span>  <span class="Special">(</span> comp <span class="guileFalse">#f</span> <span class="Special">)</span>
+<span id="L118" class="LineNr">118 </span>  <span class="Special">)</span>
+<span id="L119" class="LineNr">119 </span>
+<span id="L120" class="LineNr">120 </span>  <span class="Comment">; helper functions:</span>
+<span id="L121" class="LineNr">121 </span>
+<span id="L122" class="LineNr">122 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> print-msg i c <span class="Special">)</span> <span class="Comment">; i: index, c: component</span>
+<span id="L123" class="LineNr">123 </span>    <span class="Special">(</span> <span class="gedaFunc">log!</span> <span class="guileSym">'message</span>
+<span id="L124" class="LineNr">124 </span>      <span class="schemeString">&quot;select-locked: ~a of ~a (~a)~a&quot;</span>
+<span id="L125" class="LineNr">125 </span>      <span class="Special">(</span> <span class="schemeNumber">1+</span> i <span class="Special">)</span>
+<span id="L126" class="LineNr">126 </span>      len
+<span id="L127" class="LineNr">127 </span>      <span class="Special">(</span> <span class="gedaFunc">component-basename</span> c <span class="Special">)</span>
+<span id="L128" class="LineNr">128 </span>      <span class="Special">(</span> <span class="Statement">if</span> verbose
+<span id="L129" class="LineNr">129 </span>        <span class="schemeString">&quot;. press &lt;E E&gt; to edit, &lt;E Shift+L&gt; to unlock&quot;</span> <span class="Comment">; if</span>
+<span id="L130" class="LineNr">130 </span>        <span class="schemeString">&quot;&quot;</span>                                             <span class="Comment">; else</span>
+<span id="L131" class="LineNr">131 </span>      <span class="Special">)</span>
+<span id="L132" class="LineNr">132 </span>    <span class="Special">)</span>
+<span id="L133" class="LineNr">133 </span>  <span class="Special">)</span>
+<span id="L134" class="LineNr">134 </span>
+<span id="L135" class="LineNr">135 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> next-ndx i <span class="Special">)</span>
+<span id="L136" class="LineNr">136 </span>    <span class="Comment">; return:</span>
+<span id="L137" class="LineNr">137 </span>    <span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> <span class="Identifier">=</span> i <span class="Special">(</span><span class="schemeNumber">1-</span> len<span class="Special">)</span> <span class="Special">)</span>
+<span id="L138" class="LineNr">138 </span>      <span class="schemeNumber">0</span>        <span class="Comment">; if</span>
+<span id="L139" class="LineNr">139 </span>      <span class="Special">(</span> <span class="schemeNumber">1+</span> i <span class="Special">)</span> <span class="Comment">; else</span>
+<span id="L140" class="LineNr">140 </span>    <span class="Special">)</span>
+<span id="L141" class="LineNr">141 </span>  <span class="Special">)</span>
+<span id="L142" class="LineNr">142 </span>
+<span id="L143" class="LineNr">143 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> go? c <span class="Special">)</span>
+<span id="L144" class="LineNr">144 </span>    <span class="Comment">; return:</span>
+<span id="L145" class="LineNr">145 </span>    <span class="Special">(</span> <span class="Statement">or</span>
+<span id="L146" class="LineNr">146 </span>      <span class="Special">(</span> <span class="Identifier">null?</span> sel <span class="Special">)</span>                  <span class="Comment">; nothing selected</span>
+<span id="L147" class="LineNr">147 </span>      <span class="Special">(</span> <span class="Identifier">not</span> <span class="Special">(</span><span class="Identifier">find</span> locked-obj? sel<span class="Special">)</span> <span class="Special">)</span> <span class="Comment">; no locked comps selected</span>
+<span id="L148" class="LineNr">148 </span>      <span class="Special">(</span> <span class="gedaFunc">object-selected?</span> c <span class="Special">)</span>         <span class="Comment">; locked comp c selected</span>
+<span id="L149" class="LineNr">149 </span>    <span class="Special">)</span>
+<span id="L150" class="LineNr">150 </span>  <span class="Special">)</span>
+<span id="L151" class="LineNr">151 </span>
+<span id="L152" class="LineNr">152 </span>  <span class="Comment">; function's body:</span>
+<span id="L153" class="LineNr">153 </span>
+<span id="L154" class="LineNr">154 </span>  <span class="Special">(</span> <span class="Statement">when</span> <span class="Special">(</span> <span class="Identifier">null?</span> comps <span class="Special">)</span>
+<span id="L155" class="LineNr">155 </span>    <span class="Special">(</span> <span class="gedaFunc">log!</span> <span class="guileSym">'message</span> <span class="schemeString">&quot;select-locked: no locked components found&quot;</span> <span class="Special">)</span>
+<span id="L156" class="LineNr">156 </span>  <span class="Special">)</span>
+<span id="L157" class="LineNr">157 </span>
+<span id="L158" class="LineNr">158 </span>  <span class="Special">(</span> <span class="Statement">while</span> <span class="Special">(</span> <span class="Identifier">&lt;</span> ndx len <span class="Special">)</span>
+<span id="L159" class="LineNr">159 </span>    <span class="Special">(</span> <span class="Statement">set!</span> comp <span class="Special">(</span> <span class="Identifier">list-ref</span> comps ndx <span class="Special">)</span> <span class="Special">)</span>
+<span id="L160" class="LineNr">160 </span>
+<span id="L161" class="LineNr">161 </span>    <span class="Special">(</span> <span class="Statement">when</span> <span class="Special">(</span> go? comp <span class="Special">)</span>
+<span id="L162" class="LineNr">162 </span>      <span class="Special">(</span> deselect-all <span class="Special">)</span>
+<span id="L163" class="LineNr">163 </span>      <span class="Special">(</span> <span class="Statement">set!</span> comp <span class="Special">(</span><span class="Identifier">list-ref</span> comps <span class="Special">(</span>next-ndx ndx<span class="Special">)</span> <span class="Special">)</span> <span class="Special">)</span>
+<span id="L164" class="LineNr">164 </span>      <span class="Special">(</span> select-comp comp <span class="Special">)</span>
+<span id="L165" class="LineNr">165 </span>      <span class="Special">(</span> print-msg ndx comp <span class="Special">)</span>
+<span id="L166" class="LineNr">166 </span>      <span class="Special">(</span> <span class="Statement">break</span> <span class="Special">)</span>
+<span id="L167" class="LineNr">167 </span>    <span class="Special">)</span>
+<span id="L168" class="LineNr">168 </span>
+<span id="L169" class="LineNr">169 </span>    <span class="Special">(</span> <span class="Statement">set!</span> ndx <span class="Special">(</span><span class="schemeNumber">1+</span> ndx<span class="Special">)</span> <span class="Special">)</span>
+<span id="L170" class="LineNr">170 </span>  <span class="Special">)</span>
+<span id="L171" class="LineNr">171 </span>
+<span id="L172" class="LineNr">172 </span><span class="Special">)</span> <span class="Comment">; let</span>
+<span id="L173" class="LineNr">173 </span><span class="Special">)</span> <span class="Comment">; select-next-locked-comp()</span>
+<span id="L174" class="LineNr">174 </span>
+<span id="L175" class="LineNr">175 </span>
+<span id="L176" class="LineNr">176 </span>
+<span id="L177" class="LineNr">177 </span>
+<span id="L178" class="LineNr">178 </span><span class="Comment">; public:</span>
+<span id="L179" class="LineNr">179 </span><span class="Comment">;</span>
+<span id="L180" class="LineNr">180 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> select-all-locked-comps <span class="Special">)</span>
+<span id="L181" class="LineNr">181 </span><span class="Special">(</span> <span class="Statement">let</span>
+<span id="L182" class="LineNr">182 </span>  <span class="Special">(</span>
+<span id="L183" class="LineNr">183 </span>  <span class="Special">(</span> comps <span class="Special">(</span> locked-comps <span class="Special">)</span> <span class="Special">)</span>
+<span id="L184" class="LineNr">184 </span>  <span class="Special">)</span>
+<span id="L185" class="LineNr">185 </span>
+<span id="L186" class="LineNr">186 </span>  <span class="Special">(</span> <span class="Statement">unless</span> <span class="Special">(</span> <span class="Identifier">null?</span> comps <span class="Special">)</span>
+<span id="L187" class="LineNr">187 </span>    <span class="Special">(</span> deselect-all <span class="Special">)</span>
+<span id="L188" class="LineNr">188 </span>    <span class="Special">(</span> <span class="Identifier">for-each</span> select-comp comps <span class="Special">)</span>
+<span id="L189" class="LineNr">189 </span>  <span class="Special">)</span>
+<span id="L190" class="LineNr">190 </span>
+<span id="L191" class="LineNr">191 </span>  <span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> <span class="Identifier">null?</span> comps <span class="Special">)</span>
+<span id="L192" class="LineNr">192 </span>    <span class="Special">(</span> <span class="gedaFunc">log!</span> <span class="Comment">; if</span>
+<span id="L193" class="LineNr">193 </span>      <span class="guileSym">'message</span>
+<span id="L194" class="LineNr">194 </span>      <span class="schemeString">&quot;select-locked: no locked components found&quot;</span>
+<span id="L195" class="LineNr">195 </span>    <span class="Special">)</span>
+<span id="L196" class="LineNr">196 </span>    <span class="Special">(</span> <span class="gedaFunc">log!</span> <span class="Comment">; else</span>
+<span id="L197" class="LineNr">197 </span>      <span class="guileSym">'message</span>
+<span id="L198" class="LineNr">198 </span>      <span class="schemeString">&quot;select-locked: ~a locked component(s) selected~a&quot;</span>
+<span id="L199" class="LineNr">199 </span>      <span class="Special">(</span> <span class="Identifier">length</span> comps <span class="Special">)</span>
+<span id="L200" class="LineNr">200 </span>      <span class="Special">(</span> <span class="Statement">if</span> verbose <span class="schemeString">&quot;. press &lt;E Shift+L&gt; to unlock&quot;</span> <span class="schemeString">&quot;&quot;</span> <span class="Special">)</span>
+<span id="L201" class="LineNr">201 </span>    <span class="Special">)</span>
+<span id="L202" class="LineNr">202 </span>  <span class="Special">)</span>
+<span id="L203" class="LineNr">203 </span>
+<span id="L204" class="LineNr">204 </span>
+<span id="L205" class="LineNr">205 </span><span class="Special">)</span> <span class="Comment">; let</span>
+<span id="L206" class="LineNr">206 </span><span class="Special">)</span> <span class="Comment">; select-all-locked-comps()</span>
+<span id="L207" class="LineNr">207 </span>
+<span id="L208" class="LineNr">208 </span>
+<span id="L209" class="LineNr">209 </span>
+<span id="L210" class="LineNr">210 </span>
+<span id="L211" class="LineNr">211 </span><span class="Comment">; public:</span>
+<span id="L212" class="LineNr">212 </span><span class="Comment">;</span>
+<span id="L213" class="LineNr">213 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> select-locked-comp-under-mouse <span class="Special">)</span>
+<span id="L214" class="LineNr">214 </span>
+<span id="L215" class="LineNr">215 </span>  <span class="Comment">; helper functions:</span>
+<span id="L216" class="LineNr">216 </span>
+<span id="L217" class="LineNr">217 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> point-in-bounds? pt bounds <span class="Special">)</span>
+<span id="L218" class="LineNr">218 </span>  <span class="Special">(</span> <span class="Statement">let*</span>
+<span id="L219" class="LineNr">219 </span>    <span class="Special">(</span>
+<span id="L220" class="LineNr">220 </span>    <span class="Special">(</span> top-left  <span class="Special">(</span> <span class="Identifier">car</span> bounds <span class="Special">)</span> <span class="Special">)</span>
+<span id="L221" class="LineNr">221 </span>    <span class="Special">(</span> bot-right <span class="Special">(</span> <span class="Identifier">cdr</span> bounds <span class="Special">)</span> <span class="Special">)</span>
+<span id="L222" class="LineNr">222 </span>    <span class="Special">(</span> x1  <span class="Special">(</span> <span class="Identifier">car</span> top-left <span class="Special">)</span> <span class="Special">)</span>
+<span id="L223" class="LineNr">223 </span>    <span class="Special">(</span> x2  <span class="Special">(</span> <span class="Identifier">car</span> bot-right <span class="Special">)</span> <span class="Special">)</span>
+<span id="L224" class="LineNr">224 </span>    <span class="Special">(</span> y1  <span class="Special">(</span> <span class="Identifier">cdr</span> bot-right <span class="Special">)</span> <span class="Special">)</span>
+<span id="L225" class="LineNr">225 </span>    <span class="Special">(</span> y2  <span class="Special">(</span> <span class="Identifier">cdr</span> top-left <span class="Special">)</span> <span class="Special">)</span>
+<span id="L226" class="LineNr">226 </span>    <span class="Special">(</span> ptx <span class="Special">(</span> <span class="Identifier">car</span> pt <span class="Special">)</span> <span class="Special">)</span>
+<span id="L227" class="LineNr">227 </span>    <span class="Special">(</span> pty <span class="Special">(</span> <span class="Identifier">cdr</span> pt <span class="Special">)</span> <span class="Special">)</span>
+<span id="L228" class="LineNr">228 </span>    <span class="Special">)</span>
+<span id="L229" class="LineNr">229 </span>
+<span id="L230" class="LineNr">230 </span>    <span class="Comment">; return:</span>
+<span id="L231" class="LineNr">231 </span>    <span class="Special">(</span> <span class="Statement">and</span>
+<span id="L232" class="LineNr">232 </span>      <span class="Special">(</span> <span class="Identifier">&gt;=</span> ptx x1 <span class="Special">)</span> <span class="Special">(</span> <span class="Identifier">&lt;=</span> ptx x2 <span class="Special">)</span>
+<span id="L233" class="LineNr">233 </span>      <span class="Special">(</span> <span class="Identifier">&gt;=</span> pty y1 <span class="Special">)</span> <span class="Special">(</span> <span class="Identifier">&lt;=</span> pty y2 <span class="Special">)</span>
+<span id="L234" class="LineNr">234 </span>    <span class="Special">)</span>
+<span id="L235" class="LineNr">235 </span>
+<span id="L236" class="LineNr">236 </span>  <span class="Special">)</span> <span class="Comment">; let</span>
+<span id="L237" class="LineNr">237 </span>  <span class="Special">)</span> <span class="Comment">; point-in-bounds?()</span>
+<span id="L238" class="LineNr">238 </span>
+<span id="L239" class="LineNr">239 </span>
+<span id="L240" class="LineNr">240 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> comp-bounds c <span class="Special">)</span> <span class="Comment">; comp's bounds w/o attrs</span>
+<span id="L241" class="LineNr">241 </span>    <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> non-txt-obj? o <span class="Special">)</span>
+<span id="L242" class="LineNr">242 </span>        <span class="Special">(</span> <span class="Identifier">not</span> <span class="Special">(</span><span class="gedaFunc">text?</span> o<span class="Special">)</span> <span class="Special">)</span>
+<span id="L243" class="LineNr">243 </span>    <span class="Special">)</span>
+<span id="L244" class="LineNr">244 </span>  <span class="Special">(</span> <span class="Statement">let*</span>
+<span id="L245" class="LineNr">245 </span>    <span class="Special">(</span>
+<span id="L246" class="LineNr">246 </span>    <span class="Special">(</span> cc <span class="Special">(</span> <span class="gedaFunc">component-contents</span> c <span class="Special">)</span> <span class="Special">)</span>
+<span id="L247" class="LineNr">247 </span>    <span class="Special">(</span> oo <span class="Special">(</span> <span class="Identifier">filter</span> non-txt-obj? cc <span class="Special">)</span> <span class="Special">)</span>
+<span id="L248" class="LineNr">248 </span>    <span class="Special">(</span> bb <span class="Special">(</span> <span class="Identifier">map</span> <span class="gedaFunc">object-bounds</span> oo <span class="Special">)</span> <span class="Special">)</span>
+<span id="L249" class="LineNr">249 </span>    <span class="Special">)</span>
+<span id="L250" class="LineNr">250 </span>
+<span id="L251" class="LineNr">251 </span>    <span class="Comment">; return:</span>
+<span id="L252" class="LineNr">252 </span>    <span class="Special">(</span> <span class="Identifier">apply</span> <span class="gedaFunc">fold-bounds</span> bb <span class="Special">)</span>
+<span id="L253" class="LineNr">253 </span>
+<span id="L254" class="LineNr">254 </span>  <span class="Special">)</span> <span class="Comment">; let</span>
+<span id="L255" class="LineNr">255 </span>  <span class="Special">)</span> <span class="Comment">; comp-bounds()</span>
+<span id="L256" class="LineNr">256 </span>
+<span id="L257" class="LineNr">257 </span>
+<span id="L258" class="LineNr">258 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> comp-area c <span class="Special">)</span>
+<span id="L259" class="LineNr">259 </span>  <span class="Special">(</span> <span class="Statement">let*</span>
+<span id="L260" class="LineNr">260 </span>    <span class="Special">(</span>
+<span id="L261" class="LineNr">261 </span>    <span class="Special">(</span> bounds    <span class="Special">(</span> comp-bounds c <span class="Special">)</span> <span class="Special">)</span>
+<span id="L262" class="LineNr">262 </span>    <span class="Special">(</span> top-left  <span class="Special">(</span> <span class="Identifier">car</span> bounds <span class="Special">)</span> <span class="Special">)</span>
+<span id="L263" class="LineNr">263 </span>    <span class="Special">(</span> bot-right <span class="Special">(</span> <span class="Identifier">cdr</span> bounds <span class="Special">)</span> <span class="Special">)</span>
+<span id="L264" class="LineNr">264 </span>    <span class="Special">(</span> x1 <span class="Special">(</span> <span class="Identifier">car</span> top-left <span class="Special">)</span> <span class="Special">)</span>
+<span id="L265" class="LineNr">265 </span>    <span class="Special">(</span> x2 <span class="Special">(</span> <span class="Identifier">car</span> bot-right <span class="Special">)</span> <span class="Special">)</span>
+<span id="L266" class="LineNr">266 </span>    <span class="Special">(</span> y1 <span class="Special">(</span> <span class="Identifier">cdr</span> bot-right <span class="Special">)</span> <span class="Special">)</span>
+<span id="L267" class="LineNr">267 </span>    <span class="Special">(</span> y2 <span class="Special">(</span> <span class="Identifier">cdr</span> top-left <span class="Special">)</span> <span class="Special">)</span>
+<span id="L268" class="LineNr">268 </span>    <span class="Special">)</span>
+<span id="L269" class="LineNr">269 </span>
+<span id="L270" class="LineNr">270 </span>    <span class="Comment">; return:</span>
+<span id="L271" class="LineNr">271 </span>    <span class="Special">(</span> <span class="Identifier">*</span> <span class="Special">(</span><span class="Identifier">-</span> x2 x1<span class="Special">)</span> <span class="Special">(</span><span class="Identifier">-</span> y2 y1<span class="Special">)</span> <span class="Special">)</span>
+<span id="L272" class="LineNr">272 </span>
+<span id="L273" class="LineNr">273 </span>  <span class="Special">)</span> <span class="Comment">; let</span>
+<span id="L274" class="LineNr">274 </span>  <span class="Special">)</span> <span class="Comment">; comp-area()</span>
+<span id="L275" class="LineNr">275 </span>
+<span id="L276" class="LineNr">276 </span>
+<span id="L277" class="LineNr">277 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> less-area? c1 c2 <span class="Special">)</span>
+<span id="L278" class="LineNr">278 </span>    <span class="Special">(</span> <span class="Identifier">&lt;</span> <span class="Special">(</span>comp-area c1<span class="Special">)</span> <span class="Special">(</span>comp-area c2<span class="Special">)</span> <span class="Special">)</span>
+<span id="L279" class="LineNr">279 </span>  <span class="Special">)</span>
+<span id="L280" class="LineNr">280 </span>
+<span id="L281" class="LineNr">281 </span>
+<span id="L282" class="LineNr">282 </span>  <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> comp-under-mouse? c <span class="Special">)</span>
+<span id="L283" class="LineNr">283 </span>    <span class="Comment">; return:</span>
+<span id="L284" class="LineNr">284 </span>    <span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> <span class="Statement">and</span> <span class="Special">(</span><span class="gedaFunc">pointer-position</span><span class="Special">)</span> <span class="Special">(</span>comp-bounds c<span class="Special">)</span> <span class="Special">)</span>
+<span id="L285" class="LineNr">285 </span>      <span class="Special">(</span> point-in-bounds? <span class="Special">(</span><span class="gedaFunc">pointer-position</span><span class="Special">)</span> <span class="Special">(</span>comp-bounds c<span class="Special">)</span> <span class="Special">)</span> <span class="Comment">; if</span>
+<span id="L286" class="LineNr">286 </span>      <span class="guileFalse">#f</span>                                                      <span class="Comment">; else</span>
+<span id="L287" class="LineNr">287 </span>    <span class="Special">)</span>
+<span id="L288" class="LineNr">288 </span>  <span class="Special">)</span>
+<span id="L289" class="LineNr">289 </span>
+<span id="L290" class="LineNr">290 </span>  <span class="Comment">; function's body:</span>
+<span id="L291" class="LineNr">291 </span>
+<span id="L292" class="LineNr">292 </span><span class="Special">(</span> <span class="Statement">let*</span>
+<span id="L293" class="LineNr">293 </span>  <span class="Special">(</span>
+<span id="L294" class="LineNr">294 </span>  <span class="Comment">; sort comps =&gt; the smallest will be found first, not a title block:</span>
+<span id="L295" class="LineNr">295 </span>  <span class="Comment">;</span>
+<span id="L296" class="LineNr">296 </span>  <span class="Special">(</span> comps <span class="Special">(</span> <span class="Identifier">sort</span> <span class="Special">(</span>locked-comps<span class="Special">)</span> less-area? <span class="Special">)</span> <span class="Special">)</span>
+<span id="L297" class="LineNr">297 </span>  <span class="Special">(</span> comp  <span class="Special">(</span> <span class="Identifier">find</span> comp-under-mouse? comps <span class="Special">)</span> <span class="Special">)</span>
+<span id="L298" class="LineNr">298 </span>  <span class="Special">)</span>
+<span id="L299" class="LineNr">299 </span>
+<span id="L300" class="LineNr">300 </span>  <span class="Special">(</span> deselect-all <span class="Special">)</span>
+<span id="L301" class="LineNr">301 </span>
+<span id="L302" class="LineNr">302 </span>  <span class="Special">(</span> <span class="Statement">if</span> comp
+<span id="L303" class="LineNr">303 </span>    <span class="Special">(</span> select-comp comp <span class="Special">)</span> <span class="Comment">; if</span>
+<span id="L304" class="LineNr">304 </span>    <span class="Special">(</span> <span class="gedaFunc">log!</span> <span class="guileSym">'message</span>      <span class="Comment">; else</span>
+<span id="L305" class="LineNr">305 </span>      <span class="schemeString">&quot;select-locked: no locked component under mouse cursor&quot;</span> <span class="Special">)</span>
+<span id="L306" class="LineNr">306 </span>  <span class="Special">)</span>
+<span id="L307" class="LineNr">307 </span>
+<span id="L308" class="LineNr">308 </span><span class="Special">)</span> <span class="Comment">; let</span>
+<span id="L309" class="LineNr">309 </span><span class="Special">)</span> <span class="Comment">; select-locked-comp-under-mouse()</span>
+<span id="L310" class="LineNr">310 </span>
+<span id="L311" class="LineNr">311 </span>
+<span id="L312" class="LineNr">312 </span>
+<span id="L313" class="LineNr">313 </span>
+<span id="L314" class="LineNr">314 </span><span class="Comment">; top-level code:</span>
+<span id="L315" class="LineNr">315 </span><span class="Comment">;</span>
+<span id="L316" class="LineNr">316 </span><span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> <span class="Identifier">defined?</span> <span class="guileSym">'kbind-select-all</span> <span class="Special">)</span>
+<span id="L317" class="LineNr">317 </span>  <span class="Special">(</span> global-set-key kbind-select-all
+<span id="L318" class="LineNr">318 </span>                   <span class="guileSym">'select-all-locked-comps</span> <span class="Special">)</span>
+<span id="L319" class="LineNr">319 </span><span class="Special">)</span>
+<span id="L320" class="LineNr">320 </span>
+<span id="L321" class="LineNr">321 </span><span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> <span class="Identifier">defined?</span> <span class="guileSym">'kbind-select-next</span> <span class="Special">)</span>
+<span id="L322" class="LineNr">322 </span>  <span class="Special">(</span> global-set-key kbind-select-next
+<span id="L323" class="LineNr">323 </span>                   <span class="guileSym">'select-next-locked-comp</span> <span class="Special">)</span>
+<span id="L324" class="LineNr">324 </span><span class="Special">)</span>
+<span id="L325" class="LineNr">325 </span>
+<span id="L326" class="LineNr">326 </span><span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> <span class="Identifier">defined?</span> <span class="guileSym">'kbind-select-under-mouse</span> <span class="Special">)</span>
+<span id="L327" class="LineNr">327 </span>  <span class="Special">(</span> global-set-key kbind-select-under-mouse
+<span id="L328" class="LineNr">328 </span>                   <span class="guileSym">'select-locked-comp-under-mouse</span> <span class="Special">)</span>
+<span id="L329" class="LineNr">329 </span><span class="Special">)</span>
+<span id="L330" class="LineNr">330 </span>
+<span id="L331" class="LineNr">331 </span>
+<span id="L332" class="LineNr">332 </span><span class="Comment">; vim&#0058; ft=scheme tabstop=2 softtabstop=2 shiftwidth=2 expandtab</span>
+<span id="L333" class="LineNr">333 </span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
