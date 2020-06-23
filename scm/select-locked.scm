@@ -1,30 +1,36 @@
 ; file: select-locked.scm
 ; type: lepton-schematic Guile script
-; version: 1.1
+; version: 1.2
 ; copyright (c) 2020 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; Select locked components with keyboard shortcuts:
-;   - select all locked components
-;   - select next locked component
-;   - select locked component under mouse cursor
+; Extends lepton-schematic functionality by providing
+; keyboard shortcuts to select locked objects.
+;
+; - Ctrl+Shift+L: select all locked components
+; - Shift+L:      select next locked component
+; - Ctrl+L:       select locked component under the mouse cursor
 ;
 ; Usage:
-; 1) customize the shortcuts defined below if needed (for examples
-;    see $PREFIX/share/lepton-eda/scheme/conf/schematic/keys.scm),
-;    or comment out to disable
-; 2) type in the ":" prompt or add it to your gschemrc file:
-;    ( primitive-load "/path/to/select-locked.scm" )
+; Type in the ":" prompt or add this to your gschemrc file:
+;   ( primitive-load "/path/to/select-locked.scm" )
 ;
-( define kbind-select-all          "<Control><Shift>L" )
-( define kbind-select-next         "<Shift>L" )
-( define kbind-select-under-mouse  "<Control>L" )
-( define verbose #t ) ; replace "#t" with "#f" if needed
+; It's possible to use different keyboard shortcuts. Add the
+; following to the gschemrc file and modify key definitions:
+;
+; ( global-set-key "<Control><Shift>L" 'select-locked-all )
+; ( global-set-key "<Shift>L"          'select-locked-next )
+; ( global-set-key "<Control>L"        'select-locked-under-mouse )
+;
+
+; Replace "#t" with "#f" to get less verbose log messages:
+;
+( define select-locked:verbose #t )
 
 
 
 ; no user serviceable parts below:
-;
+
 ( use-modules ( srfi srfi-1 ) ) ; find()
 ( use-modules ( lepton page ) )
 ( use-modules ( lepton object ) )
@@ -36,70 +42,31 @@
 
 
 
-( define ( dbg-print-comps comps ) ; [DEBUG]
-  ( for-each
-  ( lambda( comp )
-    ( format #t "~a " (component-basename comp) )
-  )
-    comps
-  )
-  ( format #t "~%" )
-)
+( define ( select-locked:locked-comps ) ; private:
 
-
-( define ( dbg-mk-box-around-comp comp ) ; [DEBUG]
-  ( define ( non-txt-obj? o )
-    ( not (text? o) )
-  )
-( let*
-  (
-  ( cc ( component-contents comp ) )
-  ( oo ( filter non-txt-obj? cc ) )
-  ( bb ( map object-bounds oo ) )
-  ( bounds    ( apply fold-bounds bb ) )
-  ( top-left  ( car bounds ) )
-  ( bot-right ( cdr bounds ) )
-  ( box       ( make-box top-left bot-right ) )
+  ( define ( locked-comp? obj )
+    ( and
+      ( component? obj )
+      ( not (object-selectable? obj) )
+    )
   )
 
-  ; 8: 'detached-attribute color:
-  ;
-  ( false-if-exception (set-object-color! box 8) )
-  ( page-append! (active-page) box )
-
-) ; let
-) ; dbg-mk-box-around-comp()
-
-
-
-( define ( locked-obj? obj )
-  ( not (object-selectable? obj) )
-)
-
-
-( define ( locked-comp? obj )
-  ( and (component? obj) (locked-obj? obj) )
-)
-
-
-( define ( locked-comps )
+  ; return:
   ( filter locked-comp? (page-contents (active-page)) )
+
 )
 
 
-( define ( deselect-all )
+
+( define ( select-locked:deselect-all ) ; private:
   ( for-each deselect-object! (page-contents (active-page)) )
 )
 
 
-( define ( select-comp comp )
-  ( when comp
-    ( select-object! comp )
-    ( for-each
-      select-object!
-      ( object-attribs comp )
-    )
-  )
+
+( define ( select-locked:select-comp comp ) ; private:
+  ( select-object! comp )
+  ( for-each select-object! (object-attribs comp) )
 )
 
 
@@ -107,10 +74,43 @@
 
 ; public:
 ;
-( define ( select-next-locked-comp )
+( define ( select-locked-all )
+( let
+  (
+  ( comps ( select-locked:locked-comps ) )
+  )
+
+  ( unless ( null? comps )
+    ( select-locked:deselect-all )
+    ( for-each select-locked:select-comp comps )
+  )
+
+  ( if ( null? comps )
+    ( log! ; if
+      'message
+      "select-locked: no locked components found"
+    )
+    ( log! ; else
+      'message
+      "select-locked: ~a locked component(s) selected~a"
+      ( length comps )
+      ( if select-locked:verbose ". press <E Shift+L> to unlock" "" )
+    )
+  )
+
+
+) ; let
+) ; select-locked-all()
+
+
+
+
+; public:
+;
+( define ( select-locked-next )
 ( let*
   (
-  ( comps ( locked-comps ) )
+  ( comps ( select-locked:locked-comps ) )
   ( len   ( length comps ) )
   ( sel   ( page-selection (active-page) ) )
   ( ndx   0 )
@@ -125,12 +125,13 @@
       ( 1+ i )
       len
       ( component-basename c )
-      ( if verbose
+      ( if select-locked:verbose
         ". press <E E> to edit, <E Shift+L> to unlock" ; if
         ""                                             ; else
       )
     )
   )
+
 
   ( define ( next-ndx i )
     ; return:
@@ -139,6 +140,12 @@
       ( 1+ i ) ; else
     )
   )
+
+  ( define ( locked-obj? obj )
+    ; return:
+    ( not (object-selectable? obj) )
+  )
+
 
   ( define ( go? c )
     ; return:
@@ -159,9 +166,9 @@
     ( set! comp ( list-ref comps ndx ) )
 
     ( when ( go? comp )
-      ( deselect-all )
+      ( select-locked:deselect-all )
       ( set! comp (list-ref comps (next-ndx ndx) ) )
-      ( select-comp comp )
+      ( select-locked:select-comp comp )
       ( print-msg ndx comp )
       ( break )
     )
@@ -170,47 +177,14 @@
   )
 
 ) ; let
-) ; select-next-locked-comp()
+) ; select-locked-next()
 
 
 
 
 ; public:
 ;
-( define ( select-all-locked-comps )
-( let
-  (
-  ( comps ( locked-comps ) )
-  )
-
-  ( unless ( null? comps )
-    ( deselect-all )
-    ( for-each select-comp comps )
-  )
-
-  ( if ( null? comps )
-    ( log! ; if
-      'message
-      "select-locked: no locked components found"
-    )
-    ( log! ; else
-      'message
-      "select-locked: ~a locked component(s) selected~a"
-      ( length comps )
-      ( if verbose ". press <E Shift+L> to unlock" "" )
-    )
-  )
-
-
-) ; let
-) ; select-all-locked-comps()
-
-
-
-
-; public:
-;
-( define ( select-locked-comp-under-mouse )
+( define ( select-locked-under-mouse )
 
   ; helper functions:
 
@@ -237,19 +211,35 @@
   ) ; point-in-bounds?()
 
 
-  ( define ( comp-bounds c ) ; comp's bounds w/o attrs
+  ( define ( comp-contents c ) ; {pre}: [c] is not a placeholder
     ( define ( non-txt-obj? o )
         ( not (text? o) )
     )
   ( let*
     (
-    ( cc ( component-contents c ) )
+    ( cc ( component-contents c ) ) ; NOTE: empty list for placeholders
     ( oo ( filter non-txt-obj? cc ) )
+    )
+
+    ; return:
+    ( if ( null? oo )
+      cc ; if
+      oo ; else
+    )
+
+  ) ; let
+  ) ; comp-contents()
+
+
+  ( define ( comp-bounds c )
+  ( let*
+    (
+    ( oo ( comp-contents c ) )
     ( bb ( map object-bounds oo ) )
     )
 
     ; return:
-    ( apply fold-bounds bb )
+    ( apply fold-bounds bb ) ; NOTE: returns #f if bb is empty list
 
   ) ; let
   ) ; comp-bounds()
@@ -287,46 +277,43 @@
     )
   )
 
+  ( define ( comp-not-empty? c ) ; i.e. not a placeholder
+    ( not ( null? (comp-contents c) ) )
+  )
+
   ; function's body:
 
 ( let*
   (
-  ; sort comps => the smallest will be found first, not a title block:
   ;
-  ( comps ( sort (locked-comps) less-area? ) )
-  ( comp  ( find comp-under-mouse? comps ) )
+  ; - filter out placeholders
+  ; - sort => the smallest will be found first, and not e.g. title
+  ;
+  ( locked-comps    ( select-locked:locked-comps ) )
+  ( non-empty-comps ( filter comp-not-empty? locked-comps ) )
+  ( comps           ( sort non-empty-comps less-area? ) )
+  ( comp            ( find comp-under-mouse? comps ) )
   )
 
-  ( deselect-all )
+  ( select-locked:deselect-all )
 
   ( if comp
-    ( select-comp comp ) ; if
-    ( log! 'message      ; else
+    ( select-locked:select-comp comp ) ; if
+    ( log! 'message                    ; else
       "select-locked: no locked component under mouse cursor" )
   )
 
 ) ; let
-) ; select-locked-comp-under-mouse()
+) ; select-locked-under-mouse()
 
 
 
 
 ; top-level code:
 ;
-( if ( defined? 'kbind-select-all )
-  ( global-set-key kbind-select-all
-                   'select-all-locked-comps )
-)
-
-( if ( defined? 'kbind-select-next )
-  ( global-set-key kbind-select-next
-                   'select-next-locked-comp )
-)
-
-( if ( defined? 'kbind-select-under-mouse )
-  ( global-set-key kbind-select-under-mouse
-                   'select-locked-comp-under-mouse )
-)
+( global-set-key "<Control><Shift>L" 'select-locked-all )
+( global-set-key "<Shift>L"          'select-locked-next )
+( global-set-key "<Control>L"        'select-locked-under-mouse )
 
 
 ; vim: ft=scheme tabstop=2 softtabstop=2 shiftwidth=2 expandtab
