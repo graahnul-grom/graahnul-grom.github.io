@@ -1,6 +1,6 @@
 ; file: select-locked.scm
 ; type: lepton-schematic Guile script
-; version: 1.2
+; version: 1.3
 ; copyright (c) 2020 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
@@ -25,7 +25,7 @@
 
 ; Replace "#t" with "#f" to get less verbose log messages:
 ;
-( define select-locked:verbose #t )
+( define verbose #t )
 
 
 
@@ -36,13 +36,16 @@
 ( use-modules ( lepton object ) )
 ( use-modules ( lepton attrib ) )
 ( use-modules ( lepton log ) )
+( use-modules ( lepton config ) )
 ( use-modules ( schematic window ) )
 ( use-modules ( schematic selection ) )
 ( use-modules ( schematic gui keymap ) )
 
 
 
-( define ( select-locked:locked-comps ) ; private:
+; private:
+;
+( define ( locked-comps )
 
   ( define ( locked-comp? obj )
     ( and
@@ -51,20 +54,25 @@
     )
   )
 
+
   ; return:
   ( filter locked-comp? (page-contents (active-page)) )
 
-)
+) ; locked-comps()
 
 
 
-( define ( select-locked:deselect-all ) ; private:
+; private:
+;
+( define ( deselect-all )
   ( for-each deselect-object! (page-contents (active-page)) )
 )
 
 
 
-( define ( select-locked:select-comp comp ) ; private:
+; private:
+;
+( define ( select-comp comp )
   ( select-object! comp )
   ( for-each select-object! (object-attribs comp) )
 )
@@ -77,12 +85,12 @@
 ( define ( select-locked-all )
 ( let
   (
-  ( comps ( select-locked:locked-comps ) )
+  ( comps ( locked-comps ) )
   )
 
   ( unless ( null? comps )
-    ( select-locked:deselect-all )
-    ( for-each select-locked:select-comp comps )
+    ( deselect-all )
+    ( for-each select-comp comps )
   )
 
   ( if ( null? comps )
@@ -94,7 +102,7 @@
       'message
       "select-locked: ~a locked component(s) selected~a"
       ( length comps )
-      ( if select-locked:verbose ". press <E Shift+L> to unlock" "" )
+      ( if verbose ". press <E Shift+L> to unlock" "" )
     )
   )
 
@@ -110,7 +118,7 @@
 ( define ( select-locked-next )
 ( let*
   (
-  ( comps ( select-locked:locked-comps ) )
+  ( comps ( locked-comps ) )
   ( len   ( length comps ) )
   ( sel   ( page-selection (active-page) ) )
   ( ndx   0 )
@@ -125,7 +133,7 @@
       ( 1+ i )
       len
       ( component-basename c )
-      ( if select-locked:verbose
+      ( if verbose
         ". press <E E> to edit, <E Shift+L> to unlock" ; if
         ""                                             ; else
       )
@@ -166,9 +174,9 @@
     ( set! comp ( list-ref comps ndx ) )
 
     ( when ( go? comp )
-      ( select-locked:deselect-all )
+      ( deselect-all )
       ( set! comp (list-ref comps (next-ndx ndx) ) )
-      ( select-locked:select-comp comp )
+      ( select-comp comp )
       ( print-msg ndx comp )
       ( break )
     )
@@ -178,6 +186,110 @@
 
 ) ; let
 ) ; select-locked-next()
+
+
+
+
+; private:
+; see liblepton/src/geda_component_object.c:
+;     create_placeholder_small()
+;
+( define ( placeholder-bounds-small c )
+( let*
+  (
+  ( pt ( component-position c ) )
+  ( x ( car pt ) )
+  ( y ( cdr pt ) )
+  ( bounds1 ( cons (cons x (+ y 50)) (cons (+ x 50) y) ) )
+  ( str ( component-basename c ) )
+  ( txt
+    ( make-text
+      (cons (+ x 100) (+ y 100)) 'lower-left 0 str 6 #t 'both ) )
+  ( bounds2 ( object-bounds txt ) )
+  )
+
+  ; return:
+  ( fold-bounds bounds1 bounds2 )
+
+) ; let
+) ; placeholder-bounds-small()
+
+
+; private:
+; see liblepton/src/geda_component_object.c:
+;     create_placeholder_classic()
+;
+( define ( placeholder-bounds-big c )
+( let*
+  (
+  ( pt ( component-position c ) )
+  ( x ( car pt ) )
+  ( y ( cdr pt ) )
+  ( bounds1 ( cons (cons x (+ y 100)) (cons (+ x 100) y) ) )
+  ( str
+    ( format #f "Component not found:\n~a" (component-basename c) ) )
+  ( txt
+    ( make-text
+      (cons (+ x 100) (+ y 100)) 'lower-left 0 str 8 #t 'both ) )
+  ( bounds2 ( object-bounds txt ) )
+  ( b2-top-left  ( car bounds2 ) )
+  ( b2-bot-right ( cdr bounds2 ) )
+  ( x1 ( car b2-top-left ) )
+  ( x2 ( car b2-bot-right ) )
+  ( dx ( / (- x2 x1) 4 ) )
+  ( y1 ( cdr b2-top-left ) )
+  ( dy 100 )
+  ( triangle-top-left  ( cons (+ x1 dx) (+ y1 dy 500) ) )
+  ( triangle-bot-right ( cons (+ x1 dx 600) (+ y1 dy) ) )
+  ( bounds3 ( cons triangle-top-left triangle-bot-right ) )
+  )
+
+  ; [debug]:
+  ; ( page-append! (active-page)
+    ; ( make-box (car bounds1) (cdr bounds1) ) )
+  ; ( page-append! (active-page)
+    ; ( make-box (car bounds2) (cdr bounds2) ) )
+  ; ( page-append! (active-page)
+    ; ( make-box (car bounds3) (cdr bounds3) ) )
+  ; ( bb ( fold-bounds bounds1 bounds2 bounds3 ) )
+  ; ( page-append! (active-page) (make-box (car bb) (cdr bb)) )
+
+  ; return:
+  ( fold-bounds bounds1 bounds2 bounds3 )
+
+) ; let
+) ; placeholder-bounds-big()
+
+
+; private:
+;
+( define ( placeholder-bounds c )
+( let*
+  (
+  ( cfg ( path-config-context (getcwd) ) )
+  ( small #t )
+  )
+
+  ( catch #t
+    ( lambda()
+      ( set! small
+        ( config-boolean cfg "schematic.gui" "small-placeholders" )
+      )
+    )
+    ( lambda( ex . args )
+      ( log! 'message
+        "select-locked: assuming small placeholders used" )
+    )
+  )
+
+  ; return:
+  ( if small
+    ( placeholder-bounds-small c ) ; if
+    ( placeholder-bounds-big c )   ; else
+  )
+
+) ; let
+) ; placeholder-bounds()
 
 
 
@@ -217,7 +329,7 @@
     )
   ( let*
     (
-    ( cc ( component-contents c ) ) ; NOTE: empty list for placeholders
+    ( cc ( component-contents c ) )
     ( oo ( filter non-txt-obj? cc ) )
     )
 
@@ -231,18 +343,19 @@
   ) ; comp-contents()
 
 
+  ( define ( placeholder? c )
+    ( null? (component-contents c) )
+  )
+
+
   ( define ( comp-bounds c )
-  ( let*
-    (
-    ( oo ( comp-contents c ) )
-    ( bb ( map object-bounds oo ) )
-    )
-
     ; return:
-    ( apply fold-bounds bb ) ; NOTE: returns #f if bb is empty list
-
-  ) ; let
-  ) ; comp-bounds()
+    ( if ( placeholder? c )
+      ( placeholder-bounds c ) ; if
+      ( apply fold-bounds      ; else
+        ( map object-bounds (comp-contents c) ) )
+    )
+  )
 
 
   ( define ( comp-area c )
@@ -277,30 +390,24 @@
     )
   )
 
-  ( define ( comp-not-empty? c ) ; i.e. not a placeholder
-    ( not ( null? (comp-contents c) ) )
-  )
 
   ; function's body:
 
 ( let*
   (
   ;
-  ; - filter out placeholders
   ; - sort => the smallest will be found first, and not e.g. title
   ;
-  ( locked-comps    ( select-locked:locked-comps ) )
-  ( non-empty-comps ( filter comp-not-empty? locked-comps ) )
-  ( comps           ( sort non-empty-comps less-area? ) )
-  ( comp            ( find comp-under-mouse? comps ) )
+  ( comps ( sort (locked-comps) less-area? ) )
+  ( comp  ( find comp-under-mouse? comps ) )
   )
 
-  ( select-locked:deselect-all )
+  ( deselect-all )
 
   ( if comp
-    ( select-locked:select-comp comp ) ; if
-    ( log! 'message                    ; else
-      "select-locked: no locked component under mouse cursor" )
+    ( select-comp comp ) ; if
+    ( log! 'message      ; else
+      "select-locked: no locked components under mouse" )
   )
 
 ) ; let
