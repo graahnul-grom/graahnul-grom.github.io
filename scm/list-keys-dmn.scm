@@ -1,9 +1,13 @@
 ; file: list-keys-dmn.scm
+; type: lepton-schematic Guile script
+; version: 1.1
 ; copyright (c) 2019-2020 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; print current lepton-schematic key bindings to stdout
-; usage: type the following in the ":" prompt (or File->REPL):
+; Prints current lepton-schematic key bindings to stdout
+;
+; Usage:
+; Run lepton-schematic in terminal and type in File->REPL:
 ;   ( primitive-load "/path/to/list-keys-dmn.scm" )
 ;
 
@@ -29,17 +33,28 @@
     ( format #t "~a" (key->display-string key) )
   )
 
+  ; NOTE: BLPP: do not pass #:module to eval-string()
+  ;
   ( define ( print-action action )
   ( let*
     (
-    ( action-str (format #f "~a" action) )
-    ( action-obj (eval-string action-str) )
-    ;             ^--- BLPP: do not pass #:module to eval-string()
+    ( action-str     (format #f "~a" action) )
+    ( action-sym-str (format #f "'~a" action-str) )
+    ( action-sym     (eval-string action-sym-str) )
+    ; perform check to avoid "undefined sym" error, e.g.
+    ; if key is bound to undefined action:
+    ( action-obj
+      ( if ( defined? action-sym )
+        ( eval-string action-str ) ; if
+        #f                         ; else
+      )
+    )
     )
 
     ( format #t "~20t= ~a" action )
     ( if ( action? action-obj )
-      ( format #t " (~a)" ( action-property action-obj 'label ) )
+      ( format #t " (~a)" ( action-property action-obj 'label ) ) ; if
+      ; debug: ( format #t " ---------- NOT AN ACTION" )          ; else
     )
     ( format #t "~%" )
   )
