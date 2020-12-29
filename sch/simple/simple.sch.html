@@ -19,28 +19,56 @@ body { font-family: monospace; color: #839496; background-color: #002b36; }
 -->
 </style>
 
+<script>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
 </head>
 <body onload='JumpToLine();'>
 <pre id='vimCodeElement'>
-<span id="L1" class="LineNr"> 1 </span>v <span class="Number">20200604</span> <span class="Number">2</span>
+<span id="L1" class="LineNr"> 1 </span>v <span class="Number">20201211</span> <span class="Number">2</span>
 <span id="L2" class="LineNr"> 2 </span>C <span class="Number">41800</span> <span class="Number">42700</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> resistor-<span class="Float">1.</span>sym
 <span id="L3" class="LineNr"> 3 </span>{
 <span id="L4" class="LineNr"> 4 </span>T <span class="Number">42100</span> <span class="Number">43100</span> <span class="Number">5</span> <span class="Number">10</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L5" class="LineNr"> 5 </span>device=RESISTOR
 <span id="L6" class="LineNr"> 6 </span>T <span class="Number">42200</span> <span class="Number">43000</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">3</span> <span class="Number">1</span>
 <span id="L7" class="LineNr"> 7 </span>refdes=R1
-<span id="L8" class="LineNr"> 8 </span>T <span class="Number">42000</span> <span class="Number">42500</span> <span class="Number">1</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">2</span> <span class="Number">1</span>
+<span id="L8" class="LineNr"> 8 </span>T <span class="Number">42000</span> <span class="Number">42300</span> <span class="Number">1</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L9" class="LineNr"> 9 </span>footprint=<span class="Float">1206.f</span>p
-<span id="L10" class="LineNr">10 </span>T <span class="Number">42000</span> <span class="Number">42650</span> <span class="Number">5</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">2</span> <span class="Number">1</span>
+<span id="L10" class="LineNr">10 </span>T <span class="Number">42000</span> <span class="Number">42500</span> <span class="Number">5</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L11" class="LineNr">11 </span>value=<span class="Number">500</span>
 <span id="L12" class="LineNr">12 </span>}
 <span id="L13" class="LineNr">13 </span>C <span class="Number">40800</span> <span class="Number">41500</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> vdc-<span class="Float">1.</span>sym
 <span id="L14" class="LineNr">14 </span>{
-<span id="L15" class="LineNr">15 </span>T <span class="Number">41500</span> <span class="Number">41950</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L15" class="LineNr">15 </span>T <span class="Number">41500</span> <span class="Number">42000</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L16" class="LineNr">16 </span>refdes=V1
 <span id="L17" class="LineNr">17 </span>T <span class="Number">41500</span> <span class="Number">42350</span> <span class="Number">5</span> <span class="Number">10</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L18" class="LineNr">18 </span>device=VOLTAGE_SOURCE
-<span id="L19" class="LineNr">19 </span>T <span class="Number">41400</span> <span class="Number">41750</span> <span class="Number">5</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L19" class="LineNr">19 </span>T <span class="Number">41400</span> <span class="Number">41800</span> <span class="Number">5</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L20" class="LineNr">20 </span>value=DC 1V
 <span id="L21" class="LineNr">21 </span>T <span class="Number">41400</span> <span class="Number">41600</span> <span class="Number">1</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L22" class="LineNr">22 </span>footprint=HEADER2_1.fp
@@ -58,9 +86,9 @@ body { font-family: monospace; color: #839496; background-color: #002b36; }
 <span id="L34" class="LineNr">34 </span>device=RESISTOR
 <span id="L35" class="LineNr">35 </span>T <span class="Number">43500</span> <span class="Number">43000</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">3</span> <span class="Number">1</span>
 <span id="L36" class="LineNr">36 </span>refdes=R2
-<span id="L37" class="LineNr">37 </span>T <span class="Number">43300</span> <span class="Number">42500</span> <span class="Number">1</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">2</span> <span class="Number">1</span>
+<span id="L37" class="LineNr">37 </span>T <span class="Number">43300</span> <span class="Number">42300</span> <span class="Number">1</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L38" class="LineNr">38 </span>footprint=<span class="Float">1206.f</span>p
-<span id="L39" class="LineNr">39 </span>T <span class="Number">43300</span> <span class="Number">42650</span> <span class="Number">5</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">2</span> <span class="Number">1</span>
+<span id="L39" class="LineNr">39 </span>T <span class="Number">43300</span> <span class="Number">42500</span> <span class="Number">5</span> <span class="Number">8</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L40" class="LineNr">40 </span>value=<span class="Number">500</span>
 <span id="L41" class="LineNr">41 </span>}
 <span id="L42" class="LineNr">42 </span>N <span class="Number">43100</span> <span class="Number">42800</span> <span class="Number">42700</span> <span class="Number">42800</span> <span class="Number">4</span>
