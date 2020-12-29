@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>sch/hier/main.sch - Lepton EDA - graahnul-grom.github.io</title>
-<meta name="Generator" content="Vim/8.1">
+<meta name="Generator" content="Vim/8.2">
 <meta name="plugin-version" content="vim8.1_v2">
 <meta name="syntax" content="c">
 <meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
@@ -19,20 +19,48 @@ body { font-family: monospace; color: #839496; background-color: #002b36; }
 -->
 </style>
 
+<script>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
 </head>
-<body>
+<body onload='JumpToLine();'>
 <pre id='vimCodeElement'>
-<span id="L1" class="LineNr"> 1 </span>v <span class="Number">20191003</span> <span class="Number">2</span>
+<span id="L1" class="LineNr"> 1 </span>v <span class="Number">20201211</span> <span class="Number">2</span>
 <span id="L2" class="LineNr"> 2 </span>C <span class="Number">36900</span> <span class="Number">12100</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> sym-gnd.sym
 <span id="L3" class="LineNr"> 3 </span>C <span class="Number">36700</span> <span class="Number">12500</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> sym-vdc.sym
 <span id="L4" class="LineNr"> 4 </span>{
-<span id="L5" class="LineNr"> 5 </span>T <span class="Number">37400</span> <span class="Number">13150</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L5" class="LineNr"> 5 </span>T <span class="Number">37400</span> <span class="Number">13100</span> <span class="Number">21</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L6" class="LineNr"> 6 </span>refdes=V1
 <span id="L7" class="LineNr"> 7 </span>T <span class="Number">37400</span> <span class="Number">13350</span> <span class="Number">5</span> <span class="Number">10</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L8" class="LineNr"> 8 </span>device=VOLTAGE_SOURCE
 <span id="L9" class="LineNr"> 9 </span>T <span class="Number">37400</span> <span class="Number">13550</span> <span class="Number">1</span> <span class="Number">10</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L10" class="LineNr">10 </span>footprint=none
-<span id="L11" class="LineNr">11 </span>T <span class="Number">37400</span> <span class="Number">12950</span> <span class="Number">5</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
+<span id="L11" class="LineNr">11 </span>T <span class="Number">37400</span> <span class="Number">12900</span> <span class="Number">5</span> <span class="Number">10</span> <span class="Number">1</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L12" class="LineNr">12 </span>value=DC 1V
 <span id="L13" class="LineNr">13 </span>T <span class="Number">37200</span> <span class="Number">12700</span> <span class="Number">1</span> <span class="Number">6</span> <span class="Number">1</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">0</span> <span class="Number">1</span>
 <span id="L14" class="LineNr">14 </span>footprint=CONNECTOR <span class="Number">1</span> <span class="Float">2.f</span>p

@@ -1,4 +1,4 @@
-v 20191003 2
+v 20201211 2
 C 18200 24200 1 0 0 sym-resistor.sym
 {
 T 18500 24600 5 10 0 0 0 0 1
@@ -16,7 +16,7 @@ T 16800 24500 21 10 1 0 0 0 1
 refdes=1
 T 16800 24700 5 6 1 0 0 0 1
 device=DOES_NOT_MATTER
-T 16900 23800 5 5 1 1 0 0 5
+T 16900 23400 5 6 1 1 0 0 5
 comment=refdes is set
 to pinlabel of
 subcircuit symbol
