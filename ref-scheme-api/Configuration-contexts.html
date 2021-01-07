@@ -4,7 +4,7 @@
 
 Copyright (C) 2011-2013 Peter TB Brett
 Copyright (C) 2011-2017 gEDA developers
-Copyright (C) 2017-2020 Lepton developers
+Copyright (C) 2017-2021 Lepton developers
 
 The text of and illustrations in this document are licensed under a
 Creative Commons Attribution–Share Alike 3.0 Unported license
@@ -71,10 +71,11 @@ exist).
 looking up a parameter, it has no value set in the selected context,
 the parent context is checked, and so on.
 </p>
-<p>Three special contexts are always automatically defined: the
-<em>default context</em>, the <em>system context</em> and the <em>user
-context</em>.  The user context is the default parent context for all
-other configuration contexts, including newly-created ones.
+<p>Several special contexts are always automatically defined: the
+<em>default context</em>, the <em>system context</em>, the <em>user
+context</em> and the <em>cache context</em>.  The user context is the
+default parent context for all other configuration contexts,
+including newly-created ones.
 </p>
 <span id="Obtaining-a-context"></span><h4 class="subsubsection">2.5.1.1 Obtaining a context</h4>
 <span id="index-System-configuration-context"></span>
@@ -134,6 +135,28 @@ loaded from <samp>lepton-user.conf</samp> in <code>user-config-dir</code>.
 Its parent context is the system context.
 </p>
 <p>Since 1.10.
+</p></dd></dl>
+
+<dl>
+<dt id="index-cache_002dconfig_002dcontext">Function: <strong>cache-config-context</strong></dt>
+<dd><p>The cache context is used to store program-specific settings,
+like dialog geometry and command history.
+It has no parent configuration context.
+The associated file is <samp>gui.conf</samp>
+in <samp>$XDG_CACHE_HOME/lepton-eda/</samp> directory (usually,
+<samp>~/.cache/lepton-eda/</samp>).
+That path can be determined by calling <code>user-cache-dir</code>
+function from the <code>(lepton os)</code> module.
+</p></dd></dl>
+
+<dl>
+<dt id="index-anyfile_002dconfig_002dcontext">Function: <strong>anyfile-config-context</strong> <em>path [parent] [trusted]</em></dt>
+<dd><p>Returns the context associated with a configuration file
+given by <var>path</var>.
+It can be assigned a parent context <var>parent</var> (by default it
+has no parent context).
+The context is considered untrusted, unless the <var>trusted</var>
+parameter is set to &lsquo;<samp>#t</samp>&rsquo;.
 </p></dd></dl>
 
 <span id="Loading-and-saving-configuration-files"></span><h4 class="subsubsection">2.5.1.2 Loading and saving configuration files</h4>
