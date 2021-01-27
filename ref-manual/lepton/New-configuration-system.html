@@ -57,6 +57,20 @@ Next: <a href="Configuration-of-Lepton-tools.html" accesskey="n" rel="next">Conf
 <hr>
 <span id="Overview-of-the-new-configuration-system"></span><h3 class="section">3.3 Overview of the new configuration system</h3>
 
+<blockquote>
+<p><b>Important:</b> In definitions of location and naming of configuration files as well
+as their format we were guided by the two following standards:
+</p>
+<ul>
+<li> <a href="http://standards.freedesktop.org/basedir-spec/latest/">XDG Base
+Directory Specification</a>, and
+
+</li><li> <a href="http://standards.freedesktop.org/desktop-entry-spec/1.0/">Desktop Entry Specification</a>.
+
+</li></ul>
+</blockquote>
+
+
 <p>Configuration parameters are always evaluated within a
 <em>configuration context</em> which defines what configuration files are
 processed and the processing order.  Each context is associated with a
@@ -119,7 +133,7 @@ by <samp>--project</samp>)
 
 </dd>
 <dt>&lsquo;<samp>CACHE</samp>&rsquo;</dt>
-<dd><ul>
+<dd><span id="cache_002dconfiguration_002dcontext"></span><ul>
 <li> contains program-specific settings (dialog geometry, command history,
 etc.); normally, you do not use it directly
 </li><li> configuration file: <samp>gui.conf</samp>
@@ -144,6 +158,29 @@ for example:
 <pre class="example">[group]
 key=value
 </pre></div>
+
+<p>Any <var>value</var> can be of one of the following types:
+</p><dl compact="compact">
+<dt>&lsquo;<samp>string</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>boolean</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>integer</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>double</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>list</samp>&rsquo;</dt>
+</dl>
+
+<p>Values in lists are separated with semicolons (<kbd>;</kbd>).
+</p>
+<blockquote>
+<p><b>Important:</b> List values <strong>must</strong> have exactly the number of elements
+specified below in the manual for corresponding configuration keys.
+Wrong number of elements will be considered an error.
+</p></blockquote>
+
+<blockquote>
+<p><b>Important:</b> Always use <strong>point</strong> (<kbd>.</kbd>) as separator for floating point
+numbers if you edit a configuration file manually.
+</p></blockquote>
+
 
 <p>Lines beginning with a &lsquo;<samp>#</samp>&rsquo; and blank lines are considered
 comments:

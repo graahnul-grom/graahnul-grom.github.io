@@ -66,7 +66,7 @@ Before 1.9.10 it was <code>gnetlist</code> group.
 <tr><td width="15%"><code>default-net-name</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;unnamed_net&quot;</samp>&rsquo;</td><td width="55%">Default name used for nets for which the user has set no explicit name
 via the <var>netname=</var> or <var>net=</var> attributes.</td></tr>
 <tr><td width="15%"><code>default-bus-name</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;unnamed_bus&quot;</samp>&rsquo;</td><td width="55%">Default name used for buses for which the user has set no explicit
-name via the <var>netname=</var> or <var>net=</var> attributes.</td></tr>
+name.  Buses are still not used in <code>lepton-netlist</code>.</td></tr>
 <tr><td width="15%"><code>net-naming-priority</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>net-attribute</samp>&rsquo;</td><td width="55%">Possible values: &lsquo;<samp>net-attribute</samp>&rsquo;, &lsquo;<samp>netname-attribute</samp>&rsquo;.
 Specify which attribute, <var>net</var> or <var>netname</var>, has
 priority if a net is found with two names. Any netname conflict will
