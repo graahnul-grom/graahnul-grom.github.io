@@ -24,6 +24,7 @@
 ( use-modules ( schematic undo ) )
 
 
+; private:
 ; function: mk-color-boxes()
 ;
 ( define ( mk-color-boxes cmap pt )
@@ -108,4 +109,55 @@
         )
     )
 )
+
+
+
+; public:
+; function: cstst-up(): update color values
+;
+( define ( cstst-up )
+( let*
+    (
+    ( page ( active-page ) )
+    ( cont ( page-contents page ) )
+    ( attrs ( filter attribute? cont ) )
+    ( cmap ( display-color-map ) )
+    ( nam "" )
+    ( val "" )
+    )
+
+    ( define ( color-val sym )
+        ( assoc-ref cmap sym )
+    )
+
+    ( define ( color-sym cname )
+        ( eval-string (format #f "'~a" cname) )
+    )
+
+    ( define ( color-num sym )
+        ( color-map-name-to-index sym )
+    )
+
+    ( define ( mk-str )
+        ( format #f "~a=~d: ~a = ~a" color_nam color_ndx color_nam color_hex )
+        ; ( set! color_ndx ( color-map-name-to-index color_nam ) )
+    )
+
+
+    ( for-each
+    ( lambda ( attr )
+        ( set! nam ( attrib-name attr ) )
+        ( set! val ( attrib-value attr ) )
+
+        ( format #t "nam: [~a]~%"
+            ( color-sym nam )
+            ; ( color-val (eval-string (format #f "'~a" nam)) )
+        )
+
+    )
+      attrs
+    )
+
+) ; let
+) ; cstst-up()
 
