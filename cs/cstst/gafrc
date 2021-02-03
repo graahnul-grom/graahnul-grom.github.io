@@ -2,5 +2,3 @@
 ( component-library "./symgen" )
 ; ( component-library "./symcache" )
 
-( load-from-path "colors_zelenuha_print_dmn.scm" )
-
