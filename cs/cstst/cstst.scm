@@ -126,8 +126,12 @@
     ( txt #f )
     )
 
-    ( define ( color-val sym ) ; {ret}: #f if not found
+    ( define ( color-valid? sym )
         ( assoc-ref cmap sym )
+    )
+
+    ( define ( color-val sym )
+        ( list-ref (assoc-ref cmap sym) 0 )
     )
 
     ( define ( color-sym cname )
@@ -146,7 +150,7 @@
     ( for-each
     ( lambda ( attr )
         ( set! sym ( color-sym (attrib-name attr) ) )
-        ( when ( color-val sym )
+        ( when ( color-valid? sym )
             ; ( format #t "[~a]~%" ( mk-str sym (color-ndx sym) (color-val sym) ) )
             ( set! txt ( mk-str sym (color-ndx sym) (color-val sym) ) )
             ( set-text-string! attr txt )
