@@ -96,13 +96,16 @@
 
 
 
-; top-level code:
+; public:
+; function: cstst-mk(): create color boxes
 ;
-( when ( pointer-position )
-    ( undo-save-state )
-    ( mk-color-boxes
-        ( display-color-map )
-        ( snap-point (pointer-position) )
+( define ( cstst-mk )
+    ( when ( pointer-position )
+        ( undo-save-state )
+        ( mk-color-boxes
+            ( display-color-map )
+            ( snap-point (pointer-position) )
+        )
     )
 )
 
