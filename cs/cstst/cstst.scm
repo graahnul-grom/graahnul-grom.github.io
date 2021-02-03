@@ -57,10 +57,10 @@
                 ( cons (+ x 700) ( - y 100 ) )
                 'middle-left
                 0
-                ( format #f "~d: ~a = ~a" color_ndx color_nam color_hex )
+                ( format #f "~a-bw=~d: ~a = ~a" color_nam color_ndx color_nam color_hex )
                 10
                 #t
-                'both
+                'value
                 color_ndx_attr
             )
         )
@@ -70,10 +70,10 @@
                 ( cons (+ x 700) (- y 400) )
                 'middle-left
                 0
-                ( format #f "~d: ~a = ~a" color_ndx color_nam color_hex )
+                ( format #f "~a=~d: ~a = ~a" color_nam color_ndx color_nam color_hex )
                 10
                 #t
-                'both
+                'value
                 color_ndx
             )
         )
