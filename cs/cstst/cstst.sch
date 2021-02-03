@@ -191,32 +191,6 @@ value=NE555
 T 48300 41450 13 5 1 2 0 0 1
 graphical=1
 }
-C 49900 43900 1 180 1 simvm_ort_arrow_dmn.v.sym
-{
-T 49950 43800 6 5 1 1 180 7 1
-node=vee
-T 49950 43900 6 3 0 0 180 7 1
-net=vee:1
-T 49900 43700 5 3 0 1 180 7 1
-device=SIMVM_DMN
-T 49950 43850 12 3 1 1 180 7 1
-sim_v=-5 V
-T 50300 43500 5 3 0 0 180 6 1
-symversion=1.0
-}
-C 49900 44700 1 0 0 simvm_ort_arrow_dmn.v.sym
-{
-T 49950 44800 6 5 1 1 0 1 1
-node=vcc
-T 49950 44700 6 3 0 0 0 1 1
-net=vcc:1
-T 49900 44900 5 3 0 1 0 1 1
-device=SIMVM_DMN
-T 49950 44750 12 3 1 1 0 1 1
-sim_v=5 V
-T 50300 45100 5 3 0 0 0 0 1
-symversion=1.0
-}
 N 49400 44000 49600 44000 4
 N 49200 43300 49600 43300 4
 N 50400 44300 51400 44300 4
@@ -228,53 +202,38 @@ T 50650 43350 6 6 1 1 0 3 1
 netname=out
 }
 N 49600 44600 49400 44600 4
-C 50700 42200 1 0 1 simvdc_dmn.h.sym
-{
-T 50500 42650 21 8 1 1 0 3 1
-refdes=V3
-T 50500 42350 5 6 1 1 0 5 1
-value=1V
-T 50500 42800 1 4 1 1 0 3 1
-footprint=wf-02_dmn.fp
-T 50500 42900 5 3 0 0 0 3 1
-device=SIMVDC_DMN
-T 50500 42200 10 5 1 1 0 4 1
-sim_i=-999.98 µA
-T 50200 42600 5 3 0 0 0 6 1
-symversion=1.0
-}
 C 51400 42600 1 90 1 gnd2_dmn.sym
 {
 T 51000 42100 5 3 0 0 270 2 1
 symversion=1.0
 }
-C 47500 42300 1 0 0 siminc_dmn.sym
+C 47400 42300 1 0 0 siminc_dmn.sym
 {
-T 47500 42700 5 3 0 0 0 0 1
+T 47400 42700 5 3 0 0 0 0 1
 device=include
-T 47600 42500 21 4 1 1 0 4 1
+T 47500 42500 21 4 1 1 0 4 1
 refdes=A1
-T 47500 42625 5 3 0 1 0 0 1
+T 47400 42625 5 3 0 1 0 0 1
 file=/home/dmn/ee/mod/all.spmu
-T 47600 42375 5 3 1 1 0 5 1
+T 47500 42375 5 3 1 1 0 5 1
 basename=all.spmu
-T 48200 42700 5 3 0 0 0 0 1
+T 48100 42700 5 3 0 0 0 0 1
 symversion=1.0
 }
-C 47500 42700 1 0 0 simopt_numdgt_on_dmn.sym
+C 47400 42700 1 0 0 simopt_numdgt_on_dmn.sym
 {
-T 47600 42950 5 3 0 0 0 0 1
+T 47500 42950 5 3 0 0 0 0 1
 device=SIMOPT_NUMDGT_DMN
-T 47525 42850 21 5 1 1 0 1 1
+T 47425 42850 21 5 1 1 0 1 1
 simopt_numdgt=5
-T 48400 43200 5 3 0 0 0 0 1
+T 48300 43200 5 3 0 0 0 0 1
 symversion=1.0
 }
-C 47500 43000 1 0 0 simcmd_op_on_dmn.sym
+C 47400 43000 1 0 0 simcmd_op_on_dmn.sym
 {
-T 47600 43250 5 3 0 0 0 0 1
+T 47500 43250 5 3 0 0 0 0 1
 device=SIMCMD_OP_DMN
-T 48300 43600 5 3 0 0 0 0 1
+T 48200 43600 5 3 0 0 0 0 1
 symversion=1.0
 }
 C 49600 41700 1 0 1 simvac_dmn.h.sym
@@ -437,102 +396,46 @@ model-name=tl084_ti
 T 50150 44100 5 6 1 1 0 0 1
 value=tl082
 }
-C 49000 41100 1 0 0 bjtp_2n3906.h.sym
+C 49200 41100 1 0 0 bjtp_2n3906.h.sym
 {
-T 49300 41625 5 3 0 0 0 3 1
+T 49500 41625 5 3 0 0 0 3 1
 device=BJTP_DMN
-T 49900 41400 5 3 0 0 0 0 1
+T 50100 41400 5 3 0 0 0 0 1
 symversion=1.0
-T 49500 41100 5 6 1 1 0 0 1
+T 49700 41100 5 6 1 1 0 0 1
 value=2n3906
-T 49500 41200 21 8 1 1 0 0 1
+T 49700 41200 21 8 1 1 0 0 1
 refdes=Q1
-T 49500 40900 1 6 0 1 0 0 1
+T 49700 40900 1 6 0 1 0 0 1
 footprint=to92_dmn.fp
-T 49500 41000 12 6 0 1 0 0 1
+T 49700 41000 12 6 0 1 0 0 1
 model-name=2n3906_on
-T 48900 41550 13 5 0 2 0 0 1
+T 49100 41550 13 5 1 2 0 0 1
 graphical=1
 }
-C 48700 40400 1 0 0 mosn_irlml0040.v.sym
+C 48800 40400 1 0 0 mosn_irlml0040.v.sym
 {
-T 49050 41000 5 3 0 0 0 1 1
+T 49150 41000 5 3 0 0 0 1 1
 device=MOSN_DMN
-T 49500 40800 5 3 0 0 0 0 1
+T 49600 40800 5 3 0 0 0 0 1
 symversion=1.0
-T 49050 40600 5 6 1 1 0 0 1
+T 49150 40600 5 6 1 1 0 0 1
 value=irlml0040
-T 49050 40700 21 8 1 1 0 0 1
+T 49150 40700 21 8 1 1 0 0 1
 refdes=X1
-T 49050 40400 1 6 0 1 0 0 1
+T 49150 40400 1 6 0 1 0 0 1
 footprint=sot23.fp
-T 49050 40500 12 6 0 1 0 0 1
+T 49150 40500 12 6 0 1 0 0 1
 model-name=irlml0040
-T 48775 41200 13 5 0 2 90 6 1
+T 48875 41200 13 5 1 2 90 6 1
 graphical=1
 }
-C 47800 44200 1 0 0 simvdc_dmn.v.sym
+N 48100 44000 48100 44200 4
+N 48100 43500 48100 43600 4
+N 48100 44700 48100 44600 4
+C 47900 44200 1 270 0 gnd2_dmn.sym
 {
-T 47950 44700 5 3 0 0 0 1 1
-device=SIMVDC_DMN
-T 48400 44600 5 3 0 0 0 0 1
-symversion=1.0
-T 48000 44600 1 4 1 1 0 1 1
-footprint=wf-02_dmn.fp
-T 48050 44500 10 5 1 1 0 1 1
-sim_i=-4.8614 mA
-T 48050 44400 21 8 1 1 0 1 1
-refdes=V1
-T 48050 44275 5 6 1 1 0 1 1
-value=5V
-}
-C 47800 43600 1 0 0 simvdc_dmn.v.sym
-{
-T 47950 44100 5 3 0 0 0 1 1
-device=SIMVDC_DMN
-T 48400 44000 5 3 0 0 0 0 1
-symversion=1.0
-T 48000 44000 1 4 1 1 0 1 1
-footprint=wf-02_dmn.fp
-T 48050 43900 10 5 1 1 0 1 1
-sim_i=-4.8617 mA
-T 48050 43800 21 8 1 1 0 1 1
-refdes=V6
-T 48050 43675 5 6 1 1 0 1 1
-value=5V
-}
-N 47900 44000 47900 44200 4
-C 47900 43500 1 180 1 simvm_ort_arrow_dmn.v.sym
-{
-T 47950 43500 6 3 0 0 180 7 1
-net=vee:1
-T 47900 43300 5 3 0 1 180 7 1
-device=SIMVM_DMN
-T 48300 43100 5 3 0 0 180 6 1
-symversion=1.0
-T 47950 43400 6 5 1 1 180 7 1
-node=vee
-T 47950 43450 12 3 1 1 180 7 1
-sim_v=-5 V
-}
-N 47900 43500 47900 43600 4
-C 47900 44700 1 0 0 simvm_ort_arrow_dmn.v.sym
-{
-T 47950 44700 6 3 0 0 0 1 1
-net=vcc:1
-T 47900 44900 5 3 0 1 0 1 1
-device=SIMVM_DMN
-T 48300 45100 5 3 0 0 0 0 1
-symversion=1.0
-T 47950 44800 6 5 1 1 0 1 1
-node=vcc
-T 47950 44750 12 3 1 1 0 1 1
-sim_v=5 V
-}
-N 47900 44700 47900 44600 4
-C 47700 44200 1 270 0 gnd2_dmn.sym
-{
-T 48100 43700 5 3 0 0 270 0 1
+T 48300 43700 5 3 0 0 270 0 1
 symversion=1.0
 }
 L 47300 41900 51600 41900 21 10 1 0 -1 -1
@@ -540,29 +443,126 @@ L 47300 41900 51600 41900 21 10 1 0 -1 -1
 T 50900 41900 5 8 0 0 0 0 1
 lock=yes
 }
-C 47800 43000 1 0 0 simplt_on_dmn.sym
+C 48000 43000 1 0 0 simplt_on_dmn.sym
 {
-T 47800 43250 5 3 0 0 0 0 1
+T 48000 43250 5 3 0 0 0 0 1
 device=SIMPLT_DMN
-T 47950 43150 21 4 1 1 0 4 1
-plotnum=1
-T 48400 43500 5 3 0 0 0 0 1
+T 48150 43150 21 4 1 1 0 4 1
+plotnum=2
+T 48600 43500 5 3 0 0 0 0 1
 symversion=1.0
-T 47800 42900 5 5 1 1 0 1 1
+T 48000 42900 5 5 1 1 0 1 1
 plot_item=v(in)
-T 47800 42800 5 5 1 1 0 1 1
+T 48000 42800 5 5 1 1 0 1 1
 plot_item=v(out) + 3
 }
-C 47800 42400 1 0 0 simplt_off_dmn.sym
+C 50700 42100 1 0 1 simvdc_dmn.h.sym
 {
-T 47800 42650 5 3 0 0 0 0 1
-device=SIMPLT_DMN
-T 47950 42550 21 4 1 1 0 4 1
-plotnum=2
-T 48400 42900 5 3 0 0 0 0 1
+T 50500 42650 21 8 1 1 0 3 1
+refdes=V3
+T 50500 42350 5 6 1 1 0 5 1
+value=1V
+T 50200 42700 5 3 0 0 0 3 1
+device=SIMVDC_DMN
+T 50500 42250 10 6 1 1 0 5 1
+sim_i=-999.98 µA
+T 50200 42400 5 3 0 0 0 6 1
 symversion=1.0
-T 47800 42300 5 5 1 1 0 1 1
+T 50600 42600 1 6 1 1 0 0 1
+footprint=wf02.fp
+}
+C 47700 43000 1 0 0 simplt_off_dmn.sym
+{
+T 47700 43250 5 3 0 0 0 0 1
+device=SIMPLT_DMN
+T 47850 43150 21 4 1 1 0 4 1
+plotnum=1
+T 48300 43500 5 3 0 0 0 0 1
+symversion=1.0
+T 47700 42900 5 5 1 1 0 1 1
 plot_item=v(in)
-T 47800 42200 5 5 1 1 0 1 1
+T 47700 42800 5 5 1 1 0 1 1
 plot_item=v(out)
+}
+C 47900 44200 1 0 0 simvdc_dmn.v.sym
+{
+T 48150 44700 5 3 0 0 0 1 1
+device=SIMVDC_DMN
+T 48200 44600 1 6 1 1 0 1 1
+footprint=wf02.fp
+T 47950 44400 10 6 1 1 0 7 1
+sim_i=-4.8614 mA
+T 48250 44400 21 8 1 1 0 1 1
+refdes=V1
+T 48250 44275 5 6 1 1 0 1 1
+value=5V
+T 48600 44300 5 3 0 0 0 0 1
+symversion=1.0
+}
+C 47900 43600 1 0 0 simvdc_dmn.v.sym
+{
+T 48150 44100 5 3 0 0 0 1 1
+device=SIMVDC_DMN
+T 48200 44000 1 6 1 1 0 1 1
+footprint=wf02.fp
+T 47950 43800 10 6 1 1 0 7 1
+sim_i=-4.8617 mA
+T 48250 43800 21 8 1 1 0 1 1
+refdes=V2
+T 48250 43675 5 6 1 1 0 1 1
+value=5V
+T 48600 43700 5 3 0 0 0 0 1
+symversion=1.0
+}
+C 49800 44700 1 0 0 simvm_ort_arrow_dmn.v.sym
+{
+T 49950 44800 6 5 1 1 0 1 1
+node=vcc
+T 49950 44750 6 4 0 0 0 2 1
+net=vcc:1
+T 49900 44900 5 3 0 1 0 1 1
+device=SIMVM_DMN
+T 50300 45100 5 3 0 0 0 0 1
+symversion=1.0
+T 49850 44800 12 4 1 1 0 7 1
+sim_v=5 V
+}
+C 49800 43900 1 180 1 simvm_ort_arrow_dmn.v.sym
+{
+T 49950 43800 6 5 1 1 180 7 1
+node=vee
+T 49950 43850 6 4 0 0 180 8 1
+net=vee:1
+T 49900 43700 5 3 0 1 180 7 1
+device=SIMVM_DMN
+T 50300 43500 5 3 0 0 180 6 1
+symversion=1.0
+T 49850 43800 12 4 1 1 180 1 1
+sim_v=-5 V
+}
+C 48000 44700 1 0 0 simvm_ort_arrow_dmn.v.sym
+{
+T 48150 44800 6 5 1 1 0 1 1
+node=vcc
+T 48150 44750 6 4 0 0 0 2 1
+net=vcc:1
+T 48100 44900 5 3 0 1 0 1 1
+device=SIMVM_DMN
+T 48500 45100 5 3 0 0 0 0 1
+symversion=1.0
+T 48050 44800 12 4 1 1 0 7 1
+sim_v=5 V
+}
+C 48000 43500 1 180 1 simvm_ort_arrow_dmn.v.sym
+{
+T 48150 43400 6 5 1 1 180 7 1
+node=vee
+T 48150 43450 6 4 0 0 180 8 1
+net=vee:1
+T 48100 43300 5 3 0 1 180 7 1
+device=SIMVM_DMN
+T 48500 43100 5 3 0 0 180 6 1
+symversion=1.0
+T 48050 43400 12 4 1 1 180 1 1
+sim_v=-5 V
 }
