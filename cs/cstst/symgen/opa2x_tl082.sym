@@ -1,0 +1,96 @@
+v 20201211 2
+T 100 800 5 3 0 0 0 1 1
+device=OPA_DMN
+P 800 400 700 400 1 0 0
+{
+T 750 350 5 3 0 0 0 7 1
+pinseq=5
+T 750 300 5 3 0 0 0 7 1
+pintype=pas
+T 750 250 9 3 0 0 0 7 1
+pinlabel=out
+T 750 450 5 3 1 1 0 7 1
+pinnumber=5
+}
+P 0 700 100 700 1 0 0
+{
+T 50 650 5 3 0 0 0 1 1
+pinseq=1
+T 50 600 5 3 0 0 0 1 1
+pintype=pas
+T 50 550 9 3 0 0 0 1 1
+pinlabel=in+
+T 50 750 5 3 1 1 0 1 1
+pinnumber=1
+}
+P 0 100 100 100 1 0 0
+{
+T 50 50 5 3 0 0 0 1 1
+pinseq=2
+T 50 0 5 3 0 0 0 1 1
+pintype=pas
+T 50 -50 9 3 0 0 0 1 1
+pinlabel=in-
+T 50 150 5 3 1 1 0 1 1
+pinnumber=2
+}
+L 200 650 200 550 14 15 2 0 -1 -1
+L 150 600 250 600 14 15 2 0 -1 -1
+L 150 200 250 200 14 15 2 0 -1 -1
+T 150 400 21 8 1 1 0 1 1
+refdes=X?
+T 150 300 10 4 1 0 0 1 1
+slot=1
+P 300 100 300 125 1 0 0
+{
+T 350 200 5 3 0 0 0 1 1
+pinseq=4
+T 350 250 5 3 0 0 0 1 1
+pintype=pwr
+T 350 300 9 3 0 0 0 1 1
+pinlabel=v-
+T 350 125 5 3 1 1 0 1 1
+pinnumber=4
+}
+L 700 400 100 0 3 20 2 0 -1 -1
+P 300 700 300 675 1 0 0
+{
+T 350 600 5 3 0 0 0 1 1
+pinseq=3
+T 350 550 5 3 0 0 0 1 1
+pintype=pwr
+T 350 500 9 3 0 0 0 1 1
+pinlabel=v+
+T 350 675 5 3 1 1 0 1 1
+pinnumber=3
+}
+L 700 400 100 800 3 20 2 0 -1 -1
+L 100 0 100 800 3 20 2 0 -1 -1
+T 100 900 5 3 0 0 0 1 1
+numslots=2
+T 100 950 5 3 0 0 0 1 1
+slotdef=2:5,6,8,4,7
+T 100 1000 5 3 0 0 0 1 1
+slotdef=1:3,2,8,4,1
+T 100 850 5 3 0 0 0 1 1
+doc=tl082_st.pdf
+T 100 1100 5 3 0 0 0 1 1
+refdes_sch=DA
+T 100 1050 5 3 0 0 0 1 1
+refdes_sim=X
+T 900 0 5 2 0 1 270 6 1
+author=dmn <graahnul.grom@gmail.com>
+T 1000 200 5 3 0 0 0 0 1
+use-license=unlimited
+T 1000 250 5 3 0 0 0 0 1
+dist-license=GPLv2+
+T 1000 300 5 3 0 0 0 0 1
+symversion=1.0
+T 1000 350 5 3 0 0 0 0 1
+namespace=dmn
+T 550 0 1 6 0 1 0 0 1
+footprint=dip8.fp
+T 550 100 12 6 0 1 0 0 1
+model-name=tl084_ti
+T 550 200 8 6 1 1 0 0 1
+value=tl082

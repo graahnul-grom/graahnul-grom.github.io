@@ -1,0 +1,71 @@
+v 20201211 2
+L 450 150 150 150 3 20 2 0 -1 -1
+L 175 150 175 300 3 20 2 0 -1 -1
+L 425 150 425 250 3 20 2 0 -1 -1
+H 3 20 1 0 -1 -1 1 -1 -1 -1 -1 -1 4
+M 425,300
+L 400,250
+L 450,250
+z
+P 0 300 100 300 1 0 0
+{
+T 50 250 5 3 0 0 0 1 1
+pinseq=1
+T 50 200 5 3 0 0 0 1 1
+pintype=pas
+T 50 150 9 3 0 0 0 1 1
+pinlabel=D
+T 50 350 5 3 1 1 0 1 1
+pinnumber=3
+}
+P 600 300 500 300 1 0 0
+{
+T 550 250 5 3 0 0 0 7 1
+pinseq=3
+T 550 200 5 3 0 0 0 7 1
+pintype=pas
+T 550 150 9 3 0 0 0 7 1
+pinlabel=S
+T 550 350 5 3 1 1 0 7 1
+pinnumber=2
+}
+P 300 0 300 125 1 0 0
+{
+T 350 100 5 3 0 0 0 1 1
+pinseq=2
+T 350 150 5 3 0 0 0 1 1
+pintype=pas
+T 350 200 9 3 0 0 0 1 1
+pinlabel=G
+T 350 50 5 3 1 1 0 1 1
+pinnumber=1
+}
+L 425 125 175 125 3 10 2 0 -1 -1
+L 100 300 175 300 3 20 2 0 -1 -1
+L 425 300 500 300 3 20 2 0 -1 -1
+T 300 425 5 3 0 0 0 3 1
+device=MOSN_DMN
+T 300 575 5 3 0 0 0 3 1
+doc=irlml0040pbf.pdf
+T 300 475 5 3 0 0 0 3 1
+refdes_sim=X
+T 300 525 5 3 0 0 0 3 1
+refdes_sch=VT
+T 700 100 5 2 0 1 270 6 1
+author=dmn <graahnul.grom@gmail.com>
+T 800 300 5 3 0 0 0 0 1
+use-license=unlimited
+T 800 350 5 3 0 0 0 0 1
+dist-license=GPLv2+
+T 800 400 5 3 0 0 0 0 1
+symversion=1.0
+T 800 450 5 3 0 0 0 0 1
+namespace=dmn
+T 500 0 8 6 1 1 0 0 1
+value=irlml0040
+T 500 100 21 8 1 1 0 0 1
+refdes=X?
+T 500 -200 1 6 0 1 0 0 1
+footprint=sot23.fp
+T 500 -100 12 6 0 1 0 0 1
+model-name=irlml0040
