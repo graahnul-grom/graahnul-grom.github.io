@@ -58,7 +58,7 @@
                 ( cons (+ x 700) ( - y 100 ) )
                 'middle-left
                 0
-                ( format #f "~a-bw=~d: ~a = ~a" color_nam color_ndx color_nam color_hex )
+                ( format #f "~a=~d: ~a = ~a" color_nam color_ndx color_nam color_hex )
                 10
                 #t
                 'value
@@ -149,8 +149,10 @@
         ( set! nam ( attrib-name attr ) )
         ( set! val ( attrib-value attr ) )
 
-        ( format #t "nam: [~a]~%"
-            ( color-sym nam )
+        ( format #t "[~a] [~a] [~a]~%"
+            nam
+            ( color-val ( color-sym nam ) )
+            ( color-num ( color-sym nam ) )
             ; ( color-val (eval-string (format #f "'~a" nam)) )
         )
 
