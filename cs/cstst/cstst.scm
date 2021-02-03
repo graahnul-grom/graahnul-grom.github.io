@@ -122,11 +122,10 @@
     ( cont ( page-contents page ) )
     ( attrs ( filter attribute? cont ) )
     ( cmap ( display-color-map ) )
-    ( nam "" )
-    ( val "" )
+    ( sym #f )
     )
 
-    ( define ( color-val sym )
+    ( define ( color-val sym ) ; {ret}: #f if not found
         ( assoc-ref cmap sym )
     )
 
@@ -134,28 +133,21 @@
         ( eval-string (format #f "'~a" cname) )
     )
 
-    ( define ( color-num sym )
+    ( define ( color-ndx sym )
         ( color-map-name-to-index sym )
     )
 
-    ( define ( mk-str )
-        ( format #f "~a=~d: ~a = ~a" color_nam color_ndx color_nam color_hex )
-        ; ( set! color_ndx ( color-map-name-to-index color_nam ) )
+    ( define ( mk-str name ndx val )
+        ( format #f "~a=~d: ~a = ~a" name ndx name val )
     )
 
 
     ( for-each
     ( lambda ( attr )
-        ( set! nam ( attrib-name attr ) )
-        ( set! val ( attrib-value attr ) )
-
-        ( format #t "[~a] [~a] [~a]~%"
-            nam
-            ( color-val ( color-sym nam ) )
-            ( color-num ( color-sym nam ) )
-            ; ( color-val (eval-string (format #f "'~a" nam)) )
+        ( set! sym ( color-sym (attrib-name attr) ) )
+        ( when ( color-val sym )
+            ( format #t "[~a]~%" ( mk-str sym (color-ndx sym) (color-val sym) ) )
         )
-
     )
       attrs
     )
