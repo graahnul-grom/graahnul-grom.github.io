@@ -123,6 +123,7 @@
     ( attrs ( filter attribute? cont ) )
     ( cmap ( display-color-map ) )
     ( sym #f )
+    ( txt #f )
     )
 
     ( define ( color-val sym ) ; {ret}: #f if not found
@@ -146,7 +147,9 @@
     ( lambda ( attr )
         ( set! sym ( color-sym (attrib-name attr) ) )
         ( when ( color-val sym )
-            ( format #t "[~a]~%" ( mk-str sym (color-ndx sym) (color-val sym) ) )
+            ; ( format #t "[~a]~%" ( mk-str sym (color-ndx sym) (color-val sym) ) )
+            ( set! txt ( mk-str sym (color-ndx sym) (color-val sym) ) )
+            ( set-text-string! attr txt )
         )
     )
       attrs
