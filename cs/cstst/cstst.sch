@@ -594,3 +594,5 @@ T 44300 40500 5 10 1 1 0 1 1
 mesh-grid-minor=23: mesh-grid-minor = #003240
 T 44300 40200 23 10 1 1 0 1 1
 mesh-grid-minor=23: mesh-grid-minor = #003240
+T 51400 47700 9 10 1 1 0 8 1
+www=https://github.com/lepton-eda/lepton-eda
