@@ -3,7 +3,14 @@
 ; copyright (c) 2021 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; Creates a set of boxes at the mouse pointer position.
+; A companion script for color scheme test schematic,
+; see https://graahnul-grom.github.io/cs
+;
+; It provides two functions:
+;
+; 1) cstst-mk():
+; Creates a set of boxes at the mouse pointer position
+; (ensure that the mouse pointer is within the drawing area).
 ; The number of boxes is equal to the number of colors
 ; available in lepton-schematic.
 ; Next to each box there's a text designating the
@@ -11,10 +18,19 @@
 ; Both the box and the text are painted using that color.
 ; The text is repeated using the "attribute" color.
 ;
+; 2) cstst-up():
+; If there are color boxes in current schematic (created
+; with cstst-mk()), update hex color values using the color
+; scheme currently loaded.
+;
 ; Usage:
-; Ensure that the mouse pointer is within the drawing area,
-; and type in the ":" prompt:
+; type in the ":" prompt:
+; - load this file:
 ;   ( primitive-load "/path/to/cstst.scm" )
+; - to create color boxes, type:
+;   ( cstst-mk )
+; - to update color values of existing color boxes, type:
+;   ( cstst-up )
 
 ( use-modules ( srfi srfi-1 ) )
 ( use-modules ( lepton color-map ) )
