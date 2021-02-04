@@ -28,10 +28,15 @@ Schematic for testing color schemes:
 <br />
 The color boxes with hex color values are created with
 <a href='cstst.scm.html'>cstst.scm</a> script
-<a href='cstst/cstst.scm'>(download)</a>,
+(<a href='cstst/cstst.scm'>download</a>),
 using <code>cstst-mk()</code> function.
 Call <code>cstst-up()</code> to update hex color
 values to match currently loaded color scheme.
+<br />
+<br />
+To use a color scheme in lepton-schematic, add
+<code>( primitive-load "/path/to/color_scheme_file" )</code>
+to your <code>gschemrc</code> configuration file.
 </p>
 
 <p>
