@@ -3,7 +3,8 @@
 ; copyright (c) 2019-2021 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; Color scheme created with View->Color Scheme Editor.
+; Dark color scheme created with View->Color Scheme Editor.
+;
 ; Usage: add the following to your gschemrc configuration file:
 ;   ( primitive-load "/path/to/colors_zelenuha_dmn.scm" )
 ;
@@ -11,7 +12,7 @@
 (display-color-map '(
   (background           "#002b36ff")
   (pin                  "#c18f5fff")
-  (net-endpoint         "#00B330ff")
+  (net-endpoint         "#00B330af")
   (graphic              "#cc9d47ff")
   (net                  "#bebebeff")
   (attribute            "#abababff")

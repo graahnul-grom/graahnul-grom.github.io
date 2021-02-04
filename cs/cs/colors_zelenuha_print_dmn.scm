@@ -1,10 +1,13 @@
 ; file: colors_zelenuha_print_dmn.scm
-; type: lepton-schematic color scheme
+; type: lepton-eda color scheme
 ; copyright (c) 2019-2021 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; Color scheme created with View->Color Scheme Editor.
-; Usage: add the following to your gschemrc configuration file:
+; Dark color scheme created with View->Color Scheme Editor.
+; The same colors as in the colors_zelenuha_dmn.scm, but
+; used for printing and exporting with 'lepton-cli export'.
+;
+; Usage: add the following to your gafrc configuration file:
 ;   ( primitive-load "/path/to/colors_zelenuha_print_dmn.scm" )
 ;
 
