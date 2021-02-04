@@ -163,6 +163,8 @@
     )
 
 
+    ( undo-save-state )
+
     ( for-each
     ( lambda ( attr )
         ( set! sym ( color-sym (attrib-name attr) ) )
