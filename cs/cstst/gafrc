@@ -1,4 +1,4 @@
-; ( reset-component-library )
+( reset-component-library )
 ( component-library "./symgen" )
-; ( component-library "./symcache" )
+( component-library "./symcache" )
 

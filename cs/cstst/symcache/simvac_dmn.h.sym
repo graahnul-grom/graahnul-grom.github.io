@@ -1,0 +1,62 @@
+v 20200604 2
+P 0 800 100 800 1 0 0
+{
+T 50 850 5 3 0 1 0 1 1
+pinnumber=2
+T 50 750 5 3 0 0 0 1 1
+pinseq=2
+T 50 700 5 3 0 0 0 1 1
+pintype=pas
+T 50 650 9 3 0 0 0 1 1
+pinlabel=2
+}
+P 400 800 300 800 1 0 0
+{
+T 350 850 5 3 1 1 0 7 1
+pinnumber=1
+T 350 750 5 3 0 0 0 7 1
+pinseq=1
+T 350 700 5 3 0 0 0 7 1
+pintype=pas
+T 350 650 9 3 0 0 0 7 1
+pinlabel=1
+}
+V 200 800 100 3 20 2 0 -1 -1 0 -1 -1 -1 -1 -1
+H 14 15 2 0 -1 -1 0 -1 -1 -1 -1 -1 2
+M 150,800
+C 150,800 175,825 200,800
+H 14 15 2 0 -1 -1 0 -1 -1 -1 -1 -1 2
+M 250,800
+C 250,800 225,775 200,800
+T 200 950 21 8 1 1 0 3 1
+refdes=V?
+T 300 1000 5 3 0 0 0 1 1
+device=SIMVAC_DMN
+T 300 900 1 6 0 1 0 0 1
+footprint=wf02.fp
+T 300 700 5 4 1 1 0 0 1
+value=sin(0 1 1e3 0 0) dc 0 ac 1
+T 600 100 5 2 0 1 270 6 1
+author=dmn <graahnul.grom@gmail.com>
+T 700 300 5 3 0 0 0 0 1
+use-license=unlimited
+T 700 350 5 3 0 0 0 0 1
+dist-license=GPLv2+
+T 700 400 5 3 0 0 0 0 1
+symversion=1.0
+T 700 450 5 3 0 0 0 0 1
+namespace=dmn
+T 0 400 5 6 1 0 0 0 1
+vac_off=0
+T 0 600 5 6 1 0 0 0 1
+vac_vpk=1
+T 0 500 5 6 1 0 0 0 1
+vac_f=1e3
+T 0 300 5 6 1 0 0 0 1
+vac_del=0
+T 0 200 5 6 1 0 0 0 1
+vac_damp=0
+T 0 0 5 6 1 0 0 0 1
+vac_ac=1
+T 0 100 5 6 1 0 0 0 1
+vac_dc=0

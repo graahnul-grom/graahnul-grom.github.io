@@ -1,0 +1,30 @@
+v 20200604 2
+T 0 400 8 3 0 0 0 0 1
+device=include
+T 100 200 21 4 1 1 0 4 1
+refdes=A?
+T 0 325 8 3 1 1 0 0 1
+file=/home/dmn/ee/mod/all.spmu
+B 0 100 200 200 5 0 1 0 -1 -1 0 -1 -1 -1 -1 -1
+H 12 0 1 0 -1 -1 1 -1 -1 -1 -1 -1 4
+M 75,125
+L 25,125
+L 25,175
+z
+H 12 0 1 0 -1 -1 1 -1 -1 -1 -1 -1 4
+M 125,275
+L 175,275
+L 175,225
+z
+T 100 75 8 3 1 1 0 5 1
+basename=?
+T 600 100 5 2 0 1 270 6 1
+author=dmn <graahnul.grom@gmail.com>
+T 700 300 5 3 0 0 0 0 1
+use-license=unlimited
+T 700 350 5 3 0 0 0 0 1
+dist-license=GPLv2+
+T 700 400 5 3 0 0 0 0 1
+symversion=1.0
+T 700 450 5 3 0 0 0 0 1
+namespace=dmn

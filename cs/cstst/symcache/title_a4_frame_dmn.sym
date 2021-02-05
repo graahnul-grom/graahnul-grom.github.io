@@ -1,0 +1,14 @@
+v 20201211 2
+B 0 0 11600 8200 15 20 1 0 -1 -1 0 -1 -1 -1 -1 -1
+T 11500 8100 13 4 0 0 0 6 1
+graphical=1
+T 10900 7500 5 2 0 1 270 6 1
+author=dmn <graahnul.grom@gmail.com>
+T 11000 7700 5 3 0 0 0 0 1
+use-license=unlimited
+T 11000 7750 5 3 0 0 0 0 1
+dist-license=GPLv2+
+T 11000 7800 5 3 0 0 0 0 1
+symversion=1.0
+T 11000 7850 5 3 0 0 0 0 1
+namespace=dmn

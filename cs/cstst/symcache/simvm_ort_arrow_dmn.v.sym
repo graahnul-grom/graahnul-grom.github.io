@@ -1,0 +1,33 @@
+v 20201211 2
+P 100 0 100 100 1 0 0
+{
+T 150 50 5 3 0 1 0 1 1
+pinnumber=1
+T 150 100 5 3 0 0 0 1 1
+pinseq=1
+T 150 150 5 3 0 0 0 1 1
+pintype=pas
+}
+T 150 100 6 5 1 1 0 1 1
+node=vcc
+T 150 50 6 4 1 0 0 2 1
+net=vcc:1
+T 100 200 5 3 0 1 0 1 1
+device=SIMVM_DMN
+H 1 10 2 0 -1 -1 1 -1 -1 -1 -1 -1 4
+M 100,125
+L 75,75
+L 125,75
+z
+T 400 100 5 2 0 1 270 6 1
+author=dmn <graahnul.grom@gmail.com>
+T 500 300 5 3 0 0 0 0 1
+use-license=unlimited
+T 500 350 5 3 0 0 0 0 1
+dist-license=GPLv2+
+T 500 400 5 3 0 0 0 0 1
+symversion=1.0
+T 500 450 5 3 0 0 0 0 1
+namespace=dmn
+T 50 100 12 4 1 1 0 7 1
+sim_v=?
