@@ -70,9 +70,9 @@ device=include
 T 47500 42500 21 4 1 1 0 4 1
 refdes=A1
 T 47400 42625 5 3 0 1 0 0 1
-file=/home/dmn/ee/mod/all.spmu
+file=/home/dmn/lepton/gg.gh.io.git/cs/cstst/tl084_ti.sp
 T 47500 42375 5 3 1 1 0 5 1
-basename=all.spmu
+basename=tl084_ti.sp
 T 48100 42700 5 3 0 0 0 0 1
 symversion=1.0
 }
