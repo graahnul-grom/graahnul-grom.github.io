@@ -55,7 +55,7 @@ ul.no-bullet {list-style: none}
 Next: <a href="Debuggers.html" accesskey="n" rel="next">Debuggers</a>, Previous: <a href="Debugging.html" accesskey="p" rel="prev">Debugging</a>, Up: <a href="Debugging.html" accesskey="u" rel="up">Debugging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Debug-Guile-Scheme-code"></span><h4 class="subsection">9.1.1 Debug Guile Scheme code</h4>
+<span id="Debug-Guile-Scheme-code"></span><h4 class="subsection">10.1.1 Debug Guile Scheme code</h4>
 <span id="index-debug-Scheme-code"></span>
 
 <p>Sometimes code in Scheme may fail and output a backtrace looking out
@@ -71,12 +71,14 @@ In ice-9/boot-9.scm:
 many more lines
 ...
 In ice-9/boot-9.scm:
-105: 1 [#&lt;procedure 55e36e0eee80 at ice-9/boot-9.scm:100:6 (thrown-k . args)&gt; wrong-type-arg ...]
+105: 1 [#&lt;procedure 55e36e0eee80 at ice-9/boot-9.scm:100:6
+(thrown-k . args)&gt; wrong-type-arg ...]
 In unknown file:
 ?: 0 [apply-smob/1 #&lt;catch-closure 55e36e0edae0&gt; wrong-type-arg ...]
 
 ERROR: In procedure apply-smob/1:
-ERROR: In procedure struct-vtable: Wrong type argument in position 1 (expecting struct): #f
+ERROR: In procedure struct-vtable: Wrong type argument in position 1
+(expecting struct): #f
 </pre></div>
 
 <p>The output is incomprehensible, isn&rsquo;t it?  The issue gets worse due to
