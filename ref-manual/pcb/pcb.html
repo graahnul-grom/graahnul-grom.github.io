@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This User Manual documents how to use PCB-v4.2.2-ge6acd71d, the open
+<!-- This User Manual documents how to use PCB-v4.3.0-gbbba5d07, the open
 source, interactive printed circuit board layout program.
 
 Copyright (C) 1994, 1995, 1996, 1997, 2004 Thomas Nau
@@ -11,7 +11,8 @@ Copyright (C) 2003, 2004, 2005, 2006, 2007, 2009 Dan McMahill
 
 Copyright (C) 2004 DJ Delorie
 
-Copyright (C) 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020 PCB Contributors
+Copyright (C) 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017,
+2018, 2019, 2020, 2021 PCB Contributors
 
 This program is free software; you may redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -133,14 +134,15 @@ pre.format {
     <li><a id="toc-Exporting-a-layout" href="#Exporting">3.9 Exporting a layout</a>
     <ul class="no-bullet">
       <li><a id="toc-Bill-of-materials-_0028bom_0029" href="#bom">3.9.1 Bill of materials (bom)</a></li>
-      <li><a id="toc-G_002dcode-_0028gcode_0029" href="#gcode">3.9.2 G-code (gcode)</a></li>
-      <li><a id="toc-Gerber-_0028gerber_0029" href="#gerber">3.9.3 Gerber (gerber)</a></li>
-      <li><a id="toc-Postscript-_0028ps_0029" href="#ps">3.9.4 Postscript (ps)</a></li>
-      <li><a id="toc-Encapsulated-Postscript-_0028eps_0029" href="#eps">3.9.5 Encapsulated Postscript (eps)</a></li>
-      <li><a id="toc-Image-_0028png_0029" href="#png">3.9.6 Image (png)</a></li>
-      <li><a id="toc-Nelma-_0028nelma_0029" href="#nelma">3.9.7 Nelma (nelma)</a></li>
-      <li><a id="toc-GSvit-_0028gsvit_0029" href="#gsvit">3.9.8 GSvit (gsvit)</a></li>
-      <li><a id="toc-IPC_002dD_002d356-_0028ipcd356_0029" href="#ipc_002dd_002d356">3.9.9 IPC-D-356 (ipcd356)</a></li>
+      <li><a id="toc-Bill-Of-Materials-in-MarkDown-format-_0028bom_005fmd_0029" href="#bom_005fmd">3.9.2 Bill Of Materials in MarkDown format (bom_md)</a></li>
+      <li><a id="toc-G_002dcode-_0028gcode_0029" href="#gcode">3.9.3 G-code (gcode)</a></li>
+      <li><a id="toc-Gerber-_0028gerber_0029" href="#gerber">3.9.4 Gerber (gerber)</a></li>
+      <li><a id="toc-Postscript-_0028ps_0029" href="#ps">3.9.5 Postscript (ps)</a></li>
+      <li><a id="toc-Encapsulated-Postscript-_0028eps_0029" href="#eps">3.9.6 Encapsulated Postscript (eps)</a></li>
+      <li><a id="toc-Image-_0028png_0029" href="#png">3.9.7 Image (png)</a></li>
+      <li><a id="toc-Nelma-_0028nelma_0029" href="#nelma">3.9.8 Nelma (nelma)</a></li>
+      <li><a id="toc-GSvit-_0028gsvit_0029" href="#gsvit">3.9.9 GSvit (gsvit)</a></li>
+      <li><a id="toc-IPC_002dD_002d356-_0028ipcd356_0029" href="#ipc_002dd_002d356">3.9.10 IPC-D-356 (ipcd356)</a></li>
     </ul></li>
     <li><a id="toc-Connection-Lists-1" href="#Connection-Lists">3.10 Connection Lists</a></li>
     <li><a id="toc-Arrow-Tool-1" href="#Arrow-Tool">3.11 Arrow Tool</a></li>
@@ -167,15 +169,16 @@ pre.format {
     <li><a id="toc-Commands-1" href="#Commands">7.9 Commands</a></li>
     <li><a id="toc-DRC-Options-1" href="#DRC-Options">7.10 DRC Options</a></li>
     <li><a id="toc-BOM-Creation-1" href="#BOM-Creation">7.11 BOM Creation</a></li>
-    <li><a id="toc-G_002dcode-Options-1" href="#G_002dcode-Options">7.12 G-code Options</a></li>
-    <li><a id="toc-Gerber-Export-1" href="#Gerber-Export">7.13 Gerber Export</a></li>
-    <li><a id="toc-Postscript-Export-1" href="#Postscript-Export">7.14 Postscript Export</a></li>
-    <li><a id="toc-Encapsulated-Postscript-Export-1" href="#Encapsulated-Postscript-Export">7.15 Encapsulated Postscript Export</a></li>
-    <li><a id="toc-PNG-Options-1" href="#PNG-Options">7.16 PNG Options</a></li>
-    <li><a id="toc-Nelma-Options-1" href="#Nelma-Options">7.17 Nelma Options</a></li>
-    <li><a id="toc-IPC_002dD_002d356-Netlist-Export-1" href="#IPC_002dD_002d356-Netlist-Export">7.18 IPC-D-356 Netlist Export</a></li>
-    <li><a id="toc-gsvit-Options-1" href="#gsvit-Options">7.19 gsvit Options</a></li>
-    <li><a id="toc-lpr-Printing-Options-1" href="#lpr-Printing-Options">7.20 lpr Printing Options</a></li>
+    <li><a id="toc-BOM-MarkDown-Creation-1" href="#BOM-MarkDown-Creation">7.12 BOM MarkDown Creation</a></li>
+    <li><a id="toc-G_002dcode-Options-1" href="#G_002dcode-Options">7.13 G-code Options</a></li>
+    <li><a id="toc-Gerber-Export-1" href="#Gerber-Export">7.14 Gerber Export</a></li>
+    <li><a id="toc-Postscript-Export-1" href="#Postscript-Export">7.15 Postscript Export</a></li>
+    <li><a id="toc-Encapsulated-Postscript-Export-1" href="#Encapsulated-Postscript-Export">7.16 Encapsulated Postscript Export</a></li>
+    <li><a id="toc-PNG-Options-1" href="#PNG-Options">7.17 PNG Options</a></li>
+    <li><a id="toc-Nelma-Options-1" href="#Nelma-Options">7.18 Nelma Options</a></li>
+    <li><a id="toc-IPC_002dD_002d356-Netlist-Export-1" href="#IPC_002dD_002d356-Netlist-Export">7.19 IPC-D-356 Netlist Export</a></li>
+    <li><a id="toc-gsvit-Options-1" href="#gsvit-Options">7.20 gsvit Options</a></li>
+    <li><a id="toc-lpr-Printing-Options-1" href="#lpr-Printing-Options">7.21 lpr Printing Options</a></li>
   </ul></li>
   <li><a id="toc-X11-Interface-1" href="#X11-Interface">8 X11 Interface</a>
   <ul class="no-bullet">
@@ -637,6 +640,8 @@ tooltips in the GTK UI and footprints.
 <p>Release 4.2.1 is a new features and bugfixes release (no pcb file format change).
 </p>
 <p>Release 4.2.2 is a hot fix and bugfixes release (no pcb file format change).
+</p>
+<p>Release 4.3.0 is a new features release (pcb footprint file format change).
 </p>
 <p>Special thanks goes to:
 </p><div class="display">
@@ -2615,28 +2620,30 @@ select the desired exporter.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#bom" accesskey="1">bom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bill of materials.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gcode" accesskey="2">gcode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">G-code.
+<tr><td align="left" valign="top">&bull; <a href="#bom_005fmd" accesskey="2">bom_md</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bill of materials in MarkDown format.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gerber" accesskey="3">gerber</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Gerber.
+<tr><td align="left" valign="top">&bull; <a href="#gcode" accesskey="3">gcode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">G-code.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#ps" accesskey="4">ps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Postscript.
+<tr><td align="left" valign="top">&bull; <a href="#gerber" accesskey="4">gerber</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Gerber.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#eps" accesskey="5">eps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Eps.
+<tr><td align="left" valign="top">&bull; <a href="#ps" accesskey="5">ps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Postscript.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#png" accesskey="6">png</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Image.
+<tr><td align="left" valign="top">&bull; <a href="#eps" accesskey="6">eps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Eps.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#nelma" accesskey="7">nelma</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Nelma.
+<tr><td align="left" valign="top">&bull; <a href="#png" accesskey="7">png</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Image.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gsvit" accesskey="8">gsvit</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">gsvit.
+<tr><td align="left" valign="top">&bull; <a href="#nelma" accesskey="8">nelma</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Nelma.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#ipc_002dd_002d356" accesskey="9">ipc-d-356</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">IPC-D-356.
+<tr><td align="left" valign="top">&bull; <a href="#gsvit" accesskey="9">gsvit</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">gsvit.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#ipc_002dd_002d356">ipc-d-356</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">IPC-D-356.
 </td></tr>
 </table>
 
 <hr>
 <span id="bom"></span><div class="header">
 <p>
-Next: <a href="#gcode" accesskey="n" rel="next">gcode</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#bom_005fmd" accesskey="n" rel="next">bom_md</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Bill-of-materials-_0028bom_0029"></span><h4 class="subsection">3.9.1 Bill of materials (bom)</h4>
 <span id="index-bom"></span>
@@ -2645,11 +2652,22 @@ Next: <a href="#gcode" accesskey="n" rel="next">gcode</a>, Up: <a href="#Exporti
 <p>Produces a bill of materials (BOM) file and a centroid (XY) file.
 </p>
 <hr>
+<span id="bom_005fmd"></span><div class="header">
+<p>
+Next: <a href="#gcode" accesskey="n" rel="next">gcode</a>, Previous: <a href="#bom" accesskey="p" rel="prev">bom</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Bill-Of-Materials-in-MarkDown-format-_0028bom_005fmd_0029"></span><h4 class="subsection">3.9.2 Bill Of Materials in MarkDown format (bom_md)</h4>
+<span id="index-bom_005fmd"></span>
+<span id="index-bill-of-materials-in-MarkDown-format"></span>
+
+<p>Produces a bill of materials (BOM) file in MarkDown format.
+</p>
+<hr>
 <span id="gcode"></span><div class="header">
 <p>
-Next: <a href="#gerber" accesskey="n" rel="next">gerber</a>, Previous: <a href="#bom" accesskey="p" rel="prev">bom</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#gerber" accesskey="n" rel="next">gerber</a>, Previous: <a href="#bom_005fmd" accesskey="p" rel="prev">bom_md</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="G_002dcode-_0028gcode_0029"></span><h4 class="subsection">3.9.2 G-code (gcode)</h4>
+<span id="G_002dcode-_0028gcode_0029"></span><h4 class="subsection">3.9.3 G-code (gcode)</h4>
 <span id="index-gcode"></span>
 <span id="index-g_002dcode"></span>
 <span id="index-cnc"></span>
@@ -2737,7 +2755,7 @@ change them without the need to run the exporter again.
 <p>
 Next: <a href="#ps" accesskey="n" rel="next">ps</a>, Previous: <a href="#gcode" accesskey="p" rel="prev">gcode</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Gerber-_0028gerber_0029"></span><h4 class="subsection">3.9.3 Gerber (gerber)</h4>
+<span id="Gerber-_0028gerber_0029"></span><h4 class="subsection">3.9.4 Gerber (gerber)</h4>
 <span id="index-gerber"></span>
 
 <p>Produces RS274-X (a.k.a. gerber) photo plot files and Excellon drill files.
@@ -2747,7 +2765,7 @@ Next: <a href="#ps" accesskey="n" rel="next">ps</a>, Previous: <a href="#gcode" 
 <p>
 Next: <a href="#eps" accesskey="n" rel="next">eps</a>, Previous: <a href="#gerber" accesskey="p" rel="prev">gerber</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Postscript-_0028ps_0029"></span><h4 class="subsection">3.9.4 Postscript (ps)</h4>
+<span id="Postscript-_0028ps_0029"></span><h4 class="subsection">3.9.5 Postscript (ps)</h4>
 <span id="index-ps"></span>
 <span id="index-postscript"></span>
 
@@ -2759,7 +2777,7 @@ Can be later converted to pdf.
 <p>
 Next: <a href="#png" accesskey="n" rel="next">png</a>, Previous: <a href="#ps" accesskey="p" rel="prev">ps</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Encapsulated-Postscript-_0028eps_0029"></span><h4 class="subsection">3.9.5 Encapsulated Postscript (eps)</h4>
+<span id="Encapsulated-Postscript-_0028eps_0029"></span><h4 class="subsection">3.9.6 Encapsulated Postscript (eps)</h4>
 <span id="index-eps"></span>
 <span id="index-encapsulated-postscript"></span>
 
@@ -2771,7 +2789,7 @@ Can be later converted to pdf.
 <p>
 Next: <a href="#nelma" accesskey="n" rel="next">nelma</a>, Previous: <a href="#eps" accesskey="p" rel="prev">eps</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Image-_0028png_0029"></span><h4 class="subsection">3.9.6 Image (png)</h4>
+<span id="Image-_0028png_0029"></span><h4 class="subsection">3.9.7 Image (png)</h4>
 <span id="index-png"></span>
 <span id="index-image-export"></span>
 
@@ -2783,7 +2801,7 @@ Next: <a href="#nelma" accesskey="n" rel="next">nelma</a>, Previous: <a href="#e
 <p>
 Next: <a href="#gsvit" accesskey="n" rel="next">gsvit</a>, Previous: <a href="#png" accesskey="p" rel="prev">png</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Nelma-_0028nelma_0029"></span><h4 class="subsection">3.9.7 Nelma (nelma)</h4>
+<span id="Nelma-_0028nelma_0029"></span><h4 class="subsection">3.9.8 Nelma (nelma)</h4>
 <span id="index-nelma"></span>
 
 <p>Numerical analysis package export.
@@ -2818,7 +2836,7 @@ https://www.tablix.org/~avian/nelma/.
 <p>
 Next: <a href="#ipc_002dd_002d356" accesskey="n" rel="next">ipc-d-356</a>, Previous: <a href="#nelma" accesskey="p" rel="prev">nelma</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="GSvit-_0028gsvit_0029"></span><h4 class="subsection">3.9.8 GSvit (gsvit)</h4>
+<span id="GSvit-_0028gsvit_0029"></span><h4 class="subsection">3.9.9 GSvit (gsvit)</h4>
 <span id="index-gsvit"></span>
 
 <p>Numerical analysis package export.
@@ -2846,7 +2864,7 @@ http://gsvit.net.
 <p>
 Previous: <a href="#gsvit" accesskey="p" rel="prev">gsvit</a>, Up: <a href="#Exporting" accesskey="u" rel="up">Exporting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="IPC_002dD_002d356-_0028ipcd356_0029"></span><h4 class="subsection">3.9.9 IPC-D-356 (ipcd356)</h4>
+<span id="IPC_002dD_002d356-_0028ipcd356_0029"></span><h4 class="subsection">3.9.10 IPC-D-356 (ipcd356)</h4>
 <span id="index-ipc_002dd_002d356"></span>
 
 <p>Produces an IPC-D-356 compliant netlist file for bare board testing.
@@ -3562,6 +3580,8 @@ standard toolkit command-line options. For a complete list refer to
 <tr><td align="left" valign="top">&bull; <a href="#DRC-Options">DRC Options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#BOM-Creation">BOM Creation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#BOM-MarkDown-Creation">BOM MarkDown Creation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#G_002dcode-Options">G-code Options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -4520,7 +4540,7 @@ Next: <a href="#BOM-Creation" accesskey="n" rel="next">BOM Creation</a>, Previou
 <hr>
 <span id="BOM-Creation"></span><div class="header">
 <p>
-Next: <a href="#G_002dcode-Options" accesskey="n" rel="next">G-code Options</a>, Previous: <a href="#DRC-Options" accesskey="p" rel="prev">DRC Options</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#BOM-MarkDown-Creation" accesskey="n" rel="next">BOM MarkDown Creation</a>, Previous: <a href="#DRC-Options" accesskey="p" rel="prev">DRC Options</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="BOM-Creation-1"></span><h3 class="section">7.11 BOM Creation</h3>
 <dl compact="compact">
@@ -4567,11 +4587,42 @@ Parameter <code>&lt;unit&gt;</code> can be &lsquo;<samp>km</samp>&rsquo;, &lsquo
 </p></dd>
 </dl>
 <hr>
+<span id="BOM-MarkDown-Creation"></span><div class="header">
+<p>
+Next: <a href="#G_002dcode-Options" accesskey="n" rel="next">G-code Options</a>, Previous: <a href="#BOM-Creation" accesskey="p" rel="prev">BOM Creation</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="BOM-MarkDown-Creation-1"></span><h3 class="section">7.12 BOM MarkDown Creation</h3>
+<dl compact="compact">
+<dt><code>--bom_md_file &lt;string&gt;</code>
+<span id="index-_002d_002dbom_005fmd_005ffile-_003cstring_003e"></span>
+</dt>
+<dd><p>Name of the BOM MarkDown output file.
+Parameter <code>&lt;string&gt;</code> can include a path.
+</p></dd>
+</dl>
+<dl compact="compact">
+<dt><code>--attrs &lt;string&gt;</code>
+<span id="index-_002d_002dattrs-_003cstring_003e-1"></span>
+</dt>
+<dd><p>Name of the attributes input file.
+Parameter <code>&lt;string&gt;</code> can include a path.
+The input file can be any path, the format matches what gschem uses.
+One attribute per line, and whitespace is ignored.  Example:
+</p><div class="example">
+<pre class="example">device
+manufacturer
+manufacturer_part_number
+vendor
+vendor_part_number
+</pre></div>
+</dd>
+</dl>
+<hr>
 <span id="G_002dcode-Options"></span><div class="header">
 <p>
-Next: <a href="#Gerber-Export" accesskey="n" rel="next">Gerber Export</a>, Previous: <a href="#BOM-Creation" accesskey="p" rel="prev">BOM Creation</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Gerber-Export" accesskey="n" rel="next">Gerber Export</a>, Previous: <a href="#BOM-MarkDown-Creation" accesskey="p" rel="prev">BOM MarkDown Creation</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="G_002dcode-Options-1"></span><h3 class="section">7.12 G-code Options</h3>
+<span id="G_002dcode-Options-1"></span><h3 class="section">7.13 G-code Options</h3>
 <dl compact="compact">
 <dt><code>--basename &lt;string&gt;</code>
 <span id="index-_002d_002dbasename-_003cstring_003e"></span>
@@ -4712,7 +4763,7 @@ hand-editing of the resulting files.
 <p>
 Next: <a href="#Postscript-Export" accesskey="n" rel="next">Postscript Export</a>, Previous: <a href="#G_002dcode-Options" accesskey="p" rel="prev">G-code Options</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Gerber-Export-1"></span><h3 class="section">7.13 Gerber Export</h3>
+<span id="Gerber-Export-1"></span><h3 class="section">7.14 Gerber Export</h3>
 <dl compact="compact">
 <dt><code>--gerberfile &lt;string&gt;</code>
 <span id="index-_002d_002dgerberfile-_003cstring_003e"></span>
@@ -4764,7 +4815,7 @@ Parameter <code>&lt;string&gt;</code> can be &lsquo;<samp>fixed</samp>&rsquo;, &
 <p>
 Next: <a href="#Encapsulated-Postscript-Export" accesskey="n" rel="next">Encapsulated Postscript Export</a>, Previous: <a href="#Gerber-Export" accesskey="p" rel="prev">Gerber Export</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Postscript-Export-1"></span><h3 class="section">7.14 Postscript Export</h3>
+<span id="Postscript-Export-1"></span><h3 class="section">7.15 Postscript Export</h3>
 <dl compact="compact">
 <dt><code>--psfile &lt;string&gt;</code>
 <span id="index-_002d_002dpsfile-_003cstring_003e"></span>
@@ -4915,7 +4966,7 @@ to &lsquo;<samp>A10</samp>&rsquo;, &lsquo;<samp>B0</samp>&rsquo; to &lsquo;<samp
 <p>
 Next: <a href="#PNG-Options" accesskey="n" rel="next">PNG Options</a>, Previous: <a href="#Postscript-Export" accesskey="p" rel="prev">Postscript Export</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Encapsulated-Postscript-Export-1"></span><h3 class="section">7.15 Encapsulated Postscript Export</h3>
+<span id="Encapsulated-Postscript-Export-1"></span><h3 class="section">7.16 Encapsulated Postscript Export</h3>
 <dl compact="compact">
 <dt><code>--eps-file &lt;string&gt;</code>
 <span id="index-_002d_002deps_002dfile-_003cstring_003e"></span>
@@ -4960,7 +5011,7 @@ Next: <a href="#PNG-Options" accesskey="n" rel="next">PNG Options</a>, Previous:
 <p>
 Next: <a href="#Nelma-Options" accesskey="n" rel="next">Nelma Options</a>, Previous: <a href="#Encapsulated-Postscript-Export" accesskey="p" rel="prev">Encapsulated Postscript Export</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="PNG-Options-1"></span><h3 class="section">7.16 PNG Options</h3>
+<span id="PNG-Options-1"></span><h3 class="section">7.17 PNG Options</h3>
 <dl compact="compact">
 <dt><code>--outfile &lt;string&gt;</code>
 <span id="index-_002d_002doutfile-_003cstring_003e"></span>
@@ -5109,7 +5160,7 @@ of plating. Parameter <code>&lt;colour&gt;</code> can be &lsquo;<samp>tinned</sa
 <p>
 Next: <a href="#IPC_002dD_002d356-Netlist-Export" accesskey="n" rel="next">IPC-D-356 Netlist Export</a>, Previous: <a href="#PNG-Options" accesskey="p" rel="prev">PNG Options</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Nelma-Options-1"></span><h3 class="section">7.17 Nelma Options</h3>
+<span id="Nelma-Options-1"></span><h3 class="section">7.18 Nelma Options</h3>
 <dl compact="compact">
 <dt><code>--basename &lt;string&gt;</code>
 <span id="index-_002d_002dbasename-_003cstring_003e-1"></span>
@@ -5150,7 +5201,7 @@ Next: <a href="#IPC_002dD_002d356-Netlist-Export" accesskey="n" rel="next">IPC-D
 <p>
 Next: <a href="#gsvit-Options" accesskey="n" rel="next">gsvit Options</a>, Previous: <a href="#Nelma-Options" accesskey="p" rel="prev">Nelma Options</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="IPC_002dD_002d356-Netlist-Export-1"></span><h3 class="section">7.18 IPC-D-356 Netlist Export</h3>
+<span id="IPC_002dD_002d356-Netlist-Export-1"></span><h3 class="section">7.19 IPC-D-356 Netlist Export</h3>
 <dl compact="compact">
 <dt><code>--netlist-file &lt;string&gt;</code>
 <span id="index-_002d_002dnetlist_002dfile-_003cstring_003e"></span>
@@ -5164,7 +5215,7 @@ Parameter <code>&lt;string&gt;</code> can include a path.
 <p>
 Next: <a href="#lpr-Printing-Options" accesskey="n" rel="next">lpr Printing Options</a>, Previous: <a href="#IPC_002dD_002d356-Netlist-Export" accesskey="p" rel="prev">IPC-D-356 Netlist Export</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="gsvit-Options-1"></span><h3 class="section">7.19 gsvit Options</h3>
+<span id="gsvit-Options-1"></span><h3 class="section">7.20 gsvit Options</h3>
 <dl compact="compact">
 <dt><code>-- basename &lt;string&gt;</code>
 <span id="index-_002d_002d-basename-_003cstring_003e"></span>
@@ -5184,7 +5235,7 @@ Next: <a href="#lpr-Printing-Options" accesskey="n" rel="next">lpr Printing Opti
 <p>
 Previous: <a href="#gsvit-Options" accesskey="p" rel="prev">gsvit Options</a>, Up: <a href="#Command_002dLine-Options" accesskey="u" rel="up">Command-Line Options</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="lpr-Printing-Options-1"></span><h3 class="section">7.20 lpr Printing Options</h3>
+<span id="lpr-Printing-Options-1"></span><h3 class="section">7.21 lpr Printing Options</h3>
 <dl compact="compact">
 <dt><code>--lprcommand &lt;string&gt;</code>
 <span id="index-_002d_002dlprcommand-_003cstring_003e"></span>
@@ -6915,6 +6966,11 @@ the masks used in board manufacturing.  In fact, older mask making
 equipment created lines in precisely this fashion.  A physical aperture was
 used to pass light through onto a photosensitive film.
 </p>
+<p>There is an alternate representation of the pad - a pad can be specified as
+coordinates of its centerpoint and pad size. The pad is internally stored
+in traditional format. This format significantly simplifies the manual design
+of elements.
+</p>
 <hr>
 <span id="Layout-File"></span><div class="header">
 <p>
@@ -7976,6 +8032,7 @@ Next: <a href="#PCB-syntax" accesskey="n" rel="next">PCB syntax</a>, Previous: <
 <table class="cartouche" border="1"><tr><td>
 <div class="format">
 <pre class="format">Pad [rX1 rY1 rX2 rY2 Thickness Clearance Mask &quot;Name&quot; &quot;Number&quot; SFlags]
+Pad [cX cY sX sY Clearance Mask &quot;Name&quot; &quot;Number&quot; SFlags]
 </pre></div>
 </td></tr></table>
 
@@ -7984,6 +8041,7 @@ Next: <a href="#PCB-syntax" accesskey="n" rel="next">PCB syntax</a>, Previous: <
 <table class="cartouche" border="1"><tr><td>
 <div class="format">
 <pre class="format">Pad (rX1 rY1 rX2 rY2 Thickness Clearance Mask &quot;Name&quot; &quot;Number&quot; NFlags)
+Pad (cX cY sX sY Clearance Mask &quot;Name&quot; &quot;Number&quot; NFlags)
 Pad (aX1 aY1 aX2 aY2 Thickness &quot;Name&quot; &quot;Number&quot; NFlags)
 Pad (aX1 aY1 aX2 aY2 Thickness &quot;Name&quot; NFlags)
 </pre></div>
@@ -7998,6 +8056,9 @@ coordinate twice.
 </p></dd>
 <dt><var>aX1 aY1 aX2 aY2</var></dt>
 <dd><p>Same, but absolute coordinates of the endpoints of the pad.
+</p></dd>
+<dt><var>cX cY sX sY</var></dt>
+<dd><p>Coordinates of the pad centerpoint (cX, cY) and pad size (sX, sY).
 </p></dd>
 <dt><var>Thickness</var></dt>
 <dd><p>width of the pad.
@@ -14234,8 +14295,8 @@ to be drawn smaller; more of the board will be visible.
 <dt><code>=<var>factor</var></code></dt>
 <dd> 
 <p>The <var>factor</var> is an absolute zoom factor; the unit for this value
-is &quot;PCB units per screen pixel&quot;.  Since PCB units are 0.01 mil, a
-<var>factor</var> of 1000 means 10 mils (0.01 in) per pixel, or 100 DPI,
+is &quot;PCB units per screen pixel&quot;.  Since PCB default units are 0.01 mil,
+a <var>factor</var> of 1000 means 10 mils (0.01 in) per pixel, or 100 DPI,
 about the actual resolution of most screens - resulting in an &quot;actual
 size&quot; board.  Similarly, a <var>factor</var> of 100 gives you a 10x actual
 size.
@@ -14989,8 +15050,8 @@ to be drawn smaller; more of the board will be visible.
 <dt><code>=<var>factor</var></code></dt>
 <dd>
 <p>The <var>factor</var> is an absolute zoom factor; the unit for this value
-is &quot;PCB units per screen pixel&quot;.  Since PCB units are 0.01 mil, a
-<var>factor</var> of 1000 means 10 mils (0.01 in) per pixel, or 100 DPI,
+is &quot;PCB units per screen pixel&quot;.  Since PCB default units are 0.01 mil,
+a <var>factor</var> of 1000 means 10 mils (0.01 in) per pixel, or 100 DPI,
 about the actual resolution of most screens - resulting in an &quot;actual
 size&quot; board.  Similarly, a <var>factor</var> of 100 gives you a 10x actual
 size.
@@ -15300,6 +15361,7 @@ Previous: <a href="#Glossary" accesskey="p" rel="prev">Glossary</a>, Up: <a href
 <tr><td></td><td valign="top"><a href="#index-_002d_002dall_002ddirection_002dlines"><code>--all-direction-lines</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#General-GUI-Options">General GUI Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dall_002dlayers"><code>--all-layers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Gerber-Export">Gerber Export</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dattrs-_003cstring_003e"><code>--attrs &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#BOM-Creation">BOM Creation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002d_002dattrs-_003cstring_003e-1"><code>--attrs &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#BOM-MarkDown-Creation">BOM MarkDown Creation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dauto_002dburied_002dvias"><code>--auto-buried-vias</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#General-Options">General Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dauto_002dmirror"><code>--auto-mirror</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Postscript-Export">Postscript Export</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dbackground_002dcolor-_003cstring_003e"><code>--background-color &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Colors">Colors</a></td></tr>
@@ -15312,6 +15374,7 @@ Previous: <a href="#Glossary" accesskey="p" rel="prev">Glossary</a>, Up: <a href
 <tr><td></td><td valign="top"><a href="#index-_002d_002dblack_002dcolor-_003cstring_003e-1"><code>--black-color &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Colors">Colors</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dbloat-_003cnum_003e"><code>--bloat &lt;num&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#DRC-Options">DRC Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dbomfile-_003cstring_003e"><code>--bomfile &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#BOM-Creation">BOM Creation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002d_002dbom_005fmd_005ffile-_003cstring_003e"><code>--bom_md_file &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#BOM-MarkDown-Creation">BOM MarkDown Creation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dclear_002dincrement_002dmil-_003cstring_003e"><code>--clear-increment-mil &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#General-Options">General Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dclear_002dincrement_002dmm-_003cstring_003e"><code>--clear-increment-mm &lt;string&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#General-Options">General Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dclear_002dline"><code>--clear-line</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#General-GUI-Options">General GUI Options</a></td></tr>
@@ -15693,8 +15756,10 @@ Previous: <a href="#Glossary" accesskey="p" rel="prev">Glossary</a>, Up: <a href
 <tr><td></td><td valign="top"><a href="#index-backup-2">backup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resources">Resources</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-bell">bell</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Actions">Actions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-bill-of-materials">bill of materials</a>:</td><td>&nbsp;</td><td valign="top"><a href="#bom">bom</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bill-of-materials-in-MarkDown-format">bill of materials in MarkDown format</a>:</td><td>&nbsp;</td><td valign="top"><a href="#bom_005fmd">bom_md</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-bloat">bloat</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resources">Resources</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-bom">bom</a>:</td><td>&nbsp;</td><td valign="top"><a href="#bom">bom</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bom_005fmd">bom_md</a>:</td><td>&nbsp;</td><td valign="top"><a href="#bom_005fmd">bom_md</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-buffer_002c-an-example">buffer, an example</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pastebuffer">Pastebuffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-buffer_002c-convert-contents-to-element">buffer, convert contents to element</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Elements">Elements</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Buffer_002c-popup-menu">Buffer, popup menu</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Menu">Menu</a></td></tr>
