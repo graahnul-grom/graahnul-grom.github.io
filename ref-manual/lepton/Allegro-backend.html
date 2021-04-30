@@ -13,19 +13,19 @@ Documentation License." -->
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Compatibility with geda-gaf (Lepton EDA Reference Manual 1.9.14)</title>
+<title>Allegro backend (Lepton EDA Reference Manual 1.9.14)</title>
 
-<meta name="description" content="Compatibility with geda-gaf (Lepton EDA Reference Manual 1.9.14)">
-<meta name="keywords" content="Compatibility with geda-gaf (Lepton EDA Reference Manual 1.9.14)">
+<meta name="description" content="Allegro backend (Lepton EDA Reference Manual 1.9.14)">
+<meta name="keywords" content="Allegro backend (Lepton EDA Reference Manual 1.9.14)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <link href="index.html" rel="start" title="Top">
 <link href="Topic-Index.html" rel="index" title="Topic Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Overview.html" rel="up" title="Overview">
-<link href="Related-tools.html" rel="next" title="Related tools">
-<link href="List-of-programs.html" rel="prev" title="List of programs">
+<link href="lepton_002dnetlist.html" rel="up" title="lepton-netlist">
+<link href="BOM-backend.html" rel="next" title="BOM backend">
+<link href="lepton_002dnetlist.html" rel="prev" title="lepton-netlist">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -50,23 +50,23 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Compatibility-with-geda_002dgaf"></span><div class="header">
+<span id="Allegro-backend"></span><div class="header">
 <p>
-Next: <a href="Related-tools.html" accesskey="n" rel="next">Related tools</a>, Previous: <a href="List-of-programs.html" accesskey="p" rel="prev">List of programs</a>, Up: <a href="Overview.html" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="BOM-backend.html" accesskey="n" rel="next">BOM backend</a>, Up: <a href="lepton_002dnetlist.html" accesskey="u" rel="up">lepton-netlist</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Compatibility-with-geda_002dgaf-1"></span><h3 class="section">1.2 Compatibility with geda-gaf</h3>
-<span id="index-compatibility-with-geda_002dgaf"></span>
+<span id="Allegro-netlister-backend"></span><h3 class="section">6.1 Allegro netlister backend</h3>
 
-<p>Lepton EDA is backward compatible with its predecessor <em>geda-gaf</em>
-and supports the same <a href="gEDA-file-format.html">gEDA file format</a> for symbols and
-schematics.  We are planning to support it in future since there are
-lots of symbols and schematics created using it.  We cannot promise
-you to support any change in <em>geda-gaf</em> in future.  It&rsquo;s up to
-you, our users, to point out what feature you would like to have in
-Lepton.
+<p>The Allegro netlister backend by Matthew Ettus <a href="mailto:matt@ettus.com">matt@ettus.com</a>
+is a backend generating netlists for the
+<a href="https://www.cadence.com/en_US/home/tools/pcb-design-and-analysis/pcb-layout/allegro-pcb-designer.html">Allegro PCB designer</a>.
 </p>
-
+<p>It doesn&rsquo;t require any additional configuration.
+</p>
+<p>Example of netlist creation:
+</p><div class="example">
+<pre class="example">lepton-netlist -g allegro -o schematic.out schematic.sch
+</pre></div>
 
 
 
