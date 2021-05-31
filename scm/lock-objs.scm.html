@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>scm/lock-objs.scm - Lepton EDA - graahnul-grom.github.io</title>
+<meta name="Generator" content="Vim/8.2">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="syntax" content="scheme">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="solarized">
+<style>
+<!--
+pre { font-family: monospace; color: #839496; background-color: #002b36; }
+body { font-family: monospace; color: #839496; background-color: #002b36; }
+* { font-size: 1em; }
+.Todo { color: #ff0000; background-color: #000000; padding-bottom: 1px; }
+.LineNr { color: #586e75; background-color: #073642; padding-bottom: 1px; }
+.guileSym { color: #37b88e; }
+.guileTrue { color: #32961e; background-color: #00252e; padding-bottom: 1px; }
+.guileFalse { color: #227abf; background-color: #002129; padding-bottom: 1px; }
+.gedaFunc { color: #e6e3e0; }
+.gedaVar { color: #e6e3e0; font-style: italic; }
+.Comment { color: #586e75; }
+.Special { color: #dc322f; }
+.Identifier { color: #268bd2; }
+.Statement { color: #859900; }
+.schemeString { color: #d18ccb; }
+-->
+</style>
+
+<script>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+<body onload='JumpToLine();'>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr"> 1 </span><span class="Comment">; file: lock-objs.scm</span>
+<span id="L2" class="LineNr"> 2 </span><span class="Comment">; type: lepton-schematic Guile script</span>
+<span id="L3" class="LineNr"> 3 </span><span class="Comment">; copyright (c) 2020-2021 </span><span class="Todo">dmn</span><span class="Comment"> &lt;graahnul.grom@gmail.com&gt;</span>
+<span id="L4" class="LineNr"> 4 </span><span class="Comment">; license: GPLv2+</span>
+<span id="L5" class="LineNr"> 5 </span><span class="Comment">;</span>
+<span id="L6" class="LineNr"> 6 </span><span class="Comment">; Locks all objects with lock=yes attribute on startup.</span>
+<span id="L7" class="LineNr"> 7 </span>
+<span id="L8" class="LineNr"> 8 </span>
+<span id="L9" class="LineNr"> 9 </span>
+<span id="L10" class="LineNr">10 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton object  <span class="Special">)</span> <span class="Special">)</span>
+<span id="L11" class="LineNr">11 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton attrib  <span class="Special">)</span> <span class="Special">)</span>
+<span id="L12" class="LineNr">12 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton page    <span class="Special">)</span> <span class="Special">)</span>
+<span id="L13" class="LineNr">13 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> lepton <span class="Identifier">log</span>     <span class="Special">)</span> <span class="Special">)</span>
+<span id="L14" class="LineNr">14 </span><span class="Special">(</span> <span class="Statement">use-modules</span> <span class="Special">(</span> schematic hook <span class="Special">)</span> <span class="Special">)</span>
+<span id="L15" class="LineNr">15 </span>
+<span id="L16" class="LineNr">16 </span>
+<span id="L17" class="LineNr">17 </span>
+<span id="L18" class="LineNr">18 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> msg level msg <span class="Special">.</span> aa <span class="Special">)</span>
+<span id="L19" class="LineNr">19 </span>    <span class="Special">(</span> <span class="Identifier">format</span> <span class="guileTrue">#t</span>  <span class="schemeString">&quot;~a: lock.dmn.scm: ~a~%&quot;</span> level <span class="Special">(</span><span class="Identifier">apply</span> <span class="Identifier">format</span> <span class="guileFalse">#f</span> msg aa<span class="Special">)</span> <span class="Special">)</span>
+<span id="L20" class="LineNr">20 </span>    <span class="Special">(</span> <span class="gedaFunc">log!</span>
+<span id="L21" class="LineNr">21 </span>        <span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span><span class="Identifier">eq?</span> level <span class="guileSym">'error</span><span class="Special">)</span> <span class="guileSym">'warning</span> <span class="guileSym">'message</span> <span class="Special">)</span>
+<span id="L22" class="LineNr">22 </span>        <span class="schemeString">&quot;lock.dmn.scm: ~a&quot;</span>
+<span id="L23" class="LineNr">23 </span>        <span class="Special">(</span> <span class="Identifier">apply</span> <span class="Identifier">format</span> <span class="guileFalse">#f</span> msg aa <span class="Special">)</span>
+<span id="L24" class="LineNr">24 </span>    <span class="Special">)</span>
+<span id="L25" class="LineNr">25 </span><span class="Special">)</span> <span class="Comment">; msg()</span>
+<span id="L26" class="LineNr">26 </span>
+<span id="L27" class="LineNr">27 </span>
+<span id="L28" class="LineNr">28 </span>
+<span id="L29" class="LineNr">29 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> is_obj_lockable obj <span class="Special">)</span>
+<span id="L30" class="LineNr">30 </span>
+<span id="L31" class="LineNr">31 </span>    <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> is_attr_lock_yes attr <span class="Special">)</span>
+<span id="L32" class="LineNr">32 </span>        <span class="Comment">; return:</span>
+<span id="L33" class="LineNr">33 </span>        <span class="Special">(</span> <span class="Statement">and</span>
+<span id="L34" class="LineNr">34 </span>            <span class="Special">(</span> <span class="gedaFunc">attribute?</span> attr <span class="Special">)</span>
+<span id="L35" class="LineNr">35 </span>            <span class="Special">(</span> <span class="Identifier">string-ci=?</span> <span class="Special">(</span><span class="gedaFunc">attrib-name</span> attr<span class="Special">)</span>  <span class="schemeString">&quot;lock&quot;</span> <span class="Special">)</span>
+<span id="L36" class="LineNr">36 </span>            <span class="Special">(</span> <span class="Identifier">string-ci=?</span> <span class="Special">(</span><span class="gedaFunc">attrib-value</span> attr<span class="Special">)</span> <span class="schemeString">&quot;yes&quot;</span>  <span class="Special">)</span>
+<span id="L37" class="LineNr">37 </span>        <span class="Special">)</span>
+<span id="L38" class="LineNr">38 </span>    <span class="Special">)</span>
+<span id="L39" class="LineNr">39 </span>
+<span id="L40" class="LineNr">40 </span>    <span class="Comment">; return:</span>
+<span id="L41" class="LineNr">41 </span>    <span class="Special">(</span> <span class="Identifier">find</span> is_attr_lock_yes <span class="Special">(</span><span class="gedaFunc">object-attribs</span> obj<span class="Special">)</span> <span class="Special">)</span>
+<span id="L42" class="LineNr">42 </span>
+<span id="L43" class="LineNr">43 </span><span class="Special">)</span> <span class="Comment">; is_obj_lockable()</span>
+<span id="L44" class="LineNr">44 </span>
+<span id="L45" class="LineNr">45 </span>
+<span id="L46" class="LineNr">46 </span>
+<span id="L47" class="LineNr">47 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> lock_objs_on_page page <span class="Special">)</span>
+<span id="L48" class="LineNr">48 </span>
+<span id="L49" class="LineNr">49 </span>    <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> lock_obj o <span class="Special">)</span>
+<span id="L50" class="LineNr">50 </span>        <span class="Special">(</span> <span class="gedaFunc">set-object-selectable!</span> o <span class="guileFalse">#f</span> <span class="Special">)</span>
+<span id="L51" class="LineNr">51 </span>    <span class="Special">)</span>
+<span id="L52" class="LineNr">52 </span>
+<span id="L53" class="LineNr">53 </span>    <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> lock_obj_attrs o <span class="Special">)</span>
+<span id="L54" class="LineNr">54 </span>        <span class="Special">(</span> <span class="Identifier">for-each</span> lock_obj <span class="Special">(</span><span class="gedaFunc">object-attribs</span> o<span class="Special">)</span> <span class="Special">)</span>
+<span id="L55" class="LineNr">55 </span>    <span class="Special">)</span>
+<span id="L56" class="LineNr">56 </span>
+<span id="L57" class="LineNr">57 </span>    <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> is_page_symbol page <span class="Special">)</span>
+<span id="L58" class="LineNr">58 </span>        <span class="Comment">; return:</span>
+<span id="L59" class="LineNr">59 </span>        <span class="Special">(</span> <span class="Identifier">string-suffix-ci?</span> <span class="schemeString">&quot;.sym&quot;</span> <span class="Special">(</span><span class="gedaFunc">page-filename</span> page<span class="Special">)</span> <span class="Special">)</span>
+<span id="L60" class="LineNr">60 </span>    <span class="Special">)</span>
+<span id="L61" class="LineNr">61 </span>
+<span id="L62" class="LineNr">62 </span>    <span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> do_lock <span class="Special">)</span>
+<span id="L63" class="LineNr">63 </span>        <span class="Special">(</span> <span class="Identifier">for-each</span>
+<span id="L64" class="LineNr">64 </span>        <span class="Special">(</span> <span class="Statement">lambda</span><span class="Special">(</span> obj <span class="Special">)</span>
+<span id="L65" class="LineNr">65 </span>            <span class="Special">(</span> msg <span class="guileSym">'info</span> <span class="schemeString">&quot;locking [~a]...&quot;</span> <span class="Special">(</span><span class="gedaFunc">object-type</span> obj<span class="Special">)</span> <span class="Special">)</span>
+<span id="L66" class="LineNr">66 </span>            <span class="Special">(</span> lock_obj obj <span class="Special">)</span>
+<span id="L67" class="LineNr">67 </span>            <span class="Special">(</span> lock_obj_attrs obj <span class="Special">)</span>
+<span id="L68" class="LineNr">68 </span>            <span class="Special">(</span> <span class="gedaFunc">set-page-dirty!</span> page <span class="guileFalse">#f</span> <span class="Special">)</span>
+<span id="L69" class="LineNr">69 </span>        <span class="Special">)</span>
+<span id="L70" class="LineNr">70 </span>        <span class="Special">(</span> <span class="Identifier">filter</span> is_obj_lockable <span class="Special">(</span><span class="gedaFunc">page-contents</span> page<span class="Special">)</span> <span class="Special">)</span>
+<span id="L71" class="LineNr">71 </span>        <span class="Special">)</span>
+<span id="L72" class="LineNr">72 </span>    <span class="Special">)</span>
+<span id="L73" class="LineNr">73 </span>
+<span id="L74" class="LineNr">74 </span>
+<span id="L75" class="LineNr">75 </span>    <span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> is_page_symbol page <span class="Special">)</span>
+<span id="L76" class="LineNr">76 </span>        <span class="Special">(</span> msg <span class="guileSym">'info</span> <span class="schemeString">&quot;disable locking in symbol files&quot;</span> <span class="Special">)</span> <span class="Comment">; if</span>
+<span id="L77" class="LineNr">77 </span>        <span class="Special">(</span> do_lock <span class="Special">)</span>                                   <span class="Comment">; else</span>
+<span id="L78" class="LineNr">78 </span>    <span class="Special">)</span>
+<span id="L79" class="LineNr">79 </span>
+<span id="L80" class="LineNr">80 </span><span class="Special">)</span> <span class="Comment">; lock_objs_on_page()</span>
+<span id="L81" class="LineNr">81 </span>
+<span id="L82" class="LineNr">82 </span>
+<span id="L83" class="LineNr">83 </span>
+<span id="L84" class="LineNr">84 </span><span class="Special">(</span> <span class="Statement">define</span> <span class="Special">(</span> install_hook <span class="Special">)</span>
+<span id="L85" class="LineNr">85 </span>    <span class="Special">(</span> <span class="Identifier">add-hook!</span> <span class="gedaVar">open-page-hook</span> lock_objs_on_page <span class="guileFalse">#f</span> <span class="Special">)</span> <span class="Comment">; #f =&gt; prepend</span>
+<span id="L86" class="LineNr">86 </span>    <span class="Special">(</span> msg <span class="guileSym">'info</span> <span class="schemeString">&quot;open-page-hook installed&quot;</span> <span class="Special">)</span>
+<span id="L87" class="LineNr">87 </span><span class="Special">)</span>
+<span id="L88" class="LineNr">88 </span>
+<span id="L89" class="LineNr">89 </span>
+<span id="L90" class="LineNr">90 </span>
+<span id="L91" class="LineNr">91 </span>
+<span id="L92" class="LineNr">92 </span><span class="Comment">; open-page-hook:           added in    git 21a5b6b (20.12.2018)</span>
+<span id="L93" class="LineNr">93 </span><span class="Comment">; set-object-selectable!(): added circa git 4708547 (16.01.2019)</span>
+<span id="L94" class="LineNr">94 </span><span class="Comment">;</span>
+<span id="L95" class="LineNr">95 </span><span class="Special">(</span> <span class="Statement">if</span> <span class="Special">(</span> <span class="Statement">and</span> <span class="Special">(</span><span class="Identifier">defined?</span> <span class="guileSym">'open-page-hook</span><span class="Special">)</span> <span class="Special">(</span><span class="Identifier">defined?</span> <span class="guileSym">'set-object-selectable</span>!<span class="Special">)</span> <span class="Special">)</span>
+<span id="L96" class="LineNr">96 </span>    <span class="Special">(</span> install_hook <span class="Special">)</span>
+<span id="L97" class="LineNr">97 </span>    <span class="Special">(</span> msg <span class="guileSym">'error</span> <span class="schemeString">&quot;need lepton-eda &gt;= git:4708547 (16.01.2019)&quot;</span> <span class="Special">)</span>
+<span id="L98" class="LineNr">98 </span><span class="Special">)</span>
+<span id="L99" class="LineNr">99 </span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
