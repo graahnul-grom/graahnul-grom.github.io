@@ -217,6 +217,57 @@ not supported in the current file format (see <a href="gEDA-file-format.html">gE
 However, a Scheme extension may be used in Lepton to achieve that.
 </p></blockquote>
 
+<p>There are two special actions that allow you to save data of a
+component or a picture within schematic or undo such a change.
+Edit &rarr; Embed Component/Picture (<kbd>E B</kbd>)
+embeds the data of selected component or picture into schematic.  This
+may make sense in case you want to distribute your schematic as one
+file and/or prevent data loss or corruption due to different set of
+symbols available at the target and destination locations.  Currently,
+you have to embed each component or picture instance if you have
+several of them in your schematic.  Otherwise, not embedded objects
+won&rsquo;t be present in the schematic if you don&rsquo;t include libraries with
+appropriate symbols into your project.  This is limitation of the
+current file format.  See <a href="gEDA-file-format.html">gEDA file format</a> for more information.
+Embedding objects makes thus the file size bigger (sometimes, much
+bigger), and after you made sure anything is OK, and necessary symbols
+or pictures are in place, you may want to unembed the objects.  The
+action Edit &rarr; Unembed Component/Picture (<kbd>E
+Shift-B</kbd>) does just that.  It unembeds a component or picture embedded
+by the menu item action described above.  Note that the command will
+be ignored if you don&rsquo;t have the symbol or image corresponding to your
+unembeddable object in one of the libraries available for your
+schematic.  Remember to open the log window and see what could went
+wrong if your schematic file did not change after this action and
+saving it.
+</p>
+<p>If you edit a symbol and save it, schematics containing it are not
+updated automatically.  You have to update component instances
+manually.  Select the components you want to update and use
+Edit &rarr; Update Component (<kbd>E U</kbd>) to actually
+do it.
+</p>
+<p>Another useful action is translation of the page contents to origin,
+that is, to the coordinate (0, 0) of the page.  It is usually
+necessary when you create or edit a symbol.  The origin defines the
+anchor of the symbol.  When you insert the symbol from the component
+library, this point in the symbol corresponds to the position of the
+mouse cursor, so the visible contents of your component will be
+positioned around the mouse cursor at the same distance the contents
+of the corresponding symbol is positioned around the origin within it.
+Usually, it is the left-bottom point of a symbol.  However you can
+define it anywhere. If you want, for example, the anchor to be located
+at the center of your symbol, move the symbol contents to lay around
+the origin.  Use Edit &rarr; Symbol Translate...
+(<kbd>E T</kbd>) to translate the symbol you edit to origin and then place
+its contents the way you wish.
+</p>
+<blockquote>
+<p><b>Note:</b> If the contents of your symbol is too far from origin, you may even
+not see the symbol when inserting.  Zoom out to see if this is the
+case then.
+</p></blockquote>
+
 
 <hr>
 <div class="header">
