@@ -15,10 +15,20 @@
 
 
 ( define ( load-gschemrc-file page )
-    ( chdir ( dirname (page-filename page) ) )
-    ( parse-rc "lepton-schematic" "gschemrc" )
-    ( log! 'warning "load-gschemrc.scm: Loaded RC file [~a/gschemrc]"   (getcwd) )
-    ( format #t     "load-gschemrc.scm: Loaded RC file [~a/gschemrc]~%" (getcwd) )
+( let*
+    (
+    ( dir ( dirname (page-filename page) ) )
+    ( gschemrc (format #f "~a/gschemrc" dir) )
+    )
+
+    ( when ( access? gschemrc R_OK )
+        ( chdir dir )
+        ( parse-rc "lepton-schematic" "gschemrc" )
+        ( log!   'warning "load-gschemrc.scm: Loaded [~a/gschemrc]"   gschemrc )
+        ( format #t       "load-gschemrc.scm: Loaded [~a/gschemrc]~%" gschemrc )
+    )
+
+) ; let
 )
 
 
