@@ -245,46 +245,9 @@ autotools - resources:
 <br />
 
 <h4 id="scm">Guile Scripts</h4>
+<a href='scm/index.html'>guile scripts page</a>
+<br />
 <a href='https://github.com/lepton-eda/lepton-eda/wiki/Scripting-examples'>scripting examples</a> (lepton-eda wiki)<br />
-<a href='scm/list-keys-dmn.scm.html'>list-keys-dmn.scm</a>
-[ <a href='scm/list-keys-dmn.scm'>download</a> ]<br />
-print lepton-schematic key bindings to stdout<br />
-<a href='scm/shift-sel-to-pasted.scm.html'>shift-sel-to-pasted.scm</a>
-[ <a href='scm/shift-sel-to-pasted.scm'>download</a> ]<br />
-make lepton-schematic shift selection to pasted objects<br />
-(i.e. when you copy and paste an object, the pasted one will be selected)<br />
-<a href='scm/select-locked.scm.html'>select-locked.scm</a>
-[ <a href='scm/select-locked.scm'>download</a> ]<br />
-select locked objects with (customizable) keyboard shortcuts:<br />
-- Ctrl+Shift+L: select all locked objects<br />
-- Shift+L: select next (cycle through locked objects)<br />
-- Ctrl+L: select locked objects under the mouse cursor<br />
-<a href='scm/lock-objs.scm.html'>lock-objs.scm</a>
-[ <a href='scm/lock-objs.scm'>download</a> ]<br />
-lock all objects with <code>lock=yes</code> attribute on startup.<br />
-allows one to keep any objects locked (not only components)<br />
-<a href='scm/load-gschemrc.scm.html'>load-gschemrc.scm</a>
-[ <a href='scm/load-gschemrc.scm'>download</a> ]<br />
-when opening page, load gschemrc file from the page's directory<br />
-(unlike gafrc, gschemrc file doesn't automatically loaded unless<br />
-you start lepton-schematic in the directory where gschemrc resides)<br />
-
-<a href='scm/quick.scm.html'>quick.scm</a>
-[ <a href='scm/quick.scm'>download</a> ]<br />
-quickly access schematic objects from the ":" prompt,<br />
-output results to the log window:<br />
-- prn(str): print str to the log<br />
-- pstr(): page contents as string<br />
-- sobjs(): list of selected objects<br />
-- sobj(): first selected object (#f if none)<br />
-- scomps(): list of selected componenets<br />
-- scomp(): first selected component (#f if none)<br />
-- cfgget(grp, key): get cfg key<br />
-- cfgset(grp, key, val): set cfg key in local ctx w/o save<br />
-<a href='scm/symcache.scm.html'>symcache.scm</a>
-[ <a href='scm/symcache.scm'>download</a> ]<br />
-save all symbols used in opened schematic(s) to "symcache"<br />
-subdir in current schematic's directory
 <br />
 <br />
 

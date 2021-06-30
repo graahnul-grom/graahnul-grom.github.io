@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+<!--
+<script type="text/javascript" src=""></script>
+<script type="text/javascript">
+function ()
+{
+}
+</script>
+-->
+<title>Guile Scripts - Lepton EDA - graahnul-grom.github.io</title>
+</head>
+<body>
+
+<h3>Guile Scripts</h3>
+
+<a href='list-keys-dmn.scm.html'>list-keys-dmn.scm</a>
+[ <a href='list-keys-dmn.scm'>download</a> ]<br />
+print lepton-schematic key bindings to stdout<br />
+<br />
+
+<a href='shift-sel-to-pasted.scm.html'>shift-sel-to-pasted.scm</a>
+[ <a href='shift-sel-to-pasted.scm'>download</a> ]<br />
+make lepton-schematic shift selection to pasted objects<br />
+(i.e. when you copy and paste an object, the pasted one will be selected)<br />
+<br />
+
+<a href='select-locked.scm.html'>select-locked.scm</a>
+[ <a href='select-locked.scm'>download</a> ]<br />
+select locked objects with (customizable) keyboard shortcuts:<br />
+- Ctrl+Shift+L: select all locked objects<br />
+- Shift+L: select next (cycle through locked objects)<br />
+- Ctrl+L: select locked objects under the mouse cursor<br />
+<br />
+
+<a href='lock-objs.scm.html'>lock-objs.scm</a>
+[ <a href='lock-objs.scm'>download</a> ]<br />
+lock all objects with <code>lock=yes</code> attribute on startup.<br />
+allows one to keep any objects locked (not only components)<br />
+<br />
+
+<a href='load-gschemrc.scm.html'>load-gschemrc.scm</a>
+[ <a href='load-gschemrc.scm'>download</a> ]<br />
+when opening page, load gschemrc file from the page's directory<br />
+(unlike gafrc, gschemrc file doesn't automatically loaded unless<br />
+you start lepton-schematic in the directory where gschemrc resides)<br />
+<br />
+
+<a href='quick.scm.html'>quick.scm</a>
+[ <a href='quick.scm'>download</a> ]<br />
+quickly access schematic objects from the ":" prompt,<br />
+output results to the log window:<br />
+- prn(str): print str to the log<br />
+- pstr(): page contents as string<br />
+- sobjs(): list of selected objects<br />
+- sobj(): first selected object (#f if none)<br />
+- scomps(): list of selected componenets<br />
+- scomp(): first selected component (#f if none)<br />
+- cfgget(grp, key): get cfg key<br />
+- cfgset(grp, key, val): set cfg key in local ctx w/o save<br />
+<br />
+
+<a href='symcache.scm.html'>symcache.scm</a>
+[ <a href='symcache.scm'>download</a> ]<br />
+save all symbols used in opened schematic(s) to "symcache"<br />
+subdir in current schematic's directory
+
+</body>
+</html>
