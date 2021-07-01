@@ -4,6 +4,11 @@
 ; license: GPLv2+
 ;
 ; Quickly access schematic objects from the ":" prompt.
+; For the list of functions, see the Q() function below.
+;
+; Usage:
+; Add the following to your gschemrc file:
+;   ( primitive-load "/path/to/quick.scm" )
 ;
 
 

@@ -7,6 +7,8 @@
 ; subdir in current schematic's directory.
 ;
 ; Usage:
+; Type in the ":" prompt or add this to your gschemrc file:
+;   ( primitive-load "/path/to/symcache.scm" )
 ; Type ( symcache ) in the ":" prompt to save current schematic's
 ; symbols to "symcache" directory or ( symcache-all ) to save
 ; symbols from all opened schematics.

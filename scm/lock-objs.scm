@@ -4,6 +4,12 @@
 ; license: GPLv2+
 ;
 ; Locks all objects with lock=yes attribute on startup.
+; Allows to keep any objects locked (not only components).
+;
+; Usage:
+; Add the following to your gschemrc file:
+;   ( primitive-load "/path/to/lock-objs.scm" )
+;
 
 
 

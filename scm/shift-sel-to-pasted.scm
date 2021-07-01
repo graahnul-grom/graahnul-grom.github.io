@@ -2,10 +2,14 @@
 ; copyright (c) 2016-2020 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; make lepton-schematic shift selection to pasted objects
-; posted on the geda-user mailing list:
+; Make lepton-schematic shift selection to pasted objects
+; (when you copy and paste an object, the pasted one will be selected).
+;
+; Posted on the geda-user mailing list:
 ; http://www.delorie.com/archives/browse.cgi?p=geda-user/2016/10/22/20:39:25
-; usage: add the following to your gschemrc configuration file:
+
+; Usage:
+; Add the following to your gschemrc configuration file:
 ;   ( primitive-load "/path/to/shift-sel-to-pasted.scm" )
 ;
 

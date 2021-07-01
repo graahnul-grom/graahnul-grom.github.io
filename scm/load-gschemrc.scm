@@ -3,7 +3,13 @@
 ; copyright (c) 2021 dmn <graahnul.grom@gmail.com>
 ; license: GPLv2+
 ;
-; When opening page, load gschemrc file from the page's directory
+; When opening a page, load gschemrc file from the page's directory
+; (unlike gafrc, gschemrc file doesn't automatically loaded unless
+; you start lepton-schematic in the directory where gschemrc resides).
+;
+; Usage:
+; Add the following to the ~/.config/lepton-eda/gschemrc file:
+;   ( primitive-load "/path/to/load-gschemrc.scm" )
 ;
 
 
