@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- This manual documents Lepton EDA version 1.9.15.
+<!-- This manual documents Lepton EDA version 1.9.16.
 
 Copyright (C) 2020-2021 Lepton Contributors.
 
@@ -13,10 +13,10 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<title>Switcap backend (Lepton EDA Reference Manual 1.9.15)</title>
+<title>Switcap backend (Lepton EDA Reference Manual 1.9.16)</title>
 
-<meta name="description" content="Switcap backend (Lepton EDA Reference Manual 1.9.15)">
-<meta name="keywords" content="Switcap backend (Lepton EDA Reference Manual 1.9.15)">
+<meta name="description" content="Switcap backend (Lepton EDA Reference Manual 1.9.16)">
+<meta name="keywords" content="Switcap backend (Lepton EDA Reference Manual 1.9.16)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -59,6 +59,10 @@ Previous: <a href="PADS-backend.html" accesskey="p" rel="prev">Forward/backward 
 </div>
 <hr>
 <span id="gEDA_002fgaf-Switcap-Symbols-and-Netlister"></span><h3 class="section">6.5 gEDA/gaf Switcap Symbols and Netlister</h3>
+<span id="index-switcap"></span>
+<span id="index-switcap-backend"></span>
+<span id="index-backend_002c-switcap"></span>
+<span id="index-sw2asc"></span>
 
 <p>by: Dan McMahill
 </p>
@@ -120,10 +124,10 @@ simulations are:
 <p>You will need the following programs to be installed:
 </p><ol>
 <li> A version of Lepton EDA.
-</li><li> SWITCAP.  The executable is usually called <code>sw</code>.  If you do
-not have SWITCAP available on your system, you will need to contact
-Columbia University to obtain a copy.  The Lepton SWITCAP support was
-tested with SWITCAP Version A.5R Release 21-Sep-87.
+</li><li> <a href="http://innovation.columbia.edu/technologies/Proxy30_optimal-simulator-for-mixed/">SWITCAP</a>.  The executable is usually called <code>sw</code>.  If you do
+not have SWITCAP available on your system, you will need to
+<a href="http://innovation.columbia.edu/technologies/Proxy30_optimal-simulator-for-mixed/licensing">contact Columbia University</a> to obtain a copy.  The Lepton SWITCAP
+support was tested with SWITCAP Version A.5R Release 21-Sep-87.
 </li><li> Although it is optional, you may wish to install a tool which can be
 used for plotting the output data.  SWITCAP produces both ASCII data
 listings as well as ugly ASCII plots (note the release date of the
@@ -140,6 +144,11 @@ easy to use, includes cursors, and has zoom/pan features.  See
 </li></ol>
 </li></ol>
 
+<p>The utility <code>sw2asc</code>(1) mentioned above can be used to convert
+a SWITCAP2 output file into ASCII data files that the above GUI tools
+can read.  It is not installed by default, you can find it in the
+<samp>contrib/</samp> directory of the Lepton repository or tarball.
+</p>
 
 </div>
 <div class="subsection" id="Creating-Schematics-1">
