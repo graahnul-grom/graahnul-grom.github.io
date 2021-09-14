@@ -67,11 +67,11 @@ Before 1.9.10 it was <code>gnetlist</code> group.
 </p>
 <table>
 <thead><tr><th width="15%">Name</th><th width="15%">Type</th><th width="15%">Default value</th><th width="55%">Description</th></tr></thead>
-<tr><td width="15%"><code>default-net-name</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;unnamed_net&quot;</samp>&rsquo;</td><td width="55%">Default name used for nets for which the user has set no explicit name
+<tr><td width="15%"><code>default-net-name</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;unnamed_net&quot;</samp>&rsquo;</td><td width="55%"><span id="default_002dnet_002dname"></span>Default name used for nets for which the user has set no explicit name
 via the <var>netname=</var> or <var>net=</var> attributes.</td></tr>
-<tr><td width="15%"><code>default-bus-name</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;unnamed_bus&quot;</samp>&rsquo;</td><td width="55%">Default name used for buses for which the user has set no explicit
+<tr><td width="15%"><code>default-bus-name</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;unnamed_bus&quot;</samp>&rsquo;</td><td width="55%"><span id="default_002dbus_002dname"></span>Default name used for buses for which the user has set no explicit
 name.  Buses are still not used in <code>lepton-netlist</code>.</td></tr>
-<tr><td width="15%"><code>net-naming-priority</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>net-attribute</samp>&rsquo;</td><td width="55%">Possible values: &lsquo;<samp>net-attribute</samp>&rsquo;, &lsquo;<samp>netname-attribute</samp>&rsquo;.
+<tr><td width="15%"><code>net-naming-priority</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>net-attribute</samp>&rsquo;</td><td width="55%"><span id="net_002dnaming_002dpriority"></span>Possible values: &lsquo;<samp>net-attribute</samp>&rsquo;, &lsquo;<samp>netname-attribute</samp>&rsquo;.
 Specify which attribute, <var>net</var> or <var>netname</var>, has
 priority if a net is found with two names. Any netname conflict will
 be resolved using the chosen attribute.</td></tr>
