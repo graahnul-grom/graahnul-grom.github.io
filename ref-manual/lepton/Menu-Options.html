@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- This manual documents Lepton EDA version 1.9.16.
+<!-- This manual documents Lepton EDA version 1.9.17.
 
 Copyright (C) 2020-2021 Lepton Contributors.
 
@@ -13,10 +13,10 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<title>Menu Options (Lepton EDA Reference Manual 1.9.16)</title>
+<title>Menu Options (Lepton EDA Reference Manual 1.9.17)</title>
 
-<meta name="description" content="Menu Options (Lepton EDA Reference Manual 1.9.16)">
-<meta name="keywords" content="Menu Options (Lepton EDA Reference Manual 1.9.16)">
+<meta name="description" content="Menu Options (Lepton EDA Reference Manual 1.9.17)">
+<meta name="keywords" content="Menu Options (Lepton EDA Reference Manual 1.9.17)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -64,19 +64,98 @@ Next: <a href="Menu-Netlist.html" accesskey="n" rel="next">Menu Netlist</a>, Pre
 
 <dl compact="compact">
 <dt><span><em>Options...</em></span></dt>
+<dd><p>Options &rarr; Options... (<kbd>O O</kbd>) opens the
+Options dialog box where you can interactively select the below
+options related to snapping and net drawing mode.
+</p>
+</dd>
 <dt><span><em>Font...</em></span></dt>
+<dd><p>Options &rarr; Font... (<kbd>O F</kbd>) opens the font
+chooser dialog where you can select your favorite font name and its
+style and then save it to your configuration.
+</p>
+</dd>
 <dt><span><em>Grid +</em></span></dt>
+<dd><p>Options &rarr; Grid + (<kbd>]</kbd>) increases the size
+of the snapping grid twice.
+</p>
+</dd>
 <dt><span><em>Grid -</em></span></dt>
+<dd><p>Options &rarr; Grid - (<kbd>[</kbd>) decreases the size
+of the snapping grid twice.
+</p>
+</dd>
 <dt><span><em>Grid Style: Cycle Dots/Mesh/Off</em></span></dt>
+<dd><p>Options &rarr; Grid Style: Cycle Dots/Mesh/Off
+(<kbd>O G</kbd>) toggles one of two available styles of grid displaying or
+switches the grid off.  The default is the &lsquo;<samp>mesh</samp>&rsquo; style.
+</p>
+</dd>
 <dt><span><em>Grid Snap: Cycle Grid/Resnap/Off</em></span></dt>
+<dd><p>Options &rarr; Grid Snap: Cycle Grid/Resnap/Off
+(<kbd>O S</kbd>) toggles grid snapping modes.  The default and mostly
+useful is the &lsquo;<samp>grid</samp>&rsquo; mode.  If it is selected, all objects on the
+page are snapped to the grid when you edit them.  Switching the grid
+off may be useful for some artistic work with graphical primitives but
+is not recommended for connectible objects which may stop connecting
+if their connectible ends are not on the grid.  The &lsquo;<samp>resnap</samp>&rsquo; mode
+helps just in such situations: it allows you to move the objects or
+their points so they again snap to the current grid.
+</p>
+</dd>
 <dt><span><em>Grips: On/Off</em></span></dt>
+<dd><p>Options &rarr; Grips: On/Off (<kbd>O I</kbd>) toggles the
+visibility of grips on selected objects.  Various objects have
+different grip position on them.  However, all them can be edited only
+if you drag their points where grips should be.  While grips may
+clutter your schematics when many objects are selected, it is often
+easier to edit them when grips are on, so this is the default setting.
+</p>
+</dd>
 <dt><span><em>Feedback Mode: Outline/Box</em></span></dt>
+<dd><p>Options &rarr; Feedback Mode: Outline/Box (<kbd>O
+A</kbd>) toggles the type of component displaying when the user moves them.
+When (default) &lsquo;<samp>outline</samp>&rsquo; is selected, the user will see the usual
+appearance of components.  Otherwise, when &lsquo;<samp>box</samp>&rsquo; is selected,
+only the bounding boxes of objects will be shown when moving them.
+This may facilitate working on schematics on old slow hardware.
+</p>
+</dd>
 <dt><span><em>Net: Rubberband On/Off</em></span></dt>
+<dd><p>Options &rarr; Net: Rubberband On/Off (<kbd>O R</kbd>)
+toggles the rubberband mode for nets.  If the mode is ON (default
+setting), the nets connected to an object you&rsquo;re moving will change
+their size so they stay connected to the same points on the object.
+Otherwise, the connections will silently break leaving the connected
+objects unconnected.
+</p>
+</dd>
 <dt><span><em>Net: Magnetic On/Off</em></span></dt>
+<dd><p>Options &rarr; Net: Magnetic On/Off (<kbd>O M</kbd>)
+toggles magnetic snapping of newly created nets.  If the switch is on,
+you will see a little circle at the point new net would join.
+Otherwise, no feedback is provided.  The mode is ON by default.
+</p>
+</dd>
 <dt><span><em>Coord Window</em></span></dt>
+<dd><p>Options &rarr; Coord Window (<kbd>O C</kbd>) opens a
+dialog window where you can watch the current position of your mouse
+cursor on the page in screen and world coordinates.
+</p>
+</dd>
 <dt><span><em>Log Window</em></span></dt>
+<dd><p>Options &rarr; Log Window (<kbd>O L</kbd>) opens the log
+window where you can see messages the program reports.  Sometimes the
+messages are important, sometimes not.  Anyways, look there if you
+think something went wrong.
+</p></dd>
 </dl>
 
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Menu-Netlist.html">Menu Netlist</a>, Previous: <a href="Menu-Attributes.html">Menu Attributes</a>, Up: <a href="lepton_002dschematic-window.html">Main lepton-schematic window</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

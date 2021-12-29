@@ -3,7 +3,7 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- This manual documents Lepton EDA version 1.9.16.
+<!-- This manual documents Lepton EDA version 1.9.17.
 
 Copyright (C) 2020-2021 Lepton Contributors.
 
@@ -13,10 +13,10 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<title>lepton-cli config (Lepton EDA Reference Manual 1.9.16)</title>
+<title>lepton-cli config (Lepton EDA Reference Manual 1.9.17)</title>
 
-<meta name="description" content="lepton-cli config (Lepton EDA Reference Manual 1.9.16)">
-<meta name="keywords" content="lepton-cli config (Lepton EDA Reference Manual 1.9.16)">
+<meta name="description" content="lepton-cli config (Lepton EDA Reference Manual 1.9.17)">
+<meta name="keywords" content="lepton-cli config (Lepton EDA Reference Manual 1.9.17)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -91,6 +91,13 @@ outputs the filename of the selected configuration store.
 <var>PATH</var>.  If no <var>PATH</var> is provided, selects the project in the
 current working directory.
 </p>
+<blockquote>
+<p><b>Note:</b> Unlike <samp>--project</samp>, for which an optional argument must be
+specified using &lsquo;<samp>=</samp>&rsquo;, any argument after <samp>-p</samp> is considered
+to be a path, not a configuration group.  It may be specified as
+&lsquo;<samp>-pPATH</samp>&rsquo; or &lsquo;<samp>-p PATH</samp>&rsquo;.  Please see examples below.
+</p></blockquote>
+
 </dd>
 <dt><span><samp>-u</samp></span></dt>
 <dt><span><samp>--user</samp></span></dt>
@@ -227,12 +234,71 @@ such conditions:
 <h4 class="subsection">7.2.2 lepton-cli config examples</h4>
 
 <ul class="section-toc">
-<li><a href="#Set-up-exporting" accesskey="1">Set up exporting</a></li>
-<li><a href="#Set-up-netlisting" accesskey="2">Set up netlisting</a></li>
-<li><a href="#Set-up-lepton_002dschematic" accesskey="3">Set up lepton-schematic</a></li>
+<li><a href="#Difference-between-_002dp-and-_002d_002dproject" accesskey="1">Difference between -p and &ndash;project</a></li>
+<li><a href="#Set-up-exporting" accesskey="2">Set up exporting</a></li>
+<li><a href="#Set-up-netlisting" accesskey="3">Set up netlisting</a></li>
+<li><a href="#Set-up-lepton_002dschematic" accesskey="4">Set up lepton-schematic</a></li>
 </ul>
+<div class="subsubsection" id="Difference-between-_002dp-and-_002d_002dproject">
+<h4 class="subsubsection">7.2.2.1 Difference between -p and &ndash;project</h4>
+<p>Please note the difference between specifying the options <samp>-p</samp>
+and <samp>--project</samp>.  Supposed that your <samp>lepton.conf</samp> in the
+current working directory has the contents as follows:
+</p>
+<div class="example">
+<pre class="example">[export]
+dpi=144
+</pre></div>
+
+<p>the following commands work as expected:
+</p>
+<div class="example">
+<pre class="example">lepton-cli config --project=. export dpi
+-| 144
+lepton-cli config --project export dpi
+-| 144
+lepton-cli config -p . export dpi
+-| 144
+lepton-cli config -p. export dpi
+-| 144
+</pre></div>
+
+<p>while the following ones are wrong and output errors:
+</p>
+<div class="example">
+<pre class="example">lepton-cli config -p export dpi
+-| ERROR: Directory &quot;export&quot; does not exist.
+lepton-cli config -p=export dpi
+-| ERROR: Directory &quot;=export&quot; does not exist.
+</pre></div>
+
+<p>This is because <em>any</em> argument after <samp>-p</samp>, be it specified
+with space or without it between the option and the argument, is
+considered to be a path, not a configuration group, and the equal sign
+cannot be used as a separator like for <samp>--project</samp>.  Conversely,
+the following command:
+</p>
+<div class="example">
+<pre class="example">lepton-cli config --project . export dpi
+</pre></div>
+
+<p>will silently exit and result in the following content in
+<samp>./lepton.conf</samp>:
+</p>
+<div class="example">
+<pre class="example">[.]
+export=dpi
+</pre></div>
+
+<p>which is not you would expect here, right?  This is because an
+optional argument for the option <samp>--project</samp> <strong>must</strong> be
+used with &lsquo;<samp>=</samp>&rsquo; as separator, not space.  Therefore in the above
+command, &lsquo;<samp>.</samp>&rsquo; was interpreted as a configuration group, and
+&lsquo;<samp>export</samp>&rsquo; and &lsquo;<samp>dpi</samp>&rsquo; as a key and its value within it.
+</p>
+</div>
 <div class="subsubsection" id="Set-up-exporting">
-<h4 class="subsubsection">7.2.2.1 Set up exporting</h4>
+<h4 class="subsubsection">7.2.2.2 Set up exporting</h4>
 <p>Use the &ldquo;landscape&rdquo; layout by default for a local project:
 </p>
 <div class="example">
@@ -286,7 +352,7 @@ quarter of inch for top and bottom for a local project:
 
 </div>
 <div class="subsubsection" id="Set-up-netlisting">
-<h4 class="subsubsection">7.2.2.2 Set up netlisting</h4>
+<h4 class="subsubsection">7.2.2.3 Set up netlisting</h4>
 
 <p>Use shorter net names for unnamed nets in all netlists:
 </p>
@@ -310,7 +376,7 @@ settings in <samp>lepton-user.conf</samp>:
 
 </div>
 <div class="subsubsection" id="Set-up-lepton_002dschematic">
-<h4 class="subsubsection">7.2.2.3 Set up lepton-schematic</h4>
+<h4 class="subsubsection">7.2.2.4 Set up lepton-schematic</h4>
 
 <p>Use shorter names for new pages:
 </p>
