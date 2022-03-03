@@ -1,0 +1,43 @@
+v 20200604 2
+L 100 150 100 50 4 10 1 0 -1 -1
+L 75 125 125 75 14 10 2 0 -1 -1
+L 125 125 75 75 14 10 2 0 -1 -1
+T 150 100 10 6 1 1 0 1 1
+sim_i=?
+T 150 25 21 3 1 1 0 1 1
+refdes=va?
+T 150 200 19 4 0 1 0 1 1
+footprint=pls2.fp
+T 150 300 5 3 0 0 0 1 1
+device=SIMAM_DMN
+T 75 50 5 2 0 1 0 7 1
+value=0
+P 100 0 100 50 4 0 0
+{
+T 50 0 4 3 0 1 0 7 1
+pinnumber=2
+T 50 50 4 3 0 0 0 7 1
+pinseq=2
+T 50 100 4 3 0 0 0 7 1
+pintype=pas
+}
+P 100 200 100 150 4 0 0
+{
+T -50 150 4 3 0 1 0 7 1
+pinnumber=1
+T -50 100 4 3 0 0 0 7 1
+pinseq=1
+T -50 50 4 3 0 0 0 7 1
+pintype=pas
+}
+V 50 150 5 14 10 2 0 -1 -1 0 -1 -1 -1 -1 -1
+T 500 100 5 2 0 1 270 6 1
+author=dmn <graahnul.grom@gmail.com>
+T 600 300 5 3 0 0 0 0 1
+use-license=unlimited
+T 600 350 5 3 0 0 0 0 1
+dist-license=GPLv2+
+T 600 400 5 3 0 0 0 0 1
+symversion=1.0
+T 600 450 5 3 0 0 0 0 1
+namespace=dmn
