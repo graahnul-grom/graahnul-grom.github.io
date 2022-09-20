@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Thu Apr  8 12:52:00 2021 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Mon Sep 19 00:32:58 2022 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,16 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <meta name="Content-Style" content="text/css">
 <style type="text/css">
-       p     { margin-top: 0; margin-bottom: 0; }
-       pre   { margin-top: 0; margin-bottom: 0; }
-       table { margin-top: 0; margin-bottom: 0; }
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
 </style>
 <title>lepton-cli</title>
 
 </head>
 <body>
 
-<h1 align=center>lepton-cli</h1>
+<h1 align="center">lepton-cli</h1>
 
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
@@ -33,23 +34,26 @@
 <hr>
 
 
+<h2>NAME
 <a name="NAME"></a>
-<h2>NAME</h2>
+</h2>
 
 
 <p style="margin-left:11%; margin-top: 1em">lepton-cli -
 Lepton EDA Command-Line Utility</p>
 
+<h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
-<h2>SYNOPSIS</h2>
+</h2>
 
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lepton-cli</b>
 [<i>OPTION</i> ...] <i>COMMAND</i> [<i>ARGS</i> ...]</p>
 
+<h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
-<h2>DESCRIPTION</h2>
+</h2>
 
 
 
@@ -75,8 +79,9 @@ project, user and system configuration stores.</p>
 shell</b> provides a Scheme REPL for command-line batch
 processing of schematic data.</p>
 
+<h2>GENERAL OPTIONS
 <a name="GENERAL OPTIONS"></a>
-<h2>GENERAL OPTIONS</h2>
+</h2>
 
 
 
@@ -94,8 +99,9 @@ Scheme initialisation files from being loaded.</p>
 <p style="margin-left:23%;">Print <b>lepton-cli</b> version
 information.</p>
 
+<h2>EXPORTING IMAGE FILES
 <a name="EXPORTING IMAGE FILES"></a>
-<h2>EXPORTING IMAGE FILES</h2>
+</h2>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lepton-cli
@@ -206,22 +212,21 @@ inch used when generating PNG output.</p>
 <p style="margin-left:23%;">Set the font to be used for
 drawing text.</p>
 
-<table width="100%" border=0 rules="none" frame="void"
+<table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
 
 
-<p style="margin-top: 1em" valign="top"><b>--</b></p></td>
+<p><b>--</b></p></td>
 <td width="9%"></td>
 <td width="77%">
 
 
-<p style="margin-top: 1em" valign="top">Treat all remaining
-arguments as schematic or symbol filenames. Use this if you
-have a schematic or symbol filename which begins with
-&lsquo;-&rsquo;.</p> </td>
+<p>Treat all remaining arguments as schematic or symbol
+filenames. Use this if you have a schematic or symbol
+filename which begins with &lsquo;-&rsquo;.</p></td></tr>
 </table>
 
 <p style="margin-left:11%; margin-top: 1em">The
@@ -241,8 +246,9 @@ with multiple values, you may use &lsquo;;&rsquo;, or
 your arguments to avoid them to be interpreted by your
 shell.</p>
 
+<h2>ACCESSING CONFIGURATION
 <a name="ACCESSING CONFIGURATION"></a>
-<h2>ACCESSING CONFIGURATION</h2>
+</h2>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lepton-cli
@@ -262,12 +268,16 @@ configuration store affected (by default, the project
 configuration store for the current working directory). If
 no <i>GROUP</i> and <i>KEY</i> are provided, outputs the
 filename of the selected configuration store. <b><br>
--p</b>, <b>--project</b>[=<i>PATH</i>]</p>
+-p</b> [<i>PATH</i>], <b>--project</b>[=<i>PATH</i>]</p>
 
 <p style="margin-left:23%;">Select the project
 configuration store of the project located in <i>PATH</i>.
 If no <i>PATH</i> is provided, selects the project in the
-current working directory.</p>
+current working directory. Unlike <b>--project</b>, for
+which an optional argument must be specified using <b>=</b>,
+any argument after <b>-p</b> is considered to be a path, not
+a configuration group. It may be specified as <b>-pPATH</b>
+or <b>-p PATH</b>.</p>
 
 <p style="margin-left:11%;"><b>-u</b>, <b>--user</b></p>
 
@@ -287,8 +297,9 @@ configuration store (CACHE configuration context, associated
 with $XDG_CACHE_HOME/lepton-eda/gui.conf configuration
 file).</p>
 
+<h2>SCHEME PROCESSING
 <a name="SCHEME PROCESSING"></a>
-<h2>SCHEME PROCESSING</h2>
+</h2>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lepton-cli
@@ -299,52 +310,49 @@ shell</b> provides a Scheme Read-Eval-Print Loop (REPL) for
 automating processing of schematic and symbol files. It is
 designed to be used with the Lepton EDA Scheme API.</p>
 
-<table width="100%" border=0 rules="none" frame="void"
+<table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="11%">
 
 
-<p style="margin-top: 1em" valign="top"><b>-s</b>
-<i>FILE</i></p> </td>
+<p><b>-s</b> <i>FILE</i></p></td>
 <td width="1%"></td>
 <td width="74%">
 
 
-<p style="margin-top: 1em" valign="top">Evaluate Scheme
-source code from <i>FILE</i>, and exit.</p></td>
+<p>Evaluate Scheme source code from <i>FILE</i>, and
+exit.</p> </td>
 <td width="3%">
-</td>
+</td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="11%">
 
 
-<p style="margin-top: 1em" valign="top"><b>-c</b>
-<i>EXPR</i></p> </td>
+<p><b>-c</b> <i>EXPR</i></p></td>
 <td width="1%"></td>
 <td width="74%">
 
 
-<p style="margin-top: 1em" valign="top">Evaluate the Scheme
-expression <i>EXPR</i>, and exit.</p></td>
+<p>Evaluate the Scheme expression <i>EXPR</i>, and
+exit.</p> </td>
 <td width="3%">
-</td>
+</td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="11%">
 
 
-<p style="margin-top: 1em" valign="top"><b>--</b></p></td>
+<p><b>--</b></p></td>
 <td width="1%"></td>
 <td width="74%">
 
 
-<p style="margin-top: 1em" valign="top">Stop scanning
-arguments; run interactively.</p></td>
+<p>Stop scanning arguments; run interactively.</p></td>
 <td width="3%">
-</td>
+</td></tr>
 </table>
 
 <p style="margin-left:11%;"><b>-L</b> <i>DIRECTORY</i></p>
@@ -352,23 +360,21 @@ arguments; run interactively.</p></td>
 <p style="margin-left:23%;">Prepend <i>DIRECTORY</i> to the
 list of directories to be searched for Scheme files.</p>
 
-<table width="100%" border=0 rules="none" frame="void"
+<table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="11%">
 
 
-<p style="margin-top: 1em" valign="top"><b>-l</b>
-<i>FILE</i></p> </td>
+<p><b>-l</b> <i>FILE</i></p></td>
 <td width="1%"></td>
 <td width="59%">
 
 
-<p style="margin-top: 1em" valign="top">Evaluate Scheme
-source code from <i>FILE</i>.</p></td>
+<p>Evaluate Scheme source code from <i>FILE</i>.</p></td>
 <td width="18%">
-</td>
+</td></tr>
 </table>
 
 <p style="margin-left:11%; margin-top: 1em">The <b>-s</b>,
@@ -376,20 +382,22 @@ source code from <i>FILE</i>.</p></td>
 and pass all the remaining arguments as the value of
 &lsquo;(command-line)&rsquo;.</p>
 
+<h2>AUTHORS
 <a name="AUTHORS"></a>
-<h2>AUTHORS</h2>
+</h2>
 
 
 <p style="margin-left:11%; margin-top: 1em">See the
 &lsquo;AUTHORS&rsquo; file included with this program.</p>
 
+<h2>COPYRIGHT
 <a name="COPYRIGHT"></a>
-<h2>COPYRIGHT</h2>
+</h2>
 
 
 <p style="margin-left:11%; margin-top: 1em">Copyright
 &copy; 2012-2017 gEDA Contributors. <br>
-Copyright &copy; 2017-2021 Lepton Developers. <br>
+Copyright &copy; 2017-2022 Lepton Developers. <br>
 License GPLv2+: GNU GPL version 2 or later. Please see the
 &lsquo;COPYING&rsquo; <br>
 file included with this program for full details.</p>
@@ -398,8 +406,9 @@ file included with this program for full details.</p>
 software: you are free to change and redistribute it. <br>
 There is NO WARRANTY, to the extent permitted by law.</p>
 
+<h2>SEE ALSO
 <a name="SEE ALSO"></a>
-<h2>SEE ALSO</h2>
+</h2>
 
 
 
