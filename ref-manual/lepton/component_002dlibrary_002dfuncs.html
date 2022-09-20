@@ -3,9 +3,9 @@
 <!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- This manual documents Lepton EDA version 1.9.17.
+<!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2021 Lepton Contributors.
+Copyright (C) 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -13,10 +13,10 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
 copy of the license is included in the section entitled "GNU Free
 Documentation License." -->
-<title>component-library-funcs (Lepton EDA Reference Manual 1.9.17)</title>
+<title>component-library-funcs (Lepton EDA Reference Manual 1.9.18)</title>
 
-<meta name="description" content="component-library-funcs (Lepton EDA Reference Manual 1.9.17)">
-<meta name="keywords" content="component-library-funcs (Lepton EDA Reference Manual 1.9.17)">
+<meta name="description" content="component-library-funcs (Lepton EDA Reference Manual 1.9.18)">
+<meta name="keywords" content="component-library-funcs (Lepton EDA Reference Manual 1.9.18)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -79,10 +79,10 @@ argument specifies the name of the new library.
 procedures for creating schematic objects.  For example:
 </p>
 <div class="example lisp">
-<pre class="lisp">(use-modules (lepton core toplevel)
+<pre class="lisp">(use-modules (lepton attrib)
              (lepton object)
-             (lepton attrib)
-             (lepton page))
+             (lepton page)
+             (lepton toplevel))
 
 (define (make-attribs)
   (list
@@ -137,8 +137,8 @@ procedures for creating schematic objects.  For example:
     page))
 
 (define (thunk-&gt;string thunk)
-  (%with-toplevel
-   (%make-toplevel)
+  (with-toplevel
+   (make-toplevel)
    (lambda ()
      (let ((page (thunk)))
        (page-&gt;string page)))))
