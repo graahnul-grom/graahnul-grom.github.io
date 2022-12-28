@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Sep 19 00:32:57 2022 -->
+<!-- CreationDate: Thu Dec 29 00:23:43 2022 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -139,16 +139,16 @@ preference to elements generated with <b>M4</b>(1).</p>
 <p style="margin-left:23%;">Disable element generation
 using <b>M4</b>(1) entirely.</p>
 
-<p style="margin-left:11%;"><b>--m4-file</b>
-<i>FILE</i></p>
+
+<p style="margin-left:11%;"><b>--m4-file</b>=<i>FILE</i></p>
 
 <p style="margin-left:23%;">Use the <b>M4</b>(1) file
 <i>FILE</i> in addition to the default M4 files
 &lsquo;./pcb.inc&rsquo; and
 &lsquo;~/.pcb/pcb.inc&rsquo;.</p>
 
-<p style="margin-left:11%;"><b>--m4-pcbdir</b>
-<i>DIRECTORY</i></p>
+
+<p style="margin-left:11%;"><b>--m4-pcbdir</b>=<i>DIRECTORY</i></p>
 
 <p style="margin-left:23%;">Set <i>DIRECTORY</i> as the
 directory where <b>lepton-sch2pcb</b> should look for
@@ -180,43 +180,43 @@ which are not found in the schematics. Since elements with
 an empty element name (schematic &quot;refdes&quot;) are
 never deleted, this option is rarely useful.</p>
 
-<p style="margin-left:11%;"><b>--backend-cmd</b>
-<i>BACKEND</i></p>
+
+<p style="margin-left:11%;"><b>--backend-cmd</b>=<i>BACKEND</i></p>
 
 <p style="margin-left:23%;">Use <i>BACKEND</i> to generate
 &lsquo;&lt;name&gt;.cmd&rsquo; file instead of the default
 one (&lsquo;pcbpins&rsquo;).</p>
 
-<p style="margin-left:11%;"><b>--backend-net</b>
-<i>BACKEND</i></p>
+
+<p style="margin-left:11%;"><b>--backend-net</b>=<i>BACKEND</i></p>
 
 <p style="margin-left:23%;">Use <i>BACKEND</i> to generate
 &lsquo;&lt;name&gt;.net&rsquo; file instead of the default
 one (&lsquo;PCB&rsquo;).</p>
 
-<p style="margin-left:11%;"><b>--backend-pcb</b>
-<i>BACKEND</i></p>
+
+<p style="margin-left:11%;"><b>--backend-pcb</b>=<i>BACKEND</i></p>
 
 <p style="margin-left:23%;">Use <i>BACKEND</i> to generate
 &lsquo;&lt;name&gt;.pcb&rsquo; file instead of the default
 one (&lsquo;gsch2pcb&rsquo;).</p>
 
-<p style="margin-left:11%;"><b>--gnetlist</b>
-<i>BACKEND</i></p>
+
+<p style="margin-left:11%;"><b>--gnetlist</b>=<i>BACKEND</i></p>
 
 <p style="margin-left:23%;">In addition to the default
 backends, run <b>lepton-netlist</b>(1) with &lsquo;&minus;g
 <i>BACKEND</i>&rsquo;, with output to
 &lsquo;&lt;name&gt;.<i>BACKEND</i>&rsquo;.</p>
 
-<p style="margin-left:11%;"><b>--gnetlist-arg</b>
-<i>ARG</i></p>
+
+<p style="margin-left:11%;"><b>--gnetlist-arg</b>=<i>ARG</i></p>
 
 <p style="margin-left:23%;">Pass <i>ARG</i> as an
 additional argument to <b>lepton-netlist</b>(1).</p>
 
-<p style="margin-left:11%;"><b>--empty-footprint</b>
-<i>NAME</i></p>
+
+<p style="margin-left:11%;"><b>--empty-footprint</b>=<i>NAME</i></p>
 
 <p style="margin-left:23%;">If <i>NAME</i> is not
 &lsquo;none&rsquo;, <b>lepton-sch2pcb</b> will not add
@@ -275,23 +275,9 @@ listed on a line beginning with
 <p style="margin-left:11%; margin-top: 1em">An example
 project file might look like:</p>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="8%"></td>
-<td width="7%"></td>
-<td width="85%">
-
-
-<p>schematics partA.sch partB.sch</p></td></tr>
-<tr valign="top" align="left">
-<td width="8%"></td>
-<td width="7%"></td>
-<td width="85%">
-
-
-<p>output-name design</p></td></tr>
-</table>
+<p style="margin-left:22%; margin-top: 1em">schematics
+partA.sch partB.sch <br>
+output-name design</p>
 
 <h2>ENVIRONMENT
 <a name="ENVIRONMENT"></a>

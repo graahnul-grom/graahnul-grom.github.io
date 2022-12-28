@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Sep 19 00:32:58 2022 -->
+<!-- CreationDate: Thu Dec 29 00:23:44 2022 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -84,56 +84,41 @@ is extensible, using the Scheme programming language.</p>
 </h2>
 
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="3%">
+<p style="margin-left:11%; margin-top: 1em"><b>-q</b>,
+<b>--quiet</b></p>
 
-
-<p style="margin-top: 1em"><b>-q</b></p></td>
-<td width="9%"></td>
-<td width="77%">
-
-
-<p style="margin-top: 1em">Quiet mode. Turns off all
-warnings/notes/messages.</p> </td></tr>
-</table>
+<p style="margin-left:23%;">Quiet mode. Turns off all
+warnings/notes/messages.</p>
 
 <p style="margin-left:11%;"><b>-v</b>, <b>--verbose</b></p>
 
 <p style="margin-left:23%;">Verbose mode. Output all
 diagnostic information.</p>
 
-<p style="margin-left:11%;"><b>-L</b> <i>DIRECTORY</i></p>
+<p style="margin-left:11%;"><b>-L</b>,
+<b>--lepton-path</b>=<i>DIRECTORY</i></p>
 
 <p style="margin-left:23%;">Prepend <i>DIRECTORY</i> to the
-list of directories to be searched for Scheme files.</p>
+list of directories to be searched for Scheme files. It is
+done before loading and/or evaluating any Scheme code. This
+option can be specified multiple times.</p>
 
-<p style="margin-left:11%;"><b>-g</b> <i>BACKEND</i></p>
+<p style="margin-left:11%;"><b>-g</b>,
+<b>--backend</b>=<i>BACKEND</i></p>
 
 <p style="margin-left:23%;">Specify the netlist backend to
 be used.</p>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="11%">
+<p style="margin-left:11%;"><b>-f</b>,
+<b>--file-backend</b>=<i>FILE</i></p>
 
-
-<p><b>-f</b> <i>FILE</i></p></td>
-<td width="1%"></td>
-<td width="77%">
-
-
-<p>Load and use netlist backend from <i>FILE</i>.
-<i>FILE</i> is expected to have name like
+<p style="margin-left:23%;">Load and use netlist backend
+from <i>FILE</i>. <i>FILE</i> is expected to have name like
 &quot;gnet-NAME.scm&quot; and contain entry point function
-NAME (where NAME is the backend&rsquo;s name).</p></td></tr>
-</table>
+NAME (where NAME is the backend&rsquo;s name).</p>
 
-<p style="margin-left:11%;"><b>-O</b> <i>STRING</i></p>
+<p style="margin-left:11%;"><b>-O</b>,
+<b>--backend-option</b>=<i>STRING</i></p>
 
 <p style="margin-left:23%;">Pass an option string to the
 backend.</p>
@@ -144,76 +129,43 @@ backend.</p>
 <p style="margin-left:23%;">Print a list of available
 netlist backends.</p>
 
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="11%">
+<p style="margin-left:11%;"><b>-o</b>,
+<b>--output</b>=<i>FILE</i></p>
 
+<p style="margin-left:23%;">Specify the filename for the
+generated netlist. By default, output is directed to
+&lsquo;output.net&rsquo;. If &lsquo;-&rsquo; is given
+instead of a filename, the output is directed to the
+standard output.</p>
 
-<p><b>-o</b> <i>FILE</i></p></td>
-<td width="1%"></td>
-<td width="77%">
+<p style="margin-left:11%;"><b>-l</b>,
+<b>--pre-load</b>=<i>FILE</i></p>
 
+<p style="margin-left:23%;">Specify a Scheme file to be
+loaded before the backend is loaded or executed. This option
+can be specified multiple times.</p>
 
-<p>Specify the filename for the generated netlist. By
-default, output is directed to &lsquo;output.net&rsquo;. If
-&lsquo;-&rsquo; is given instead of a filename, the output
-is directed to the standard output.</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="11%">
+<p style="margin-left:11%;"><b>-m</b>,
+<b>--post-load</b>=<i>FILE</i></p>
 
+<p style="margin-left:23%;">Specify a Scheme file to be
+loaded between loading the backend and executing it. This
+option can be specified multiple times.</p>
 
-<p><b>-l</b> <i>FILE</i></p></td>
-<td width="1%"></td>
-<td width="77%">
+<p style="margin-left:11%;"><b>-c</b>,
+<b>--eval-code</b>=<i>EXPR</i></p>
 
+<p style="margin-left:23%;">Specify a Scheme expression to
+be executed during <b>lepton-netlist</b> startup. This
+option can be specified multiple times.</p>
 
-<p>Specify a Scheme file to be loaded before the backend is
-loaded or executed. This option can be specified multiple
-times.</p> </td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="11%">
+<p style="margin-left:11%;"><b>-i</b>,
+<b>--interactive</b></p>
 
-
-<p><b>-m</b> <i>FILE</i></p></td>
-<td width="1%"></td>
-<td width="77%">
-
-
-<p>Specify a Scheme file to be loaded between loading the
-backend and executing it. This option can be specified
-multiple times.</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="11%">
-
-
-<p><b>-c</b> <i>EXPR</i></p></td>
-<td width="1%"></td>
-<td width="77%">
-
-
-<p>Specify a Scheme expression to be executed during
-<b>lepton-netlist</b> startup. This option can be specified
-multiple times.</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="11%">
-
-
-<p><b>-i</b></p></td>
-<td width="1%"></td>
-<td width="77%">
-
-
-<p>After the schematic files have been loaded and compiled,
-and after all Scheme files have been loaded, but before
-running the backend, enter a Scheme read-eval-print
-loop.</p> </td></tr>
-</table>
+<p style="margin-left:23%;">After the schematic files have
+been loaded and compiled, and after all Scheme files have
+been loaded, but before running the backend, enter a Scheme
+read-eval-print loop.</p>
 
 <p style="margin-left:11%;"><b>-h</b>, <b>--help</b></p>
 
