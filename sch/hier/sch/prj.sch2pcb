@@ -1,6 +1,7 @@
 schematics main.sch
 
 elements-dir /home/dmn/pcb/bin.master/share/pcb/pcblib-newlib
+# TESTING: elements-dir ${pcb}/bin.master/share/pcb/pcblib-newlib
 
 output-name brd
 skip-m4
