@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This manual documents Lepton EDA version 1.9.18.
+
+Copyright (C) 2020-2022 Lepton Contributors.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<title>Backend launching (Lepton EDA Reference Manual 1.9.18)</title>
+
+<meta name="description" content="Backend launching (Lepton EDA Reference Manual 1.9.18)">
+<meta name="keywords" content="Backend launching (Lepton EDA Reference Manual 1.9.18)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Topic-Index.html" rel="index" title="Topic Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Backends.html" rel="up" title="Backends">
+<link href="Backend-kinds.html" rel="next" title="Backend kinds">
+<link href="Backend-types.html" rel="prev" title="Backend types">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="lepton-manual.css">
+
+
+</head>
+
+<body lang="en">
+<div class="subsection" id="Backend-launching">
+<div class="header">
+<p>
+Next: <a href="Backend-kinds.html" accesskey="n" rel="next">Backend kinds</a>, Previous: <a href="Backend-types.html" accesskey="p" rel="prev">Backend types</a>, Up: <a href="Backends.html" accesskey="u" rel="up">Backends</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Backend-launching-1"></span><h4 class="subsection">6.3.2 Backend launching</h4>
+<span id="index-backend-launching"></span>
+<span id="index-launch-a-backend"></span>
+
+<p>To simply run <code>lepton-netlist</code> and get the output of a backend, use the
+option <samp>-g <var>backend-name</var></samp>.  For example:
+</p>
+<div class="example">
+<pre class="example">lepton-netlist -g custom-backend schematic1.sch ...
+</pre></div>
+
+<p>By default, <code>lepton-netlist</code> outputs the result to a file named
+<samp>output.net</samp>.
+</p>
+<p>Output file name may be changed by the option <samp>-o
+<var>filename</var></samp>.  If the option argument is <samp>-</samp> (dash), the
+output is redirected to the standard output of your terminal.
+</p>
+<p>To output your netlist to, say, <samp>schematic.net</samp>, type:
+</p>
+<div class="example">
+<pre class="example">lepton-netlist -g custom-backend -o schematic.net schematic1.sch ...
+</pre></div>
+
+<p>To display the output of the backend in your terminal, type:
+</p>
+<div class="example">
+<pre class="example">lepton-netlist -g custom-backend -o - schematic1.sch ...
+</pre></div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -58,7 +58,7 @@ ul.no-bullet {list-style: none}
 Previous: <a href="Obsolete-Attributes.html" accesskey="p" rel="prev">Obsolete Attributes</a>, Up: <a href="Master-attribute-list.html" accesskey="u" rel="up">Master attribute list</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Attribute-compatibility-1"></span><h3 class="section">13.6 Attribute compatibility</h3>
+<span id="Attribute-compatibility-1"></span><h3 class="section">14.6 Attribute compatibility</h3>
 
 <p>Unlike geda-gaf, Lepton EDA supports attributes with empty values
 since version <strong>1.9.17</strong>.
@@ -70,7 +70,7 @@ They may not be supported in the legacy code of geda-gaf.\
 <li><a href="#symbol-attribute" accesskey="1">symbol attribute</a></li>
 </ul>
 <div class="subsection" id="symbol-attribute">
-<h4 class="subsection">13.6.1 symbol attribute</h4>
+<h4 class="subsection">14.6.1 symbol attribute</h4>
 
 <p>The attribute <var>symbol=</var> changes meaning of symbols in schematic,
 that is, the way how <code>lepton-netlist</code> treats them. Such symbols will be
@@ -85,7 +85,7 @@ netlister has to use various tricks (e.g. in DRC) to make things done.
 <li><a href="#symbol_003dschematic_002dport" accesskey="3">symbol=schematic-port</a></li>
 </ul>
 <div class="subsubsection" id="symbol_003dnc">
-<h4 class="subsubsection">13.6.1.1 symbol=nc</h4>
+<h4 class="subsubsection">14.6.1.1 symbol=nc</h4>
 <p><var>symbol=nc</var> means that the symbol will be treated as a
 <em>no-connect</em> symbol.  The netlister won&rsquo;t output its connection
 in the full list of schematic connections.  DRC will suppress errors
@@ -104,7 +104,7 @@ below.
 </p>
 </div>
 <div class="subsubsection" id="symbol_003dpower">
-<h4 class="subsubsection">13.6.1.2 symbol=power</h4>
+<h4 class="subsubsection">14.6.1.2 symbol=power</h4>
 <p><em>Not implemented yet.</em>
 </p>
 <p>The attribute could be used to filter out power symbols from schematic
@@ -116,7 +116,7 @@ solve some net renaming issues.
 </p>
 </div>
 <div class="subsubsection" id="symbol_003dschematic_002dport">
-<h4 class="subsubsection">13.6.1.3 symbol=schematic-port</h4>
+<h4 class="subsubsection">14.6.1.3 symbol=schematic-port</h4>
 <p><em>Not implemented yet.</em>
 </p>
 <p>The attribute could be used to mark ports in hierarchical schematics

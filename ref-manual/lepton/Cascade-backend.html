@@ -26,8 +26,8 @@ Documentation License." -->
 <link href="Topic-Index.html" rel="index" title="Topic Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="lepton_002dnetlist.html" rel="up" title="lepton-netlist">
-<link href="PADS-backend.html" rel="next" title="PADS backend">
-<link href="BOM-backend.html" rel="prev" title="BOM backend">
+<link href="DRC-backend.html" rel="next" title="DRC backend">
+<link href="Calay-backend.html" rel="prev" title="Calay backend">
 <style type="text/css">
 <!--
 a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
@@ -56,10 +56,10 @@ ul.no-bullet {list-style: none}
 <div class="section" id="Cascade-backend">
 <div class="header">
 <p>
-Next: <a href="PADS-backend.html" accesskey="n" rel="next">Forward/backward annotation between Lepton and PADS PowerPCB</a>, Previous: <a href="BOM-backend.html" accesskey="p" rel="prev">BOM netlister backend</a>, Up: <a href="lepton_002dnetlist.html" accesskey="u" rel="up">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="DRC-backend.html" accesskey="n" rel="next">DRC netlister backend</a>, Previous: <a href="Calay-backend.html" accesskey="p" rel="prev">Calay netlister backend</a>, Up: <a href="lepton_002dnetlist.html" accesskey="u" rel="up">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Lepton-RF-Cascade-Symbols-and-Netlister"></span><h3 class="section">6.3 Lepton RF Cascade Symbols and Netlister</h3>
+<span id="Lepton-RF-Cascade-Symbols-and-Netlister"></span><h3 class="section">6.9 Lepton RF Cascade Symbols and Netlister</h3>
 
 <p>by: Dan McMahill
 </p>
@@ -80,7 +80,7 @@ Next: <a href="PADS-backend.html" accesskey="n" rel="next">Forward/backward anno
 <li><a href="#Document-Revision-History" accesskey="8">Document Revision History</a></li>
 </ul>
 <div class="subsection" id="Overview-3">
-<h4 class="subsection">6.3.1 Overview</h4>
+<h4 class="subsection">6.9.1 Overview</h4>
 
 <p>This document describes the symbol library and <code>lepton-netlist</code> backend
 which support driving RF Cascade
@@ -102,7 +102,7 @@ simulations are:
 
 </div>
 <div class="subsection" id="Requirements">
-<h4 class="subsection">6.3.2 Requirements</h4>
+<h4 class="subsection">6.9.2 Requirements</h4>
 
 <p>You will need the following programs to be installed:
 </p><ul>
@@ -119,7 +119,7 @@ from <a href="http://rfcascade.sourceforge.net">http://rfcascade.sourceforge.net
 
 </div>
 <div class="subsection" id="Creating-Schematics">
-<h4 class="subsection">6.3.3 Creating Schematics</h4>
+<h4 class="subsection">6.9.3 Creating Schematics</h4>
 
 <p>When creating a block diagram in the <code>lepton-schematic</code> editor, use only the
 symbols from the cascade library.  Every block diagram must have a
@@ -136,7 +136,7 @@ report.
 
 </div>
 <div class="subsection" id="Extracting-the-Cascade-Input-File">
-<h4 class="subsection">6.3.4 Extracting the Cascade Input File</h4>
+<h4 class="subsection">6.9.4 Extracting the Cascade Input File</h4>
 
 <p>To extract the Cascade input file, run:
 </p><div class="example">
@@ -153,7 +153,7 @@ report.
 
 </div>
 <div class="subsection" id="Running-Cascade">
-<h4 class="subsection">6.3.5 Running Cascade</h4>
+<h4 class="subsection">6.9.5 Running Cascade</h4>
 
 <p>Cascade is exceptionally simple to run.  Just run:
 </p><div class="example">
@@ -168,7 +168,7 @@ details.
 
 </div>
 <div class="subsection" id="Appendix-A-_002d_002d-Symbols-in-the-Library">
-<h4 class="subsection">6.3.6 Appendix A &ndash; Symbols in the Library</h4>
+<h4 class="subsection">6.9.6 Appendix A &ndash; Symbols in the Library</h4>
 
 <p>Please note that all instances must have the &lsquo;<samp>refdes=</samp>&rsquo; attribute
 set.
@@ -180,7 +180,7 @@ set.
 <li><a href="#Elements" accesskey="3">Elements</a></li>
 </ul>
 <div class="subsubsection" id="Sources-_0028cascade_002dsource_0029">
-<h4 class="subsubsection">6.3.6.1 Sources (cascade-source)</h4>
+<h4 class="subsubsection">6.9.6.1 Sources (cascade-source)</h4>
 
 <p>Source.
 </p>
@@ -199,7 +199,7 @@ set.
 
 </div>
 <div class="subsubsection" id="Defaults-_0028cascade_002ddefault_0029">
-<h4 class="subsubsection">6.3.6.2 Defaults (cascade-default)</h4>
+<h4 class="subsubsection">6.9.6.2 Defaults (cascade-default)</h4>
 
 <p>This symbol sets the default impedance levels as well as the
 correlation coeffcient used for third order distortion calculations.
@@ -221,7 +221,7 @@ the receiver chain.  Attributes:
 
 </div>
 <div class="subsubsection" id="Elements">
-<h4 class="subsubsection">6.3.6.3 Elements</h4>
+<h4 class="subsubsection">6.9.6.3 Elements</h4>
 
 <p>Cascade characterizes each block in a system by its gain and
 optionally noise figure and third order intercept point.  As such,
@@ -281,7 +281,7 @@ available element symbols are:
 </div>
 </div>
 <div class="subsection" id="Example">
-<h4 class="subsection">6.3.7 Example</h4>
+<h4 class="subsection">6.9.7 Example</h4>
 
 <p>This appendix provides a simple example of the entire process of
 generating a schematic, producing a Cascade input file, running an
@@ -294,7 +294,7 @@ analysis and looking at the result.
 <li><a href="#Run-the-Analysis" accesskey="3">Run the Analysis</a></li>
 </ul>
 <div class="subsubsection" id="Example-Schematics">
-<h4 class="subsubsection">6.3.7.1 Example Schematics</h4>
+<h4 class="subsubsection">6.9.7.1 Example Schematics</h4>
 
 <p><a href="#fig_003acascade1">Figure 6.1</a> shows the schematic of a simple receiver signal
 chain.
@@ -333,7 +333,7 @@ IF_AMP G=12 NF=6 IIP3=7
 <div class="float-caption"><p><strong>Figure 6.2: </strong>Example RF Cascade input file, <samp>example.cas</samp></p></div></div>
 </div>
 <div class="subsubsection" id="Netlist-the-Design">
-<h4 class="subsubsection">6.3.7.2 Netlist the Design</h4>
+<h4 class="subsubsection">6.9.7.2 Netlist the Design</h4>
 
 <p>To netlist the design, run:
 </p><div class="example">
@@ -343,7 +343,7 @@ IF_AMP G=12 NF=6 IIP3=7
 
 </div>
 <div class="subsubsection" id="Run-the-Analysis">
-<h4 class="subsubsection">6.3.7.3 Run the Analysis</h4>
+<h4 class="subsubsection">6.9.7.3 Run the Analysis</h4>
 
 <p>Run the analysis with:
 </p><div class="example">
@@ -354,7 +354,7 @@ IF_AMP G=12 NF=6 IIP3=7
 </div>
 </div>
 <div class="subsection" id="Document-Revision-History">
-<h4 class="subsection">6.3.8 Document Revision History</h4>
+<h4 class="subsection">6.9.8 Document Revision History</h4>
 <dl compact="compact">
 <dt><span><code>December 3rd, 2003</code></span></dt>
 <dd><p>Created cascade.tex
@@ -365,7 +365,7 @@ IF_AMP G=12 NF=6 IIP3=7
 <hr>
 <div class="header">
 <p>
-Next: <a href="PADS-backend.html">Forward/backward annotation between Lepton and PADS PowerPCB</a>, Previous: <a href="BOM-backend.html">BOM netlister backend</a>, Up: <a href="lepton_002dnetlist.html">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="DRC-backend.html">DRC netlister backend</a>, Previous: <a href="Calay-backend.html">Calay netlister backend</a>, Up: <a href="lepton_002dnetlist.html">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -26,7 +26,7 @@ Documentation License." -->
 <link href="Topic-Index.html" rel="index" title="Topic Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="lepton_002dnetlist.html" rel="up" title="lepton-netlist">
-<link href="PADS-backend.html" rel="prev" title="PADS backend">
+<link href="ProtelII-backend.html" rel="prev" title="ProtelII backend">
 <style type="text/css">
 <!--
 a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
@@ -55,10 +55,10 @@ ul.no-bullet {list-style: none}
 <div class="section" id="Switcap-backend">
 <div class="header">
 <p>
-Previous: <a href="PADS-backend.html" accesskey="p" rel="prev">Forward/backward annotation between Lepton and PADS PowerPCB</a>, Up: <a href="lepton_002dnetlist.html" accesskey="u" rel="up">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="ProtelII-backend.html" accesskey="p" rel="prev">ProtelII netlister backend</a>, Up: <a href="lepton_002dnetlist.html" accesskey="u" rel="up">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="gEDA_002fgaf-Switcap-Symbols-and-Netlister"></span><h3 class="section">6.5 gEDA/gaf Switcap Symbols and Netlister</h3>
+<span id="gEDA_002fgaf-Switcap-Symbols-and-Netlister"></span><h3 class="section">6.13 gEDA/gaf Switcap Symbols and Netlister</h3>
 <span id="index-switcap"></span>
 <span id="index-switcap-backend"></span>
 <span id="index-backend_002c-switcap"></span>
@@ -95,7 +95,7 @@ Previous: <a href="PADS-backend.html" accesskey="p" rel="prev">Forward/backward 
 <li><a href="#Document-Revision-History-1" accesskey="8">Document Revision History</a></li>
 </ul>
 <div class="subsection" id="Overview-5">
-<h4 class="subsection">6.5.1 Overview</h4>
+<h4 class="subsection">6.13.1 Overview</h4>
 
 <p>This document describes the symbol library and <code>lepton-netlist</code> backend
 which supports driving SWITCAP simulations from the Lepton system.
@@ -119,7 +119,7 @@ simulations are:
 
 </div>
 <div class="subsection" id="Requirements-1">
-<h4 class="subsection">6.5.2 Requirements</h4>
+<h4 class="subsection">6.13.2 Requirements</h4>
 
 <p>You will need the following programs to be installed:
 </p><ol>
@@ -152,7 +152,7 @@ can read.  It is not installed by default, you can find it in the
 
 </div>
 <div class="subsection" id="Creating-Schematics-1">
-<h4 class="subsection">6.5.3 Creating Schematics</h4>
+<h4 class="subsection">6.13.3 Creating Schematics</h4>
 
 <ul class="section-toc">
 <li><a href="#Required-Symbols" accesskey="1">Required Symbols</a></li>
@@ -161,7 +161,7 @@ can read.  It is not installed by default, you can find it in the
 <li><a href="#Switches" accesskey="4">Switches</a></li>
 </ul>
 <div class="subsubsection" id="Required-Symbols">
-<h4 class="subsubsection">6.5.3.1 Required Symbols</h4>
+<h4 class="subsubsection">6.13.3.1 Required Symbols</h4>
 
 <p>This section assumes you are familiar with using <code>lepton-schematic</code> to
 create and edit schematics.  SWITCAP netlisting is only supported for
@@ -187,7 +187,7 @@ analysis files may be included.
 
 </div>
 <div class="subsubsection" id="Optional-Symbols">
-<h4 class="subsubsection">6.5.3.2 Optional Symbols</h4>
+<h4 class="subsubsection">6.13.3.2 Optional Symbols</h4>
 
 <p>You can also optionally add the following SWITCAP special symbols to
 your schematic:
@@ -202,7 +202,7 @@ can be passed to SWITCAP.
 
 </div>
 <div class="subsubsection" id="Net-Names">
-<h4 class="subsubsection">6.5.3.3 Net Names</h4>
+<h4 class="subsubsection">6.13.3.3 Net Names</h4>
 
 <p>When creating schematics to drive SWITCAP, you should name all nets
 that you wish to plot.  To avoid possible conflicts with unnamed nets,
@@ -214,7 +214,7 @@ limits the length of node names to 7 characters.
 
 </div>
 <div class="subsubsection" id="Switches">
-<h4 class="subsubsection">6.5.3.4 Switches</h4>
+<h4 class="subsubsection">6.13.3.4 Switches</h4>
 
 <p>When placing switches on your schematic, you will need to define which
 clock they are controlled with.  This is done by setting the clock
@@ -225,7 +225,7 @@ should control it.
 </div>
 </div>
 <div class="subsection" id="Extracting-the-SWITCAP-Netlist">
-<h4 class="subsection">6.5.4 Extracting the SWITCAP Netlist</h4>
+<h4 class="subsection">6.13.4 Extracting the SWITCAP Netlist</h4>
 
 <p>To extract the SWITCAP netlist, run:
 </p>
@@ -244,7 +244,7 @@ should control it.
 
 </div>
 <div class="subsection" id="Running-SWITCAP">
-<h4 class="subsection">6.5.5 Running SWITCAP</h4>
+<h4 class="subsection">6.13.5 Running SWITCAP</h4>
 
 <p>I typically use something like:
 </p>
@@ -260,7 +260,7 @@ manually type the file names each time.
 
 </div>
 <div class="subsection" id="Appendix-A-_002d_002d-Symbols-in-the-Library-1">
-<h4 class="subsection">6.5.6 Appendix A &ndash; Symbols in the Library</h4>
+<h4 class="subsection">6.13.6 Appendix A &ndash; Symbols in the Library</h4>
 
 
 <ul class="section-toc">
@@ -275,7 +275,7 @@ manually type the file names each time.
 <li><a href="#Simulation-Options-Specification-_0028switcap_002doptions_0029" accesskey="9">Simulation Options Specification (switcap-options)</a></li>
 </ul>
 <div class="subsubsection" id="Capacitors-_0028switcap_002dcapacitor_0029">
-<h4 class="subsubsection">6.5.6.1 Capacitors (switcap-capacitor)</h4>
+<h4 class="subsubsection">6.13.6.1 Capacitors (switcap-capacitor)</h4>
 
 <p>Ideal capacitor.  Attributes:
 </p><dl compact="compact">
@@ -290,7 +290,7 @@ manually type the file names each time.
 
 </div>
 <div class="subsubsection" id="Switches-_0028switcap_002dswitch_0029">
-<h4 class="subsubsection">6.5.6.2 Switches (switcap-switch)</h4>
+<h4 class="subsubsection">6.13.6.2 Switches (switcap-switch)</h4>
 
 <p>Ideal switch.  Attributes:
 </p><dl compact="compact">
@@ -305,7 +305,7 @@ manually type the file names each time.
 
 </div>
 <div class="subsubsection" id="Independent-Voltage-Sources-_0028switcap_002dvsrc_0029">
-<h4 class="subsubsection">6.5.6.3 Independent Voltage Sources (switcap-vsrc)</h4>
+<h4 class="subsubsection">6.13.6.3 Independent Voltage Sources (switcap-vsrc)</h4>
 
 <p>Attributes:
 </p><dl compact="compact">
@@ -317,7 +317,7 @@ manually type the file names each time.
 
 </div>
 <div class="subsubsection" id="Dependent-Voltage-Sources-_0028switcap_002dvcvs_0029">
-<h4 class="subsubsection">6.5.6.4 Dependent Voltage Sources (switcap-vcvs)</h4>
+<h4 class="subsubsection">6.13.6.4 Dependent Voltage Sources (switcap-vcvs)</h4>
 
 <p>Attributes:
 </p><dl compact="compact">
@@ -332,7 +332,7 @@ manually type the file names each time.
 
 </div>
 <div class="subsubsection" id="Clock-Specification-_0028switcap_002dclock_0029">
-<h4 class="subsubsection">6.5.6.5 Clock Specification (switcap-clock)</h4>
+<h4 class="subsubsection">6.13.6.5 Clock Specification (switcap-clock)</h4>
 
 <p>Attributes:
 </p><dl compact="compact">
@@ -358,7 +358,7 @@ designator renumbering tools.
 
 </div>
 <div class="subsubsection" id="Master-Timing-Specification-_0028switcap_002dtiming_0029">
-<h4 class="subsubsection">6.5.6.6 Master Timing Specification (switcap-timing)</h4>
+<h4 class="subsubsection">6.13.6.6 Master Timing Specification (switcap-timing)</h4>
 
 <p>Attributes:
 </p><dl compact="compact">
@@ -372,7 +372,7 @@ designator renumbering tools.
 
 </div>
 <div class="subsubsection" id="Analysis-File-Include-_0028switcap_002danalysis_0029">
-<h4 class="subsubsection">6.5.6.7 Analysis File Include (switcap-analysis)</h4>
+<h4 class="subsubsection">6.13.6.7 Analysis File Include (switcap-analysis)</h4>
 
 <p>This symbol will cause a specified file containing SWITCAP analysis
 commands to be included in the output netlist.  Attributes:
@@ -385,7 +385,7 @@ commands to be included in the output netlist.  Attributes:
 
 </div>
 <div class="subsubsection" id="Simulation-Title-Specification-_0028switcap_002dtitle_0029">
-<h4 class="subsubsection">6.5.6.8 Simulation Title Specification (switcap-title)</h4>
+<h4 class="subsubsection">6.13.6.8 Simulation Title Specification (switcap-title)</h4>
 
 <p>Attributes:
 </p><dl compact="compact">
@@ -399,7 +399,7 @@ commands to be included in the output netlist.  Attributes:
 
 </div>
 <div class="subsubsection" id="Simulation-Options-Specification-_0028switcap_002doptions_0029">
-<h4 class="subsubsection">6.5.6.9 Simulation Options Specification (switcap-options)</h4>
+<h4 class="subsubsection">6.13.6.9 Simulation Options Specification (switcap-options)</h4>
 
 <p>Attributes:
 </p><dl compact="compact">
@@ -415,7 +415,7 @@ SWITCAP manual for allowed values.
 </div>
 </div>
 <div class="subsection" id="Example-1">
-<h4 class="subsection">6.5.7 Example</h4>
+<h4 class="subsection">6.13.7 Example</h4>
 
 <p>This appendix provides a simple example of the entire process of
 generating a schematic, producing a SWITCAP netlist, running a
@@ -460,7 +460,7 @@ ANALYZE TRAN;
 <li><a href="#Plot-the-Results" accesskey="5">Plot the Results</a></li>
 </ul>
 <div class="subsubsection" id="Example-Schematics-1">
-<h4 class="subsubsection">6.5.7.1 Example Schematics</h4>
+<h4 class="subsubsection">6.13.7.1 Example Schematics</h4>
 
 <p><a href="#fig_003aswitcap1">Figure 6.3</a> shows the schematic of a simple switched capacitor
 circuit.  Note that some switches, <var>S1</var> and <var>S3</var> for
@@ -488,7 +488,7 @@ the file <samp>test.ana</samp> in the output netlist.
 
 </div>
 <div class="subsubsection" id="Netlist-the-Design-1">
-<h4 class="subsubsection">6.5.7.2 Netlist the Design</h4>
+<h4 class="subsubsection">6.13.7.2 Netlist the Design</h4>
 
 <p>To netlist the design, run:
 </p>
@@ -499,7 +499,7 @@ the file <samp>test.ana</samp> in the output netlist.
 
 </div>
 <div class="subsubsection" id="Run-the-Simulation">
-<h4 class="subsubsection">6.5.7.3 Run the Simulation</h4>
+<h4 class="subsubsection">6.13.7.3 Run the Simulation</h4>
 
 <p>Run the simulation with:
 </p>
@@ -510,7 +510,7 @@ the file <samp>test.ana</samp> in the output netlist.
 
 </div>
 <div class="subsubsection" id="Process-the-Results">
-<h4 class="subsubsection">6.5.7.4 Process the Results</h4>
+<h4 class="subsubsection">6.13.7.4 Process the Results</h4>
 
 <p>Convert the SWITCAP output file to something <code>gwave</code> can read
 by running:
@@ -522,7 +522,7 @@ by running:
 
 </div>
 <div class="subsubsection" id="Plot-the-Results">
-<h4 class="subsubsection">6.5.7.5 Plot the Results</h4>
+<h4 class="subsubsection">6.13.7.5 Plot the Results</h4>
 
 <p>Start up the <code>gwave</code> program and load the first sinusoidal
 steady state result by running:
@@ -556,7 +556,7 @@ sending us the picture with simulation results for documentation.
 </div>
 </div>
 <div class="subsection" id="Document-Revision-History-1">
-<h4 class="subsection">6.5.8 Document Revision History</h4>
+<h4 class="subsection">6.13.8 Document Revision History</h4>
 <dl compact="compact">
 <dt><span><em>April 13th, 2003</em></span></dt>
 <dd><p>Created switcap.tex
@@ -567,7 +567,7 @@ sending us the picture with simulation results for documentation.
 <hr>
 <div class="header">
 <p>
-Previous: <a href="PADS-backend.html">Forward/backward annotation between Lepton and PADS PowerPCB</a>, Up: <a href="lepton_002dnetlist.html">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="ProtelII-backend.html">ProtelII netlister backend</a>, Up: <a href="lepton_002dnetlist.html">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 
