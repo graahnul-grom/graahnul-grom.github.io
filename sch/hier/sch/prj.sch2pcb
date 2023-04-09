@@ -1,6 +1,9 @@
 schematics main.sch
 
-elements-dir /home/dmn/pcb/bin.master/share/pcb/pcblib-newlib
+elements-dir fp
+# elements-dir /home/dmn/pcb/bin.master/share/pcb/pcblib-newlib
+# elements-dir /home/dmn/ee/fp/fp
+# elements-dir /home/dmn/ee/fp/fpold
 # TESTING: elements-dir ${pcb}/bin.master/share/pcb/pcblib-newlib
 
 output-name brd
