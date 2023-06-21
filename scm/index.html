@@ -34,6 +34,9 @@ select locked objects with (customizable) keyboard shortcuts:<br />
 - Ctrl+Shift+L: select all locked objects<br />
 - Shift+L: select next (cycle through locked objects)<br />
 - Ctrl+L: select locked objects under the mouse cursor<br />
+NOTE: locked object selection is a built-in function<br />
+of lepton-schematic as of git commit 9a835fe69<br />
+("gui/sellock: Remove unused function parameter."), 15/May/2023<br />
 <br />
 
 <a href='lock-objs.scm.html'>lock-objs.scm</a>
@@ -51,7 +54,9 @@ you start lepton-schematic in the directory where gschemrc resides)<br />
 
 <a href='quick.scm.html'>quick.scm</a>
 [ <a href='quick.scm'>download</a> ]<br />
-quickly access schematic objects from the ":" prompt,<br />
+Select componenets, nets, attributes, texts with keyboard,<br />
+keys: q [c,n,a,t], e.g. press "q c" to select next component.<br />
+Quickly access schematic objects from the ":" prompt,<br />
 output results to the log window:<br />
 - prn(str): print str to the log<br />
 - pstr(): page contents as string<br />
