@@ -1,6 +1,6 @@
 ; file: lock-objs.scm
 ; type: lepton-schematic Guile script
-; copyright (c) 2020-2021 dmn <graahnul.grom@gmail.com>
+; copyright (c) 2020-2023 dmn <graahnul.grom@ya.ru>
 ; license: GPLv2+
 ;
 ; Locks all objects with lock=yes attribute on startup.
@@ -22,10 +22,11 @@
 
 
 ( define ( msg level msg . aa )
-    ( format #t  "~a: lock.dmn.scm: ~a~%" level (apply format #f msg aa) )
+    ; ( format #t "lock-objs.scm [~a]: ~a~%" level (apply format #f msg aa) )
     ( log!
         ( if (eq? level 'error) 'warning 'message )
-        "lock.dmn.scm: ~a"
+        "lock-objs.scm [~a]: ~a"
+        level
         ( apply format #f msg aa )
     )
 ) ; msg()
