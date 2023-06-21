@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,6 @@ Documentation License." -->
 <link href="netlist-group.html" rel="prev" title="netlist group">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,33 +37,34 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsubsection" id="netlist_002ehierarchy-group">
-<div class="header">
+<div class="subsubsection-level-extent" id="netlist_002ehierarchy-group">
+<div class="nav-panel">
 <p>
-Previous: <a href="netlist-group.html" accesskey="p" rel="prev"><code>netlist</code> group</a>, Up: <a href="lepton_002dnetlist-configuration.html" accesskey="u" rel="up"><code>Configuration of lepton-netlist</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="netlist-group.html" accesskey="p" rel="prev"><code class="code">netlist</code> group</a>, Up: <a href="lepton_002dnetlist-configuration.html" accesskey="u" rel="up"><code class="command">Configuration of lepton-netlist</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="netlist_002ehierarchy-group-1"></span><h4 class="subsubsection">3.4.2.2 <code>netlist.hierarchy</code> group</h4>
-<span id="index-netlist_002ehierarchy-group"></span>
+<h4 class="subsubsection" id="netlist_002ehierarchy-group-1">3.4.2.2 <code class="code">netlist.hierarchy</code> group</h4>
+<a class="index-entry-id" id="index-netlist_002ehierarchy-group"></a>
 
-<p>Before 1.9.10 it was <code>gnetlist.hierarchy</code> group.
+<p>Before 1.9.10 it was <code class="code">gnetlist.hierarchy</code> group.
 </p>
-<table>
+<table class="multitable">
 <thead><tr><th width="15%">Name</th><th width="15%">Type</th><th width="15%">Default value</th><th width="55%">Description</th></tr></thead>
-<tr><td width="15%"><code>traverse-hierarchy</code></td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>true</samp>&rsquo;</td><td width="55%"><span id="traverse_002dhierarchy"></span>Turn on/off hierarchy processing.</td></tr>
-<tr><td width="15%"><code>mangle-refdes-attribute</code></td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>true</samp>&rsquo;</td><td width="55%"><span id="mangle_002drefdes_002dattribute"></span>Whether to mangle sub-schematic&rsquo;s <var>refdes</var> attributes.</td></tr>
-<tr><td width="15%"><code>refdes-attribute-order</code></td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>false</samp>&rsquo;</td><td width="55%"><span id="refdes_002dattribute_002dorder"></span>While mangling <var>refdes</var> attributes, whether to append
-(&lsquo;<samp>false</samp>&rsquo;) or prepend (&lsquo;<samp>true</samp>&rsquo;) sub-schematic&rsquo;s ones.</td></tr>
-<tr><td width="15%"><code>refdes-attribute-separator</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;/&quot;</samp>&rsquo;</td><td width="55%"><span id="refdes_002dattribute_002dseparator"></span>Separator string used to form mangled <var>refdes</var> attribute names.</td></tr>
-<tr><td width="15%"><code>mangle-netname-attribute</code></td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>true</samp>&rsquo;</td><td width="55%"><span id="mangle_002dnetname_002dattribute"></span>Whether to mangle sub-schematic&rsquo;s <var>netname</var> attributes.</td></tr>
-<tr><td width="15%"><code>netname-attribute-order</code></td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>false</samp>&rsquo;</td><td width="55%"><span id="netname_002dattribute_002dorder"></span>While mangling <var>netname</var> attributes, whether to append
-(&lsquo;<samp>false</samp>&rsquo;) or prepend (&lsquo;<samp>true</samp>&rsquo;) sub-schematic&rsquo;s ones.</td></tr>
-<tr><td width="15%"><code>netname-attribute-separator</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;/&quot;</samp>&rsquo;</td><td width="55%"><span id="netname_002dattribute_002dseparator"></span>Separator string used to form mangled <var>netname</var> attribute
+<tbody><tr><td width="15%"><code class="code">traverse-hierarchy</code></td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">true</samp>&rsquo;</td><td width="55%"><a class="anchor" id="traverse_002dhierarchy"></a>Turn on/off hierarchy processing.</td></tr>
+<tr><td width="15%"><code class="code">mangle-refdes-attribute</code></td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">true</samp>&rsquo;</td><td width="55%"><a class="anchor" id="mangle_002drefdes_002dattribute"></a>Whether to mangle sub-schematic&rsquo;s <var class="var">refdes</var> attributes.</td></tr>
+<tr><td width="15%"><code class="code">refdes-attribute-order</code></td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">false</samp>&rsquo;</td><td width="55%"><a class="anchor" id="refdes_002dattribute_002dorder"></a>While mangling <var class="var">refdes</var> attributes, whether to append
+(&lsquo;<samp class="samp">false</samp>&rsquo;) or prepend (&lsquo;<samp class="samp">true</samp>&rsquo;) sub-schematic&rsquo;s ones.</td></tr>
+<tr><td width="15%"><code class="code">refdes-attribute-separator</code></td><td width="15%">&lsquo;<samp class="samp">string</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">&quot;/&quot;</samp>&rsquo;</td><td width="55%"><a class="anchor" id="refdes_002dattribute_002dseparator"></a>Separator string used to form mangled <var class="var">refdes</var> attribute names.</td></tr>
+<tr><td width="15%"><code class="code">mangle-netname-attribute</code></td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">true</samp>&rsquo;</td><td width="55%"><a class="anchor" id="mangle_002dnetname_002dattribute"></a>Whether to mangle sub-schematic&rsquo;s <var class="var">netname</var> attributes.</td></tr>
+<tr><td width="15%"><code class="code">netname-attribute-order</code></td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">false</samp>&rsquo;</td><td width="55%"><a class="anchor" id="netname_002dattribute_002dorder"></a>While mangling <var class="var">netname</var> attributes, whether to append
+(&lsquo;<samp class="samp">false</samp>&rsquo;) or prepend (&lsquo;<samp class="samp">true</samp>&rsquo;) sub-schematic&rsquo;s ones.</td></tr>
+<tr><td width="15%"><code class="code">netname-attribute-separator</code></td><td width="15%">&lsquo;<samp class="samp">string</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">&quot;/&quot;</samp>&rsquo;</td><td width="55%"><a class="anchor" id="netname_002dattribute_002dseparator"></a>Separator string used to form mangled <var class="var">netname</var> attribute
 names.</td></tr>
-<tr><td width="15%"><code>mangle-net-attribute</code></td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>true</samp>&rsquo;</td><td width="55%"><span id="mangle_002dnet_002dattribute"></span>Whether to mangle sub-schematic&rsquo;s <var>net</var> attributes.</td></tr>
-<tr><td width="15%"><code>net-attribute-order</code></td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>false</samp>&rsquo;</td><td width="55%"><span id="net_002dattribute_002dorder"></span>While mangling &lsquo;<samp>net</samp>&rsquo; attributes, whether to append
-(&lsquo;<samp>false</samp>&rsquo;) or prepend (&lsquo;<samp>true</samp>&rsquo;) sub-schematic&rsquo;s ones.</td></tr>
-<tr><td width="15%"><code>net-attribute-separator</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;/&quot;</samp>&rsquo;</td><td width="55%"><span id="net_002dattribute_002dseparator"></span>Separator string used to form mangled <var>net</var> attribute names.</td></tr>
+<tr><td width="15%"><code class="code">mangle-net-attribute</code></td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">true</samp>&rsquo;</td><td width="55%"><a class="anchor" id="mangle_002dnet_002dattribute"></a>Whether to mangle sub-schematic&rsquo;s <var class="var">net</var> attributes.</td></tr>
+<tr><td width="15%"><code class="code">net-attribute-order</code></td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">false</samp>&rsquo;</td><td width="55%"><a class="anchor" id="net_002dattribute_002dorder"></a>While mangling &lsquo;<samp class="samp">net</samp>&rsquo; attributes, whether to append
+(&lsquo;<samp class="samp">false</samp>&rsquo;) or prepend (&lsquo;<samp class="samp">true</samp>&rsquo;) sub-schematic&rsquo;s ones.</td></tr>
+<tr><td width="15%"><code class="code">net-attribute-separator</code></td><td width="15%">&lsquo;<samp class="samp">string</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">&quot;/&quot;</samp>&rsquo;</td><td width="55%"><a class="anchor" id="net_002dattribute_002dseparator"></a>Separator string used to form mangled <var class="var">net</var> attribute names.</td></tr>
+</tbody>
 </table>
 
 

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="numslots-attribute.html" rel="prev" title="numslots attribute">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,43 +39,43 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="slotdef-attribute">
-<div class="header">
+<div class="subsection-level-extent" id="slotdef-attribute">
+<div class="nav-panel">
 <p>
 Next: <a href="footprint-attribute.html" accesskey="n" rel="next">footprint attribute</a>, Previous: <a href="numslots-attribute.html" accesskey="p" rel="prev">numslots attribute</a>, Up: <a href="Symbol-only-Attributes.html" accesskey="u" rel="up">Symbol only Attributes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="slotdef-attribute-1"></span><h4 class="subsection">14.2.11 slotdef attribute</h4>
+<h4 class="subsection" id="slotdef-attribute-1">14.2.11 slotdef attribute</h4>
 
 <p>If a component has multiple slots in a physical package then you must
-attach a <var>slotdef=slotnumber:#,#,#...</var> for every device inside
+attach a <var class="var">slotdef=slotnumber:#,#,#...</var> for every device inside
 the physical package.
 </p>
 <p>The slotnumber corresponds to the slot number.  The colon after the
 slot number is required.  For example, if a device has 4 slots then
-there would be <var>slotdef=1:...</var>, <var>slotdef=2:...</var>,
-<var>slotdef=3:...</var>, and <var>slotdef=4:...</var> attributes somewhere in
+there would be <var class="var">slotdef=1:...</var>, <var class="var">slotdef=2:...</var>,
+<var class="var">slotdef=3:...</var>, and <var class="var">slotdef=4:...</var> attributes somewhere in
 the symbol and be made invisible.  This is a free standing or floating
 attribute.
 </p>
-<p>The <var>#</var>&rsquo;s have a one-to-one correspondence to the <var>pinseq</var>
-attributes and specify which <var>pinnumber=#</var> is used during display
-(<code>lepton-schematic</code>) or netlisting (<code>lepton-netlist</code>).
+<p>The <var class="var">#</var>&rsquo;s have a one-to-one correspondence to the <var class="var">pinseq</var>
+attributes and specify which <var class="var">pinnumber=#</var> is used during display
+(<code class="command">lepton-schematic</code>) or netlisting (<code class="command">lepton-netlist</code>).
 </p>
 <p>It is recommended that all symbols which have slots have a
-<var>slot=1</var> attribute (<a href="slot-attribute.html">slot attribute</a>) attached in the same
-fashion as the <var>device</var> attribute (<a href="device-attribute.html">device attribute</a>).
+<var class="var">slot=1</var> attribute (<a class="ref" href="slot-attribute.html">slot attribute</a>) attached in the same
+fashion as the <var class="var">device</var> attribute (<a class="ref" href="device-attribute.html">device attribute</a>).
 </p>
-<p>See <samp>7400-1.sym</samp> as a concrete example.
+<p>See <samp class="file">7400-1.sym</samp> as a concrete example.
 </p>
-<p><em>Examples:</em>
+<p><em class="emph">Examples:</em>
 </p><div class="example">
-<pre class="example">slotdef=1:1,2,3
+<pre class="example-preformatted">slotdef=1:1,2,3
 slotdef=2:4,5,6
 slotdef=3:7,8,9
 </pre></div>
 
-<p>This attribute replaces the obsolete <var>slot#=#</var> attribute.
+<p>This attribute replaces the obsolete <var class="var">slot#=#</var> attribute.
 </p>
 
 </div>

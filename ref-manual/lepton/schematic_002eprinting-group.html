@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,6 @@ Documentation License." -->
 <link href="schematic_002elibrary-group.html" rel="prev" title="schematic.library group">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,29 +38,30 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsubsection" id="schematic_002eprinting-group">
-<div class="header">
+<div class="subsubsection-level-extent" id="schematic_002eprinting-group">
+<div class="nav-panel">
 <p>
-Next: <a href="schematic_002ebackup-group.html" accesskey="n" rel="next"><code>schematic.backup</code> group</a>, Previous: <a href="schematic_002elibrary-group.html" accesskey="p" rel="prev"><code>schematic.library</code> group</a>, Up: <a href="lepton_002dschematic-configuration.html" accesskey="u" rel="up"><code>Configuration of lepton-schematic</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="schematic_002ebackup-group.html" accesskey="n" rel="next"><code class="code">schematic.backup</code> group</a>, Previous: <a href="schematic_002elibrary-group.html" accesskey="p" rel="prev"><code class="code">schematic.library</code> group</a>, Up: <a href="lepton_002dschematic-configuration.html" accesskey="u" rel="up"><code class="command">Configuration of lepton-schematic</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="schematic_002eprinting-group-1"></span><h4 class="subsubsection">3.4.1.9 <code>schematic.printing</code> group</h4>
-<span id="index-schematic_002eprinting-group"></span>
+<h4 class="subsubsection" id="schematic_002eprinting-group-1">3.4.1.9 <code class="code">schematic.printing</code> group</h4>
+<a class="index-entry-id" id="index-schematic_002eprinting-group"></a>
 
-<p>Since <em>1.9.10</em>.
-Before 1.9.10 it was <code>gschem.printing</code> group.
+<p>Since <em class="emph">1.9.10</em>.
+Before 1.9.10 it was <code class="code">gschem.printing</code> group.
 </p>
-<table>
+<table class="multitable">
 <thead><tr><th width="15%">Name</th><th width="15%">Type</th><th width="15%">Default value</th><th width="55%">Description</th></tr></thead>
-<tr><td width="15%"><code>layout</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>auto</samp>&rsquo;</td><td width="55%"><span id="layout"></span>Possible values: &lsquo;<samp>auto</samp>&rsquo;, &lsquo;<samp>portrait</samp>&rsquo;, &lsquo;<samp>landscape</samp>&rsquo;.
+<tbody><tr><td width="15%"><code class="code">layout</code></td><td width="15%">&lsquo;<samp class="samp">string</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">auto</samp>&rsquo;</td><td width="55%"><a class="anchor" id="layout"></a>Possible values: &lsquo;<samp class="samp">auto</samp>&rsquo;, &lsquo;<samp class="samp">portrait</samp>&rsquo;, &lsquo;<samp class="samp">landscape</samp>&rsquo;.
 When using a paper size, set the orientation of the output.  If
-&lsquo;<samp>auto</samp>&rsquo; layout is used, the orientation that best fits the
+&lsquo;<samp class="samp">auto</samp>&rsquo; layout is used, the orientation that best fits the
 drawing will be used.</td></tr>
-<tr><td width="15%">&lsquo;<samp>monochrome</samp>&rsquo;</td><td width="15%">&lsquo;<samp>boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp>false</samp>&rsquo;</td><td width="55%"><span id="monochrome"></span>Toggle monochrome (&lsquo;<samp>true</samp>&rsquo;) or color (&lsquo;<samp>false</samp>&rsquo;) output.</td></tr>
-<tr><td width="15%"><code>paper</code></td><td width="15%">&lsquo;<samp>string</samp>&rsquo;</td><td width="15%">&lsquo;<samp>&quot;iso_a4&quot;</samp>&rsquo;</td><td width="55%"><span id="paper"></span>Size the output for a particular paper size.  The default value
+<tr><td width="15%">&lsquo;<samp class="samp">monochrome</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">boolean</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">false</samp>&rsquo;</td><td width="55%"><a class="anchor" id="monochrome"></a>Toggle monochrome (&lsquo;<samp class="samp">true</samp>&rsquo;) or color (&lsquo;<samp class="samp">false</samp>&rsquo;) output.</td></tr>
+<tr><td width="15%"><code class="code">paper</code></td><td width="15%">&lsquo;<samp class="samp">string</samp>&rsquo;</td><td width="15%">&lsquo;<samp class="samp">&quot;iso_a4&quot;</samp>&rsquo;</td><td width="55%"><a class="anchor" id="paper"></a>Size the output for a particular paper size.  The default value
 depends on the current locale.  Described in the PWG 5101.1 standard
-(Printer Working Group <a href="http://www.pwg.org/standards.html#s5101">&quot;Media Standardized Names&quot;</a>).  Examples: &lsquo;<samp>iso_a4</samp>&rsquo;,
-&lsquo;<samp>iso_a5</samp>&rsquo;, &lsquo;<samp>na_letter</samp>&rsquo;.</td></tr>
+(Printer Working Group <a class="url" href="http://www.pwg.org/standards.html#s5101">&quot;Media Standardized Names&quot;</a>).  Examples: &lsquo;<samp class="samp">iso_a4</samp>&rsquo;,
+&lsquo;<samp class="samp">iso_a5</samp>&rsquo;, &lsquo;<samp class="samp">na_letter</samp>&rsquo;.</td></tr>
+</tbody>
 </table>
 
 

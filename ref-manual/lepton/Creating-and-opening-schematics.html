@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,6 @@ Documentation License." -->
 <link href="Dialog-boxes-and-widgets.html" rel="prev" title="Dialog boxes and widgets">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,41 +38,41 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Creating-and-opening-schematics">
-<div class="header">
+<div class="section-level-extent" id="Creating-and-opening-schematics">
+<div class="nav-panel">
 <p>
 Next: <a href="Editing-schematics.html" accesskey="n" rel="next">Editing schematics</a>, Previous: <a href="Dialog-boxes-and-widgets.html" accesskey="p" rel="prev">Dialog boxes and widgets</a>, Up: <a href="lepton_002dschematic.html" accesskey="u" rel="up">Schematic capture</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Creating-new-and-opening-existing-schematic-files"></span><h3 class="section">5.5 Creating new and opening existing schematic files</h3>
-<span id="index-creating-schematics"></span>
-<span id="index-create-schematics"></span>
-<span id="index-create-schematic"></span>
-<span id="index-create-schematic-files"></span>
-<span id="index-create-schematic-file"></span>
-<span id="index-schematic-creation"></span>
-<span id="index-opening-schematics"></span>
-<span id="index-opening-schematic"></span>
-<span id="index-opening-schematic-file"></span>
-<span id="index-open-schematics"></span>
-<span id="index-open-schematic"></span>
-<span id="index-open-schematic-file"></span>
+<h3 class="section" id="Creating-new-and-opening-existing-schematic-files">5.5 Creating new and opening existing schematic files</h3>
+<a class="index-entry-id" id="index-creating-schematics"></a>
+<a class="index-entry-id" id="index-create-schematics"></a>
+<a class="index-entry-id" id="index-create-schematic"></a>
+<a class="index-entry-id" id="index-create-schematic-files"></a>
+<a class="index-entry-id" id="index-create-schematic-file"></a>
+<a class="index-entry-id" id="index-schematic-creation"></a>
+<a class="index-entry-id" id="index-opening-schematics"></a>
+<a class="index-entry-id" id="index-opening-schematic"></a>
+<a class="index-entry-id" id="index-opening-schematic-file"></a>
+<a class="index-entry-id" id="index-open-schematics"></a>
+<a class="index-entry-id" id="index-open-schematic"></a>
+<a class="index-entry-id" id="index-open-schematic-file"></a>
 
-<p>Every time you launch <code>lepton-schematic</code> without arguments in a terminal, or
+<p>Every time you launch <code class="command">lepton-schematic</code> without arguments in a terminal, or
 from your window manager menu, a new untitled schematic page is
-created.  Use File &rarr; New within <code>lepton-schematic</code> if
+created.  Use File &rarr; New within <code class="command">lepton-schematic</code> if
 you want to create another page.
 </p>
 <p>The default page name for new pages is formed as a filename prefix
-defined in the configuration key <a href="schematic-group.html#default_002dfilename">default-filename</a> and a serial
+defined in the configuration key <a class="ref" href="schematic-group.html#default_002dfilename">default-filename</a> and a serial
 number which is incremented every time a new page is created,
-e.g. <samp>untitled_3.sch</samp>.  Usually, a title block symbol is
-inserted, see <a href="Title-block-symbol.html">Title block symbol</a>.
+e.g. <samp class="file">untitled_3.sch</samp>.  Usually, a title block symbol is
+inserted, see <a class="pxref" href="Title-block-symbol.html">Title block symbol</a>.
 </p>
 <p>Within the program, you can open an already existing schematic using
 the menu action File &rarr; Open...  In the opened
-dialog box select the file you need and click the button &lsquo;<samp>Open</samp>&rsquo;
-to actually open it, or &lsquo;<samp>Cancel</samp>&rsquo; to cancel with it.  At the
+dialog box select the file you need and click the button &lsquo;<samp class="samp">Open</samp>&rsquo;
+to actually open it, or &lsquo;<samp class="samp">Cancel</samp>&rsquo; to cancel with it.  At the
 bottom-right of the dialog there is a filter button.  With it, you can
 change view to see schematics or symbols only, both schematics and
 symbols, or any files in case you want to look at some other stuff in
@@ -96,9 +81,14 @@ the selected directory.
 <p>If you want to open a file you worked on recently, click the menu item
 File &rarr; Open Recent.  The submenu contains
 several file names.  You can configure how many files should be shown
-there using the configuration key <a href="schematic_002egui-group.html#max_002drecent_002dfiles">max-recent-files</a>.
+there using the configuration key <a class="ref" href="schematic_002egui-group.html#max_002drecent_002dfiles">max-recent-files</a>.
 </p>
 
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Editing-schematics.html">Editing schematics</a>, Previous: <a href="Dialog-boxes-and-widgets.html">Dialog boxes and widgets</a>, Up: <a href="lepton_002dschematic.html">Schematic capture</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

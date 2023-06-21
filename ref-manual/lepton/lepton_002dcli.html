@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="lepton_002dnetlist.html" rel="prev" title="lepton-netlist">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,45 +39,45 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="chapter" id="lepton_002dcli">
-<div class="header">
+<div class="chapter-level-extent" id="lepton_002dcli">
+<div class="nav-panel">
 <p>
 Next: <a href="lepton_002dattrib.html" accesskey="n" rel="next">Spreadsheet attribute editor</a>, Previous: <a href="lepton_002dnetlist.html" accesskey="p" rel="prev">Netlister</a>, Up: <a href="index.html" accesskey="u" rel="up">Lepton EDA Reference Manual</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="lepton_002dcli-_002d-Lepton-command_002dline-utility"></span><h2 class="chapter">7 lepton-cli - Lepton command-line utility</h2>
-<span id="index-lepton_002dcli"></span>
-<span id="index-Lepton-command-line-utility"></span>
+<h2 class="chapter" id="lepton_002dcli-_002d-Lepton-command_002dline-utility">7 lepton-cli - Lepton command-line utility</h2>
+<a class="index-entry-id" id="index-lepton_002dcli"></a>
+<a class="index-entry-id" id="index-Lepton-command-line-utility"></a>
 
-<p><code>lepton-cli</code> provides a number of small command-line utilities for
+<p><code class="command">lepton-cli</code> provides a number of small command-line utilities for
 working with Lepton schematic and symbol files, and is designed to be
 used for batch processing of designs created using the schematic
-editor <a href="lepton_002dschematic.html">Schematic capture</a>.
+editor <a class="ref" href="lepton_002dschematic.html">Schematic capture</a>.
 </p>
 <p>General usage is:
 </p>
 <div class="example">
-<pre class="example">lepton-cli [OPTION...] COMMAND [ARGS ...]
+<pre class="example-preformatted">lepton-cli [OPTION...] COMMAND [ARGS ...]
 </pre></div>
 
-<p>Currently, <var>COMMAND</var> can be one of <code>config</code>, <code>export</code>,
-or <code>shell</code>.
+<p>Currently, <var class="var">COMMAND</var> can be one of <code class="code">config</code>, <code class="code">export</code>,
+or <code class="code">shell</code>.
 </p>
-<p>Here is the description of <code>lepton-cli</code>&rsquo;s general options:
+<p>Here is the description of <code class="command">lepton-cli</code>&rsquo;s general options:
 </p>
-<dl compact="compact">
-<dt><span><samp>--no-rcfiles</samp></span></dt>
-<dd><p>Prevent <a href="gafrc.html"><samp>gafrc</samp></a> Scheme initialisation files from being loaded.
+<dl class="table">
+<dt><samp class="option">--no-rcfiles</samp></dt>
+<dd><p>Prevent <a class="ref" href="gafrc.html"><samp class="file">gafrc</samp></a> Scheme initialisation files from being loaded.
 </p>
 </dd>
-<dt><span><samp>-h</samp></span></dt>
-<dt><span><samp>--help</samp></span></dt>
+<dt><samp class="option">-h</samp></dt>
+<dt><samp class="option">--help</samp></dt>
 <dd><p>Print a help message.
 </p>
 </dd>
-<dt><span><samp>-V</samp></span></dt>
-<dt><span><samp>--version</samp></span></dt>
-<dd><p>Print <code>lepton-cli</code> version information.
+<dt><samp class="option">-V</samp></dt>
+<dt><samp class="option">--version</samp></dt>
+<dd><p>Print <code class="command">lepton-cli</code> version information.
 </p>
 </dd>
 </dl>
@@ -100,7 +86,7 @@ or <code>shell</code>.
 
 
 
-<ul class="section-toc">
+<ul class="mini-toc">
 <li><a href="lepton_002dcli-export.html" accesskey="1">lepton-cli export</a></li>
 <li><a href="lepton_002dcli-config.html" accesskey="2">lepton-cli config</a></li>
 <li><a href="lepton_002dcli-shell.html" accesskey="3">lepton-cli shell</a></li>

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,7 @@ Documentation License." -->
 <link href="component_002dlibrary_002dfuncs.html" rel="prev" title="component-library-funcs">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,24 +38,24 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsubsection" id="reset_002dcomponent_002dlibrary">
-<div class="header">
+<div class="subsubsection-level-extent" id="reset_002dcomponent_002dlibrary">
+<div class="nav-panel">
 <p>
 Previous: <a href="component_002dlibrary_002dfuncs.html" accesskey="p" rel="prev">component-library-funcs</a>, Up: <a href="Component-library-setup.html" accesskey="u" rel="up">Component library setup</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="reset_002dcomponent_002dlibrary-1"></span><h4 class="subsubsection">5.15.1.5 reset-component-library</h4>
-<span id="index-reset_002dcomponent_002dlibrary"></span>
+<h4 class="subsubsection" id="reset_002dcomponent_002dlibrary-1">5.15.1.5 reset-component-library</h4>
+<a class="index-entry-id" id="index-reset_002dcomponent_002dlibrary"></a>
 
-<p><code>reset-component-library</code> initializes, i.e. empties the global
+<p><code class="code">reset-component-library</code> initializes, i.e. empties the global
 component library.  Thus, the user can define a new set of component
 resources from scratch.  For example, sometimes it is convenient to
 get rid of default symbols in the library window of
-<code>lepton-schematic</code> and work only with those in your own custom
+<code class="command">lepton-schematic</code> and work only with those in your own custom
 libraries.
 </p>
 <p>Use the command before other component library commands, such as
-<a href="component_002dlibrary.html">component-library</a>.
+<a class="ref" href="component_002dlibrary.html">component-library</a>.
 </p>
 <p>Supposed you want some of your projects to use only special symbol
 libraries, then the typical usage is as follows.  First reset all
@@ -77,15 +63,15 @@ libraries, then populate the component library with your directories,
 e.g.:
 </p>
 <div class="example lisp">
-<pre class="lisp">(reset-component-library)
+<pre class="lisp-preformatted">(reset-component-library)
 
 (component-library-search &quot;${HOME}/lepton/symbols&quot;)
 </pre></div>
 
-<p>The good place to do so is <samp>gafrc</samp> in your project&rsquo;s directory.
+<p>The good place to do so is <samp class="file">gafrc</samp> in your project&rsquo;s directory.
 However, you can also disable default libraries completely by writing
-such lines in <samp>gafrc</samp> in the directory with your user&rsquo;s settings.
-See <a href="Legacy-configuration.html">Legacy configuration files still in use</a> for more information on configuration
+such lines in <samp class="file">gafrc</samp> in the directory with your user&rsquo;s settings.
+See <a class="xref" href="Legacy-configuration.html">Legacy configuration files still in use</a> for more information on configuration
 paths.
 </p>
 </div>

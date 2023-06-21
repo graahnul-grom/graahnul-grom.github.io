@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,8 @@ Documentation License." -->
 <link href="picture.html" rel="prev" title="picture">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,13 +40,13 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="box">
-<div class="header">
+<div class="subsection-level-extent" id="box">
+<div class="nav-panel">
 <p>
 Next: <a href="circle.html" accesskey="n" rel="next">circle</a>, Previous: <a href="picture.html" accesskey="p" rel="prev">picture</a>, Up: <a href="Object-types.html" accesskey="u" rel="up">Object types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="box-1"></span><h4 class="subsection">13.4.4 box</h4>
+<h4 class="subsection" id="box-1">13.4.4 box</h4>
 
 <p>Valid in: Schematic and Symbol files
 </p>
@@ -67,9 +54,9 @@ Next: <a href="circle.html" accesskey="n" rel="next">circle</a>, Previous: <a hr
 <pre class="verbatim">type x y width height color width capstyle dashstyle dashlength dashspace filltype fillwidth angle1 pitch1 angle2 pitch2
 </pre>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="20%">Pos.</th><th width="20%">Field</th><th width="20%">Type/unit</th><th width="40%">Description</th></tr></thead>
-<tr><td width="20%">#</td><td width="20%">type</td><td width="20%">char</td><td width="40%">B</td></tr>
+<tbody><tr><td width="20%">#</td><td width="20%">type</td><td width="20%">char</td><td width="40%">B</td></tr>
 <tr><td width="20%">1</td><td width="20%">x</td><td width="20%">int/mils</td><td width="40%">Lower left hand X coordinate</td></tr>
 <tr><td width="20%">2</td><td width="20%">y</td><td width="20%">int/mils</td><td width="40%">Lower left hand Y coordinate</td></tr>
 <tr><td width="20%">3</td><td width="20%">width</td><td width="20%">int/mils</td><td width="40%">Width of the box (x direction)</td></tr>
@@ -86,62 +73,63 @@ Next: <a href="circle.html" accesskey="n" rel="next">circle</a>, Previous: <a hr
 <tr><td width="20%">14</td><td width="20%">pitch1</td><td width="20%">int/mils</td><td width="40%">First pitch/spacing of fill</td></tr>
 <tr><td width="20%">15</td><td width="20%">angle2</td><td width="20%">int/degrees</td><td width="40%">Second angle of fill</td></tr>
 <tr><td width="20%">16</td><td width="20%">pitch2</td><td width="20%">int/mils</td><td width="40%">Second pitch/spacing of fill</td></tr>
+</tbody>
 </table>
 
-<ul>
-<li> The capstyle is an enumerated type:
-<ul>
-<li> END NONE = 0
+<ul class="itemize mark-bullet">
+<li>The capstyle is an enumerated type:
+<ul class="itemize mark-bullet">
+<li>END NONE = 0
 
-</li><li> END SQUARE = 1
+</li><li>END SQUARE = 1
 
-</li><li> END ROUND = 2
-
-</li></ul>
-
-</li><li> The dashstyle is an enumerated type:
-<ul>
-<li> TYPE SOLID = 0
-
-</li><li> TYPE DOTTED = 1
-
-</li><li> TYPE DASHED = 2
-
-</li><li> TYPE CENTER = 3
-
-</li><li> TYPE PHANTOM = 4
+</li><li>END ROUND = 2
 
 </li></ul>
 
-</li><li> The dashlength parameter is not used for TYPE SOLID and TYPE
+</li><li>The dashstyle is an enumerated type:
+<ul class="itemize mark-bullet">
+<li>TYPE SOLID = 0
+
+</li><li>TYPE DOTTED = 1
+
+</li><li>TYPE DASHED = 2
+
+</li><li>TYPE CENTER = 3
+
+</li><li>TYPE PHANTOM = 4
+
+</li></ul>
+
+</li><li>The dashlength parameter is not used for TYPE SOLID and TYPE
 DOTTED. This parameter should take on a value of -1 in these cases.
 
-</li><li> The dashspace parameter is not used for TYPE SOLID. This parameter
+</li><li>The dashspace parameter is not used for TYPE SOLID. This parameter
 should take on a value of -1 in these case.
 
-</li><li> The filltype parameter is an enumerated type:
-<ul>
-<li> FILLING HOLLOW = 0
+</li><li>The filltype parameter is an enumerated type:
+<ul class="itemize mark-bullet">
+<li>FILLING HOLLOW = 0
 
-</li><li> FILLING FILL = 1
+</li><li>FILLING FILL = 1
 
-</li><li> FILLING MESH = 2
+</li><li>FILLING MESH = 2
 
-</li><li> FILLING HATCH = 3
+</li><li>FILLING HATCH = 3
 
-</li><li> FILLING VOID = 4 unused
+</li><li>FILLING VOID = 4 unused
 
 </li></ul>
 
-</li><li> If the filltype is 0 (FILLING HOLLOW), then all the fill parameters
+</li><li>If the filltype is 0 (FILLING HOLLOW), then all the fill parameters
 should take on a value of -1.
 
-</li><li> The fill type FILLING FILL is a solid color fill.
+</li><li>The fill type FILLING FILL is a solid color fill.
 
-</li><li> The two pairs of pitch and spacing control the fill or hatch if the
+</li><li>The two pairs of pitch and spacing control the fill or hatch if the
 fill type is FILLING MESH.
 
-</li><li> Only the first pair of pitch and spacing are used if the fill type is
+</li><li>Only the first pair of pitch and spacing are used if the fill type is
 FILLING HATCH.
 
 </li></ul>
@@ -149,7 +137,7 @@ FILLING HATCH.
 
 <p>Example:
 </p><div class="example">
-<pre class="example">B 33000 67300 2000 2000 3 60 0 2 75 50 0 -1 -1 -1 -1 -1
+<pre class="example-preformatted">B 33000 67300 2000 2000 3 60 0 2 75 50 0 -1 -1 -1 -1 -1
 </pre></div>
 
 <p>A box with the lower left hand corner at (33000, 67300) and a width
@@ -160,7 +148,7 @@ mils, no fill, rest parameters unset.
 
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
 Next: <a href="circle.html">circle</a>, Previous: <a href="picture.html">picture</a>, Up: <a href="Object-types.html">Object types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="Menu-View.html" rel="prev" title="Menu View">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,63 +39,68 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="Menu-Page">
-<div class="header">
+<div class="subsection-level-extent" id="Menu-Page">
+<div class="nav-panel">
 <p>
 Next: <a href="Menu-Add.html" accesskey="n" rel="next">Menu Add</a>, Previous: <a href="Menu-View.html" accesskey="p" rel="prev">Menu View</a>, Up: <a href="lepton_002dschematic-window.html" accesskey="u" rel="up">Main lepton-schematic window</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Menu-Page-1"></span><h4 class="subsection">5.3.5 Menu Page</h4>
-<span id="index-menu-Page"></span>
+<h4 class="subsection" id="Menu-Page-1">5.3.5 Menu Page</h4>
+<a class="index-entry-id" id="index-menu-Page"></a>
 
-<dl compact="compact">
-<dt><span><em>Manager...</em></span></dt>
-<dd><p>Page &rarr; Manager... (<kbd>P M</kbd>) opens the page
+<dl class="table">
+<dt><em class="emph">Manager...</em></dt>
+<dd><p>Page &rarr; Manager... (<kbd class="kbd">P M</kbd>) opens the page
 manager window where you can interactively walk through the open
 schematic pages.
 </p>
 </dd>
-<dt><span><em>Previous</em></span></dt>
-<dd><p>Page &rarr; Previous (<kbd>&lt;</kbd>, <kbd>PgUp</kbd>, or <kbd>P
+<dt><em class="emph">Previous</em></dt>
+<dd><p>Page &rarr; Previous (<kbd class="kbd">&lt;</kbd>, <kbd class="kbd">PgUp</kbd>, or <kbd class="kbd">P
 P</kbd>) comes to the page in the list of opened pages previous to what is
 currently shown in the page view.
 </p>
 </dd>
-<dt><span><em>Next</em></span></dt>
-<dd><p>Page &rarr; Next (<kbd>&gt;</kbd>, <kbd>PgDown</kbd>, or <kbd>P
+<dt><em class="emph">Next</em></dt>
+<dd><p>Page &rarr; Next (<kbd class="kbd">&gt;</kbd>, <kbd class="kbd">PgDown</kbd>, or <kbd class="kbd">P
 N</kbd>) comes to the page in the list of opened pages next to what is
 currently shown in the page view.
 </p>
 </dd>
-<dt><span><em>Close</em></span></dt>
-<dd><p>Page &rarr; Close (<kbd>P C</kbd>, or <kbd>F E</kbd>) closes
+<dt><em class="emph">Close</em></dt>
+<dd><p>Page &rarr; Close (<kbd class="kbd">P C</kbd>, or <kbd class="kbd">F E</kbd>) closes
 the page currently shown in the page view.  If the page has any
 non-saved changes, the confirmation dialog will be shown where you can
 select saving or dropping changes, or cancel the operation.
 </p>
 </dd>
-<dt><span><em>Revert...</em></span></dt>
-<dd><p>Page &rarr; Revert... (<kbd>P R</kbd> or <kbd>F R</kbd>)
+<dt><em class="emph">Revert...</em></dt>
+<dd><p>Page &rarr; Revert... (<kbd class="kbd">P R</kbd> or <kbd class="kbd">F R</kbd>)
 reverts all changes in the current schematic page since the last
 saving.  Since the operation is dangerous, the confirmation dialog
 will be opened in order to prevent unwanted loss of data.  It may be
 useful though in cases when the page file has been changed by some
-external program such as, for example, <code>lepton-refdes_renum</code>.
+external program such as, for example, <code class="command">lepton-refdes_renum</code>.
 </p>
 </dd>
-<dt><span><em>Next Tab</em></span></dt>
+<dt><em class="emph">Next Tab</em></dt>
 <dd><p>Page &rarr; Next Tab goes to the next tab.  It is
 equivalent to Page &rarr; Next if tabbed view is
-enabled in <a href="schematic_002egui-group.html#use_002dtabs">configuration</a>.
+enabled in <a class="ref" href="schematic_002egui-group.html#use_002dtabs">configuration</a>.
 </p>
 </dd>
-<dt><span><em>Previous Tab</em></span></dt>
+<dt><em class="emph">Previous Tab</em></dt>
 <dd><p>Page &rarr; Previous Tab goes to the previous tab.
 It is equivalent to Page &rarr; Previous if tabbed
-view is enabled in <a href="schematic_002egui-group.html#use_002dtabs">configuration</a>.
+view is enabled in <a class="ref" href="schematic_002egui-group.html#use_002dtabs">configuration</a>.
 </p></dd>
 </dl>
 
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Menu-Add.html">Menu Add</a>, Previous: <a href="Menu-View.html">Menu View</a>, Up: <a href="lepton_002dschematic-window.html">Main lepton-schematic window</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

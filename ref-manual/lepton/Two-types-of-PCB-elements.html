@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,6 @@ Documentation License." -->
 <link href="Attributes-for-PCB-layout.html" rel="prev" title="Attributes for PCB layout">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,29 +37,29 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Two-types-of-PCB-elements">
-<div class="header">
+<div class="section-level-extent" id="Two-types-of-PCB-elements">
+<div class="nav-panel">
 <p>
 Previous: <a href="Attributes-for-PCB-layout.html" accesskey="p" rel="prev">Attributes for PCB layout</a>, Up: <a href="lepton_002dsch2pcb.html" accesskey="u" rel="up">lepton-sch2pcb - interface to PCB layout programs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Two-types-of-PCB-elements-1"></span><h3 class="section">9.2 Two types of PCB elements</h3>
-<span id="index-PCB-element-type"></span>
-<span id="index-type-of-PCB-element"></span>
+<h3 class="section" id="Two-types-of-PCB-elements-1">9.2 Two types of PCB elements</h3>
+<a class="index-entry-id" id="index-PCB-element-type"></a>
+<a class="index-entry-id" id="index-type-of-PCB-element"></a>
 
-<p>Historically, there are two types of PCB elements: <em>file element</em>
-and <em>m4 element</em>.  The former are files containing all the info
+<p>Historically, there are two types of PCB elements: <em class="emph">file element</em>
+and <em class="emph">m4 element</em>.  The former are files containing all the info
 required to represent fixed footprints of the components corresponding
 to them.  The latter are files that should be processed by
-<code>m4</code> command to obtain the footprint data.  An <em>m4
-element</em> may generate several footprint definitions.  Those <em>m4
-elements</em> are supported only by the program <code>pcb</code> and it is
-not recommended to use them as all <em>m4 elements</em> in <code>pcb</code>
-have corresponding <em>file elements</em>.  However, the <em>m4
-elements</em> are still supported by <code>lepton-sch2pcb</code>.  To deal with them, the
-program uses <code>lepton-netlist</code> which, in turn, needs to know the name of a
-directory of the <code>pcb</code> package containing the file
-<samp>common.m4</samp>.
+<code class="command">m4</code> command to obtain the footprint data.  An <em class="emph">m4
+element</em> may generate several footprint definitions.  Those <em class="emph">m4
+elements</em> are supported only by the program <code class="command">pcb</code> and it is
+not recommended to use them as all <em class="emph">m4 elements</em> in <code class="command">pcb</code>
+have corresponding <em class="emph">file elements</em>.  However, the <em class="emph">m4
+elements</em> are still supported by <code class="command">lepton-sch2pcb</code>.  To deal with them, the
+program uses <code class="command">lepton-netlist</code> which, in turn, needs to know the name of a
+directory of the <code class="command">pcb</code> package containing the file
+<samp class="file">common.m4</samp>.
 </p></div>
 
 

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,6 @@ Documentation License." -->
 <link href="lepton_002dsch2pcb.html" rel="prev" title="lepton-sch2pcb">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,38 +38,38 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Attributes-for-PCB-layout">
-<div class="header">
+<div class="section-level-extent" id="Attributes-for-PCB-layout">
+<div class="nav-panel">
 <p>
 Next: <a href="Two-types-of-PCB-elements.html" accesskey="n" rel="next">Two types of PCB elements</a>, Previous: <a href="lepton_002dsch2pcb.html" accesskey="p" rel="prev">lepton-sch2pcb - interface to PCB layout programs</a>, Up: <a href="lepton_002dsch2pcb.html" accesskey="u" rel="up">lepton-sch2pcb - interface to PCB layout programs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Attributes-for-PCB-layout-1"></span><h3 class="section">9.1 Attributes for PCB layout</h3>
-<span id="index-attributes-for-PCB-layout"></span>
-<span id="index-PCB-layout_002c-attributes"></span>
+<h3 class="section" id="Attributes-for-PCB-layout-1">9.1 Attributes for PCB layout</h3>
+<a class="index-entry-id" id="index-attributes-for-PCB-layout"></a>
+<a class="index-entry-id" id="index-PCB-layout_002c-attributes"></a>
 
 <p>Historically, the following schematic symbol attributes are used for
 PCB layout:
 </p>
-<dl compact="compact">
-<dt><span>&lsquo;<samp>footprint</samp>&rsquo;</span></dt>
+<dl class="table">
+<dt>&lsquo;<samp class="samp">footprint</samp>&rsquo;</dt>
 <dd><p>attached to a symbol, defines a PCB element file name to be placed on
 the layout for that instance of the symbol.  PCB element is a visible
 pattern, the footprint, corresponding to a physical electronic
 component in PCB layout.
 </p>
 </dd>
-<dt><span>&lsquo;<samp>refdes</samp>&rsquo;</span></dt>
+<dt>&lsquo;<samp class="samp">refdes</samp>&rsquo;</dt>
 <dd><p>attached to a symbol is its reference designator on the schematic.  In
-PCB layout programs, it can appear as the displayed <em>element
+PCB layout programs, it can appear as the displayed <em class="emph">element
 name</em>.
 </p>
 </dd>
-<dt><span>&lsquo;<samp>value</samp>&rsquo;</span></dt>
+<dt>&lsquo;<samp class="samp">value</samp>&rsquo;</dt>
 <dd><p>usually is used to store the type of the electronic component
-representing by a symbol, e.g. <strong>7400</strong>, or its value,
-e.g. <strong>1K</strong> for resistor.  In PCB layout programs, it can also be
-shown as <em>element name</em> depending on their settings.
+representing by a symbol, e.g. <strong class="strong">7400</strong>, or its value,
+e.g. <strong class="strong">1K</strong> for resistor.  In PCB layout programs, it can also be
+shown as <em class="emph">element name</em> depending on their settings.
 </p>
 </dd>
 </dl>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This manual documents Lepton EDA version 1.9.18.
+
+Copyright © 2020-2022 Lepton Contributors.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<title>Module backends (Lepton EDA Reference Manual 1.9.18)</title>
+
+<meta name="description" content="Module backends (Lepton EDA Reference Manual 1.9.18)">
+<meta name="keywords" content="Module backends (Lepton EDA Reference Manual 1.9.18)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Topic-Index.html" rel="index" title="Topic Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Backend-types.html" rel="up" title="Backend types">
+<link href="Legacy-backends.html" rel="prev" title="Legacy backends">
+<style type="text/css">
+<!--
+div.example {margin-left: 3.2em}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="lepton-manual.css">
+
+
+</head>
+
+<body lang="en">
+<div class="subsubsection-level-extent" id="Module-backends">
+<div class="nav-panel">
+<p>
+Previous: <a href="Legacy-backends.html" accesskey="p" rel="prev">Legacy backends</a>, Up: <a href="Backend-types.html" accesskey="u" rel="up">Backend types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsubsection" id="Module-backends-1">6.3.3.2 Module backends</h4>
+<a class="index-entry-id" id="index-module-backends"></a>
+<a class="index-entry-id" id="index-lepton_002dnetlist-module-backends"></a>
+
+<p>Unlike legacy backends, a module backend is simply a Scheme module.
+In order <code class="command">lepton-netlist</code> to understand a file is a module backend, it must
+meet the following requirements:
+</p>
+<ul class="itemize mark-bullet">
+<li>The filename must have the extension <samp class="file">.scm</samp>.
+</li><li>It must define the module in the &lsquo;<samp class="samp">backend</samp>&rsquo; namespace and export
+the same named function.
+</li><li>It must live in one of Lepton&rsquo;s user or system data directories.
+</li></ul>
+
+<p>For example, the name of your backend is <samp class="file">my-backend.scm</samp>.  In
+the code, you have to add module definition as follows:
+</p>
+<div class="example lisp">
+<pre class="lisp-preformatted">(define-module (backend my-backend)
+  #:export (my-backend))
+</pre></div>
+
+<p>The exported function has take no arguments.  What it outputs to the
+standard output port is redirected by <code class="command">lepton-netlist</code> to the specified
+output file or standard output, or to the default output name if no
+output file name is specified.
+</p>
+<p>The function may be defined as follows:
+</p><div class="example lisp">
+<pre class="lisp-preformatted">(define (my-backend)
+  (some-code-follows) ...)
+</pre></div>
+
+<p>To make the function take an arbitrary list of arguments, it can be
+defined as follows:
+</p><div class="example lisp">
+<pre class="lisp-preformatted">(define (my-backend . args)
+  (some-code-that-use-args args) ...)
+</pre></div>
+
+<p>So, if you want the backend to be available system-wide, put it in the
+<samp class="file">scheme/backend</samp> subdirectory of one of the directories reported
+by the function <code class="code">sys-data-dirs</code>,
+e.g. <samp class="file">/usr/share/lepton-eda</samp>.  To find out the paths, you can use
+<code class="command">lepton-shell</code>.  For example:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ lepton-shell -c '(use-modules (lepton os)) (display (sys-data-dirs))'
+(/usr/local/share/lepton-eda /usr/share/lepton-eda)
+$ sudo cp my-backend.scm /usr/local/share/lepton-eda/scheme/backend
+</pre></div>
+
+<p>If you want the backend to be available only for you, e.g. when you&rsquo;re
+just developing it, put it into the <samp class="file">scheme/backend/</samp>
+subdirectory of your Lepton user data directory which can be found
+using the function <code class="code">user-data-dir</code>, typically
+<samp class="file">~/.local/share/lepton-eda</samp>.  For example:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ lepton-shell -c '(use-modules (lepton os)) (display (user-data-dir))'
+/home/vzh/.local/share/lepton-eda
+$ cp my-backend.scm /home/vzh/.local/share/lepton-eda/scheme/backend
+</pre></div>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Legacy-backends.html">Legacy backends</a>, Up: <a href="Backend-types.html">Backend types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

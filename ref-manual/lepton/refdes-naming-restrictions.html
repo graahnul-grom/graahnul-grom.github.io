@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="refdes-attribute.html" rel="prev" title="refdes attribute">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,31 +39,31 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsubsection" id="refdes-naming-restrictions">
-<div class="header">
+<div class="subsubsection-level-extent" id="refdes-naming-restrictions">
+<div class="nav-panel">
 <p>
 Next: <a href="refdes-naming-conventions.html" accesskey="n" rel="next">refdes naming conventions</a>, Previous: <a href="refdes-attribute.html" accesskey="p" rel="prev">refdes attribute</a>, Up: <a href="refdes-attribute.html" accesskey="u" rel="up">refdes attribute</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="refdes-naming-restrictions-1"></span><h4 class="subsubsection">14.4.1.1 refdes naming restrictions</h4>
+<h4 class="subsubsection" id="refdes-naming-restrictions-1">14.4.1.1 refdes naming restrictions</h4>
 
-<p><code>lepton-schematic</code> will accept any string as a value for the refdes.
-However, some back-ends to <code>lepton-netlist</code> impose restrictions on the
+<p><code class="command">lepton-schematic</code> will accept any string as a value for the refdes.
+However, some back-ends to <code class="command">lepton-netlist</code> impose restrictions on the
 allowed syntax.
 </p>
-<p>Specifically, <code>lepton-sch2pcb</code> requires:
-</p><ul>
-<li> No spaces.
+<p>Specifically, <code class="command">lepton-sch2pcb</code> requires:
+</p><ul class="itemize mark-bullet">
+<li>No spaces.
 
-</li><li> No hyphens.  This might upset the M4 macro language potentially used
-to generate footprints.  &ldquo;<code>_</code>&rdquo; is OK.
+</li><li>No hyphens.  This might upset the M4 macro language potentially used
+to generate footprints.  &ldquo;<code class="code">_</code>&rdquo; is OK.
 
-</li><li> Any lower case suffix is ignored.  This is so you can, place four
-discrete <code>NAND</code> gates on the schematic called <code>U1a</code>,
-<code>U1b</code>, <code>U1c</code>, and <code>U1d</code>.  They will netlist into a
-single footprint named <code>U1</code>.
+</li><li>Any lower case suffix is ignored.  This is so you can, place four
+discrete <code class="code">NAND</code> gates on the schematic called <code class="code">U1a</code>,
+<code class="code">U1b</code>, <code class="code">U1c</code>, and <code class="code">U1d</code>.  They will netlist into a
+single footprint named <code class="code">U1</code>.
 
-</li><li> Non-ASCII characters like &lsquo;<samp>ü</samp>&rsquo;, &lsquo;<samp>ö</samp>&rsquo;, &lsquo;<samp>ä</samp>&rsquo;, &lsquo;<samp>ß</samp>&rsquo; will
+</li><li>Non-ASCII characters like &lsquo;<samp class="samp">ü</samp>&rsquo;, &lsquo;<samp class="samp">ö</samp>&rsquo;, &lsquo;<samp class="samp">ä</samp>&rsquo;, &lsquo;<samp class="samp">ß</samp>&rsquo; will
 not print in pcb.
 
 </li></ul>

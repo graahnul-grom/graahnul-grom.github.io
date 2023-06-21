@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="lepton_002dattrib-menus.html" rel="prev" title="lepton-attrib menus">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,52 +39,52 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Installation-of-lepton_002dattrib">
-<div class="header">
+<div class="section-level-extent" id="Installation-of-lepton_002dattrib">
+<div class="nav-panel">
 <p>
 Next: <a href="Credits-and-history-of-lepton_002dattrib.html" accesskey="n" rel="next">Credits and history of lepton-attrib</a>, Previous: <a href="lepton_002dattrib-menus.html" accesskey="p" rel="prev">lepton-attrib menus</a>, Up: <a href="lepton_002dattrib.html" accesskey="u" rel="up">Spreadsheet attribute editor</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Installation-of-lepton_002dattrib-1"></span><h3 class="section">8.4 Installation of lepton-attrib</h3>
+<h3 class="section" id="Installation-of-lepton_002dattrib-1">8.4 Installation of lepton-attrib</h3>
 
-<p>To install <code>lepton-attrib</code> from sources, just install Lepton
-EDA.  See <a href="Installation.html">Installation</a>.
+<p>To install <code class="command">lepton-attrib</code> from sources, just install Lepton
+EDA.  See <a class="xref" href="Installation.html">Installation</a>.
 </p>
-<p>Installation of <code>lepton-attrib</code> can be disabled with the
-option <samp>--disable-attrib</samp> on the <code>configure</code> stage:
+<p>Installation of <code class="command">lepton-attrib</code> can be disabled with the
+option <samp class="option">--disable-attrib</samp> on the <code class="code">configure</code> stage:
 </p>
 <div class="example">
-<pre class="example">autoreconf -ivf &amp;&amp; ./configure --disable-attrib &amp;&amp; make
+<pre class="example-preformatted">autoreconf -ivf &amp;&amp; ./configure --disable-attrib &amp;&amp; make
 sudo make install
 </pre></div>
 
-<p>Currently, <code>lepton-attrib</code> depends on the third-party library
-<code>gtkextra</code> which has to be installed on your system.  On some
-systems you also need to install <em>development packages</em>
+<p>Currently, <code class="command">lepton-attrib</code> depends on the third-party library
+<code class="code">gtkextra</code> which has to be installed on your system.  On some
+systems you also need to install <em class="emph">development packages</em>
 containing C header files necessary for compilation.  For example, on
-Debian, you would need <code>libgtkextra-dev</code>.
+Debian, you would need <code class="code">libgtkextra-dev</code>.
 </p>
 <p>If you want to try new GTK3 interface, you have to install another
-library, <code>gtksheet</code>: <a href="https://github.com/fpaquet/gtksheet">https://github.com/fpaquet/gtksheet</a>.
-Then use the <samp>--with-gtk3</samp> for <code>configure</code>:
+library, <code class="code">gtksheet</code>: <a class="url" href="https://github.com/fpaquet/gtksheet">https://github.com/fpaquet/gtksheet</a>.
+Then use the <samp class="option">--with-gtk3</samp> for <code class="code">configure</code>:
 </p>
 <div class="example">
-<pre class="example">autoreconf -ivf &amp;&amp; ./configure --with-gtk3 &amp;&amp; make
+<pre class="example-preformatted">autoreconf -ivf &amp;&amp; ./configure --with-gtk3 &amp;&amp; make
 sudo make install
 </pre></div>
 
 <p>If you install Lepton from sources to a place not known for your
-system dynamic linker, you may need to set <code>LD_LIBRARY_PATH</code>
+system dynamic linker, you may need to set <code class="env">LD_LIBRARY_PATH</code>
 to get it to work.
 </p>
-<p>For example, if you use <code>csh</code>, do:
+<p>For example, if you use <code class="code">csh</code>, do:
 </p><div class="example">
-<pre class="example">setenv LD_LIBRARY_PATH /home/user/lepton/lib:$LD_LIBRARY_PATH
+<pre class="example-preformatted">setenv LD_LIBRARY_PATH /home/user/lepton/lib:$LD_LIBRARY_PATH
 </pre></div>
 
-<p>For <code>bash</code> and the like shells:
+<p>For <code class="code">bash</code> and the like shells:
 </p><div class="example">
-<pre class="example">export LD_LIBRARY_PATH=/home/user/lepton/lib:$LD_LIBRARY_PATH
+<pre class="example-preformatted">export LD_LIBRARY_PATH=/home/user/lepton/lib:$LD_LIBRARY_PATH
 </pre></div>
 
 </div>

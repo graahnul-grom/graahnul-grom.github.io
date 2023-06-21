@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,6 @@ Documentation License." -->
 <link href="lepton_002dnetlist-command_002dline-arguments.html" rel="prev" title="lepton-netlist command-line arguments">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,32 +38,32 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Backends">
-<div class="header">
+<div class="section-level-extent" id="Backends">
+<div class="nav-panel">
 <p>
 Next: <a href="Allegro-backend.html" accesskey="n" rel="next">Allegro netlister backend</a>, Previous: <a href="lepton_002dnetlist-command_002dline-arguments.html" accesskey="p" rel="prev">lepton-netlist command-line arguments</a>, Up: <a href="lepton_002dnetlist.html" accesskey="u" rel="up">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Backends-1"></span><h3 class="section">6.3 Backends</h3>
-<span id="index-backends"></span>
-<span id="index-lepton_002dnetlist-backends"></span>
+<h3 class="section" id="Backends-1">6.3 Backends</h3>
+<a class="index-entry-id" id="index-backends"></a>
+<a class="index-entry-id" id="index-lepton_002dnetlist-backends"></a>
 
-<p>Under the hood, <code>lepton-netlist</code> consists of two parts and thus processes
-schematic files in two steps.  The first part called <em>frontend</em>
+<p>Under the hood, <code class="command">lepton-netlist</code> consists of two parts and thus processes
+schematic files in two steps.  The first part called <em class="dfn">frontend</em>
 transforms all given schematics into an intermediate schematic model.
-The second part called <em>backend</em> is a Scheme script that takes
+The second part called <em class="dfn">backend</em> is a Scheme script that takes
 that model and transforms its contents into a human readable output
-using functions provided by <code>lepton-netlist</code> Scheme API.  As you may now
+using functions provided by <code class="command">lepton-netlist</code> Scheme API.  As you may now
 guess, there are several backends in Lepton and each of them uses its
 own way to transform the schematic model.  In the command-line, the
 user may specify only one backend at a time.
 </p>
 
-
-<ul class="section-toc">
-<li><a href="Backend-types.html" accesskey="1">Backend types</a></li>
-<li><a href="Backend-launching.html" accesskey="2">Backend launching</a></li>
-<li><a href="Backend-kinds.html" accesskey="3">Backend kinds</a></li>
+<ul class="mini-toc">
+<li><a href="Backend-launching.html" accesskey="1">Backend launching</a></li>
+<li><a href="Backend-kinds.html" accesskey="2">Backend kinds</a></li>
+<li><a href="Backend-types.html" accesskey="3">Backend types</a></li>
+<li><a href="Custom-backends.html" accesskey="4">Writing custom backends</a></li>
 </ul>
 </div>
 

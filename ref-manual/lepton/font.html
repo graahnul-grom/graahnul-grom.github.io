@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,8 @@ Documentation License." -->
 <link href="path.html" rel="prev" title="path">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,32 +39,33 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="font">
-<div class="header">
+<div class="subsection-level-extent" id="font">
+<div class="nav-panel">
 <p>
 Previous: <a href="path.html" accesskey="p" rel="prev">path</a>, Up: <a href="Object-types.html" accesskey="u" rel="up">Object types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="font-1"></span><h4 class="subsection">13.4.13 font</h4>
+<h4 class="subsection" id="font-1">13.4.13 font</h4>
 
 <p>Valid in: Special font files ONLY
 </p>
 
 <pre class="verbatim">type character width flag
 </pre>
-<table>
+<table class="multitable">
 <thead><tr><th width="20%">Pos.</th><th width="20%">Field</th><th width="20%">Type/unit</th><th width="40%">Description</th></tr></thead>
-<tr><td width="20%">#</td><td width="20%">type</td><td width="20%">char</td><td width="40%">F</td></tr>
+<tbody><tr><td width="20%">#</td><td width="20%">type</td><td width="20%">char</td><td width="40%">F</td></tr>
 <tr><td width="20%">1</td><td width="20%">character</td><td width="20%">char</td><td width="40%">The character being defined</td></tr>
 <tr><td width="20%">2</td><td width="20%">width</td><td width="20%">int/mils</td><td width="40%">Width of the character (mils)</td></tr>
 <tr><td width="20%">3</td><td width="20%">flag</td><td width="20%">int</td><td width="40%">Special space flag</td></tr>
+</tbody>
 </table>
 
-<ul>
-<li> This is a special tag and should ONLY show up in font definition
+<ul class="itemize mark-bullet">
+<li>This is a special tag and should ONLY show up in font definition
 files.
 
-</li><li> If the font character being defined is the space character (32) then
+</li><li>If the font character being defined is the space character (32) then
 flag should be 1, otherwise 0.
 
 </li></ul>
@@ -85,7 +73,7 @@ flag should be 1, otherwise 0.
 
 <p>Example:
 </p><div class="example">
-<pre class="example">F 11 1
+<pre class="example-preformatted">F 11 1
 </pre></div>
 
 <p>The above font definition is for the space character.

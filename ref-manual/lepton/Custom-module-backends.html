@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This manual documents Lepton EDA version 1.9.18.
+
+Copyright © 2020-2022 Lepton Contributors.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License." -->
+<title>Custom module backends (Lepton EDA Reference Manual 1.9.18)</title>
+
+<meta name="description" content="Custom module backends (Lepton EDA Reference Manual 1.9.18)">
+<meta name="keywords" content="Custom module backends (Lepton EDA Reference Manual 1.9.18)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Topic-Index.html" rel="index" title="Topic Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Custom-backends.html" rel="up" title="Custom backends">
+<link href="Custom-legacy-backends.html" rel="prev" title="Custom legacy backends">
+<style type="text/css">
+<!--
+div.example {margin-left: 3.2em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="lepton-manual.css">
+
+
+</head>
+
+<body lang="en">
+<div class="subsubsection-level-extent" id="Custom-module-backends">
+<div class="nav-panel">
+<p>
+Previous: <a href="Custom-legacy-backends.html" accesskey="p" rel="prev">Custom legacy backends</a>, Up: <a href="Custom-backends.html" accesskey="u" rel="up">Writing custom backends</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsubsection" id="Custom-module-backends-1">6.3.4.2 Custom module backends</h4>
+<a class="index-entry-id" id="index-custom-module-backends"></a>
+<a class="index-entry-id" id="index-writing-custom-module-backend"></a>
+
+<p>Let&rsquo;s create some new custom backends. Here is how you can do it.
+</p>
+<p>Create a file named <samp class="file">custom-backend.scm</samp> with the following
+contents:
+</p>
+<div class="example lisp">
+<pre class="lisp-preformatted">(define-module (backend custom-backend)
+  #:use-module (netlist schematic)
+  #:use-module (netlist schematic toplevel)
+  #:export (custom-backend))
+
+(define (custom-backend)
+  (display (schematic-components (toplevel-schematic))))
+</pre></div>
+
+<p>Put the file into the directory
+<samp class="file">~/.local/share/lepton-eda/scheme/backend</samp>.  Now, <code class="command">lepton-netlist</code>
+should report its name if you launch it with the option
+<samp class="option">--list-backends</samp>:
+</p><div class="example">
+<pre class="example-preformatted">$ lepton-netlist --list-backends
+...
+custom-backend
+...
+</pre></div>
+
+<p>Run it:
+</p><div class="example">
+<pre class="example-preformatted">$ lepton-netlist -g custom-backend my-schematic.sch
+</pre></div>
+
+<p>The output in the file <samp class="file">output.net</samp> in the current working
+directory may look as follows:
+</p><div class="example">
+<pre class="example-preformatted">(#&lt;geda-schematic-component 54&gt; #&lt;geda-schematic-component 90&gt;)
+</pre></div>
+
+<p>You can use pre-load (<samp class="option">-l</samp>) and post-load (<samp class="option">-m</samp>) scripts
+along with legacy backends to maybe redefine some code or re-use it.
+Pre- and post-loading functionality is not used for module backends.
+Instead of loading a backend and then redefining its functions using
+<samp class="option">-m</samp>, you can define a new module backend and redefine or
+re-use the functions in it.  Pre-loading by the option <samp class="option">-l</samp> can
+be changed the same way, just define a module and use its functions in
+another module.  If you want to use the code from a legacy backend,
+just <code class="code">primitive-load</code> its file.  Here are several examples.
+</p>
+<p>Let&rsquo;s suppose that you have a legacy backend named
+<samp class="file">gnet-legacy.scm</samp> and want to re-use its main function
+<code class="code">legacy()</code> in your code.  It may live in any directory defined in
+<code class="command">lepton-netlist</code>&rsquo;s <code class="code">%load-path</code>.  To check the contents of
+<code class="code">%load-path</code> you can issue the following command:
+</p>
+<div class="example">
+<pre class="example-preformatted">lepton-netlist -c '(display %load-path)'
+</pre></div>
+
+<p>or just open <code class="command">lepton-netlist</code> in interactive-mode
+</p>
+
+<p>enter <code class="code">%load-path</code> and hit <kbd class="kbd"><kbd class="key">RET</kbd></kbd>.
+</p>
+<p>The contents of your backend can then be changed to something like
+this:
+</p>
+<div class="example lisp">
+<pre class="lisp-preformatted">(define-module (backend custom-backend)
+  #:use-module (netlist schematic)
+  #:use-module (netlist schematic toplevel)
+  #:export (custom-backend))
+
+(primitive-load &quot;gnet-legacy.scm&quot;)  ; &lt;= new line
+
+(define (custom-backend)
+  (display (legacy))  ; &lt;= new line
+  (display (schematic-components (toplevel-schematic))))
+</pre></div>
+
+<p>You don&rsquo;t have to put the file into a load path known for <code class="command">lepton-netlist</code>.
+To use your file from any other directory, just specify its absolute
+path in <code class="code">primitive-load</code>, e.g. <code class="code">(primitive-load
+&quot;/tmp/gnet-legacy.scm&quot;)</code>.
+</p>
+<p>If you want to pre-load a module backend and use its contents, just
+import it in the code and use its exported function.
+</p>
+<p>Supposed you have a backend file <samp class="file">print-config.scm</samp> in your user
+backend directory with the following contents:
+</p>
+<div class="example lisp">
+<pre class="lisp-preformatted">(define-module (backend print-config)
+  #:use-module (netlist config)
+  #:export (print-config))
+
+(define (print-config)
+  (print-netlist-config))
+</pre></div>
+
+<p>and want to use it in the above custom backend, you just edit the
+custom backend as follows:
+</p>
+<div class="example lisp">
+<pre class="lisp-preformatted">(define-module (backend custom-backend)
+  #:use-module (netlist schematic)
+  #:use-module (netlist schematic toplevel)
+  #:use-module (backend print-config)  ; &lt;= new line
+  #:export (custom-backend))
+
+(define (custom-backend)
+  (print-config)  ; &lt;= new line
+  (display (schematic-components (toplevel-schematic))))
+</pre></div>
+
+<p>Post-loading function is no longer necessary, either.  If you want to
+add some functionality without modifying an original backend code,
+just add a new backend.
+</p>
+<p>For instance, you want to output some additional, maybe debugging,
+information before and after the output of the function
+<code class="code">custom-backend()</code>.  What you need is just a new backend module
+in your user backend directory which re-uses the function.  To
+accomplish that, you could make a backend file with the following
+contents:
+</p>
+<div class="example lisp">
+<pre class="lisp-preformatted">(define-module (backend add-headers-and-footers)
+  #:use-module (backend custom-backend)
+  #:export (add-headers-and-footers))
+
+(define (add-headers-and-footers)
+  (display &quot;Those are schematic components:\n&quot;)  ; &lt;= header
+  (custom-backend)  ; &lt;= main backend output
+  (display &quot;That's all folks!&quot;)  ; &lt;= footer)
+</pre></div>
+
+<p>Name the file <samp class="file">add-headers-and-footers.scm</samp> and put it into one
+of your backend directories, then run:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ lepton-netlist -g add-headers-and-footers my-schematic.sch
+</pre></div>
+
+<p>and you&rsquo;re done, congrats!
+</p></div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Custom-legacy-backends.html">Custom legacy backends</a>, Up: <a href="Custom-backends.html">Writing custom backends</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

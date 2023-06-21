@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="Out_002dof_002dsource-build.html" rel="prev" title="Out-of-source build">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,48 +39,54 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Configure-options">
-<div class="header">
+<div class="section-level-extent" id="Configure-options">
+<div class="nav-panel">
 <p>
 Next: <a href="Hardcode-library-names-for-Guile.html" accesskey="n" rel="next">Hardcode library names for Guile</a>, Previous: <a href="Out_002dof_002dsource-build.html" accesskey="p" rel="prev">Out-of-source build</a>, Up: <a href="Installation.html" accesskey="u" rel="up">Installation</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Configure-options-1"></span><h3 class="section">2.7 Configure options</h3>
-<span id="index-configure-options"></span>
-<span id="index-_002d_002dwith_002dgtk3"></span>
-<span id="index-_002d_002ddisable_002dattrib"></span>
-<span id="index-_002d_002denable_002dcontrib"></span>
-<span id="index-_002d_002denable_002dguild"></span>
+<h3 class="section" id="Configure-options-1">2.7 Configure options</h3>
+<a class="index-entry-id" id="index-configure-options"></a>
+<a class="index-entry-id" id="index-_002d_002dwith_002dgtk3"></a>
+<a class="index-entry-id" id="index-_002d_002ddisable_002dattrib"></a>
+<a class="index-entry-id" id="index-_002d_002denable_002dcontrib"></a>
+<a class="index-entry-id" id="index-_002d_002denable_002dguild"></a>
+<a class="index-entry-id" id="index-_002d_002ddisable_002ddoc"></a>
 
 <p>The following command in the build directory
 </p>
 <div class="example">
-<pre class="example">./configure --help
+<pre class="example-preformatted">./configure --help
 </pre></div>
 
 <p>will let you see all options available.  Here we&rsquo;ll notice only those
 of them that may be of special interest for the user.
 </p>
-<dl compact="compact">
-<dt><span><samp>--enable-guild</samp></span></dt>
+<dl class="table">
+<dt><samp class="option">--enable-guild</samp></dt>
 <dd><p>turns on support of native compilation of Scheme code by
-<code>guild</code>.  If it is not used, the Lepton Scheme tools will be
+<code class="command">guild</code>.  If it is not used, the Lepton Scheme tools will be
 compiled at the time of first launching, which may significantly
 increase the first time launching duration.
 </p>
 </dd>
-<dt><span><samp>--with-gtk3</samp></span></dt>
-<dd><p>turns on support for GTK3 library. See <a href="Installation-of-lepton_002dattrib.html">Installation of lepton-attrib</a> for more information on what additional libraries are
-needed to install <code>lepton-attrib</code>.
+<dt><samp class="option">--with-gtk3</samp></dt>
+<dd><p>turns on support for GTK3 library. See <a class="xref" href="Installation-of-lepton_002dattrib.html">Installation of lepton-attrib</a> for more information on what additional libraries are
+needed to install <code class="command">lepton-attrib</code>.
 </p>
 </dd>
-<dt><span><samp>--disable-attrib</samp></span></dt>
-<dd><p>turns off building and installing <code>lepton-attrib</code>.
+<dt><samp class="option">--disable-attrib</samp></dt>
+<dd><p>turns off building and installing <code class="command">lepton-attrib</code>.
 </p>
 </dd>
-<dt><span><samp>--enable-contrib</samp></span></dt>
+<dt><samp class="option">--disable-doc</samp></dt>
+<dd><p>turns off building and installing documentation, including
+manuals, wiki, readme files and man pages.
+</p>
+</dd>
+<dt><samp class="option">--enable-contrib</samp></dt>
 <dd><p>Build and installation of several contributed tools are disabled by
-default.  See <a href="Overview.html">Overview</a> for info on what tools can be additionally
+default.  See <a class="xref" href="Overview.html">Overview</a> for info on what tools can be additionally
 installed.
 </p></dd>
 </dl>

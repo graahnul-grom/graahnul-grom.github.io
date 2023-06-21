@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="value-attribute.html" rel="prev" title="value attribute">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,27 +39,27 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="symversion-attribute">
-<div class="header">
+<div class="subsection-level-extent" id="symversion-attribute">
+<div class="nav-panel">
 <p>
 Next: <a href="dist_002dlicense-attribute.html" accesskey="n" rel="next">dist-license attribute</a>, Previous: <a href="value-attribute.html" accesskey="p" rel="prev">value attribute</a>, Up: <a href="Symbol-and-Schematic-Attributes.html" accesskey="u" rel="up">Symbol and Schematic Attributes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="symversion-attribute-1"></span><h4 class="subsection">14.4.5 symversion attribute</h4>
+<h4 class="subsection" id="symversion-attribute-1">14.4.5 symversion attribute</h4>
 
-<p>The <var>symversion=</var> attribute is used to version the contents of
+<p>The <var class="var">symversion=</var> attribute is used to version the contents of
 symbols.  Because symbols are, by default, referenced from the
 schematic and not embedded within it, problems can occur in a
 schematic using a particular symbol if that symbol file is modified.
 For instance, if pins are moved in the symbol, the schematic net lines
-will no longer connect to the correct pins.  The <var>symversion=</var>
+will no longer connect to the correct pins.  The <var class="var">symversion=</var>
 attribute allows tracking such breaking changes to symbols and
 notifying the user of potential problems when a schematic is loaded.
 </p>
 <p>This attribute is optional, but if present it must take the following
 form:
 </p>
-<p><var>major.minor</var>
+<p><var class="var">major.minor</var>
 </p>
 <p>where major and minor are integers.  The major number is incremented
 when a change is made to a symbol that might break an existing
@@ -84,10 +70,10 @@ cosmetic changes while retaining structure such as location of the
 pins).
 </p>
 <p>If this attribute is inside a symbol and that symbol is placed onto a
-schematic, the <var>symversion=</var> attribute will be automatically
-&ldquo;promoted&rdquo;, causing a copy of the <var>symversion=M.N</var> attribute to
+schematic, the <var class="var">symversion=</var> attribute will be automatically
+&ldquo;promoted&rdquo;, causing a copy of the <var class="var">symversion=M.N</var> attribute to
 be stored on the symbol instance in the schematic itself.  When a
-symbol is loaded from disk, the value of the <var>symversion=</var> inside
+symbol is loaded from disk, the value of the <var class="var">symversion=</var> inside
 the symbol file (if any) and the symversion value attached to the
 symbol instance on the schematic are compared.  If the values differ,
 then libgeda will output a warning message (for minor version changes)
@@ -98,15 +84,15 @@ symbol file.  This attribute is always promoted when it is found
 inside a symbol during component placement.  Users should not attach
 this attribute manually to instantiated symbols in a schematic.
 </p>
-<p><em>Examples:</em>
+<p><em class="emph">Examples:</em>
 </p><div class="example">
-<pre class="example">symversion=1.1
+<pre class="example-preformatted">symversion=1.1
 symversion=2.0
 </pre></div>
 
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
 Next: <a href="dist_002dlicense-attribute.html">dist-license attribute</a>, Previous: <a href="value-attribute.html">value attribute</a>, Up: <a href="Symbol-and-Schematic-Attributes.html">Symbol and Schematic Attributes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>

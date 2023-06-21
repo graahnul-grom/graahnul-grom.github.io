@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,8 @@ Documentation License." -->
 <link href="lepton_002dnetlist-command_002dline-arguments.html" rel="next" title="lepton-netlist command-line arguments">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,35 +39,35 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Running-lepton_002dnetlist">
-<div class="header">
+<div class="section-level-extent" id="Running-lepton_002dnetlist">
+<div class="nav-panel">
 <p>
 Next: <a href="lepton_002dnetlist-command_002dline-arguments.html" accesskey="n" rel="next">lepton-netlist command-line arguments</a>, Up: <a href="lepton_002dnetlist.html" accesskey="u" rel="up">Netlister</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Running-lepton_002dnetlist-1"></span><h3 class="section">6.1 Running lepton-netlist</h3>
+<h3 class="section" id="Running-lepton_002dnetlist-1">6.1 Running lepton-netlist</h3>
 
-<p><code>lepton-netlist</code> has a command-line interface and can be run as any
-<acronym title="Command Line Interface">CLI</acronym> (Command Line Interface) utility in a terminal window,
-from <samp>Makefile</samp> or shell script and in a variety of other ways.
+<p><code class="command">lepton-netlist</code> has a command-line interface and can be run as any
+<abbr class="acronym" title="Command Line Interface">CLI</abbr> (Command Line Interface) utility in a terminal window,
+from <samp class="file">Makefile</samp> or shell script and in a variety of other ways.
 To get a useful result you at least need to specify:
-</p><ul>
-<li> schematic files to process,
-</li><li> backend to generate the result,
-</li><li> output file name in which to save the resulting netlist.
+</p><ul class="itemize mark-bullet">
+<li>schematic files to process,
+</li><li>backend to generate the result,
+</li><li>output file name in which to save the resulting netlist.
 </li></ul>
 
-<p>A simple command to run <code>lepton-netlist</code> might look like this:
+<p>A simple command to run <code class="command">lepton-netlist</code> might look like this:
 </p><div class="example">
-<pre class="example">lepton-netlist -g drc2 -o report.drc power-supply.sch test-board.sch
+<pre class="example-preformatted">lepton-netlist -g drc2 -o report.drc power-supply.sch test-board.sch
 </pre></div>
 
-<p>Here, you use the backend &lsquo;<samp>drc2</samp>&rsquo; for generating a <acronym title="Design Rule Checking">DRC</acronym> (Design Rule Checking) report in the file <samp>report.drc</samp> for your
-design consisting of two schematic files, <samp>power-supply.sch</samp> and
-<samp>test-board.sch</samp>.
+<p>Here, you use the backend &lsquo;<samp class="samp">drc2</samp>&rsquo; for generating a <abbr class="acronym" title="Design Rule Checking">DRC</abbr> (Design Rule Checking) report in the file <samp class="file">report.drc</samp> for your
+design consisting of two schematic files, <samp class="file">power-supply.sch</samp> and
+<samp class="file">test-board.sch</samp>.
 </p>
 <p>To automate your work on netlist creation, you could use the
-<code>make</code> command.  Create a file named <samp>Makefile</samp> and write
+<code class="command">make</code> command.  Create a file named <samp class="file">Makefile</samp> and write
 down dependencies between input and output file in it.  For the above
 example the file contents would look like this:
 </p>
@@ -94,9 +81,9 @@ $(drc-netlist): $(schematics)
 	lepton-netlist -g drc2 -o $@ $&lt;
 </pre>
 <p>To update your netlist after editing your schematics, just run
-<code>make</code> and you&rsquo;re done!
+<code class="command">make</code> and you&rsquo;re done!
 </p>
-<p>There are several other <a href="lepton_002dnetlist-command_002dline-arguments.html">lepton-netlist options</a> that can be used for more advanced tasks.
+<p>There are several other <a class="ref" href="lepton_002dnetlist-command_002dline-arguments.html">lepton-netlist options</a> that can be used for more advanced tasks.
 </p></div>
 
 

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="Configuration.html" rel="prev" title="Configuration">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,54 +39,54 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Introduction">
-<div class="header">
+<div class="section-level-extent" id="Introduction">
+<div class="nav-panel">
 <p>
 Next: <a href="Legacy-configuration.html" accesskey="n" rel="next">Legacy configuration files still in use</a>, Previous: <a href="Configuration.html" accesskey="p" rel="prev">Configuration system</a>, Up: <a href="Configuration.html" accesskey="u" rel="up">Configuration system</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Introduction-1"></span><h3 class="section">3.1 Introduction</h3>
+<h3 class="section" id="Introduction-1">3.1 Introduction</h3>
 
 <p>Currently, there are two types of configuration files:
-</p><ol>
+</p><ol class="enumerate">
 <li> Traditionally, Lepton EDA and gEDA settings were stored as Scheme
-source code files, and some of them are still in use: <samp>gafrc</samp> and
-<samp>gschemrc</samp> (see <a href="Legacy-configuration.html">Legacy configuration
+source code files, and some of them are still in use: <samp class="file">gafrc</samp> and
+<samp class="file">gschemrc</samp> (see <a class="pxref" href="Legacy-configuration.html">Legacy configuration
 settings</a>).  The work is underway to convert them to the new
 configuration system.
-</li><li> New settings are stored in <samp>*.conf</samp> ini-like text files and can
-be accessed using the <code>lepton-cli config</code> command.
+</li><li> New settings are stored in <samp class="file">*.conf</samp> ini-like text files and can
+be accessed using the <code class="code">lepton-cli config</code> command.
 </li></ol>
 
 
-<p><em>Important</em>:
+<p><em class="emph">Important</em>:
 </p>
 <p>Starting with Lepton EDA release
-<a href="https://github.com/lepton-eda/lepton-eda/releases/tag/1.9.10-20200319">1.9.10</a>:
-</p><ul>
-<li> Most of the <samp>gafrc</samp> and <samp>gschemrc</samp> options are
-<a href="Deprecated-settings.html">deprecated</a> and replaced with new
-configuration parameters.  For remaining options, see <a href="Legacy-configuration.html">Legacy configuration settings</a>.
-</li><li> All the
-<a href="https://github.com/graahnul-grom/lepton-eda/wiki/Deprecated-Settings#user-content-deprecated-gnetlistrc"><samp>gnetlistrc</samp> options</a> are deprecated. Please stop using this
+<a class="url" href="https://github.com/lepton-eda/lepton-eda/releases/tag/1.9.10-20200319">1.9.10</a>:
+</p><ul class="itemize mark-bullet">
+<li>Most of the <samp class="file">gafrc</samp> and <samp class="file">gschemrc</samp> options are
+<a class="ref" href="Deprecated-settings.html">deprecated</a> and replaced with new
+configuration parameters.  For remaining options, see <a class="pxref" href="Legacy-configuration.html">Legacy configuration settings</a>.
+</li><li>All the
+<a class="uref" href="https://github.com/graahnul-grom/lepton-eda/wiki/Deprecated-Settings#user-content-deprecated-gnetlistrc"><samp class="file">gnetlistrc</samp> options</a> are deprecated. Please stop using this
 obsolete configuration file.
-</li><li> Legacy names for <samp>*.conf</samp> configuration files are no longer used:
-instead of <samp>geda.conf</samp>, <samp>geda-user.conf</samp>, and
-<samp>geda-system.conf</samp>, configuration files are named <samp>lepton.conf</samp>,
-<samp>lepton-user.conf</samp> and <samp>lepton-system.conf</samp>, respectively.  The
-<a href="../man/lepton-upcfg.html">lepton-upcfg(1)</a>
-utility can upgrade your settings stored in <samp>geda*.conf</samp> files.
-</li><li> The directory for user configuration files is
-<samp>$XDG_CONFIG_HOME/lepton-eda/</samp> (usually,
-<samp>~/.config/lepton-eda/</samp>).
-</li><li> The directory <samp>~/.gEDA/</samp> is no longer used.
+</li><li>Legacy names for <samp class="file">*.conf</samp> configuration files are no longer used:
+instead of <samp class="file">geda.conf</samp>, <samp class="file">geda-user.conf</samp>, and
+<samp class="file">geda-system.conf</samp>, configuration files are named <samp class="file">lepton.conf</samp>,
+<samp class="file">lepton-user.conf</samp> and <samp class="file">lepton-system.conf</samp>, respectively.  The
+<a class="url" href="../man/lepton-upcfg.html">lepton-upcfg(1)</a>
+utility can upgrade your settings stored in <samp class="file">geda*.conf</samp> files.
+</li><li>The directory for user configuration files is
+<samp class="file">$XDG_CONFIG_HOME/lepton-eda/</samp> (usually,
+<samp class="file">~/.config/lepton-eda/</samp>).
+</li><li>The directory <samp class="file">~/.gEDA/</samp> is no longer used.
 </li></ul>
 
-<blockquote>
-<p><b>Note:</b> Later in this document, recently added options and groups of options
-may be marked with &ldquo;Since <em>release</em>.&rdquo;, designating their introduction
-in the specified Lepton EDA <code>release</code>, for example:
-&ldquo;Since <em>1.9.10</em>.&rdquo; means the changes are available since Lepton EDA
+<blockquote class="quotation">
+<p><b class="b">Note:</b> Later in this document, recently added options and groups of options
+may be marked with &ldquo;Since <em class="emph">release</em>.&rdquo;, designating their introduction
+in the specified Lepton EDA <code class="code">release</code>, for example:
+&ldquo;Since <em class="emph">1.9.10</em>.&rdquo; means the changes are available since Lepton EDA
 1.9.10.
 </p></blockquote>
 

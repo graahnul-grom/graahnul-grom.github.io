@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="Menu-Attributes.html" rel="prev" title="Menu Attributes">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,58 +39,58 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="Menu-Options">
-<div class="header">
+<div class="subsection-level-extent" id="Menu-Options">
+<div class="nav-panel">
 <p>
 Next: <a href="Menu-Netlist.html" accesskey="n" rel="next">Menu Netlist</a>, Previous: <a href="Menu-Attributes.html" accesskey="p" rel="prev">Menu Attributes</a>, Up: <a href="lepton_002dschematic-window.html" accesskey="u" rel="up">Main lepton-schematic window</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Menu-Options-1"></span><h4 class="subsection">5.3.9 Menu Options</h4>
-<span id="index-menu-Options"></span>
+<h4 class="subsection" id="Menu-Options-1">5.3.9 Menu Options</h4>
+<a class="index-entry-id" id="index-menu-Options"></a>
 
-<dl compact="compact">
-<dt><span><em>Options...</em></span></dt>
-<dd><p>Options &rarr; Options... (<kbd>O O</kbd>) opens the
+<dl class="table">
+<dt><em class="emph">Options...</em></dt>
+<dd><p>Options &rarr; Options... (<kbd class="kbd">O O</kbd>) opens the
 Options dialog box where you can interactively select the below
 options related to snapping and net drawing mode.
 </p>
 </dd>
-<dt><span><em>Font...</em></span></dt>
-<dd><p>Options &rarr; Font... (<kbd>O F</kbd>) opens the font
+<dt><em class="emph">Font...</em></dt>
+<dd><p>Options &rarr; Font... (<kbd class="kbd">O F</kbd>) opens the font
 chooser dialog where you can select your favorite font name and its
 style and then save it to your configuration.
 </p>
 </dd>
-<dt><span><em>Grid +</em></span></dt>
-<dd><p>Options &rarr; Grid + (<kbd>]</kbd>) increases the size
+<dt><em class="emph">Grid +</em></dt>
+<dd><p>Options &rarr; Grid + (<kbd class="kbd">]</kbd>) increases the size
 of the snapping grid twice.
 </p>
 </dd>
-<dt><span><em>Grid -</em></span></dt>
-<dd><p>Options &rarr; Grid - (<kbd>[</kbd>) decreases the size
+<dt><em class="emph">Grid -</em></dt>
+<dd><p>Options &rarr; Grid - (<kbd class="kbd">[</kbd>) decreases the size
 of the snapping grid twice.
 </p>
 </dd>
-<dt><span><em>Grid Style: Cycle Dots/Mesh/Off</em></span></dt>
+<dt><em class="emph">Grid Style: Cycle Dots/Mesh/Off</em></dt>
 <dd><p>Options &rarr; Grid Style: Cycle Dots/Mesh/Off
-(<kbd>O G</kbd>) toggles one of two available styles of grid displaying or
-switches the grid off.  The default is the &lsquo;<samp>mesh</samp>&rsquo; style.
+(<kbd class="kbd">O G</kbd>) toggles one of two available styles of grid displaying or
+switches the grid off.  The default is the &lsquo;<samp class="samp">mesh</samp>&rsquo; style.
 </p>
 </dd>
-<dt><span><em>Grid Snap: Cycle Grid/Resnap/Off</em></span></dt>
+<dt><em class="emph">Grid Snap: Cycle Grid/Resnap/Off</em></dt>
 <dd><p>Options &rarr; Grid Snap: Cycle Grid/Resnap/Off
-(<kbd>O S</kbd>) toggles grid snapping modes.  The default and mostly
-useful is the &lsquo;<samp>grid</samp>&rsquo; mode.  If it is selected, all objects on the
+(<kbd class="kbd">O S</kbd>) toggles grid snapping modes.  The default and mostly
+useful is the &lsquo;<samp class="samp">grid</samp>&rsquo; mode.  If it is selected, all objects on the
 page are snapped to the grid when you edit them.  Switching the grid
 off may be useful for some artistic work with graphical primitives but
 is not recommended for connectible objects which may stop connecting
-if their connectible ends are not on the grid.  The &lsquo;<samp>resnap</samp>&rsquo; mode
+if their connectible ends are not on the grid.  The &lsquo;<samp class="samp">resnap</samp>&rsquo; mode
 helps just in such situations: it allows you to move the objects or
 their points so they again snap to the current grid.
 </p>
 </dd>
-<dt><span><em>Grips: On/Off</em></span></dt>
-<dd><p>Options &rarr; Grips: On/Off (<kbd>O I</kbd>) toggles the
+<dt><em class="emph">Grips: On/Off</em></dt>
+<dd><p>Options &rarr; Grips: On/Off (<kbd class="kbd">O I</kbd>) toggles the
 visibility of grips on selected objects.  Various objects have
 different grip position on them.  However, all them can be edited only
 if you drag their points where grips should be.  While grips may
@@ -112,17 +98,17 @@ clutter your schematics when many objects are selected, it is often
 easier to edit them when grips are on, so this is the default setting.
 </p>
 </dd>
-<dt><span><em>Feedback Mode: Outline/Box</em></span></dt>
-<dd><p>Options &rarr; Feedback Mode: Outline/Box (<kbd>O
+<dt><em class="emph">Feedback Mode: Outline/Box</em></dt>
+<dd><p>Options &rarr; Feedback Mode: Outline/Box (<kbd class="kbd">O
 A</kbd>) toggles the type of component displaying when the user moves them.
-When (default) &lsquo;<samp>outline</samp>&rsquo; is selected, the user will see the usual
-appearance of components.  Otherwise, when &lsquo;<samp>box</samp>&rsquo; is selected,
+When (default) &lsquo;<samp class="samp">outline</samp>&rsquo; is selected, the user will see the usual
+appearance of components.  Otherwise, when &lsquo;<samp class="samp">box</samp>&rsquo; is selected,
 only the bounding boxes of objects will be shown when moving them.
 This may facilitate working on schematics on old slow hardware.
 </p>
 </dd>
-<dt><span><em>Net: Rubberband On/Off</em></span></dt>
-<dd><p>Options &rarr; Net: Rubberband On/Off (<kbd>O R</kbd>)
+<dt><em class="emph">Net: Rubberband On/Off</em></dt>
+<dd><p>Options &rarr; Net: Rubberband On/Off (<kbd class="kbd">O R</kbd>)
 toggles the rubberband mode for nets.  If the mode is ON (default
 setting), the nets connected to an object you&rsquo;re moving will change
 their size so they stay connected to the same points on the object.
@@ -130,21 +116,21 @@ Otherwise, the connections will silently break leaving the connected
 objects unconnected.
 </p>
 </dd>
-<dt><span><em>Net: Magnetic On/Off</em></span></dt>
-<dd><p>Options &rarr; Net: Magnetic On/Off (<kbd>O M</kbd>)
+<dt><em class="emph">Net: Magnetic On/Off</em></dt>
+<dd><p>Options &rarr; Net: Magnetic On/Off (<kbd class="kbd">O M</kbd>)
 toggles magnetic snapping of newly created nets.  If the switch is on,
 you will see a little circle at the point new net would join.
 Otherwise, no feedback is provided.  The mode is ON by default.
 </p>
 </dd>
-<dt><span><em>Coord Window</em></span></dt>
-<dd><p>Options &rarr; Coord Window (<kbd>O C</kbd>) opens a
+<dt><em class="emph">Coord Window</em></dt>
+<dd><p>Options &rarr; Coord Window (<kbd class="kbd">O C</kbd>) opens a
 dialog window where you can watch the current position of your mouse
 cursor on the page in screen and world coordinates.
 </p>
 </dd>
-<dt><span><em>Log Window</em></span></dt>
-<dd><p>Options &rarr; Log Window (<kbd>O L</kbd>) opens the log
+<dt><em class="emph">Log Window</em></dt>
+<dd><p>Options &rarr; Log Window (<kbd class="kbd">O L</kbd>) opens the log
 window where you can see messages the program reports.  Sometimes the
 messages are important, sometimes not.  Anyways, look there if you
 think something went wrong.
@@ -153,7 +139,7 @@ think something went wrong.
 
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
 Next: <a href="Menu-Netlist.html">Menu Netlist</a>, Previous: <a href="Menu-Attributes.html">Menu Attributes</a>, Up: <a href="lepton_002dschematic-window.html">Main lepton-schematic window</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>

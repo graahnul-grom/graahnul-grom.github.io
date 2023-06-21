@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -26,24 +26,11 @@ Documentation License." -->
 <link href="Topic-Index.html" rel="index" title="Topic Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Backends.html" rel="up" title="Backends">
+<link href="Backend-types.html" rel="next" title="Backend types">
 <link href="Backend-launching.html" rel="prev" title="Backend launching">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,27 +39,29 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="Backend-kinds">
-<div class="header">
+<div class="subsection-level-extent" id="Backend-kinds">
+<div class="nav-panel">
 <p>
-Previous: <a href="Backend-launching.html" accesskey="p" rel="prev">Backend launching</a>, Up: <a href="Backends.html" accesskey="u" rel="up">Backends</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Backend-types.html" accesskey="n" rel="next">Backend types</a>, Previous: <a href="Backend-launching.html" accesskey="p" rel="prev">Backend launching</a>, Up: <a href="Backends.html" accesskey="u" rel="up">Backends</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Backend-kinds-1"></span><h4 class="subsection">6.3.3 Backend kinds</h4>
-<span id="index-backend-kinds"></span>
-<span id="index-lepton_002dnetlist-backend-kinds"></span>
+<h4 class="subsection" id="Backend-kinds-1">6.3.2 Backend kinds</h4>
+<a class="index-entry-id" id="index-backend-kinds"></a>
+<a class="index-entry-id" id="index-lepton_002dnetlist-backend-kinds"></a>
 
-<p><code>lepton-netlist</code> backends are different by their destination.  Currently,
+<p><code class="command">lepton-netlist</code> backends are different by their destination.  Currently,
 there are following kinds of backends in Lepton:
 </p>
-<ul>
-<li> Backends for creating <acronym title="Bill Of Materials">BOM</acronym> (Bill Of Materials) or list of parts.
-</li><li> Backends for <acronym title="Design Rule Checking">DRC</acronym> (Design Rule Checking).
-</li><li> Backends for simulation.
-</li><li> Backends for PCB creation.
-</li><li> Backends for automation.
-</li><li> Backends for testing contents of a schematic.
+<ul class="itemize mark-bullet">
+<li>Backends for creating <abbr class="acronym" title="Bill Of Materials">BOM</abbr> (Bill Of Materials) or list of parts.
+</li><li>Backends for <abbr class="acronym" title="Design Rule Checking">DRC</abbr> (Design Rule Checking).
+</li><li>Backends for simulation.
+</li><li>Backends for PCB creation.
+</li><li>Backends for automation.
+</li><li>Backends for testing contents of a schematic.
 </li></ul>
+
+
 </div>
 
 

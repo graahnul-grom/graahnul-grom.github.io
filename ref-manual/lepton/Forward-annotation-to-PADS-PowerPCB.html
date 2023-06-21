@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,7 @@ Documentation License." -->
 <link href="Back-annotation-from-PADS-PowerPCB.html" rel="next" title="Back annotation from PADS PowerPCB">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,19 +38,19 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="Forward-annotation-to-PADS-PowerPCB">
-<div class="header">
+<div class="subsection-level-extent" id="Forward-annotation-to-PADS-PowerPCB">
+<div class="nav-panel">
 <p>
 Next: <a href="Back-annotation-from-PADS-PowerPCB.html" accesskey="n" rel="next">Back annotation of PADS PowerPCB layout changes to Lepton schematic</a>, Up: <a href="PADS-backend.html" accesskey="u" rel="up">Forward/backward annotation between Lepton and PADS PowerPCB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Forward-annotation-of-lepton-schematic-changes-to-PADS-PowerPCB-layout"></span><h4 class="subsection">6.11.1 Forward annotation of lepton schematic changes to PADS PowerPCB layout</h4>
+<h4 class="subsection" id="Forward-annotation-of-lepton-schematic-changes-to-PADS-PowerPCB-layout">6.11.1 Forward annotation of lepton schematic changes to PADS PowerPCB layout</h4>
 
-<ul class="section-toc">
+<ul class="mini-toc">
 <li><a href="#Overview-4" accesskey="1">Overview</a></li>
 <li><a href="#Detailed-forward-annotation-procedure" accesskey="2">Detailed forward annotation procedure</a></li>
 </ul>
-<div class="subsubsection" id="Overview-4">
+<div class="subsubsection-level-extent" id="Overview-4">
 <h4 class="subsubsection">6.11.1.1 Overview</h4>
 
 <p>Forward annotation is the process of updating a layout to reflect
@@ -80,32 +66,32 @@ generates the ECO file by performing a netlist comparison between a
 new netlist file and the netlist contained in the current layout.
 </p>
 </div>
-<div class="subsubsection" id="Detailed-forward-annotation-procedure">
+<div class="subsubsection-level-extent" id="Detailed-forward-annotation-procedure">
 <h4 class="subsubsection">6.11.1.2 Detailed forward annotation procedure</h4>
 
 <p>This procedure assumes you have a board layout open in PADS and that
-you have made your schematic changes in <code>lepton-schematic</code>.  For the purposes
+you have made your schematic changes in <code class="command">lepton-schematic</code>.  For the purposes
 of illustration, assume your schematic is split into two pages in the
-files <samp>pg1.sch</samp> and <samp>pg2.sch</samp>.
+files <samp class="file">pg1.sch</samp> and <samp class="file">pg2.sch</samp>.
 </p>
-<ul>
-<li> Create an updated PADS netlist by running:
+<ul class="itemize mark-bullet">
+<li>Create an updated PADS netlist by running:
 
-<p><code>lepton-netlist -g pads -o mynet.asc pg1.sch pg2.sch</code>
+<p><code class="code">lepton-netlist -g pads -o mynet.asc pg1.sch pg2.sch</code>
 </p>
-<p>This will create the netlist file <samp>mynet.asc</samp>.
+<p>This will create the netlist file <samp class="file">mynet.asc</samp>.
 </p>
-</li><li> Make a backup copy of your PADS layout in case things fail in a
+</li><li>Make a backup copy of your PADS layout in case things fail in a
 destructive way.
 
-</li><li> From within PADS, choose the Tools &rarr; Compare
+</li><li>From within PADS, choose the Tools &rarr; Compare
 Netlist menu item and choose the following options in the form:
 
 </li></ul>
 
 
-<table>
-<tr><td width="50%">original design to compare</td><td width="50%">use current PCB design</td></tr>
+<table class="multitable">
+<tbody><tr><td width="50%">original design to compare</td><td width="50%">use current PCB design</td></tr>
 <tr><td width="50%">new design with changes</td><td width="50%">mynet.asc</td></tr>
 <tr><td width="50%">√</td><td width="50%">generate differences report</td></tr>
 <tr><td width="50%">√</td><td width="50%">generate eco file</td></tr>
@@ -115,15 +101,16 @@ Netlist menu item and choose the following options in the form:
 <tr><td width="50%"></td></tr>
 <tr><td width="50%">attribute comparison level</td></tr>
 <tr><td width="50%">√</td><td width="50%">ignore all attributes</td></tr>
+</tbody>
 </table>
 
-<p>Click the &lsquo;<samp>OK</samp>&rsquo; button to create the ECO file.
+<p>Click the &lsquo;<samp class="samp">OK</samp>&rsquo; button to create the ECO file.
 </p>
-<ul>
-<li> Examine the ECO file to make sure it looks ok (the ECO file is a text
+<ul class="itemize mark-bullet">
+<li>Examine the ECO file to make sure it looks ok (the ECO file is a text
 file which can be viewed with any text editor).
 
-</li><li> From within PADS, choose the File &rarr; Import...
+</li><li>From within PADS, choose the File &rarr; Import...
 menu item.  Locate and choose the ECO file created previously.
 
 </li></ul>
@@ -131,7 +118,7 @@ menu item.  Locate and choose the ECO file created previously.
 </div>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
 Next: <a href="Back-annotation-from-PADS-PowerPCB.html">Back annotation of PADS PowerPCB layout changes to Lepton schematic</a>, Up: <a href="PADS-backend.html">Forward/backward annotation between Lepton and PADS PowerPCB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>

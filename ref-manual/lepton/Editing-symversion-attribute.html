@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="Editing-symbols.html" rel="prev" title="Editing symbols">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,31 +39,31 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Editing-symversion-attribute">
-<div class="header">
+<div class="section-level-extent" id="Editing-symversion-attribute">
+<div class="nav-panel">
 <p>
 Next: <a href="No_002dconnect-symbols.html" accesskey="n" rel="next">No Connection Short Form Data Sheet</a>, Previous: <a href="Editing-symbols.html" accesskey="p" rel="prev">Editing symbols</a>, Up: <a href="Symbols.html" accesskey="u" rel="up">Symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Editing-symbol-version-attribute"></span><h3 class="section">4.3 Editing symbol version attribute</h3>
-<span id="index-edit-symversion"></span>
-<span id="index-symversion_002c-edit"></span>
+<h3 class="section" id="Editing-symbol-version-attribute">4.3 Editing symbol version attribute</h3>
+<a class="index-entry-id" id="index-edit-symversion"></a>
+<a class="index-entry-id" id="index-symversion_002c-edit"></a>
 
-<p>Symbol version is defined using the &lsquo;<samp>symversion</samp>&rsquo; attribute.  The
+<p>Symbol version is defined using the &lsquo;<samp class="samp">symversion</samp>&rsquo; attribute.  The
 attribute value should contain two components in order tools to
 process it correctly: major and minor.  So it looks like
-<code>major.minor</code>, for example, <code>1.2</code>.  It is important to
+<code class="code">major.minor</code>, for example, <code class="code">1.2</code>.  It is important to
 follow to several simple rules when you are about to edit a symbol and
 its version.  Otherwise, the tools won&rsquo;t be able to warn you on
-significant changes.  You should remember that <em>major</em> changes
+significant changes.  You should remember that <em class="emph">major</em> changes
 are those that may break existing schematics and/or netlists:
 </p>
-<ul>
-<li> Addition or removal of pins.
-</li><li> Changing position of connectable ends of pins.
-</li><li> Changes in position of graphics or attributes that lead to moving pins
+<ul class="itemize mark-bullet">
+<li>Addition or removal of pins.
+</li><li>Changing position of connectable ends of pins.
+</li><li>Changes in position of graphics or attributes that lead to moving pins
 to other position after translation.
-</li><li> Change of pin attributes that may affect netlist creation.
+</li><li>Change of pin attributes that may affect netlist creation.
 </li></ul>
 
 <p>If you did any of the above changes, please increment the major
@@ -90,10 +76,15 @@ points mentioned above.  Changing of any internal symbol attribute
 won&rsquo;t break your existing schematic, so it is considered minor as
 well.  On such changes, please increment the minor symbol version.
 </p>
-<p>If the symbol you edit does not have the &lsquo;<samp>symversion</samp>&rsquo; attribute,
+<p>If the symbol you edit does not have the &lsquo;<samp class="samp">symversion</samp>&rsquo; attribute,
 please add it.  Otherwise, Lepton tools won&rsquo;t be able to warn you
 about any changes, even breaking.
 </p></div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="No_002dconnect-symbols.html">No Connection Short Form Data Sheet</a>, Previous: <a href="Editing-symbols.html">Editing symbols</a>, Up: <a href="Symbols.html">Symbols</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

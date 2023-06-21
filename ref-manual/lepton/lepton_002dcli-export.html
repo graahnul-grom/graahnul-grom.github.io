@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,7 @@ Documentation License." -->
 <link href="lepton_002dcli-config.html" rel="next" title="lepton-cli config">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,24 +38,24 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="lepton_002dcli-export">
-<div class="header">
+<div class="section-level-extent" id="lepton_002dcli-export">
+<div class="nav-panel">
 <p>
 Next: <a href="lepton_002dcli-config.html" accesskey="n" rel="next">lepton-cli config</a>, Up: <a href="lepton_002dcli.html" accesskey="u" rel="up">lepton-cli - Lepton command-line utility</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="lepton_002dcli-export-1"></span><h3 class="section">7.1 lepton-cli export</h3>
-<span id="index-lepton_002dcli-export"></span>
+<h3 class="section" id="lepton_002dcli-export-1">7.1 lepton-cli export</h3>
+<a class="index-entry-id" id="index-lepton_002dcli-export"></a>
 
-<p>The command <code>lepton-cli export</code> is used to export schematic and
+<p>The command <code class="code">lepton-cli export</code> is used to export schematic and
 symbol files in a variety of image formats.  The resulting images can
 be then used for printing or embedding into other documents.  It
 currently supports single-page PNG, SVG and EPS output, and multi-page
 PS and PDF output.  It accepts a variety of options for controlling
 how the output is formatted.
 </p>
-<blockquote>
-<p><b>Note:</b> <code>lepton-cli export</code> can produce multi-page PDF and PS documents
+<blockquote class="quotation">
+<p><b class="b">Note:</b> <code class="code">lepton-cli export</code> can produce multi-page PDF and PS documents
 in one go.
 </p></blockquote>
 
@@ -77,68 +63,68 @@ in one go.
 <p>Usage:
 </p>
 <div class="example">
-<pre class="example">lepton-cli export [OPTION ...] -o OUTPUT [--] FILE ...
+<pre class="example-preformatted">lepton-cli export [OPTION ...] -o OUTPUT [--] FILE ...
 </pre></div>
 
 <p>The command can be used with the options described below.
 </p>
-<dl compact="compact">
-<dt><span><samp>-o <var>FILE</var></samp></span></dt>
-<dt><span><samp>--output=<var>FILE</var></samp></span></dt>
-<dd><p>Output generated image data to <var>FILE</var>.
+<dl class="table">
+<dt><samp class="option">-o <var class="var">FILE</var></samp></dt>
+<dt><samp class="option">--output=<var class="var">FILE</var></samp></dt>
+<dd><p>Output generated image data to <var class="var">FILE</var>.
 </p>
 </dd>
-<dt><span><samp>-f <var>FORMAT</var></samp></span></dt>
-<dt><span><samp>--format=<var>FORMAT</var></samp></span></dt>
-<dd><p>Specify an output format.  <var>FORMAT</var> can be one of &lsquo;<samp>png</samp>&rsquo;,
-&lsquo;<samp>pdf</samp>&rsquo;, &lsquo;<samp>svg</samp>&rsquo;, &lsquo;<samp>ps</samp>&rsquo;, or &lsquo;<samp>eps</samp>&rsquo;. Usually, this option
-is not required, because <code>lepton-cli</code> will infer the correct format from the
+<dt><samp class="option">-f <var class="var">FORMAT</var></samp></dt>
+<dt><samp class="option">--format=<var class="var">FORMAT</var></samp></dt>
+<dd><p>Specify an output format.  <var class="var">FORMAT</var> can be one of &lsquo;<samp class="samp">png</samp>&rsquo;,
+&lsquo;<samp class="samp">pdf</samp>&rsquo;, &lsquo;<samp class="samp">svg</samp>&rsquo;, &lsquo;<samp class="samp">ps</samp>&rsquo;, or &lsquo;<samp class="samp">eps</samp>&rsquo;. Usually, this option
+is not required, because <code class="command">lepton-cli</code> will infer the correct format from the
 file extension of the output file.
 </p>
 </dd>
-<dt><span><samp>-p <var>NAME</var></samp></span></dt>
-<dt><span><samp>--paper=<var>NAME</var></samp></span></dt>
-<dd><p>Size the output for a particular paper size.  The <var>NAME</var> should be
+<dt><samp class="option">-p <var class="var">NAME</var></samp></dt>
+<dt><samp class="option">--paper=<var class="var">NAME</var></samp></dt>
+<dd><p>Size the output for a particular paper size.  The <var class="var">NAME</var> should be
 a PWG 5101.1-2002 paper name.  For example, valid values include
-&lsquo;<samp>iso_a4</samp>&rsquo;, &lsquo;<samp>na_letter</samp>&rsquo;, or &lsquo;<samp>na_d</samp>&rsquo;.  You can use the
-<samp>--paper-names</samp> option (see below) to obtain all valid names.
+&lsquo;<samp class="samp">iso_a4</samp>&rsquo;, &lsquo;<samp class="samp">na_letter</samp>&rsquo;, or &lsquo;<samp class="samp">na_d</samp>&rsquo;.  You can use the
+<samp class="option">--paper-names</samp> option (see below) to obtain all valid names.
 </p>
 </dd>
-<dt><span><samp>-P</samp></span></dt>
-<dt><span><samp>--paper-names</samp></span></dt>
-<dd><p>Print paper size names suitable to pass to the <samp>--paper</samp> option
+<dt><samp class="option">-P</samp></dt>
+<dt><samp class="option">--paper-names</samp></dt>
+<dd><p>Print paper size names suitable to pass to the <samp class="option">--paper</samp> option
 and exit.
 </p>
 </dd>
-<dt><span><samp>-l <var>LAYOUT</var></samp></span></dt>
-<dt><span><samp>--layout=<var>LAYOUT</var></samp></span></dt>
+<dt><samp class="option">-l <var class="var">LAYOUT</var></samp></dt>
+<dt><samp class="option">--layout=<var class="var">LAYOUT</var></samp></dt>
 <dd><p>When using a paper size, set the orientation of the output.
-<var>LAYOUT</var> can be one of &lsquo;<samp>auto</samp>&rsquo;, &lsquo;<samp>landscape</samp>&rsquo;, or
-&lsquo;<samp>portrait</samp>&rsquo;.  If &lsquo;<samp>auto</samp>&rsquo; layout is used, <code>lepton-cli</code> selects the
+<var class="var">LAYOUT</var> can be one of &lsquo;<samp class="samp">auto</samp>&rsquo;, &lsquo;<samp class="samp">landscape</samp>&rsquo;, or
+&lsquo;<samp class="samp">portrait</samp>&rsquo;.  If &lsquo;<samp class="samp">auto</samp>&rsquo; layout is used, <code class="command">lepton-cli</code> selects the
 orientation that best fits the drawing.
 </p>
 </dd>
-<dt><span><samp>-s <var>SIZE</var></samp></span></dt>
-<dt><span><samp>--size=<var>SIZE</var></samp></span></dt>
-<dd><p>Size the output with specific dimensions.  <var>SIZE</var> can be specified
-either as &lsquo;<samp>auto</samp>&rsquo;, or as two numbers in the format
-&lsquo;<samp>WIDTH:HEIGHT</samp>&rsquo;.  If the size is &lsquo;<samp>auto</samp>&rsquo;, select the size that
+<dt><samp class="option">-s <var class="var">SIZE</var></samp></dt>
+<dt><samp class="option">--size=<var class="var">SIZE</var></samp></dt>
+<dd><p>Size the output with specific dimensions.  <var class="var">SIZE</var> can be specified
+either as &lsquo;<samp class="samp">auto</samp>&rsquo;, or as two numbers in the format
+&lsquo;<samp class="samp">WIDTH:HEIGHT</samp>&rsquo;.  If the size is &lsquo;<samp class="samp">auto</samp>&rsquo;, select the size that
 best fits the drawing.
 </p>
 </dd>
-<dt><span><samp>-k <var>FACTOR</var></samp></span></dt>
-<dt><span><samp>--scale=<var>FACTOR</var></samp></span></dt>
-<dd><p>Set the output scale <var>FACTOR</var>. This is a distance identical with
-100 points (1 default grid spacing) in <a href="lepton_002dschematic.html">Schematic capture</a> coordinate
-space. It is used to size the output when neither <samp>--paper</samp> nor
-<samp>--size</samp> are given, and defaults to 100 mil.
+<dt><samp class="option">-k <var class="var">FACTOR</var></samp></dt>
+<dt><samp class="option">--scale=<var class="var">FACTOR</var></samp></dt>
+<dd><p>Set the output scale <var class="var">FACTOR</var>. This is a distance identical with
+100 points (1 default grid spacing) in <a class="ref" href="lepton_002dschematic.html">Schematic capture</a> coordinate
+space. It is used to size the output when neither <samp class="option">--paper</samp> nor
+<samp class="option">--size</samp> are given, and defaults to 100 mil.
 </p>
 </dd>
-<dt><span><samp>-m <var>MARGINS</var></samp></span></dt>
-<dt><span><samp>--margins=<var>MARGINS</var></samp></span></dt>
-<dd><p>Set the widths of the margins to be used.  <var>MARGINS</var> can be
-specified either as &lsquo;<samp>auto</samp>&rsquo;, or as a set from one to four numbers
-separated by colons.  If &lsquo;<samp>auto</samp>&rsquo; margins are specified, a sensible
+<dt><samp class="option">-m <var class="var">MARGINS</var></samp></dt>
+<dt><samp class="option">--margins=<var class="var">MARGINS</var></samp></dt>
+<dd><p>Set the widths of the margins to be used.  <var class="var">MARGINS</var> can be
+specified either as &lsquo;<samp class="samp">auto</samp>&rsquo;, or as a set from one to four numbers
+separated by colons.  If &lsquo;<samp class="samp">auto</samp>&rsquo; margins are specified, a sensible
 default value will be chosen.  Up to four margin widths can be
 provided.  If one is provided, it will be used on all four sides.  If
 two are provided, the first will be used for the top/bottom and the
@@ -146,72 +132,73 @@ second for the left/right.  If three are provided, the first will be
 used for the top, the second for left/right, and the third for the
 bottom.  This is summarized here:
 </p>
-<table>
-<tr><td><samp>-m TOP:LEFT:BOTTOM:RIGHT</samp></td><td></td><td>all widths defined</td></tr>
-<tr><td><samp>-m TOP</samp></td><td>&rarr;</td><td><samp>-m TOP:TOP:TOP:TOP</samp></td></tr>
-<tr><td><samp>-m TOP:LEFT</samp></td><td>&rarr;</td><td><samp>-m TOP:LEFT:TOP:LEFT</samp></td></tr>
-<tr><td><samp>-m TOP:LEFT:BOTTOM</samp></td><td>&rarr;</td><td><samp>-m TOP:LEFT:BOTTOM:LEFT</samp></td></tr>
+<table class="multitable">
+<tbody><tr><td><samp class="option">-m TOP:LEFT:BOTTOM:RIGHT</samp></td><td></td><td>all widths defined</td></tr>
+<tr><td><samp class="option">-m TOP</samp></td><td>&rarr;</td><td><samp class="option">-m TOP:TOP:TOP:TOP</samp></td></tr>
+<tr><td><samp class="option">-m TOP:LEFT</samp></td><td>&rarr;</td><td><samp class="option">-m TOP:LEFT:TOP:LEFT</samp></td></tr>
+<tr><td><samp class="option">-m TOP:LEFT:BOTTOM</samp></td><td>&rarr;</td><td><samp class="option">-m TOP:LEFT:BOTTOM:LEFT</samp></td></tr>
+</tbody>
 </table>
 
 </dd>
-<dt><span><samp>-a <var>ALIGN</var></samp></span></dt>
-<dt><span><samp>--align=<var>ALIGN</var></samp></span></dt>
-<dd><p>Set how the drawing is aligned within the page.  <var>ALIGN</var> can be
-specified either as &lsquo;<samp>auto</samp>&rsquo;, or as two numbers in the format
-&lsquo;<samp>HALIGN:VALIGN</samp>&rsquo;.  &lsquo;<samp>HALIGN</samp>&rsquo; controls the horizontal
-alignment, and &lsquo;<samp>VALIGN</samp>&rsquo; the vertical.  Each alignment value
-should be in the range 0.0 to 1.0.  The &lsquo;<samp>auto</samp>&rsquo; alignment is
-equivalent to a value of &lsquo;<samp>0.5:0.5</samp>&rsquo;, i.e. centered.
+<dt><samp class="option">-a <var class="var">ALIGN</var></samp></dt>
+<dt><samp class="option">--align=<var class="var">ALIGN</var></samp></dt>
+<dd><p>Set how the drawing is aligned within the page.  <var class="var">ALIGN</var> can be
+specified either as &lsquo;<samp class="samp">auto</samp>&rsquo;, or as two numbers in the format
+&lsquo;<samp class="samp">HALIGN:VALIGN</samp>&rsquo;.  &lsquo;<samp class="samp">HALIGN</samp>&rsquo; controls the horizontal
+alignment, and &lsquo;<samp class="samp">VALIGN</samp>&rsquo; the vertical.  Each alignment value
+should be in the range 0.0 to 1.0.  The &lsquo;<samp class="samp">auto</samp>&rsquo; alignment is
+equivalent to a value of &lsquo;<samp class="samp">0.5:0.5</samp>&rsquo;, i.e. centered.
 </p>
 </dd>
-<dt><span><samp>-d <var>DPI</var></samp></span></dt>
-<dt><span><samp>--dpi=<var>DPI</var></samp></span></dt>
+<dt><samp class="option">-d <var class="var">DPI</var></samp></dt>
+<dt><samp class="option">--dpi=<var class="var">DPI</var></samp></dt>
 <dd><p>Set the number of pixels per inch used when generating PNG output.
 </p>
 </dd>
-<dt><span><samp>-c</samp></span></dt>
-<dt><span><samp>--color</samp></span></dt>
+<dt><samp class="option">-c</samp></dt>
+<dt><samp class="option">--color</samp></dt>
 <dd><p>Enable color output.
 </p>
 </dd>
-<dt><span><samp>--no-color</samp></span></dt>
+<dt><samp class="option">--no-color</samp></dt>
 <dd><p>Disable color output.
 </p>
 </dd>
-<dt><span><samp>-F <var>FONT-FAMILY</var></samp></span></dt>
-<dt><span><samp>--font=<var>FONT-FAMILY</var></samp></span></dt>
+<dt><samp class="option">-F <var class="var">FONT-FAMILY</var></samp></dt>
+<dt><samp class="option">--font=<var class="var">FONT-FAMILY</var></samp></dt>
 <dd><p>Set the font to be used for drawing text.
 </p>
 </dd>
-<dt><span><samp>-h</samp></span></dt>
-<dt><span><samp>--help</samp></span></dt>
-<dd><p>Display usage information of the command <code>lepton-cli export</code> and
+<dt><samp class="option">-h</samp></dt>
+<dt><samp class="option">--help</samp></dt>
+<dd><p>Display usage information of the command <code class="code">lepton-cli export</code> and
 exit.
 </p>
 </dd>
-<dt><span><samp>--</samp></span></dt>
+<dt><samp class="option">--</samp></dt>
 <dd><p>Treat all remaining arguments as schematic or symbol filenames.  Use
 this if you have a schematic or symbol filename which begins with
-&lsquo;<samp>-</samp>&rsquo;.
+&lsquo;<samp class="samp">-</samp>&rsquo;.
 </p>
 </dd>
 </dl>
 
-<p>The <samp>--size</samp>, <samp>--margins</samp>, or <samp>--scale</samp> options
-described above accept values using units of &lsquo;<samp>mm</samp>&rsquo;, &lsquo;<samp>cm</samp>&rsquo;,
-&lsquo;<samp>in</samp>&rsquo;, &lsquo;<samp>pc</samp>&rsquo;, &lsquo;<samp>px</samp>&rsquo;, or &lsquo;<samp>pt</samp>&rsquo;.  If you do not provide
-a unit, points are assumed.  N.b. that &lsquo;<samp>px</samp>&rsquo; are evaluated
-relative to the current <samp>--dpi</samp> setting.
+<p>The <samp class="option">--size</samp>, <samp class="option">--margins</samp>, or <samp class="option">--scale</samp> options
+described above accept values using units of &lsquo;<samp class="samp">mm</samp>&rsquo;, &lsquo;<samp class="samp">cm</samp>&rsquo;,
+&lsquo;<samp class="samp">in</samp>&rsquo;, &lsquo;<samp class="samp">pc</samp>&rsquo;, &lsquo;<samp class="samp">px</samp>&rsquo;, or &lsquo;<samp class="samp">pt</samp>&rsquo;.  If you do not provide
+a unit, points are assumed.  N.b. that &lsquo;<samp class="samp">px</samp>&rsquo; are evaluated
+relative to the current <samp class="option">--dpi</samp> setting.
 </p>
 
-<p>When using the <samp>--size</samp>, <samp>--margins</samp>, or
-<samp>--align</samp> options with multiple values, you may use &lsquo;<samp>;</samp>&rsquo;,
-or &lsquo;<samp> </samp>&rsquo; (space) as a separator between them instead of
-&lsquo;<samp>:</samp>&rsquo;. In such a case, remember to properly quote your arguments to
+<p>When using the <samp class="option">--size</samp>, <samp class="option">--margins</samp>, or
+<samp class="option">--align</samp> options with multiple values, you may use &lsquo;<samp class="samp">;</samp>&rsquo;,
+or &lsquo;<samp class="samp"> </samp>&rsquo; (space) as a separator between them instead of
+&lsquo;<samp class="samp">:</samp>&rsquo;. In such a case, remember to properly quote your arguments to
 avoid them to be interpreted by your shell.
 </p></div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
 Next: <a href="lepton_002dcli-config.html">lepton-cli config</a>, Up: <a href="lepton_002dcli.html">lepton-cli - Lepton command-line utility</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>

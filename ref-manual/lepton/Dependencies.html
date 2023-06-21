@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="Supported-operating-systems.html" rel="prev" title="Supported operating systems">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,48 +39,48 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Dependencies">
-<div class="header">
+<div class="section-level-extent" id="Dependencies">
+<div class="nav-panel">
 <p>
 Next: <a href="Troubleshooting-dependencies.html" accesskey="n" rel="next">Troubleshooting dependencies</a>, Previous: <a href="Supported-operating-systems.html" accesskey="p" rel="prev">Supported operating systems</a>, Up: <a href="Installation.html" accesskey="u" rel="up">Installation</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Dependencies-1"></span><h3 class="section">2.2 Dependencies</h3>
+<h3 class="section" id="Dependencies-1">2.2 Dependencies</h3>
 
 <p>In order to compile Lepton from the distributed source archives, you
-<strong>must</strong> have the following tools and libraries installed:
-</p><ul>
-<li> A C/C++ compiler and standard library (<code>gcc</code>/<code>glibc</code>
-are recommended, though you may use <code>clang</code> instead).
-</li><li> <a href="http://pkgconfig.freedesktop.org">The pkg-config tool</a> for
+<strong class="strong">must</strong> have the following tools and libraries installed:
+</p><ul class="itemize mark-bullet">
+<li>A C/C++ compiler and standard library (<code class="command">gcc</code>/<code class="command">glibc</code>
+are recommended, though you may use <code class="command">clang</code> instead).
+</li><li><a class="url" href="http://pkgconfig.freedesktop.org">The pkg-config tool</a> for
 managing shared libraries.
-</li><li> <a href="http://www.gnu.org/software/guile">Guile</a> (&quot;GNU&rsquo;s Ubiquitous
+</li><li><a class="url" href="http://www.gnu.org/software/guile">Guile</a> (&quot;GNU&rsquo;s Ubiquitous
 Intelligent Language for Extensions&quot;), version 2.2.0 or later.
-</li><li> <a href="http://www.gtk.org">GTK+</a> (the Gimp Toolkit), version 2.24.0 or
+</li><li><a class="url" href="http://www.gtk.org">GTK+</a> (the Gimp Toolkit), version 2.24.0 or
 later.
-</li><li> <a href="http://www.gnu.org/software/gettext">GNU gettext</a>, version 0.18
+</li><li><a class="url" href="http://www.gnu.org/software/gettext">GNU gettext</a>, version 0.18
 or newer.
-</li><li> <a href="http://flex.sourceforge.net">The lex tool</a> for generating lexical
-scanners.  The <code>flex</code> implementation is recommended.
-</li><li> The <code>awk</code> tool for data processing.
-<a href="http://www.gnu.org/software/gawk">GNU Awk</a> (<code>gawk</code>) is
+</li><li><a class="url" href="http://flex.sourceforge.net">The lex tool</a> for generating lexical
+scanners.  The <code class="command">flex</code> implementation is recommended.
+</li><li>The <code class="command">awk</code> tool for data processing.
+<a class="url" href="http://www.gnu.org/software/gawk">GNU Awk</a> (<code class="command">gawk</code>) is
 recommended.
 </li></ul>
 
-<p>The following tools and libraries are <em>highly recommended</em>:
-</p><ul>
-<li> <a href="http://www.gnu.org/software/groff">GNU troff</a> (<code>groff</code>).
-</li><li> <a href="http://freedesktop.org/Software/shared-mime-info">The
+<p>The following tools and libraries are <em class="emph">highly recommended</em>:
+</p><ul class="itemize mark-bullet">
+<li><a class="url" href="http://www.gnu.org/software/groff">GNU troff</a> (<code class="command">groff</code>).
+</li><li><a class="url" href="http://freedesktop.org/Software/shared-mime-info">The
 freedesktop.org MIME info database</a>.
-</li><li> <a href="http://www.freedesktop.org/software/desktop-file-utils">The
-freedesktop.org utilities</a> for manipulating <samp>.desktop</samp> files.
+</li><li><a class="url" href="http://www.freedesktop.org/software/desktop-file-utils">The
+freedesktop.org utilities</a> for manipulating <samp class="file">.desktop</samp> files.
 </li></ul>
 
 <p>The following tools and libraries are optional:
 </p>
-<ul>
-<li> <a href="http://www.etla.net/libstroke">libstroke</a> a stroke and gesture
-recognition library.  If this is available, <code>lepton-schematic</code>
+<ul class="itemize mark-bullet">
+<li><a class="url" href="http://www.etla.net/libstroke">libstroke</a> a stroke and gesture
+recognition library.  If this is available, <code class="command">lepton-schematic</code>
 will support mouse gesture recognition.
 </li></ul>
 

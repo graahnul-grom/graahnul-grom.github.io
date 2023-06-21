@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,7 @@ Documentation License." -->
 <link href="lepton_002dattrib.html" rel="prev" title="lepton-attrib">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,33 +39,33 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Usage-of-lepton_002dattrib">
-<div class="header">
+<div class="section-level-extent" id="Usage-of-lepton_002dattrib">
+<div class="nav-panel">
 <p>
 Next: <a href="lepton_002dattrib-menus.html" accesskey="n" rel="next">lepton-attrib menus</a>, Previous: <a href="lepton_002dattrib.html" accesskey="p" rel="prev">Spreadsheet attribute editor</a>, Up: <a href="lepton_002dattrib.html" accesskey="u" rel="up">Spreadsheet attribute editor</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Usage-of-lepton_002dattrib-1"></span><h3 class="section">8.2 Usage of lepton-attrib</h3>
+<h3 class="section" id="Usage-of-lepton_002dattrib-1">8.2 Usage of lepton-attrib</h3>
 
-<p>You can invoke <code>lepton-attrib</code> on your design from the command
+<p>You can invoke <code class="command">lepton-attrib</code> on your design from the command
 line in the following way:
 </p>
 <div class="example">
-<pre class="example">lepton-attrib file1.sch file2.sch ...
+<pre class="example-preformatted">lepton-attrib file1.sch file2.sch ...
 </pre></div>
 
 <p>For example:
 </p>
 <div class="example">
-<pre class="example">lepton-attrib my_design_*.sch
+<pre class="example-preformatted">lepton-attrib my_design_*.sch
 </pre></div>
 
 <p>(This assumes you have a multi-page design with file names
-<samp>my_design_1.sch</samp>, <samp>my_design_2.sch</samp>, etc.)
-<code>lepton-attrib</code> will then read in your design, and present you
+<samp class="file">my_design_1.sch</samp>, <samp class="file">my_design_2.sch</samp>, etc.)
+<code class="command">lepton-attrib</code> will then read in your design, and present you
 with a spreadsheet showing all components and associated attributes.
 </p>
-<p>You can also just run <code>lepton-attrib</code>, and select the input
+<p>You can also just run <code class="command">lepton-attrib</code>, and select the input
 files in the &ldquo;Open&rdquo; dialog box.
 </p>
 <p>To edit your attributes, just edit the cells in the spreadsheet.

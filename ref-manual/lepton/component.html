@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,21 +30,8 @@ Documentation License." -->
 <link href="pin.html" rel="prev" title="pin">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -53,45 +40,46 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="component">
-<div class="header">
+<div class="subsection-level-extent" id="component">
+<div class="nav-panel">
 <p>
 Next: <a href="path.html" accesskey="n" rel="next">path</a>, Previous: <a href="pin.html" accesskey="p" rel="prev">pin</a>, Up: <a href="Object-types.html" accesskey="u" rel="up">Object types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="component-1"></span><h4 class="subsection">13.4.11 component</h4>
+<h4 class="subsection" id="component-1">13.4.11 component</h4>
 
 <p>Valid in: Schematic files ONLY
 </p>
 
 <pre class="verbatim">type x y selectable angle mirror basename
 </pre>
-<table>
+<table class="multitable">
 <thead><tr><th width="20%">Pos.</th><th width="20%">Field</th><th width="20%">Type/unit</th><th width="40%">Description</th></tr></thead>
-<tr><td width="20%">#</td><td width="20%">type</td><td width="20%">char</td><td width="40%">C</td></tr>
+<tbody><tr><td width="20%">#</td><td width="20%">type</td><td width="20%">char</td><td width="40%">C</td></tr>
 <tr><td width="20%">1</td><td width="20%">x</td><td width="20%">int/mils</td><td width="40%">Origin X coordinate</td></tr>
 <tr><td width="20%">2</td><td width="20%">y</td><td width="20%">int/mils</td><td width="40%">Origin Y coordinate</td></tr>
 <tr><td width="20%">3</td><td width="20%">selectable</td><td width="20%">int</td><td width="40%">Selectable flag</td></tr>
 <tr><td width="20%">4</td><td width="20%">angle</td><td width="20%">int/degrees</td><td width="40%">Angle of the component</td></tr>
 <tr><td width="20%">5</td><td width="20%">mirror</td><td width="20%">int</td><td width="40%">Mirror around Y axis</td></tr>
 <tr><td width="20%">6</td><td width="20%">basename</td><td width="20%">string</td><td width="40%">The filename of the component</td></tr>
+</tbody>
 </table>
 
-<ul>
-<li> The selectable field is either 1 for selectable or 0 if not
+<ul class="itemize mark-bullet">
+<li>The selectable field is either 1 for selectable or 0 if not
 selectable.
 
-</li><li> The angle field can only take on the following values: 0, 90, 180,
+</li><li>The angle field can only take on the following values: 0, 90, 180,
 270.
 
-</li><li> The angle field can only be positive.
+</li><li>The angle field can only be positive.
 
-</li><li> The mirror flag is 0 if the component is not mirrored (around the Y
+</li><li>The mirror flag is 0 if the component is not mirrored (around the Y
 axis).
 
-</li><li> The mirror flag is 1 if the component is mirrored (around the Y axis).
+</li><li>The mirror flag is 1 if the component is mirrored (around the Y axis).
 
-</li><li> The just basename is the filename of the component. This filename is
+</li><li>The just basename is the filename of the component. This filename is
 not the full path.
 
 </li></ul>
@@ -99,12 +87,12 @@ not the full path.
 
 <p>Example:
 </p><div class="example">
-<pre class="example">C 18600 19900 1 0 0 7400-1.sym
+<pre class="example-preformatted">C 18600 19900 1 0 0 7400-1.sym
 </pre></div>
 
 <p>A component who&rsquo;s origin is at (18600,19900), is selectable, not
 rotated, not mirrored, and the basename of the component is
-<samp>7400-1.sym</samp>.
+<samp class="file">7400-1.sym</samp>.
 </p>
 
 </div>

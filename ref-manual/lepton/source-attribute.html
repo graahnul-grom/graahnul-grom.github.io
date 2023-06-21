@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This manual documents Lepton EDA version 1.9.18.
 
-Copyright (C) 2020-2022 Lepton Contributors.
+Copyright © 2020-2022 Lepton Contributors.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -29,21 +29,7 @@ Documentation License." -->
 <link href="netname-attribute.html" rel="prev" title="netname attribute">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="lepton-manual.css">
@@ -52,29 +38,29 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="subsection" id="source-attribute">
-<div class="header">
+<div class="subsection-level-extent" id="source-attribute">
+<div class="nav-panel">
 <p>
 Previous: <a href="netname-attribute.html" accesskey="p" rel="prev">netname attribute</a>, Up: <a href="Schematic-only-Attributes.html" accesskey="u" rel="up">Schematic only Attributes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Topic-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="source-attribute-1"></span><h4 class="subsection">14.3.2 source attribute</h4>
+<h4 class="subsection" id="source-attribute-1">14.3.2 source attribute</h4>
 
-<p>The <var>source=</var> attribute is used to specify that a symbol has
+<p>The <var class="var">source=</var> attribute is used to specify that a symbol has
 underlying schematics.  This attribute is attached directly to a
 component.
 </p>
 <p>This attribute should only be attached to instantiated components in
 schematics.  Attach the attribute to a component and specify the
 filename (not the path) of the underlying schematic (like
-<samp>block.sch</samp>) for the value.  The specified schematic must be in a
-source-library path.  See <a href="Legacy-configuration.html">Legacy configuration files still in use</a>.  This attribute can
+<samp class="file">block.sch</samp>) for the value.  The specified schematic must be in a
+source-library path.  See <a class="xref" href="Legacy-configuration.html">Legacy configuration files still in use</a>.  This attribute can
 be attached multiple times with different values which basically means
 that there are multiple underlying schematics.
 </p>
-<p><em>Examples:</em>
+<p><em class="emph">Examples:</em>
 </p><div class="example">
-<pre class="example">source=underlying.sch
+<pre class="example-preformatted">source=underlying.sch
 source=memory.sch
 </pre></div>
 
